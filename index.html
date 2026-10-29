@@ -81,7 +81,7 @@
       <div class="mb-6 text-left">
         <label class="block text-sm font-medium mb-2 text-emerald-300">Savollar soni:</label>
         <div class="grid grid-cols-4 gap-3">
-          <button onclick="selectCount(10)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold active-count" id="count-10">10</button>
+          <button onclick="selectCount(10)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-10">10</button>
           <button onclick="selectCount(20)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-20">20</button>
           <button onclick="selectCount(30)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-30">30</button>
           <button onclick="selectCount(50)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-50">50</button>
@@ -301,6 +301,9 @@
       document.getElementById(`count-${count}`).classList.add('bg-emerald-600', 'text-white');
     }
 
+    // Default 10 tanlangandek qilish
+    selectCount(10);
+
     function startQuiz() {
       const nameInput = document.getElementById('userNameInput').value.trim();
       if (!nameInput) {
@@ -309,7 +312,10 @@
       }
       userName = nameInput;
       
-      currentQuestions = [...biologyQuestionsDB].sort(() => 0.5 - Math.random()).slice(0, selectedQuestionCount);
+      // Agar tanlangan savollar soni bazadagidan ko'p bo'lsa, bazadagicha oladi (hozircha 20 ta)
+      const countToUse = Math.min(selectedQuestionCount, biologyQuestionsDB.length);
+
+      currentQuestions = [...biologyQuestionsDB].sort(() => 0.5 - Math.random()).slice(0, countToUse);
       currentIndex = 0;
       selectedAnswers = new Array(currentQuestions.length).fill(null);
       secondsElapsed = 0;
@@ -364,6 +370,12 @@
     }
 
     function nextQuestion() {
+      // MUHIM TEKSHIRUV: Javob belgilanmagan bo'lsa keyingisiga o'tishga qo'ymaydi
+      if (selectedAnswers[currentIndex] === null) {
+        alert("Iltimos, davom etish uchun javobni belgilang!");
+        return;
+      }
+
       if (currentIndex < currentQuestions.length - 1) {
         currentIndex++;
         renderQuestion();
