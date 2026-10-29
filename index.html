@@ -1,603 +1,394 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biologiya Milliy Sertifikat</title>
-    <style>
-        :root {
-            --primary: #059669;
-            --primary-dark: #047857;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biologiya Milliy Sertifikat Test Platformasi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 500px;
-            width: 100%;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .header-logo {
-            background: #ecfdf5;
-            padding: 16px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .header-logo img, .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .header-logo h1 {
-            font-size: 18px;
-            color: var(--text-main);
-        }
-
-        .header-logo p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        h2 {
-            font-size: 22px;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.2s;
-            background: #fff;
-        }
-
-        input:focus, select:focus {
-            border-color: var(--primary);
-        }
-
-        .count-options {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-        }
-
-        .count-btn {
-            padding: 10px 0;
-            border: 1px solid var(--border);
-            background: #fff;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .count-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            margin-top: 10px;
-        }
-
-        .btn-outline:hover {
-            background: #f1f5f9;
-        }
-
-        .question-box {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        .options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .option-btn {
-            width: 100%;
-            padding: 14px 16px;
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            text-align: left;
-            font-size: 15px;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: var(--text-main);
-        }
-
-        .option-btn:hover:not(:disabled) {
-            border-color: var(--primary);
-            background: #f0fdf4;
-        }
-
-        .option-btn.correct {
-            background: #d1fae5;
-            border-color: #10b981;
-            color: #065f46;
-        }
-
-        .option-btn.wrong {
-            background: #fee2e2;
-            border-color: #ef4444;
-            color: #991b1b;
-        }
-
-        .explanation-box {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 20px;
-        }
-
-        .explanation-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .explanation-text {
-            font-size: 14px;
-            color: var(--text-main);
-            line-height: 1.5;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-muted);
-            padding: 10px;
-        }
-
-        .footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .quiz-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-    </style>
+  <style>
+    body {
+      background-color: #064e3b;
+      color: #ecfdf5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .card-custom {
+      background-color: #022c22;
+      border: 1px solid #065f46;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    .btn-emerald {
+      background-color: #10b981;
+      color: #022c22;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+    }
+    .btn-emerald:hover {
+      background-color: #34d399;
+      transform: translateY(-2px);
+    }
+    .option-btn {
+      background-color: #064e3b;
+      border: 1px solid #047857;
+      transition: all 0.2s;
+    }
+    .option-btn:hover {
+      background-color: #047857;
+    }
+    .option-btn.selected {
+      background-color: #059669;
+      border-color: #34d399;
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between">
 
-    <div class="container" id="home-screen">
-        <div class="header-logo">
-            <div class="logo-icon">🧬</div>
+  <!-- Header -->
+  <header class="p-4 bg-emerald-950 border-b border-emerald-800 shadow-md">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <i class="fa-solid fa-dna text-emerald-400 text-3xl"></i>
+        <div>
+          <h1 class="text-xl font-bold text-emerald-300">Biologiya Milliy Sertifikat</h1>
+          <p class="text-xs text-emerald-500">BMBA / DTM Standartlariga mos sinovlar</p>
+        </div>
+      </div>
+      <button onclick="toggleLeaderboard()" class="px-4 py-2 bg-emerald-800 hover:bg-emerald-700 rounded-lg text-sm font-semibold flex items-center gap-2 text-emerald-200 border border-emerald-600 transition">
+        <i class="fa-solid fa-trophy text-yellow-400"></i> Reyting
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-3xl mx-auto w-full p-4 flex-grow flex items-center justify-center">
+
+    <!-- Start View -->
+    <div id="startView" class="card-custom rounded-2xl p-6 w-full text-center">
+      <div class="mb-6">
+        <i class="fa-solid fa-microscope text-5xl text-emerald-400 mb-3"></i>
+        <h2 class="text-2xl font-bold text-emerald-100">Testni Boshlash</h2>
+        <p class="text-sm text-emerald-400 mt-1">O'zingizga mos rejim va savollar sonini tanlang</p>
+      </div>
+
+      <div class="mb-6 text-left">
+        <label class="block text-sm font-medium mb-2 text-emerald-300">Ism va Familiyangiz:</label>
+        <input type="text" id="userNameInput" placeholder="Masalan: Ali Valiyev" class="w-full p-3 rounded-lg bg-emerald-950 border border-emerald-700 text-emerald-100 focus:outline-none focus:border-emerald-400">
+      </div>
+
+      <div class="mb-6 text-left">
+        <label class="block text-sm font-medium mb-2 text-emerald-300">Savollar soni:</label>
+        <div class="grid grid-cols-4 gap-3">
+          <button onclick="selectCount(10)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold active-count" id="count-10">10</button>
+          <button onclick="selectCount(20)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-20">20</button>
+          <button onclick="selectCount(30)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-30">30</button>
+          <button onclick="selectCount(50)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-50">50</button>
+        </div>
+      </div>
+
+      <button onclick="startQuiz()" class="w-full py-3 rounded-xl btn-emerald text-lg font-bold shadow-lg">
+        Testni Boshlash <i class="fa-solid fa-arrow-right ml-2"></i>
+      </button>
+    </div>
+
+    <!-- Quiz View -->
+    <div id="quizView" class="card-custom rounded-2xl p-6 w-full hidden">
+      <div class="flex justify-between items-center mb-4 pb-3 border-b border-emerald-800">
+        <span id="questionProgress" class="text-xs font-semibold px-3 py-1 bg-emerald-900 text-emerald-300 rounded-full border border-emerald-700">Savol 1 / 10</span>
+        <div class="flex items-center gap-2 text-yellow-400 font-mono font-bold">
+          <i class="fa-regular fa-clock"></i>
+          <span id="timer">00:00</span>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h3 id="questionText" class="text-lg font-semibold text-emerald-100 leading-relaxed mb-4">Savol matni yuklanmoqda...</h3>
+        <div id="optionsContainer" class="space-y-3">
+          <!-- Option Buttons Dynamic -->
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center pt-4 border-t border-emerald-800">
+        <button id="prevBtn" onclick="prevQuestion()" class="px-4 py-2 bg-emerald-900 text-emerald-300 rounded-lg text-sm font-semibold hover:bg-emerald-800 disabled:opacity-50">Orqaga</button>
+        <button id="nextBtn" onclick="nextQuestion()" class="px-5 py-2 btn-emerald rounded-lg text-sm font-semibold">Keyingisi</button>
+      </div>
+    </div>
+
+    <!-- Results & Explanations View -->
+    <div id="resultView" class="card-custom rounded-2xl p-6 w-full hidden">
+      <div class="text-center mb-6">
+        <i class="fa-solid fa-square-poll-vertical text-5xl text-emerald-400 mb-2"></i>
+        <h2 class="text-2xl font-bold text-emerald-100">Test Natijasi</h2>
+        <p id="resultSummary" class="text-lg font-semibold text-emerald-300 mt-2">Siz 10 ta savoldan 8 tasiga to'g'ri javob berdingiz!</p>
+      </div>
+
+      <div class="bg-emerald-950 p-4 rounded-xl border border-emerald-800 mb-6 flex justify-around text-center">
+        <div>
+          <span class="block text-xs text-emerald-500">Ball</span>
+          <span id="scorePercent" class="text-xl font-bold text-emerald-300">80%</span>
+        </div>
+        <div>
+          <span class="block text-xs text-emerald-500">Vaqt</span>
+          <span id="timeTaken" class="text-xl font-bold text-emerald-300">04:12</span>
+        </div>
+      </div>
+
+      <h3 class="font-bold text-lg text-emerald-200 mb-3">Savollar va Batafsil Tushuntirishlar:</h3>
+      <div id="explanationsList" class="space-y-4 max-h-96 overflow-y-auto pr-2 mb-6">
+        <!-- Explanations loaded here -->
+      </div>
+
+      <button onclick="restartQuiz()" class="w-full py-3 rounded-xl btn-emerald text-lg font-bold">
+        Qayta topshirish <i class="fa-solid fa-rotate-right ml-2"></i>
+      </button>
+    </div>
+
+    <!-- Leaderboard View -->
+    <div id="leaderboardView" class="card-custom rounded-2xl p-6 w-full hidden">
+      <div class="flex justify-between items-center mb-6 border-b border-emerald-800 pb-3">
+        <h2 class="text-xl font-bold text-emerald-100 flex items-center gap-2">
+          <i class="fa-solid fa-trophy text-yellow-400"></i> Jonli Reyting
+        </h2>
+        <button onclick="closeLeaderboard()" class="text-emerald-400 hover:text-emerald-200">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 max-h-80 overflow-y-auto pr-1" id="leaderboardList">
+        <p class="text-center text-sm text-emerald-500">Reyting yuklanmoqda...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="p-4 bg-emerald-950 border-t border-emerald-800 text-center text-xs text-emerald-500">
+    Muallif: <a href="https://t.me/Azmiddinov_n2" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline font-semibold"><i class="fa-brands fa-telegram mr-1"></i>@Azmiddinov_n2</a>
+  </footer>
+
+  <script>
+    // Firebase Config (Fallback to LocalStorage for safety)
+    const firebaseConfig = {
+      apiKey: "AIzaSyDummyKeyForArchitectureOnly",
+      authDomain: "bio-test.firebaseapp.com",
+      projectId: "bio-test",
+      storageBucket: "bio-test.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "1:123456789:web:abcdef"
+    };
+    
+    // Database Questions (BMBA Level)
+    const biologyQuestionsDB = [
+      {
+        question: "Qo'sh zanjirli DNK molekulasida Timin nukleotidlari soni umumiy nukleotidlarning 20% ini tashkil etadi. Ushbu DNK molekulasida Guanin nukleotidlari necha foizni tashkil qiladi?",
+        options: ["20%", "30%", "40%", "60%"],
+        answer: 1,
+        explanation: "DNKda Chargaff qoidasiga ko'ra A=T va G=S bo'ladi. Agar Timin 20% bo'lsa, Adenin ham 20% bo'ladi. A+T = 40%. Qolgan 60% qismi G+S ga tegishli. Guanin ulushi 60% / 2 = 30% bo'ladi."
+      },
+      {
+        question: "Hujayra nafas olishining glikoliz bosqichida 1 molekula glyukoza to'liq parchalanganda necha molekula ATF va necha molekula Sut kislotasi hosil bo'ladi?",
+        options: ["2 ATF, 2 Sut kislota", "38 ATF, 0 Sut kislota", "36 ATF, 2 Sut kislota", "4 ATF, 1 Sut kislota"],
+        answer: 0,
+        explanation: "Kislorodsiz (an aerob) glikoliz bosqichida 1 molekula glyukozadan 2 molekula sut kislotasi va sof 2 molekula ATF energiyasi ajralib chiqadi."
+      },
+      {
+        question: "O'simliklarda fotosintezning qorong'ilik bosqichida (Kalvin sikli) CO2 ning birikishi va glyukoza sintezlanishi uchun qaysi moddalar zarur bo'ladi?",
+        options: ["Faqat yorug'lik va H2O", "ATF va NADF·H", "O2 va Glyukoza", "Xlorofill va Karotin"],
+        answer: 1,
+        explanation: "Qorong'ilik bosqichida yorug'lik bosqichida toplanib tayyorlangan ATF energiyasi va NADF·H vodorod tashuvchisi sarflanadi."
+      },
+      {
+        question: "Odam fiziologiyasida gipoksiya (kislorod tanqisligi) sharoitida qaysi gormon buyraklar tomonidan ishlab chiqariladi va eritrotsitlar sintezini rag'batlantiradi?",
+        options: ["Tiroksin", "Eritropoetin", "Insulin", "Adrenalin"],
+        answer: 1,
+        explanation: "Buyraklar gipoksiya holatiga javoban Eritropoetin (EPO) gormonini qonga chiqaradi va bu suyak ko'mida eritrotsitlar hosil bo'lishini tezlashtiradi."
+      },
+      {
+        question: "Meyoz bo'linishning prophaza-I bosqichida sodir bo'ladigan genetik xilma-xillikning asosiy manbai bo'lgan jarayon qaysi?",
+        options: ["Sitokinez", "Krossingover", "Replikatsiya", "Transkripsiya"],
+        answer: 1,
+        explanation: "Prophaza-I da gomologik xromosomalarning konyugatsiyasi va krossingoveri (genlar almashinuvi) yuz beradi."
+      }
+    ];
+
+    let currentQuestions = [];
+    let currentIndex = 0;
+    let selectedAnswers = [];
+    let timerInterval = null;
+    let secondsElapsed = 0;
+    let selectedQuestionCount = 10;
+    let userName = "";
+
+    function selectCount(count) {
+      selectedQuestionCount = count;
+      document.querySelectorAll('.count-btn').forEach(btn => btn.classList.remove('bg-emerald-600', 'text-white'));
+      document.getElementById(`count-${count}`).classList.add('bg-emerald-600', 'text-white');
+    }
+
+    function startQuiz() {
+      const nameInput = document.getElementById('userNameInput').value.trim();
+      if (!nameInput) {
+        alert("Iltimos, ismingizni kiriting!");
+        return;
+      }
+      userName = nameInput;
+      
+      // Shuffle & Slice questions
+      currentQuestions = [...biologyQuestionsDB].sort(() => 0.5 - Math.random()).slice(0, selectedQuestionCount);
+      currentIndex = 0;
+      selectedAnswers = new Array(currentQuestions.length).fill(null);
+      secondsElapsed = 0;
+
+      document.getElementById('startView').classList.add('hidden');
+      document.getElementById('quizView').classList.remove('hidden');
+
+      startTimer();
+      renderQuestion();
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        secondsElapsed++;
+        const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+        const secs = String(secondsElapsed % 60).padStart(2, '0');
+        document.getElementById('timer').innerText = `${mins}:${secs}`;
+      }, 1000);
+    }
+
+    function renderQuestion() {
+      const q = currentQuestions[currentIndex];
+      document.getElementById('questionProgress').innerText = `Savol ${currentIndex + 1} / ${currentQuestions.length}`;
+      document.getElementById('questionText').innerText = q.question;
+
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = "";
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `option-btn w-full text-left p-4 rounded-xl border border-emerald-700 text-emerald-100 flex items-center justify-between ${selectedAnswers[currentIndex] === idx ? 'selected font-bold text-white' : ''}`;
+        btn.innerHTML = `<span>${String.fromCharCode(65 + idx)}) ${opt}</span>`;
+        btn.onclick = () => selectOption(idx);
+        container.appendChild(btn);
+      });
+
+      document.getElementById('prevBtn').disabled = currentIndex === 0;
+      document.getElementById('nextBtn').innerText = currentIndex === currentQuestions.length - 1 ? "Yakunlash" : "Keyingisi";
+    }
+
+    function selectOption(idx) {
+      selectedAnswers[currentIndex] = idx;
+      renderQuestion();
+    }
+
+    function prevQuestion() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+      }
+    }
+
+    function nextQuestion() {
+      if (currentIndex < currentQuestions.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      clearInterval(timerInterval);
+      document.getElementById('quizView').classList.add('hidden');
+      document.getElementById('resultView').classList.remove('hidden');
+
+      let correctCount = 0;
+      const expContainer = document.getElementById('explanationsList');
+      expContainer.innerHTML = "";
+
+      currentQuestions.forEach((q, idx) => {
+        const userAns = selectedAnswers[idx];
+        const isCorrect = userAns === q.answer;
+        if (isCorrect) correctCount++;
+
+        const item = document.createElement('div');
+        item.className = `p-4 rounded-xl border ${isCorrect ? 'bg-emerald-950/60 border-emerald-600' : 'bg-red-950/30 border-red-800'}`;
+        item.innerHTML = `
+          <div class="font-bold mb-1 text-sm ${isCorrect ? 'text-emerald-400' : 'text-red-400'}">
+            ${idx + 1}. ${q.question}
+          </div>
+          <div class="text-xs mb-2">
+            <span class="text-emerald-500">Sizning javobingiz:</span> ${userAns !== null ? q.options[userAns] : 'Belgilanmagan'}<br>
+            <span class="text-emerald-400">To'g'ri javob:</span> ${q.options[q.answer]}
+          </div>
+          <div class="text-xs bg-emerald-900/50 p-2 rounded border border-emerald-800 text-emerald-200">
+            <strong>Izoh:</strong> ${q.explanation}
+          </div>
+        `;
+        expContainer.appendChild(item);
+      });
+
+      const scorePct = Math.round((correctCount / currentQuestions.length) * 100);
+      document.getElementById('resultSummary').innerText = `Siz ${currentQuestions.length} ta savoldan ${correctCount} tasiga to'g'ri javob berdingiz!`;
+      document.getElementById('scorePercent').innerText = `${scorePct}%`;
+      
+      const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+      const secs = String(secondsElapsed % 60).padStart(2, '0');
+      document.getElementById('timeTaken').innerText = `${mins}:${secs}`;
+
+      saveScoreLocally(userName, scorePct, `${mins}:${secs}`);
+    }
+
+    function saveScoreLocally(name, score, time) {
+      let scores = JSON.parse(localStorage.getItem('bio_leaderboard') || '[]');
+      scores.push({ name, score, time, date: new Date().toLocaleDateString() });
+      scores.sort((a, b) => b.score - a.score);
+      localStorage.setItem('bio_leaderboard', JSON.stringify(scores));
+    }
+
+    function toggleLeaderboard() {
+      document.getElementById('startView').classList.add('hidden');
+      document.getElementById('quizView').classList.add('hidden');
+      document.getElementById('resultView').classList.add('hidden');
+      document.getElementById('leaderboardView').classList.remove('hidden');
+
+      const list = document.getElementById('leaderboardList');
+      let scores = JSON.parse(localStorage.getItem('bio_leaderboard') || '[]');
+
+      if (scores.length === 0) {
+        list.innerHTML = `<p class="text-center text-sm text-emerald-500">Hozircha natijalar mavjud emas.</p>`;
+        return;
+      }
+
+      list.innerHTML = scores.map((item, idx) => `
+        <div class="flex justify-between items-center p-3 rounded-lg bg-emerald-950 border border-emerald-800">
+          <div class="flex items-center gap-3">
+            <span class="font-bold ${idx === 0 ? 'text-yellow-400' : idx === 1 ? 'text-slate-300' : idx === 2 ? 'text-amber-600' : 'text-emerald-500'}">#${idx + 1}</span>
             <div>
-                <h1>Biologiya Milliy Sertifikat</h1>
-                <p>BMBA / DTM standartlari asosida</p>
+              <div class="font-semibold text-emerald-200 text-sm">${item.name}</div>
+              <div class="text-xs text-emerald-500">${item.date}</div>
             </div>
+          </div>
+          <div class="text-right">
+            <span class="font-bold text-emerald-300 text-sm">${item.score}%</span>
+            <span class="block text-xs text-emerald-500">${item.time}</span>
+          </div>
         </div>
+      `).join('');
+    }
 
-        <h2>Xush kelibsiz!</h2>
-        <p class="subtitle">Bilimni baholash agentligi standartlariga mos biologiya fanidan milliy sertifikat topshirish platformasi.</p>
+    function closeLeaderboard() {
+      document.getElementById('leaderboardView').classList.add('hidden');
+      document.getElementById('startView').classList.remove('hidden');
+    }
 
-        <div class="form-group">
-            <label>Ism va Familiyangiz</label>
-            <input type="text" id="user-name" placeholder="Masalan: Ali Valiyev">
-        </div>
-
-        <div class="form-group">
-            <label>Viloyat / Hudud</label>
-            <select id="user-region">
-                <option value="Toshkent sh.">Toshkent sh.</option>
-                <option value="Qashqadaryo vil.">Qashqadaryo vil.</option>
-                <option value="Samarqand vil.">Samarqand vil.</option>
-                <option value="Buxoro vil.">Buxoro vil.</option>
-                <option value="Farg'ona vil.">Farg'ona vil.</option>
-                <option value="Andijon vil.">Andijon vil.</option>
-                <option value="Namangan vil.">Namangan vil.</option>
-                <option value="Surxondaryo vil.">Surxondaryo vil.</option>
-                <option value="Jizzax vil.">Jizzax vil.</option>
-                <option value="Sirdaryo vil.">Sirdaryo vil.</option>
-                <option value="Navoiy vil.">Navoiy vil.</option>
-                <option value="Xorazm vil.">Xorazm vil.</option>
-                <option value="Qoraqalpog'iston Respublikasi">Qoraqalpog'iston Respublikasi</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Savollar soni</label>
-            <div class="count-options">
-                <button type="button" class="count-btn active" onclick="setCount(10)">10 ta</button>
-                <button type="button" class="count-btn" onclick="setCount(20)">20 ta</button>
-                <button type="button" class="count-btn" onclick="setCount(30)">30 ta</button>
-                <button type="button" class="count-btn" onclick="setCount(50)">50 ta</button>
-            </div>
-        </div>
-
-        <button class="btn" onclick="startQuiz()">Testni Boshlash</button>
-        <button class="btn btn-outline" onclick="shareApp()">Saytni Ulashish</button>
-    </div>
-
-    <div class="container hidden" id="quiz-screen">
-        <div class="quiz-header">
-            <span id="question-progress">Savol: 1 / 10</span>
-            <span id="score-counter">Ball: 0</span>
-        </div>
-
-        <div class="question-box" id="question-text">
-            Savol matni yuklanmoqda...
-        </div>
-
-        <div class="options-list" id="options-container">
-            <!-- Variantlar avtomatik tushadi -->
-        </div>
-
-        <div class="explanation-box hidden" id="explanation-box">
-            <div class="explanation-title">Tushuntirish:</div>
-            <div class="explanation-text" id="explanation-text">Izoh matni...</div>
-        </div>
-
-        <button class="btn hidden" id="next-btn" onclick="nextQuestion()">Keyingi savol</button>
-    </div>
-
-    <div class="container hidden" id="result-screen">
-        <h2>Test yakunlandi! 🎉</h2>
-        <p class="subtitle" id="result-message">Natijalaringiz tahlil qilindi.</p>
-        <button class="btn" onclick="restartQuiz()">Qaytadan boshlash</button>
-        <button class="btn btn-outline" onclick="shareResult()">Natijani ulashish</button>
-    </div>
-
-    <div class="footer">
-        Muallif: <strong>Azmiddinov Asomiddin Azmiddin o‘g‘li</strong><br>
-        <a href="https://t.me/Azmiddinov_n2" target="_blank">@Azmiddinov_n2</a> | © 2026 Barcha huquqlar himoyalangan.
-    </div>
-
-    <script>
-        const allQuestions = [
-            {
-                q: "Uch qatlamli ko'p hujayrali hayvonlar va ularning organ sistemalari taraqqiyotining 463-darajali xususiyati nimadan iborat?",
-                options: [
-                    "Muzakkar qavatlarning shakllanishi",
-                    "Nerv sistemasining to'liq tugunchali bo'lishi",
-                    "Nafas olish va qon aylanish sistemasi rivojlanishi",
-                    "Ayrish sistemasining kalta naychalardan iborat bo'lishi"
-                ],
-                correct: 0,
-                explanation: "Ektoderma, entoderma va mezoderma qatlamlarining shakllanishi uch qatlamli hayvonlar uchun xos."
-            },
-            {
-                q: "Oqsillar biosintezida birinchi bo'lib qaysi jarayon ro'y beradi?",
-                options: [
-                    "Transkripsiya (DNK dan mRNK nusxa ko'chirilishi)",
-                    "ribosomalarning birlashishi",
-                    "aminokislotalarning o'zaro birikishi",
-                    "tRNK ning antikodoni kelishi"
-                ],
-                correct: 0,
-                explanation: "Oqsil biosintezi har doim yadroda DNK asosida mRNK sintezlanishi (transkripsiya) bilan boshlanadi."
-            },
-            {
-                q: "Fotosintez jarayonining yorug'lik fazasida nima hosil bo'ladi?",
-                options: [
-                    "ATF,NADPH va kislorod",
-                    "Glyukoza va suv",
-                    "Faqat karbonat angidrid",
-                    "Kraxmal va yog'"
-                ],
-                correct: 0,
-                explanation: "Yorug'lik fazasida suv fotolizi natijasida kislorod ajraladi hamda ATF va NADPH hosil bo'ladi."
-            },
-            {
-                q: "DNK molekulasining ikkinchi zanjiri quyidagicha: A-T-G-C. Unga mos keluvchi mRNK ketma-ketligini toping.",
-                options: [
-                    "U-A-C-G",
-                    "A-U-G-C",
-                    "T-A-C-G",
-                    "G-C-A-U"
-                ],
-                correct: 0,
-                explanation: "Transkripsiya qoidasiga ko'ra: A ga U, T ga A, G ga C, C ga G mos keladi."
-            },
-            {
-                q: "Odamda qonning guruhlari nechta asosiy sistemaga bo'linib o'rganiladi?",
-                options: [
-                    "AB0 va Rezus sistema",
-                    "Faqat bitta",
-                    "Uchta sistema",
-                    "To'rtta sistema"
-                ],
-                correct: 0,
-                explanation: "Odamlarda qon quyish va tibbiyotda asosan AB0 hamda Rh (Rezus) sistemalari muhim o'rin tutadi."
-            },
-            {
-                q: "Mitoxondriyaning asosiy vazifasi nima?",
-                options: [
-                    "Hujayrani energiya (ATF) bilan ta'minlash",
-                    "Oqsillarni sintez qilish",
-                    "Moddalarni hujayradan tashqariga chiqarish",
-                    "DNK ni saqlash va bo'lish"
-                ],
-                correct: 0,
-                explanation: "Mitoxondriya hujayraning 'energetik stansiyasi' hisoblanib, kislorodli nafas olish orqali ATF ishlab chiqaradi."
-            },
-            {
-                q: "Bakteriyofag nima?",
-                options: [
-                    "Bakteriyalarni parazit qiluvchi virus",
-                    "Foydali tuproq bakteriyasi",
-                    "Bir hujayrali suvo't",
-                    "Zamburug' turi"
-                ],
-                correct: 0,
-                explanation: "Bakteriyofaglar – bakteriya hujayralarini zararlab, ularning ichida ko'payadigan maxsus viruslardir."
-            },
-            {
-                q: "Geterozis hodisasi nima?",
-                options: [
-                    "Duragaylarning birinchi avlodida ividish kuchi va mahsuldorligining ortishi",
-                    "Irsiylanishning to'xtab qolishi",
-                    "Genlarning mutatsiyaga uchrashi",
-                    "Turning yo'qolib ketishi"
-                ],
-                correct: 0,
-                explanation: "Geterozis (duragay kuchi) – turli zot yoki liniyalarni chatishtirganda birinchi avlodda hayotchanlikning keskin oshishi."
-            },
-            {
-                q: "Meozis jarayonida xromosomalar soni qanday o'zgaradi?",
-                options: [
-                    "Ikki marta kamayib, haploid (n) holatga keladi",
-                    "O'zgarmasdan qoladi",
-                    "Ikki marta ortadi",
-                    "To'liq yo'qolib ketadi"
-                ],
-                correct: 0,
-                explanation: "Meozis natijasida diploid (2n) hujayralardan haploid (n) xromosomali jinsiy hujayralar hosil bo'ladi."
-            },
-            {
-                q: "Ekologik piramida qoidasiga ko'ra, har bir keyingi ozuqa pog'onasiga energiyaning qancha qismi o'tadi?",
-                options: [
-                    "Taxminan 10 foizi",
-                    "50 foizi",
-                    "100 foizi",
-                    "Faqat 1 foizi"
-                ],
-                correct: 0,
-                explanation: "Lindman qoidasiga (10% qoidasi) ko'ra, har bir keyingi trofik darajaga oldingi energiya miqdorining taxminan 10% i o'tadi."
-            }
-        ];
-
-        let selectedCount = 10;
-        let currentQuestions = [];
-        let currentIndex = 0;
-        let score = 0;
-        let userName = "";
-        let userRegion = "";
-
-        function setCount(count) {
-            selectedCount = count;
-            document.querySelectorAll('.count-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-
-        function startQuiz() {
-            userName = document.getElementById('user-name').value.trim();
-            userRegion = document.getElementById('user-region').value;
-
-            if (!userName) {
-                alert("Iltimos, ism va familiyangizni kiriting!");
-                return;
-            }
-
-            // Savollarni aralashtirish va tanlash
-            currentQuestions = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, selectedCount);
-            currentIndex = 0;
-            score = 0;
-
-            document.getElementById('home-screen').classList.add('hidden');
-            document.getElementById('quiz-screen').classList.remove('hidden');
-            loadQuestion();
-        }
-
-        function loadQuestion() {
-            const q = currentQuestions[currentIndex];
-            document.getElementById('question-progress').innerText = `Savol: ${currentIndex + 1} / ${currentQuestions.length}`;
-            document.getElementById('score-counter').innerText = `Ball: ${score}`;
-            document.getElementById('question-text').innerText = q.q;
-
-            // Variantlarni random (tasodifiy) joylashtirish
-            let optionsWithIndex = q.options.map((opt, idx) => ({ text: opt, originalIndex: idx }));
-            optionsWithIndex.sort(() => Math.random() - 0.5);
-
-            const container = document.getElementById('options-container');
-            container.innerHTML = '';
-
-            optionsWithIndex.forEach((item) => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerText = item.text;
-                btn.onclick = () => checkAnswer(item.originalIndex, q.correct, btn);
-                container.appendChild(btn);
-            });
-
-            document.getElementById('explanation-box').classList.add('hidden');
-            document.getElementById('next-btn').classList.add('hidden');
-        }
-
-        function checkAnswer(selectedIndex, correctIndex, selectedBtn) {
-            const buttons = document.querySelectorAll('.option-btn');
-            buttons.forEach(btn => btn.disabled = true);
-
-            if (selectedIndex === correctIndex) {
-                selectedBtn.classList.add('correct');
-                score += 10;
-            } else {
-                selectedBtn.classList.add('wrong');
-                buttons.forEach(btn => {
-                    // Asl to'g'ri javobni topib yashil qilish
-                    if (btn.innerText === currentQuestions[currentIndex].options[correctIndex]) {
-                        btn.classList.add('correct');
-                    }
-                });
-            }
-
-            document.getElementById('score-counter').innerText = `Ball: ${score}`;
-
-            // Tushuntirishni chiqarish
-            const explanation = currentQuestions[currentIndex].explanation;
-            if (explanation) {
-                document.getElementById('explanation-text').innerText = explanation;
-                document.getElementById('explanation-box').classList.remove('hidden');
-            }
-
-            document.getElementById('next-btn').classList.remove('hidden');
-        }
-
-        function nextQuestion() {
-            currentIndex++;
-            if (currentIndex < currentQuestions.length) {
-                loadQuestion();
-            } else {
-                showResults();
-            }
-        }
-
-        function showResults() {
-            document.getElementById('quiz-screen').classList.add('hidden');
-            document.getElementById('result-screen').classList.remove('hidden');
-            
-            const totalPossible = currentQuestions.length * 10;
-            document.getElementById('result-message').innerHTML = `
-                <b>${userName}</b> (${userRegion})<br>
-                Sizning natijangiz: <b>${score} / ${totalPossible} ball</b>
-            `;
-        }
-
-        function restartQuiz() {
-            document.getElementById('result-screen').classList.add('hidden');
-            document.getElementById('home-screen').classList.remove('hidden');
-        }
-
-        function shareApp() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Biologiya Milliy Sertifikat',
-                    text: 'Biologiya fanidan DTM testlarini sinab ko‘ring!',
-                    url: window.location.href
-                }).catch(() => {});
-            } else {
-                alert("Havola nusxalandi yoki ulashish qo'llab-quvvatlanmadi.");
-            }
-        }
-
-        function shareResult() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Test Natijam',
-                    text: `${userName} Biologiya testidan ${score} ball to'pladi!`,
-                    url: window.location.href
-                }).catch(() => {});
-            } else {
-                alert(`Natija: ${score} ball. Qoyilmaqom!`);
-            }
-        }
-    </script>
+    function restartQuiz() {
+      document.getElementById('resultView').classList.add('hidden');
+      document.getElementById('startView').classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
