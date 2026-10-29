@@ -1,186 +1,3 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biologiya Milliy Sertifikat Test Platformasi</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-
-  <style>
-    body {
-      background-color: #064e3b;
-      color: #ecfdf5;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .card-custom {
-      background-color: #022c22;
-      border: 1px solid #065f46;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-    }
-    .btn-emerald {
-      background-color: #10b981;
-      color: #022c22;
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
-    }
-    .btn-emerald:hover {
-      background-color: #34d399;
-      transform: translateY(-2px);
-    }
-    .option-btn {
-      background-color: #064e3b;
-      border: 1px solid #047857;
-      transition: all 0.2s;
-    }
-    .option-btn:hover {
-      background-color: #047857;
-    }
-    .option-btn.selected {
-      background-color: #059669;
-      border-color: #34d399;
-    }
-  </style>
-</head>
-<body class="min-h-screen flex flex-col justify-between">
-
-  <!-- Header -->
-  <header class="p-4 bg-emerald-950 border-b border-emerald-800 shadow-md">
-    <div class="max-w-4xl mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <i class="fa-solid fa-dna text-emerald-400 text-3xl"></i>
-        <div>
-          <h1 class="text-xl font-bold text-emerald-300">Biologiya Milliy Sertifikat</h1>
-          <p class="text-xs text-emerald-500">BMBA / DTM Standartlariga mos sinovlar</p>
-        </div>
-      </div>
-      <button onclick="toggleLeaderboard()" class="px-4 py-2 bg-emerald-800 hover:bg-emerald-700 rounded-lg text-sm font-semibold flex items-center gap-2 text-emerald-200 border border-emerald-600 transition">
-        <i class="fa-solid fa-trophy text-yellow-400"></i> Reyting
-      </button>
-    </div>
-  </header>
-
-  <!-- Main Container -->
-  <main class="max-w-3xl mx-auto w-full p-4 flex-grow flex items-center justify-center">
-
-    <!-- Start View -->
-    <div id="startView" class="card-custom rounded-2xl p-6 w-full text-center">
-      <div class="mb-6">
-        <i class="fa-solid fa-microscope text-5xl text-emerald-400 mb-3"></i>
-        <h2 class="text-2xl font-bold text-emerald-100">Testni Boshlash</h2>
-        <p class="text-sm text-emerald-400 mt-1">O'zingizga mos rejim va savollar sonini tanlang</p>
-      </div>
-
-      <div class="mb-6 text-left">
-        <label class="block text-sm font-medium mb-2 text-emerald-300">Ism va Familiyangiz:</label>
-        <input type="text" id="userNameInput" placeholder="Masalan: Ali Valiyev" class="w-full p-3 rounded-lg bg-emerald-950 border border-emerald-700 text-emerald-100 focus:outline-none focus:border-emerald-400">
-      </div>
-
-      <div class="mb-6 text-left">
-        <label class="block text-sm font-medium mb-2 text-emerald-300">Savollar soni:</label>
-        <div class="grid grid-cols-4 gap-3">
-          <button onclick="selectCount(10)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold active-count" id="count-10">10</button>
-          <button onclick="selectCount(20)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-20">20</button>
-          <button onclick="selectCount(30)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-30">30</button>
-          <button onclick="selectCount(50)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-50">50</button>
-        </div>
-      </div>
-
-      <button onclick="startQuiz()" class="w-full py-3 rounded-xl btn-emerald text-lg font-bold shadow-lg">
-        Testni Boshlash <i class="fa-solid fa-arrow-right ml-2"></i>
-      </button>
-    </div>
-
-    <!-- Quiz View -->
-    <div id="quizView" class="card-custom rounded-2xl p-6 w-full hidden">
-      <div class="flex justify-between items-center mb-4 pb-3 border-b border-emerald-800">
-        <span id="questionProgress" class="text-xs font-semibold px-3 py-1 bg-emerald-900 text-emerald-300 rounded-full border border-emerald-700">Savol 1 / 10</span>
-        <div class="flex items-center gap-2 text-yellow-400 font-mono font-bold">
-          <i class="fa-regular fa-clock"></i>
-          <span id="timer">00:00</span>
-        </div>
-      </div>
-
-      <div class="mb-6">
-        <h3 id="questionText" class="text-lg font-semibold text-emerald-100 leading-relaxed mb-4">Savol matni yuklanmoqda...</h3>
-        <div id="optionsContainer" class="space-y-3">
-          <!-- Option Buttons Dynamic -->
-        </div>
-      </div>
-
-      <div class="flex justify-between items-center pt-4 border-t border-emerald-800">
-        <button id="prevBtn" onclick="prevQuestion()" class="px-4 py-2 bg-emerald-900 text-emerald-300 rounded-lg text-sm font-semibold hover:bg-emerald-800 disabled:opacity-50">Orqaga</button>
-        <button id="nextBtn" onclick="nextQuestion()" class="px-5 py-2 btn-emerald rounded-lg text-sm font-semibold">Keyingisi</button>
-      </div>
-    </div>
-
-    <!-- Results & Explanations View -->
-    <div id="resultView" class="card-custom rounded-2xl p-6 w-full hidden">
-      <div class="text-center mb-6">
-        <i class="fa-solid fa-square-poll-vertical text-5xl text-emerald-400 mb-2"></i>
-        <h2 class="text-2xl font-bold text-emerald-100">Test Natijasi</h2>
-        <p id="resultSummary" class="text-lg font-semibold text-emerald-300 mt-2">Siz 10 ta savoldan 8 tasiga to'g'ri javob berdingiz!</p>
-      </div>
-
-      <div class="bg-emerald-950 p-4 rounded-xl border border-emerald-800 mb-6 flex justify-around text-center">
-        <div>
-          <span class="block text-xs text-emerald-500">Ball</span>
-          <span id="scorePercent" class="text-xl font-bold text-emerald-300">80%</span>
-        </div>
-        <div>
-          <span class="block text-xs text-emerald-500">Vaqt</span>
-          <span id="timeTaken" class="text-xl font-bold text-emerald-300">04:12</span>
-        </div>
-      </div>
-
-      <h3 class="font-bold text-lg text-emerald-200 mb-3">Savollar va Batafsil Tushuntirishlar:</h3>
-      <div id="explanationsList" class="space-y-4 max-h-96 overflow-y-auto pr-2 mb-6">
-        <!-- Explanations loaded here -->
-      </div>
-
-      <button onclick="restartQuiz()" class="w-full py-3 rounded-xl btn-emerald text-lg font-bold">
-        Qayta topshirish <i class="fa-solid fa-rotate-right ml-2"></i>
-      </button>
-    </div>
-
-    <!-- Leaderboard View -->
-    <div id="leaderboardView" class="card-custom rounded-2xl p-6 w-full hidden">
-      <div class="flex justify-between items-center mb-6 border-b border-emerald-800 pb-3">
-        <h2 class="text-xl font-bold text-emerald-100 flex items-center gap-2">
-          <i class="fa-solid fa-trophy text-yellow-400"></i> Jonli Reyting
-        </h2>
-        <button onclick="closeLeaderboard()" class="text-emerald-400 hover:text-emerald-200">
-          <i class="fa-solid fa-xmark text-xl"></i>
-        </button>
-      </div>
-
-      <div class="space-y-3 max-h-80 overflow-y-auto pr-1" id="leaderboardList">
-        <p class="text-center text-sm text-emerald-500">Reyting yuklanmoqda...</p>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="p-4 bg-emerald-950 border-t border-emerald-800 text-center text-xs text-emerald-500">
-    Muallif: <a href="https://t.me/Azmiddinov_n2" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline font-semibold"><i class="fa-brands fa-telegram mr-1"></i>@Azmiddinov_n2</a>
-  </footer>
-
-  <script>
-    // Firebase Config (Fallback to LocalStorage for safety)
-    const firebaseConfig = {
-      apiKey: "AIzaSyDummyKeyForArchitectureOnly",
-      authDomain: "bio-test.firebaseapp.com",
-      projectId: "bio-test",
-      storageBucket: "bio-test.appspot.com",
-      messagingSenderId: "123456789",
-      appId: "1:123456789:web:abcdef"
-    };
-    
-    // Database Questions (BMBA Level)
     const biologyQuestionsDB = [
       {
         question: "Qo'sh zanjirli DNK molekulasida Timin nukleotidlari soni umumiy nukleotidlarning 20% ini tashkil etadi. Ushbu DNK molekulasida Guanin nukleotidlari necha foizni tashkil qiladi?",
@@ -192,7 +9,7 @@
         question: "Hujayra nafas olishining glikoliz bosqichida 1 molekula glyukoza to'liq parchalanganda necha molekula ATF va necha molekula Sut kislotasi hosil bo'ladi?",
         options: ["2 ATF, 2 Sut kislota", "38 ATF, 0 Sut kislota", "36 ATF, 2 Sut kislota", "4 ATF, 1 Sut kislota"],
         answer: 0,
-        explanation: "Kislorodsiz (an aerob) glikoliz bosqichida 1 molekula glyukozadan 2 molekula sut kislotasi va sof 2 molekula ATF energiyasi ajralib chiqadi."
+        explanation: "Kislorodsiz (anaerob) glikoliz bosqichida 1 molekula glyukozadan 2 molekula sut kislotasi va sof 2 molekula ATF energiyasi ajralib chiqadi."
       },
       {
         question: "O'simliklarda fotosintezning qorong'ilik bosqichida (Kalvin sikli) CO2 ning birikishi va glyukoza sintezlanishi uchun qaysi moddalar zarur bo'ladi?",
@@ -211,184 +28,96 @@
         options: ["Sitokinez", "Krossingover", "Replikatsiya", "Transkripsiya"],
         answer: 1,
         explanation: "Prophaza-I da gomologik xromosomalarning konyugatsiyasi va krossingoveri (genlar almashinuvi) yuz beradi."
+      },
+      {
+        question: "DNK zanjiridagi A-T va G-S juftliklari orasidagi vodorod bog'lari soni qanday taqsimlanadi?",
+        options: ["A-T (2 ta), G-S (3 ta)", "A-T (3 ta), G-S (2 ta)", "Ikkalasi ham 2 tadan", "Ikkalasi ham 3 tadan"],
+        answer: 0,
+        explanation: "Adenin va Timin orasida 2 ta, Guanin va Sitozin orasida esa 3 ta vodorod bog'i hosil bo'ladi."
+      },
+      {
+        question: "100 ta aminokislotadan tashkil topgan oqsil molekulasini kodlaydigan mRNK segmentida nechta nukleotid bo'ladi (stop-kodon hisobga olinganda)?",
+        options: ["300 ta", "303 ta", "100 ta", "600 ta"],
+        answer: 1,
+        explanation: "Har bir aminokislotani 3 ta nukleotid kodlaydi (100 * 3 = 300). Translyatsiyani tugatuvchi 1 ta stop-kodon ham 3 nukleotiddan iborat: 300 + 3 = 303 ta."
+      },
+      {
+        question: "Nukleotidlar tarkibidagi uglevod turi DNK va RNKda qanday farqlanadi?",
+        options: ["DNKda riboza, RNKda dezoksiriboza", "DNKda dezoksiriboza, RNKda riboza", "Ikkalasida ham glyukoza", "Ikkalasida ham fruktoza"],
+        answer: 1,
+        explanation: "DNK tarkibida dezoksiriboza qandi, RNK tarkibida esa riboza qandi mavjud."
+      },
+      {
+        question: "Odamda autosoma-retsessiv turda irsiylanadigan kasallikni ko'rsating:",
+        options: ["Gemofiliya", "Daltonizm", "Albinizm", "Gipertrixoz"],
+        answer: 2,
+        explanation: "Albinizm autosomada joylashgan retsessiv gen orqali irsiylanadi. Gemofiliya va daltonizm esa X-xromosomaga birikkan retsessiv kasalliklardir."
+      },
+      {
+        question: "Bakteriya genetik materialining viruslar (bakteriofaglar) orqali boshqa bakteriyaga o'tishi jarayoni nima deyiladi?",
+        options: ["Transformatsiya", "Transduksiya", "Konyugatsiya", "Mutatsiya"],
+        answer: 1,
+        explanation: "Bakteriofaglar vositasida genlarning bir bakteriyadan boshqasiga o'tishi transduksiya deyiladi."
+      },
+      {
+        question: "Geterozigotali (AaBb) organizm necha xil tipdagi gameta hosil qiladi (genlar birikmagan holatda)?",
+        options: ["2 xil", "4 xil", "8 xil", "16 xil"],
+        answer: 1,
+        explanation: "2^n formulasi bo'yicha (n - geterozigota juftlar soni): 2^2 = 4 xil gameta (AB, Ab, aB, ab)."
+      },
+      {
+        question: "Mitoz bo'linishning anafaza bosqichida hujayrada xromosoma va DNK to'plami qanday bo'ladi?",
+        options: ["2n 2c", "2n 4c", "4n 4c", "1n 1c"],
+        answer: 2,
+        explanation: "Anafazada xromatidlar (opa-singil xromosomalar) ajraladi va har biri mustaqil xromosomaga aylanadi, natijada to'plam 4n 4c bo'lib qoladi."
+      },
+      {
+        question: "Ekologiyada 10% qoidasiga (Lindeman qoidasi) ko'ra, har bir trofik darajadan keyingisiga energiya qanday o'tadi?",
+        options: ["10% saqlanib, 90% yo'qoladi", "90% o'tadi, 10% yo'qoladi", "50% o'tadi", "100% o'tadi"],
+        answer: 0,
+        explanation: "Oldingi trofik darajadagi energiyaning taxminan 10% qismi keyingi daraja biomassasiga o'tadi, 90% issiqlik va sarf sifatida yo'qoladi."
+      },
+      {
+        question: "Odam yuragining qaysi kamerasidan kichik qon aylanish doirasi boshlanadi?",
+        options: ["Chap qorincha", "O'ng qorincha", "Chap bo'lmacha", "O'ng bo'lmacha"],
+        answer: 1,
+        explanation: "Kichik (o'pka) qon aylanish doirasi o'ng qorinchadan o'pka arteriyasi poyasi orqali boshlanadi."
+      },
+      {
+        question: "Simbiotik azot fiksatsiyalovchi tuganak bakteriyalari qaysi o'simliklar oilasi ildizida uchraydi?",
+        options: ["Murakkabgulshaxslar", "Burchoqdoshlar (Dukkakdoshlar)", "Sho'radoshlar", "Bug'doydoshlar"],
+        answer: 1,
+        explanation: "Rhizobium turkumidagi tuganak bakteriyalar burchoqdoshlar (dukkakliklar) ildizida simbioz yashaydi."
+      },
+      {
+        question: "Qaysi organoid hujayrada gidrolitik fermentlarni saqlaydi va moddalarni avtoliz (parchalash) vazifasini bajaradi?",
+        options: ["Ribosoma", "Lizosoma", "Mitoxondriya", "Golji majmuasi"],
+        answer: 1,
+        explanation: "Lizosomalar tarkibidagi gidrolitik fermentlar orqali hujayra ichki hazm qilishini va zararlangan qismlarni parchalashni amalga oshiradi."
+      },
+      {
+        question: "DNK zanjiridan mRNK sintezlanish jarayoni nima deyiladi?",
+        options: ["Translyatsiya", "Transkripsiya", "Replikatsiya", "Reparatsiya"],
+        answer: 1,
+        explanation: "DNK qolipida RNK sintezlanishi transkripsiya, mRNK matritsasida oqsil sintezlanishi esa translyatsiya deyiladi."
+      },
+      {
+        question: "Gipofiz bezining oldingi bo'lagidan ajralib chiquvchi bo'y o'sishini ta'minlaydigan gormon qaysi?",
+        options: ["Somatotropin", "Oksitotsin", "Vasopressin", "Insulin"],
+        answer: 0,
+        explanation: "Somatotrop gormoni (STH) suyaklar va to'qimalarning o'sishini rag'batlantiradi."
+      },
+      {
+        question: "Genetika fanining otasi hisoblangan va birinchi marta irsiyat qonuniyatlarini kashf etgan olim kim?",
+        options: ["Charlz Darvin", "Gregor Mendel", "Tomas Morgan", "Rikardo Boveri"],
+        answer: 1,
+        explanation: "Gregor Mendel 1865-yilda noxat o'simligida o'tkazgan tajribalari orqali irsiyatning asosiy qonuniyatlarini ochib bergan."
+      },
+      {
+        question: "Odam qonidagi qaysi hujayralar yadroga ega emas va kislorod tashishga moslashgan?",
+        options: ["Leykotsitlar", "Trombotsitlar", "Eritrotsitlar", "Limfotsitlar"],
+        answer: 2,
+        explanation: "Sutemizuvchilar va odamning yetuk eritrotsitlarida yadro bo'lmaydi, bu esa ko'proq gemoglobin joylashishi va O2 tashilishini ta'minlaydi."
       }
+      // Bazani kengaytirib borish uchun shu yerga navbatdagi savollarni qo'shib borasiz.
     ];
-
-    let currentQuestions = [];
-    let currentIndex = 0;
-    let selectedAnswers = [];
-    let timerInterval = null;
-    let secondsElapsed = 0;
-    let selectedQuestionCount = 10;
-    let userName = "";
-
-    function selectCount(count) {
-      selectedQuestionCount = count;
-      document.querySelectorAll('.count-btn').forEach(btn => btn.classList.remove('bg-emerald-600', 'text-white'));
-      document.getElementById(`count-${count}`).classList.add('bg-emerald-600', 'text-white');
-    }
-
-    function startQuiz() {
-      const nameInput = document.getElementById('userNameInput').value.trim();
-      if (!nameInput) {
-        alert("Iltimos, ismingizni kiriting!");
-        return;
-      }
-      userName = nameInput;
-      
-      // Shuffle & Slice questions
-      currentQuestions = [...biologyQuestionsDB].sort(() => 0.5 - Math.random()).slice(0, selectedQuestionCount);
-      currentIndex = 0;
-      selectedAnswers = new Array(currentQuestions.length).fill(null);
-      secondsElapsed = 0;
-
-      document.getElementById('startView').classList.add('hidden');
-      document.getElementById('quizView').classList.remove('hidden');
-
-      startTimer();
-      renderQuestion();
-    }
-
-    function startTimer() {
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        secondsElapsed++;
-        const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-        const secs = String(secondsElapsed % 60).padStart(2, '0');
-        document.getElementById('timer').innerText = `${mins}:${secs}`;
-      }, 1000);
-    }
-
-    function renderQuestion() {
-      const q = currentQuestions[currentIndex];
-      document.getElementById('questionProgress').innerText = `Savol ${currentIndex + 1} / ${currentQuestions.length}`;
-      document.getElementById('questionText').innerText = q.question;
-
-      const container = document.getElementById('optionsContainer');
-      container.innerHTML = "";
-
-      q.options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = `option-btn w-full text-left p-4 rounded-xl border border-emerald-700 text-emerald-100 flex items-center justify-between ${selectedAnswers[currentIndex] === idx ? 'selected font-bold text-white' : ''}`;
-        btn.innerHTML = `<span>${String.fromCharCode(65 + idx)}) ${opt}</span>`;
-        btn.onclick = () => selectOption(idx);
-        container.appendChild(btn);
-      });
-
-      document.getElementById('prevBtn').disabled = currentIndex === 0;
-      document.getElementById('nextBtn').innerText = currentIndex === currentQuestions.length - 1 ? "Yakunlash" : "Keyingisi";
-    }
-
-    function selectOption(idx) {
-      selectedAnswers[currentIndex] = idx;
-      renderQuestion();
-    }
-
-    function prevQuestion() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        renderQuestion();
-      }
-    }
-
-    function nextQuestion() {
-      if (currentIndex < currentQuestions.length - 1) {
-        currentIndex++;
-        renderQuestion();
-      } else {
-        finishQuiz();
-      }
-    }
-
-    function finishQuiz() {
-      clearInterval(timerInterval);
-      document.getElementById('quizView').classList.add('hidden');
-      document.getElementById('resultView').classList.remove('hidden');
-
-      let correctCount = 0;
-      const expContainer = document.getElementById('explanationsList');
-      expContainer.innerHTML = "";
-
-      currentQuestions.forEach((q, idx) => {
-        const userAns = selectedAnswers[idx];
-        const isCorrect = userAns === q.answer;
-        if (isCorrect) correctCount++;
-
-        const item = document.createElement('div');
-        item.className = `p-4 rounded-xl border ${isCorrect ? 'bg-emerald-950/60 border-emerald-600' : 'bg-red-950/30 border-red-800'}`;
-        item.innerHTML = `
-          <div class="font-bold mb-1 text-sm ${isCorrect ? 'text-emerald-400' : 'text-red-400'}">
-            ${idx + 1}. ${q.question}
-          </div>
-          <div class="text-xs mb-2">
-            <span class="text-emerald-500">Sizning javobingiz:</span> ${userAns !== null ? q.options[userAns] : 'Belgilanmagan'}<br>
-            <span class="text-emerald-400">To'g'ri javob:</span> ${q.options[q.answer]}
-          </div>
-          <div class="text-xs bg-emerald-900/50 p-2 rounded border border-emerald-800 text-emerald-200">
-            <strong>Izoh:</strong> ${q.explanation}
-          </div>
-        `;
-        expContainer.appendChild(item);
-      });
-
-      const scorePct = Math.round((correctCount / currentQuestions.length) * 100);
-      document.getElementById('resultSummary').innerText = `Siz ${currentQuestions.length} ta savoldan ${correctCount} tasiga to'g'ri javob berdingiz!`;
-      document.getElementById('scorePercent').innerText = `${scorePct}%`;
-      
-      const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-      const secs = String(secondsElapsed % 60).padStart(2, '0');
-      document.getElementById('timeTaken').innerText = `${mins}:${secs}`;
-
-      saveScoreLocally(userName, scorePct, `${mins}:${secs}`);
-    }
-
-    function saveScoreLocally(name, score, time) {
-      let scores = JSON.parse(localStorage.getItem('bio_leaderboard') || '[]');
-      scores.push({ name, score, time, date: new Date().toLocaleDateString() });
-      scores.sort((a, b) => b.score - a.score);
-      localStorage.setItem('bio_leaderboard', JSON.stringify(scores));
-    }
-
-    function toggleLeaderboard() {
-      document.getElementById('startView').classList.add('hidden');
-      document.getElementById('quizView').classList.add('hidden');
-      document.getElementById('resultView').classList.add('hidden');
-      document.getElementById('leaderboardView').classList.remove('hidden');
-
-      const list = document.getElementById('leaderboardList');
-      let scores = JSON.parse(localStorage.getItem('bio_leaderboard') || '[]');
-
-      if (scores.length === 0) {
-        list.innerHTML = `<p class="text-center text-sm text-emerald-500">Hozircha natijalar mavjud emas.</p>`;
-        return;
-      }
-
-      list.innerHTML = scores.map((item, idx) => `
-        <div class="flex justify-between items-center p-3 rounded-lg bg-emerald-950 border border-emerald-800">
-          <div class="flex items-center gap-3">
-            <span class="font-bold ${idx === 0 ? 'text-yellow-400' : idx === 1 ? 'text-slate-300' : idx === 2 ? 'text-amber-600' : 'text-emerald-500'}">#${idx + 1}</span>
-            <div>
-              <div class="font-semibold text-emerald-200 text-sm">${item.name}</div>
-              <div class="text-xs text-emerald-500">${item.date}</div>
-            </div>
-          </div>
-          <div class="text-right">
-            <span class="font-bold text-emerald-300 text-sm">${item.score}%</span>
-            <span class="block text-xs text-emerald-500">${item.time}</span>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function closeLeaderboard() {
-      document.getElementById('leaderboardView').classList.add('hidden');
-      document.getElementById('startView').classList.remove('hidden');
-    }
-
-    function restartQuiz() {
-      document.getElementById('resultView').classList.add('hidden');
-      document.getElementById('startView').classList.remove('hidden');
-    }
-  </script>
-</body>
-</html>
