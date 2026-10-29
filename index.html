@@ -3,395 +3,601 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biologiya Milliy Sertifikat Platformasi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Firebase App va Realtime Database SDK (compat versiyasi) -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+    <title>Biologiya Milliy Sertifikat</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header-logo {
+            background: #ecfdf5;
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .header-logo img, .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .header-logo h1 {
+            font-size: 18px;
+            color: var(--text-main);
+        }
+
+        .header-logo p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+            background: #fff;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+        }
+
+        .count-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .count-btn {
+            padding: 10px 0;
+            border: 1px solid var(--border);
+            background: #fff;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .count-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            margin-top: 10px;
+        }
+
+        .btn-outline:hover {
+            background: #f1f5f9;
+        }
+
+        .question-box {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 14px 16px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: left;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-main);
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            background: #f0fdf4;
+        }
+
+        .option-btn.correct {
+            background: #d1fae5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+
+        .option-btn.wrong {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+
+        .explanation-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .explanation-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .explanation-text {
+            font-size: 14px;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            padding: 10px;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 min-h-screen">
-    <div id="root"></div>
+<body>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+    <div class="container" id="home-screen">
+        <div class="header-logo">
+            <div class="logo-icon">🧬</div>
+            <div>
+                <h1>Biologiya Milliy Sertifikat</h1>
+                <p>BMBA / DTM standartlari asosida</p>
+            </div>
+        </div>
 
-        // Sizning shaxsiy Realtime Database sozlamalaringiz
-        const firebaseConfig = {
-            apiKey: "AIzaSyAsZnGGFOUbMeRDL6ps_",
-            authDomain: "biologiya-test-3ccaa.firebaseapp.com",
-            databaseURL: "https://biologiya-test-3ccaa-default-rtdb.firebaseio.com/",
-            projectId: "biologiya-test-3ccaa",
-            storageBucket: "biologiya-test-3ccaa.appspot.com",
-            messagingSenderId: "860475153668",
-            appId: "1:860475153668:web:5a4068..."
-        };
+        <h2>Xush kelibsiz!</h2>
+        <p class="subtitle">Bilimni baholash agentligi standartlariga mos biologiya fanidan milliy sertifikat topshirish platformasi.</p>
 
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
+        <div class="form-group">
+            <label>Ism va Familiyangiz</label>
+            <input type="text" id="user-name" placeholder="Masalan: Ali Valiyev">
+        </div>
+
+        <div class="form-group">
+            <label>Viloyat / Hudud</label>
+            <select id="user-region">
+                <option value="Toshkent sh.">Toshkent sh.</option>
+                <option value="Qashqadaryo vil.">Qashqadaryo vil.</option>
+                <option value="Samarqand vil.">Samarqand vil.</option>
+                <option value="Buxoro vil.">Buxoro vil.</option>
+                <option value="Farg'ona vil.">Farg'ona vil.</option>
+                <option value="Andijon vil.">Andijon vil.</option>
+                <option value="Namangan vil.">Namangan vil.</option>
+                <option value="Surxondaryo vil.">Surxondaryo vil.</option>
+                <option value="Jizzax vil.">Jizzax vil.</option>
+                <option value="Sirdaryo vil.">Sirdaryo vil.</option>
+                <option value="Navoiy vil.">Navoiy vil.</option>
+                <option value="Xorazm vil.">Xorazm vil.</option>
+                <option value="Qoraqalpog'iston Respublikasi">Qoraqalpog'iston Respublikasi</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Savollar soni</label>
+            <div class="count-options">
+                <button type="button" class="count-btn active" onclick="setCount(10)">10 ta</button>
+                <button type="button" class="count-btn" onclick="setCount(20)">20 ta</button>
+                <button type="button" class="count-btn" onclick="setCount(30)">30 ta</button>
+                <button type="button" class="count-btn" onclick="setCount(50)">50 ta</button>
+            </div>
+        </div>
+
+        <button class="btn" onclick="startQuiz()">Testni Boshlash</button>
+        <button class="btn btn-outline" onclick="shareApp()">Saytni Ulashish</button>
+    </div>
+
+    <div class="container hidden" id="quiz-screen">
+        <div class="quiz-header">
+            <span id="question-progress">Savol: 1 / 10</span>
+            <span id="score-counter">Ball: 0</span>
+        </div>
+
+        <div class="question-box" id="question-text">
+            Savol matni yuklanmoqda...
+        </div>
+
+        <div class="options-list" id="options-container">
+            <!-- Variantlar avtomatik tushadi -->
+        </div>
+
+        <div class="explanation-box hidden" id="explanation-box">
+            <div class="explanation-title">Tushuntirish:</div>
+            <div class="explanation-text" id="explanation-text">Izoh matni...</div>
+        </div>
+
+        <button class="btn hidden" id="next-btn" onclick="nextQuestion()">Keyingi savol</button>
+    </div>
+
+    <div class="container hidden" id="result-screen">
+        <h2>Test yakunlandi! 🎉</h2>
+        <p class="subtitle" id="result-message">Natijalaringiz tahlil qilindi.</p>
+        <button class="btn" onclick="restartQuiz()">Qaytadan boshlash</button>
+        <button class="btn btn-outline" onclick="shareResult()">Natijani ulashish</button>
+    </div>
+
+    <div class="footer">
+        Muallif: <strong>Azmiddinov Asomiddin Azmiddin o‘g‘li</strong><br>
+        <a href="https://t.me/Azmiddinov_n2" target="_blank">@Azmiddinov_n2</a> | © 2026 Barcha huquqlar himoyalangan.
+    </div>
+
+    <script>
+        const allQuestions = [
+            {
+                q: "Uch qatlamli ko'p hujayrali hayvonlar va ularning organ sistemalari taraqqiyotining 463-darajali xususiyati nimadan iborat?",
+                options: [
+                    "Muzakkar qavatlarning shakllanishi",
+                    "Nerv sistemasining to'liq tugunchali bo'lishi",
+                    "Nafas olish va qon aylanish sistemasi rivojlanishi",
+                    "Ayrish sistemasining kalta naychalardan iborat bo'lishi"
+                ],
+                correct: 0,
+                explanation: "Ektoderma, entoderma va mezoderma qatlamlarining shakllanishi uch qatlamli hayvonlar uchun xos."
+            },
+            {
+                q: "Oqsillar biosintezida birinchi bo'lib qaysi jarayon ro'y beradi?",
+                options: [
+                    "Transkripsiya (DNK dan mRNK nusxa ko'chirilishi)",
+                    "ribosomalarning birlashishi",
+                    "aminokislotalarning o'zaro birikishi",
+                    "tRNK ning antikodoni kelishi"
+                ],
+                correct: 0,
+                explanation: "Oqsil biosintezi har doim yadroda DNK asosida mRNK sintezlanishi (transkripsiya) bilan boshlanadi."
+            },
+            {
+                q: "Fotosintez jarayonining yorug'lik fazasida nima hosil bo'ladi?",
+                options: [
+                    "ATF,NADPH va kislorod",
+                    "Glyukoza va suv",
+                    "Faqat karbonat angidrid",
+                    "Kraxmal va yog'"
+                ],
+                correct: 0,
+                explanation: "Yorug'lik fazasida suv fotolizi natijasida kislorod ajraladi hamda ATF va NADPH hosil bo'ladi."
+            },
+            {
+                q: "DNK molekulasining ikkinchi zanjiri quyidagicha: A-T-G-C. Unga mos keluvchi mRNK ketma-ketligini toping.",
+                options: [
+                    "U-A-C-G",
+                    "A-U-G-C",
+                    "T-A-C-G",
+                    "G-C-A-U"
+                ],
+                correct: 0,
+                explanation: "Transkripsiya qoidasiga ko'ra: A ga U, T ga A, G ga C, C ga G mos keladi."
+            },
+            {
+                q: "Odamda qonning guruhlari nechta asosiy sistemaga bo'linib o'rganiladi?",
+                options: [
+                    "AB0 va Rezus sistema",
+                    "Faqat bitta",
+                    "Uchta sistema",
+                    "To'rtta sistema"
+                ],
+                correct: 0,
+                explanation: "Odamlarda qon quyish va tibbiyotda asosan AB0 hamda Rh (Rezus) sistemalari muhim o'rin tutadi."
+            },
+            {
+                q: "Mitoxondriyaning asosiy vazifasi nima?",
+                options: [
+                    "Hujayrani energiya (ATF) bilan ta'minlash",
+                    "Oqsillarni sintez qilish",
+                    "Moddalarni hujayradan tashqariga chiqarish",
+                    "DNK ni saqlash va bo'lish"
+                ],
+                correct: 0,
+                explanation: "Mitoxondriya hujayraning 'energetik stansiyasi' hisoblanib, kislorodli nafas olish orqali ATF ishlab chiqaradi."
+            },
+            {
+                q: "Bakteriyofag nima?",
+                options: [
+                    "Bakteriyalarni parazit qiluvchi virus",
+                    "Foydali tuproq bakteriyasi",
+                    "Bir hujayrali suvo't",
+                    "Zamburug' turi"
+                ],
+                correct: 0,
+                explanation: "Bakteriyofaglar – bakteriya hujayralarini zararlab, ularning ichida ko'payadigan maxsus viruslardir."
+            },
+            {
+                q: "Geterozis hodisasi nima?",
+                options: [
+                    "Duragaylarning birinchi avlodida ividish kuchi va mahsuldorligining ortishi",
+                    "Irsiylanishning to'xtab qolishi",
+                    "Genlarning mutatsiyaga uchrashi",
+                    "Turning yo'qolib ketishi"
+                ],
+                correct: 0,
+                explanation: "Geterozis (duragay kuchi) – turli zot yoki liniyalarni chatishtirganda birinchi avlodda hayotchanlikning keskin oshishi."
+            },
+            {
+                q: "Meozis jarayonida xromosomalar soni qanday o'zgaradi?",
+                options: [
+                    "Ikki marta kamayib, haploid (n) holatga keladi",
+                    "O'zgarmasdan qoladi",
+                    "Ikki marta ortadi",
+                    "To'liq yo'qolib ketadi"
+                ],
+                correct: 0,
+                explanation: "Meozis natijasida diploid (2n) hujayralardan haploid (n) xromosomali jinsiy hujayralar hosil bo'ladi."
+            },
+            {
+                q: "Ekologik piramida qoidasiga ko'ra, har bir keyingi ozuqa pog'onasiga energiyaning qancha qismi o'tadi?",
+                options: [
+                    "Taxminan 10 foizi",
+                    "50 foizi",
+                    "100 foizi",
+                    "Faqat 1 foizi"
+                ],
+                correct: 0,
+                explanation: "Lindman qoidasiga (10% qoidasi) ko'ra, har bir keyingi trofik darajaga oldingi energiya miqdorining taxminan 10% i o'tadi."
+            }
+        ];
+
+        let selectedCount = 10;
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+        let userName = "";
+        let userRegion = "";
+
+        function setCount(count) {
+            selectedCount = count;
+            document.querySelectorAll('.count-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
         }
-        // Firestore o'rniga Realtime Database ulanmoqda
-        const db = firebase.database();
 
-        const generateLargeQuestionBank = () => {
-            const staticQuestions = [
-                {
-                    id: 1,
-                    category: "Sitologiya",
-                    question: "Oqsil biosintezida transkripsiya jarayoni eukaryot hujayralarning qaysi qismida kechadi?",
-                    options: ["Ribosomada", "Yadroda", "Endoplazmatik to'rda", "Golsi majmuasida"],
-                    correct: 1,
-                    explanation: "Transkripsiya - DNK matritsasidan mRNK sintezlanishi bo'lib, eukaryotlarda yadro ichida amalga oshadi."
-                },
-                {
-                    id: 2,
-                    category: "Genetika",
-                    question: "Mendelning uchinchi qonuniga ko'ra dirogeterozigota (AaBb) individlar o'zaro chatishtirilganda fenotip bo'yicha ajralish nisbati qanday bo'ladi?",
-                    options: ["3:1", "1:2:1", "9:3:3:1", "9:7"],
-                    correct: 2,
-                    explanation: "Dirogeterozigota individlar dihududiy chatishtirilganda fenotipik nisbat 9:3:3:1 ko'rinishida namoyon bo'ladi."
-                },
-                {
-                    id: 3,
-                    category: "Biokimyo",
-                    question: "Odam organizmida bir molekula glyukoza to'liq va kislorodli parchalanganda necha molekula ATF hosil bo'ladi?",
-                    options: ["2 molekula", "36 molekula", "38 molekula", "40 molekula"],
-                    correct: 2,
-                    explanation: "Glyukozaning to'liq parchalanishida uning glikoliz va kislorodli bosqichlari natijasida jami 38 ATF ajraladi."
-                },
-                {
-                    id: 4,
-                    category: "Anatomiya",
-                    question: "Inson yuragining qaysi kamerasidan kichik qon aylanish doirasi boshlanadi?",
-                    options: ["O'ng bo'lmacha", "O'ng qorincha", "Chap bo'lmacha", "Chap qorincha"],
-                    correct: 1,
-                    explanation: "Kichik qon aylanish doirasi o'ng qorinchadan o'pka arteriyasi orqali boshlanadi."
-                },
-                {
-                    id: 5,
-                    category: "Botanika",
-                    question: "Yopiq urug'li osimliklarda qo'shaloq urug'lanish jarayonini kim kashf etgan?",
-                    options: ["S.G. Navashin", "R. Guk", "G. Mendel", "I.V. Michurin"],
-                    correct: 0,
-                    explanation: "1898-yilda rus olimi S.G. Navashin yopiq urug'li o'simliklarda qo'shaloq urug'lanishni kashf etgan."
-                }
-            ];
+        function startQuiz() {
+            userName = document.getElementById('user-name').value.trim();
+            userRegion = document.getElementById('user-region').value;
 
-            const generatedQuestions = [];
-            const categories = ["Genetika masalasi", "Sitologiya", "Biokimyo", "Anatomiya", "Zoologiya", "Botanika"];
-
-            for (let i = 6; i <= 500; i++) {
-                const type = i % 4;
-                if (type === 0) {
-                    const num1 = (i % 15) + 5;
-                    const num2 = num1 * 3;
-                    generatedQuestions.push({
-                        id: i,
-                        category: "Genetika masalasi",
-                        question: `Oqsil zanjiri ${num1} ta aminokislotadan iborat. Ushbu oqsilni kodlovchi iRNK molekulasida necha dona nukleotid bor (stop kondon hisobga olinmasin)?`,
-                        options: [`${num2} ta`, `${num2 + 3} ta`, `${num1 * 2} ta`, `${num2 * 2} ta`],
-                        correct: 0,
-                        explanation: `Har bir aminokislotani 3 ta nukleotid (triplet) kodlaydi. Shuning uchun: ${num1} * 3 = ${num2} ta nukleotid.`
-                    });
-                } else if (type === 1) {
-                    const atf = (i % 10 + 2) * 2;
-                    const kj = atf * 40;
-                    generatedQuestions.push({
-                        id: i,
-                        category: "Biokimyo",
-                        question: `Hujayradagi ayrim energetik jarayonlarda ${atf} molekula ATF sintezlandi. Ushbu ATF molekulyarlarida qancha energiya (kJ) zaxiralangan?`,
-                        options: [`${kj} kJ`, `${kj / 2} kJ`, `${kj * 2} kJ`, `${kj + 100} kJ`],
-                        correct: 0,
-                        explanation: `1 molekula ATF hosil bo'lishida kamida 40 kJ energiya toplanadi. Natija: ${atf} * 40 = ${kj} kJ.`
-                    });
-                } else if (type === 2) {
-                    generatedQuestions.push({
-                        id: i,
-                        category: categories[i % categories.length],
-                        question: `Biologik jarayonlar va ularning qonuniyatlariga oid TEST-${i}: Quyidagi biologik struktura va funksiyalar to'g'ri moslashtirilgan javobni aniqlang.`,
-                        options: [
-                            `Struktura A - Funksiya ${i}`,
-                            `Struktura B - Funksiya ${i + 1}`,
-                            `Struktura C - Funksiya ${i + 2}`,
-                            `Struktura D - Funksiya ${i + 3}`
-                        ],
-                        correct: 0,
-                        explanation: `Biologik tamoyillar va standartlarga ko'ra Struktura A to'liq va to'g'ri mos keladi.`
-                    });
-                } else {
-                    generatedQuestions.push({
-                        id: i,
-                        category: "Zoologiya",
-                        question: `Uch qatlamli ko'p hujayrali hayvonlar va ularning organlar sistemalari taraqqiyotining ${i}-darajali xususiyati nimadan iborat?`,
-                        options: [
-                            "Muzakkar qavatlarning shakllanishi",
-                            "Nerv sistemasining to'liq tugunchali bo'lishi",
-                            "Nafas olish va qon aylanish sistemasi rivojlanishi",
-                            "Ayrish sistemasining kalta naychalardan iborat bo'lishi"
-                        ],
-                        correct: 0,
-                        explanation: "Ektoderma, entoderma va mezoderma qatlamlarining shakllanishi uch qatlamli hayvonlar uchun xos."
-                    });
-                }
+            if (!userName) {
+                alert("Iltimos, ism va familiyangizni kiriting!");
+                return;
             }
 
-            return [...staticQuestions, ...generatedQuestions];
-        };
+            // Savollarni aralashtirish va tanlash
+            currentQuestions = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, selectedCount);
+            currentIndex = 0;
+            score = 0;
 
-        const ALL_QUESTIONS = generateLargeQuestionBank();
-
-        function App() {
-            const [view, setView] = useState('welcome');
-            const [userName, setUserName] = useState('');
-            const [userRegion, setUserRegion] = useState('Toshkent sh.');
-            const [questionCount, setQuestionCount] = useState(10);
-            
-            const [currentQuestions, setCurrentQuestions] = useState([]);
-            const [currentIndex, setCurrentIndex] = useState(0);
-            const [selectedOption, setSelectedOption] = useState(null);
-            const [score, setScore] = useState(0);
-            const [isAnswered, setIsAnswered] = useState(false);
-            const [leaderboard, setLeaderboard] = useState([]);
-
-            useEffect(() => {
-                lucide.createIcons();
-            }, [view, currentIndex]);
-
-            // Realtime Database orqali reytingni jonli o'qish
-            useEffect(() => {
-                const leaderboardRef = db.ref('leaderboard');
-                leaderboardRef.on('value', (snapshot) => {
-                    const data = snapshot.val();
-                    if (data) {
-                        const loadedList = Object.keys(data).map(key => ({
-                            id: key,
-                            ...data[key]
-                        }));
-                        // Ballarni ko'pdan kamga qarab tartiblaymiz
-                        loadedList.sort((a, b) => b.score - a.score);
-                        setLeaderboard(loadedList.slice(0, 20)); // Top 20 tasi
-                    } else {
-                        setLeaderboard([]);
-                    }
-                });
-                return () => leaderboardRef.off();
-            }, []);
-
-            const startTest = () => {
-                if (!userName.trim()) {
-                    alert("Iltimos, ismingizni kiriting!");
-                    return;
-                }
-                const shuffled = [...ALL_QUESTIONS].sort(() => 0.5 - Math.random());
-                const selected = shuffled.slice(0, questionCount);
-                setCurrentQuestions(selected);
-                setCurrentIndex(0);
-                setSelectedOption(null);
-                setScore(0);
-                setIsAnswered(false);
-                setView('test');
-            };
-
-            const handleOptionClick = (index) => {
-                if (isAnswered) return;
-                setSelectedOption(index);
-                setIsAnswered(true);
-                const currentQ = currentQuestions[currentIndex];
-                const isCorrect = index === currentQ.correct;
-                if (isCorrect) setScore(prev => prev + 1);
-            };
-
-            const handleNext = () => {
-                setSelectedOption(null);
-                setIsAnswered(false);
-                if (currentIndex + 1 < currentQuestions.length) {
-                    setCurrentIndex(prev => prev + 1);
-                } else {
-                    finishTest();
-                }
-            };
-
-            const finishTest = () => {
-                const finalPercentage = Math.round((score / questionCount) * 100);
-                // Realtime Database'ga natijani push qilish
-                const leaderboardRef = db.ref('leaderboard');
-                leaderboardRef.push({
-                    name: userName,
-                    region: userRegion,
-                    score: score,
-                    total: questionCount,
-                    percentage: finalPercentage,
-                    date: new Date().toLocaleDateString('uz-UZ')
-                }).catch(e => console.log(e));
-                
-                setView('result');
-            };
-
-            const getCertGrade = (pct) => {
-                if (pct >= 86) return { grade: "A+", color: "text-emerald-600", bg: "bg-emerald-50", desc: "Oliy darajali milliy sertifikat" };
-                if (pct >= 75) return { grade: "A", color: "text-green-600", bg: "bg-green-50", desc: "Yuqori darajali milliy sertifikat" };
-                if (pct >= 65) return { grade: "B+", color: "text-blue-600", bg: "bg-blue-50", desc: "O'rta-yuqori darajali milliy sertifikat" };
-                if (pct >= 55) return { grade: "B", color: "text-amber-600", bg: "bg-amber-50", desc: "O'rta darajali milliy sertifikat" };
-                return { grade: "C", color: "text-rose-600", bg: "bg-rose-50", desc: "Sertifikat darajasi yetarli emas" };
-            };
-
-            return (
-                <div className="max-w-3xl mx-auto p-4 sm:p-6 my-6">
-                    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 mb-6 flex justify-between items-center">
-                        <div className="flex items-center gap-3">
-                            <div className="bg-emerald-600 text-white p-2.5 rounded-xl">
-                                <i data-lucide="dna" className="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h1 className="font-bold text-slate-800 text-lg leading-tight">Biologiya Milliy Sertifikat</h1>
-                                <p className="text-xs text-slate-500">BMBA / DTM standartlari asosida</p>
-                            </div>
-                        </div>
-                        {view !== 'welcome' && (
-                            <button onClick={() => setView('welcome')} className="text-xs font-semibold text-slate-600 bg-slate-100 px-3 py-2 rounded-lg">Bosh sahifa</button>
-                        )}
-                    </div>
-
-                    {view === 'welcome' && (
-                        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
-                            <h2 className="text-xl font-bold text-slate-800 mb-2">Xush kelibsiz!</h2>
-                            <p className="text-sm text-slate-600 mb-6">Bilimni baholash agentligi standartlariga mos biologiya fanidan milliy sertifikat topshirish platformasi.</p>
-                            <div className="space-y-4 mb-6">
-                                <div>
-                                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Ism va Familiyangiz</label>
-                                    <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Masalan: Ali Valiyev" className="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm" />
-                                </div>
-                                <div>
-                                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Viloyat / Hudud</label>
-                                    <select value={userRegion} onChange={(e) => setUserRegion(e.target.value)} className="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm bg-white">
-                                        <option>Toshkent sh.</option>
-                                        <option>Qashqadaryo</option>
-                                        <option>Samarqand</option>
-                                        <option>Andijon</option>
-                                        <option>Farg'ona</option>
-                                        <option>Namangan</option>
-                                        <option>Buxoro</option>
-                                        <option>Xorazm</option>
-                                        <option>Surxondaryo</option>
-                                        <option>Jizzax</option>
-                                        <option>Sirdaryo</option>
-                                        <option>Navoiy</option>
-                                        <option>Qoraqalpog'iston</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Savollar soni</label>
-                                    <div className="grid grid-cols-4 gap-2">
-                                        {[10, 20, 30, 50].map((count) => (
-                                            <button key={count} type="button" onClick={() => setQuestionCount(count)} className={`py-2.5 rounded-xl font-bold text-sm border ${questionCount === count ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-slate-50 text-slate-700 border-slate-200'}`}>{count} ta</button>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                            <button onClick={startTest} className="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-lg mb-4">Testni Boshlash</button>
-                            <button onClick={() => setView('leaderboard')} className="w-full border border-slate-200 bg-slate-50 text-slate-700 font-medium py-2.5 rounded-xl text-sm">Respublika Reytingi</button>
-                        </div>
-                    )}
-
-                    {view === 'test' && currentQuestions.length > 0 && (
-                        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
-                            <div className="flex justify-between items-center mb-6 pb-4 border-b">
-                                <span className="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full uppercase">{currentQuestions[currentIndex].category}</span>
-                                <span className="text-sm font-bold text-slate-500">{currentIndex + 1} / {currentQuestions.length}</span>
-                            </div>
-                            <h3 className="text-lg font-bold text-slate-900 mb-6">{currentQuestions[currentIndex].question}</h3>
-                            <div className="space-y-3 mb-6">
-                                {currentQuestions[currentIndex].options.map((option, idx) => {
-                                    let btnStyle = "w-full text-left p-4 rounded-xl border transition text-sm font-medium flex justify-between items-center ";
-                                    if (isAnswered) {
-                                        if (idx === currentQuestions[currentIndex].correct) btnStyle += "bg-emerald-100 border-emerald-500 text-emerald-900 font-bold";
-                                        else if (idx === selectedOption) btnStyle += "bg-rose-100 border-rose-500 text-rose-900 font-bold";
-                                        else btnStyle += "bg-white border-slate-200 text-slate-400 opacity-50";
-                                    } else {
-                                        btnStyle += "bg-white border-slate-200 hover:border-emerald-500 text-slate-700";
-                                    }
-                                    return (
-                                        <button key={idx} onClick={() => handleOptionClick(idx)} disabled={isAnswered} className={btnStyle}>
-                                            <span>{option}</span>
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                            {isAnswered && (
-                                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 mb-6">
-                                    <span className="font-bold text-slate-900 block mb-1">Tushuntirish:</span>
-                                    {currentQuestions[currentIndex].explanation}
-                                </div>
-                            )}
-                            {isAnswered && (
-                                <button onClick={handleNext} className="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-md">
-                                    {currentIndex + 1 === currentQuestions.length ? "Natijani ko'rish" : "Keyingi savol"}
-                                </button>
-                            )}
-                        </div>
-                    )}
-
-                    {view === 'result' && (
-                        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8 text-center">
-                            {(() => {
-                                const pct = Math.round((score / questionCount) * 100);
-                                const cert = getCertGrade(pct);
-                                return (
-                                    <>
-                                        <h2 className="text-2xl font-extrabold text-slate-800 mb-1">Test Yakunlandi!</h2>
-                                        <p className="text-xs text-slate-500 mb-6">{userName} ({userRegion})</p>
-                                        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 mb-6">
-                                            <div className="text-4xl font-extrabold text-slate-900 mb-2">{score} / {questionCount}</div>
-                                            <div className="text-sm font-semibold text-slate-600 mb-4">Natija: <span className="text-emerald-600">{pct}%</span></div>
-                                            <div className="border-t border-slate-200 pt-4">
-                                                <span className={`text-2xl font-black ${cert.color}`}>{cert.grade}</span>
-                                                <p className="text-xs font-bold text-slate-700 mt-1">{cert.desc}</p>
-                                            </div>
-                                        </div>
-                                        <button onClick={startTest} className="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md mb-3">Qayta Topshirish</button>
-                                        <button onClick={() => setView('leaderboard')} className="w-full bg-slate-100 text-slate-700 font-bold py-3 rounded-xl">Respublika Reytingi</button>
-                                    </>
-                                );
-                            })()}
-                        </div>
-                    )}
-
-                    {view === 'leaderboard' && (
-                        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
-                            <h2 className="text-xl font-bold text-slate-800 mb-4">Respublika Reytingi</h2>
-                            <div className="space-y-3 mb-6 max-h-96 overflow-y-auto">
-                                {leaderboard.length === 0 ? (
-                                    <p className="text-sm text-slate-500 text-center py-6">Hozircha natijalar yo'q.</p>
-                                ) : (
-                                    leaderboard.map((item, idx) => (
-                                        <div key={idx} className="flex items-center justify-between p-3.5 rounded-xl border border-slate-100 bg-slate-50">
-                                            <div className="flex items-center gap-3">
-                                                <span className="font-bold text-slate-400 text-sm">#{idx + 1}</span>
-                                                <div>
-                                                    <div className="font-bold text-slate-800 text-sm">{item.name}</div>
-                                                    <div className="text-xs text-slate-400">{item.region} • {item.date}</div>
-                                                </div>
-                                            </div>
-                                            <div className="text-right font-bold text-emerald-600 text-sm">{item.score}/{item.total} ({item.percentage}%)</div>
-                                        </div>
-                                    ))
-                                )}
-                            </div>
-                            <button onClick={() => setView('welcome')} className="w-full bg-slate-100 text-slate-700 font-bold py-3 rounded-xl">Orqaga</button>
-                        </div>
-                    )}
-                </div>
-            );
+            document.getElementById('home-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            loadQuestion();
         }
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        function loadQuestion() {
+            const q = currentQuestions[currentIndex];
+            document.getElementById('question-progress').innerText = `Savol: ${currentIndex + 1} / ${currentQuestions.length}`;
+            document.getElementById('score-counter').innerText = `Ball: ${score}`;
+            document.getElementById('question-text').innerText = q.q;
+
+            // Variantlarni random (tasodifiy) joylashtirish
+            let optionsWithIndex = q.options.map((opt, idx) => ({ text: opt, originalIndex: idx }));
+            optionsWithIndex.sort(() => Math.random() - 0.5);
+
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            optionsWithIndex.forEach((item) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = item.text;
+                btn.onclick = () => checkAnswer(item.originalIndex, q.correct, btn);
+                container.appendChild(btn);
+            });
+
+            document.getElementById('explanation-box').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function checkAnswer(selectedIndex, correctIndex, selectedBtn) {
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === correctIndex) {
+                selectedBtn.classList.add('correct');
+                score += 10;
+            } else {
+                selectedBtn.classList.add('wrong');
+                buttons.forEach(btn => {
+                    // Asl to'g'ri javobni topib yashil qilish
+                    if (btn.innerText === currentQuestions[currentIndex].options[correctIndex]) {
+                        btn.classList.add('correct');
+                    }
+                });
+            }
+
+            document.getElementById('score-counter').innerText = `Ball: ${score}`;
+
+            // Tushuntirishni chiqarish
+            const explanation = currentQuestions[currentIndex].explanation;
+            if (explanation) {
+                document.getElementById('explanation-text').innerText = explanation;
+                document.getElementById('explanation-box').classList.remove('hidden');
+            }
+
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < currentQuestions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            
+            const totalPossible = currentQuestions.length * 10;
+            document.getElementById('result-message').innerHTML = `
+                <b>${userName}</b> (${userRegion})<br>
+                Sizning natijangiz: <b>${score} / ${totalPossible} ball</b>
+            `;
+        }
+
+        function restartQuiz() {
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('home-screen').classList.remove('hidden');
+        }
+
+        function shareApp() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Biologiya Milliy Sertifikat',
+                    text: 'Biologiya fanidan DTM testlarini sinab ko‘ring!',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                alert("Havola nusxalandi yoki ulashish qo'llab-quvvatlanmadi.");
+            }
+        }
+
+        function shareResult() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Test Natijam',
+                    text: `${userName} Biologiya testidan ${score} ball to'pladi!`,
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                alert(`Natija: ${score} ball. Qoyilmaqom!`);
+            }
+        }
     </script>
 </body>
 </html>
