@@ -172,8 +172,18 @@
   <script src="questions.js"></script>
 
   <script>
-    // Savollar questions.js dan olinadi
-    const biologyQuestionsDB = (typeof questions !== 'undefined' && Array.isArray(questions)) ? questions : [];
+    // Savollar questions.js dan olinadi, buzilgan savollar o'tkazib yuboriladi
+    const biologyQuestionsDB = (typeof questions !== 'undefined' && Array.isArray(questions))
+      ? questions.filter(q =>
+          q &&
+          typeof q.question === 'string' &&
+          Array.isArray(q.options) &&
+          q.options.length >= 2 &&
+          Number.isInteger(q.answer) &&
+          q.answer >= 0 &&
+          q.answer < q.options.length
+        )
+      : [];
 
     let currentQuestions = [];
     let currentIndex = 0;
@@ -302,4 +312,109 @@
       // Javob belgilanmagan bo'lsa keyingisiga o'tishga qo'ymaydi
       if (selectedAnswers[currentIndex] === null) {
         document.getElementById('answerError').classList.remove('hidden');
-        ret
+        return;
+      }
+
+      document.getElementById('answerError').classList.add('hidden');
+
+      if (currentIndex < currentQuestions.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      clearInterval(timerInterval);
+      document.getElementById('quizView').classList.add('hidden');
+      document.getElementById('resultView').classList.remove('hidden');
+
+      let correctCount = 0;
+      const expContainer = document.getElementById('explanationsList');
+      expContainer.innerHTML = "";
+
+      currentQuestions.forEach((q, idx) => {
+        const userAns = selectedAnswers[idx];
+        const isCorrect = userAns === q.answer;
+        if (isCorrect) correctCount++;
+
+        const item = document.createElement('div');
+        item.className = `p-4 rounded-xl border ${isCorrect ? 'bg-emerald-950/60 border-emerald-600' : 'bg-red-950/30 border-red-800'}`;
+        item.innerHTML = `
+          <div class="font-bold mb-1 text-sm ${isCorrect ? 'text-emerald-400' : 'text-red-400'}">
+            ${idx + 1}. ${escapeHtml(q.question)}
+          </div>
+          <div class="text-xs mb-2">
+            <span class="text-emerald-500">Sizning javobingiz:</span> ${userAns !== null ? escapeHtml(q.options[userAns]) : 'Belgilanmagan'}<br>
+            <span class="text-emerald-400">To'g'ri javob:</span> ${escapeHtml(q.options[q.answer])}
+          </div>
+          <div class="text-xs bg-emerald-900/50 p-2 rounded border border-emerald-800 text-emerald-200">
+            <strong>Izoh:</strong> ${escapeHtml(q.explanation || '')}
+          </div>
+        `;
+        expContainer.appendChild(item);
+      });
+
+      const scorePct = Math.round((correctCount / currentQuestions.length) * 100);
+      document.getElementById('resultSummary').innerText = `Siz ${currentQuestions.length} ta savoldan ${correctCount} tasiga to'g'ri javob berdingiz!`;
+      document.getElementById('scorePercent').innerText = `${scorePct}%`;
+
+      const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+      const secs = String(secondsElapsed % 60).padStart(2, '0');
+      document.getElementById('timeTaken').innerText = `${mins}:${secs}`;
+
+      saveScoreLocally(userName, scorePct, `${mins}:${secs}`);
+    }
+
+    function saveScoreLocally(name, score, time) {
+      let scores = JSON.parse(localStorage.getItem('bio_leaderboard') || '[]');
+      scores.push({ name, score, time, date: new Date().toLocaleDateString() });
+      scores.sort((a, b) => b.score - a.score);
+      localStorage.setItem('bio_leaderboard', JSON.stringify(scores));
+    }
+
+    function toggleLeaderboard() {
+      clearInterval(timerInterval);
+      document.getElementById('startView').classList.add('hidden');
+      document.getElementById('quizView').classList.add('hidden');
+      document.getElementById('resultView').classList.add('hidden');
+      document.getElementById('leaderboardView').classList.remove('hidden');
+
+      const list = document.getElementById('leaderboardList');
+      let scores = JSON.parse(localStorage.getItem('bio_leaderboard') || '[]');
+
+      if (scores.length === 0) {
+        list.innerHTML = `<p class="text-center text-sm text-emerald-500">Hozircha natijalar mavjud emas.</p>`;
+        return;
+      }
+
+      list.innerHTML = scores.map((item, idx) => `
+        <div class="flex justify-between items-center p-3 rounded-lg bg-emerald-950 border border-emerald-800">
+          <div class="flex items-center gap-3">
+            <span class="font-bold ${idx === 0 ? 'text-yellow-400' : idx === 1 ? 'text-slate-300' : idx === 2 ? 'text-amber-600' : 'text-emerald-500'}">#${idx + 1}</span>
+            <div>
+              <div class="font-semibold text-emerald-200 text-sm">${escapeHtml(item.name)}</div>
+              <div class="text-xs text-emerald-500">${escapeHtml(item.date)}</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="font-bold text-emerald-300 text-sm">${item.score}%</span>
+            <span class="block text-xs text-emerald-500">${escapeHtml(item.time)}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function closeLeaderboard() {
+      document.getElementById('leaderboardView').classList.add('hidden');
+      document.getElementById('startView').classList.remove('hidden');
+    }
+
+    function restartQuiz() {
+      document.getElementById('resultView').classList.add('hidden');
+      document.getElementById('startView').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
