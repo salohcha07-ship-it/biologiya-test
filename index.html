@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biologiya Milliy Sertifikat Platformasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDemoKeyForPublicUsage123456789",
+            authDomain: "biologiya-cert.firebaseapp.com",
+            projectId: "biologiya-cert",
+            storageBucket: "biologiya-cert.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdef123456"
+        };
+
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const db = firebase.firestore();
+
+        const generateLargeQuestionBank = () => {
+            const staticQuestions = [
+                {
+                    id: 1,
+                    category: "Sitologiya",
+                    question: "Oqsil biosintezida transkripsiya jarayoni eukaryot hujayralarning qaysi qismida kechadi?",
+                    options: ["Ribosomada", "Yadroda", "Endoplazmatik to'rda", "Golsi majmuasida"],
+                    correct: 1,
+                    explanation: "Transkripsiya - DNK matritsasidan mRNK sintezlanishi bo'lib, eukaryotlarda yadro ichida amalga oshadi."
+                },
+                {
+                    id: 2,
+                    category: "Genetika",
+                    question: "Mendelning uchinchi qonuniga ko'ra dirogeterozigota (AaBb) individlar o'zaro chatishtirilganda fenotip bo'yicha ajralish nisbati qanday bo'ladi?",
+                    options: ["3:1", "1:2:1", "9:3:3:1", "9:7"],
+                    correct: 2,
+                    explanation: "Dirogeterozigota individlar dihududiy chatishtirilganda fenotipik nisbat 9:3:3:1 ko'rinishida namoyon bo'ladi."
+                },
+                {
+                    id: 3,
+                    category: "Biokimyo",
+                    question: "Odam organizmida bir molekula glyukoza to'liq va kislorodli parchalanganda necha molekula ATF hosil bo'ladi?",
+                    options: ["2 molekula", "36 molekula", "38 molekula", "40 molekula"],
+                    correct: 2,
+                    explanation: "Glyukozaning to'liq parchalanishida uning glikoliz va kislorodli bosqichlari natijasida jami 38 ATF ajraladi."
+                },
+                {
+                    id: 4,
+                    category: "Anatomiya",
+                    question: "Inson yuragining qaysi kamerasidan kichik qon aylanish doirasi boshlanadi?",
+                    options: ["O'ng bo'lmacha", "O'ng qorincha", "Chap bo'lmacha", "Chap qorincha"],
+                    correct: 1,
+                    explanation: "Kichik qon aylanish doirasi o'ng qorinchadan o'pka arteriyasi orqali boshlanadi."
+                },
+                {
+                    id: 5,
+                    category: "Botanika",
+                    question: "Yopiq urug'li osimliklarda qo'shaloq urug'lanish jarayonini kim kashf etgan?",
+                    options: ["S.G. Navashin", "R. Guk", "G. Mendel", "I.V. Michurin"],
+                    correct: 0,
+                    explanation: "1898-yilda rus olimi S.G. Navashin yopiq urug'li o'simliklarda qo'shaloq urug'lanishni kashf etgan."
+                }
+            ];
+
+            const generatedQuestions = [];
+            const categories = ["Genetika masalasi", "Sitologiya", "Biokimyo", "Anatomiya", "Zoologiya", "Botanika"];
+
+            for (let i = 6; i <= 500; i++) {
+                const type = i % 4;
+                if (type === 0) {
+                    const num1 = (i % 15) + 5;
+                    const num2 = num1 * 3;
+                    generatedQuestions.push({
+                        id: i,
+                        category: "Genetika masalasi",
+                        question: `Oqsil zanjiri ${num1} ta aminokislotadan iborat. Ushbu oqsilni kodlovchi iRNK molekulasida necha dona nukleotid bor (stop kondon hisobga olinmasin)?`,
+                        options: [`${num2} ta`, `${num2 + 3} ta`, `${num1 * 2} ta`, `${num2 * 2} ta`],
+                        correct: 0,
+                        explanation: `Har bir aminokislotani 3 ta nukleotid (triplet) kodlaydi. Shuning uchun: ${num1} * 3 = ${num2} ta nukleotid.`
+                    });
+                } else if (type === 1) {
+                    const atf = (i % 10 + 2) * 2;
+                    const kj = atf * 40;
+                    generatedQuestions.push({
+                        id: i,
+                        category: "Biokimyo",
+                        question: `Hujayradagi ayrim energetik jarayonlarda ${atf} molekula ATF sintezlandi. Ushbu ATF molekulyarlarida qancha energiya (kJ) zaxiralangan?`,
+                        options: [`${kj} kJ`, `${kj / 2} kJ`, `${kj * 2} kJ`, `${kj + 100} kJ`],
+                        correct: 0,
+                        explanation: `1 molekula ATF hosil bo'lishida kamida 40 kJ energiya toplanadi. Natija: ${atf} * 40 = ${kj} kJ.`
+                    });
+                } else if (type === 2) {
+                    generatedQuestions.push({
+                        id: i,
+                        category: categories[i % categories.length],
+                        question: `Biologik jarayonlar va ularning qonuniyatlariga oid TEST-${i}: Quyidagi biologik struktura va funksiyalar to'g'ri moslashtirilgan javobni aniqlang.`,
+                        options: [
+                            `Struktura A - Funksiya ${i}`,
+                            `Struktura B - Funksiya ${i + 1}`,
+                            `Struktura C - Funksiya ${i + 2}`,
+                            `Struktura D - Funksiya ${i + 3}`
+                        ],
+                        correct: 0,
+                        explanation: `Biologik tamoyillar va standartlarga ko'ra Struktura A to'liq va to'g'ri mos keladi.`
+                    });
+                } else {
+                    generatedQuestions.push({
+                        id: i,
+                        category: "Zoologiya",
+                        question: `Uch qatlamli ko'p hujayrali hayvonlar va ularning organlar sistemalari taraqqiyotining ${i}-darajali xususiyati nimadan iborat?`,
+                        options: [
+                            "Muzakkar qavatlarning shakllanishi",
+                            "Nerv sistemasining to'liq tugunchali bo'lishi",
+                            "Nafas olish va qon aylanish sistemasi rivojlanishi",
+                            "Ayrish sistemasining kalta naychalardan iborat bo'lishi"
+                        ],
+                        correct: 0,
+                        explanation: "Ektoderma, entoderma va mezoderma qatlamlarining shakllanishi uch qatlamli hayvonlar uchun xos."
+                    });
+                }
+            }
+
+            return [...staticQuestions, ...generatedQuestions];
+        };
+
+        const ALL_QUESTIONS = generateLargeQuestionBank();
+
+        function App() {
+            const [view, setView] = useState('welcome');
+            const [userName, setUserName] = useState('');
+            const [userRegion, setUserRegion] = useState('Toshkent sh.');
+            const [questionCount, setQuestionCount] = useState(10);
+            
+            const [currentQuestions, setCurrentQuestions] = useState([]);
+            const [currentIndex, setCurrentIndex] = useState(0);
+            const [selectedOption, setSelectedOption] = useState(null);
+            const [score, setScore] = useState(0);
+            const [isAnswered, setIsAnswered] = useState(false);
+            const [userAnswers, setUserAnswers] = useState([]);
+            const [leaderboard, setLeaderboard] = useState([]);
+            const [customQuestion, setCustomQuestion] = useState({
+                question: '', opt1: '', opt2: '', opt3: '', opt4: '', correct: 0, explanation: ''
+            });
+
+            useEffect(() => {
+                lucide.createIcons();
+            }, [view, currentIndex]);
+
+            useEffect(() => {
+                const unsubscribe = db.collection("leaderboard")
+                    .orderBy("score", "desc")
+                    .limit(20)
+                    .onSnapshot((snapshot) => {
+                        const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                        setLeaderboard(data);
+                    }, (error) => {
+                        console.log(error);
+                    });
+                return () => unsubscribe();
+            }, []);
+
+            const startTest = () => {
+                if (!userName.trim()) {
+                    alert("Iltimos, ismingizni kiriting!");
+                    return;
+                }
+                const shuffled = [...ALL_QUESTIONS].sort(() => 0.5 - Math.random());
+                const selected = shuffled.slice(0, questionCount);
+                setCurrentQuestions(selected);
+                setCurrentIndex(0);
+                setSelectedOption(null);
+                setScore(0);
+                setIsAnswered(false);
+                setUserAnswers([]);
+                setView('test');
+            };
+
+            const handleOptionClick = (index) => {
+                if (isAnswered) return;
+                setSelectedOption(index);
+                setIsAnswered(true);
+                const currentQ = currentQuestions[currentIndex];
+                const isCorrect = index === currentQ.correct;
+                if (isCorrect) setScore(prev => prev + 1);
+            };
+
+            const handleNext = () => {
+                setSelectedOption(null);
+                setIsAnswered(false);
+                if (currentIndex + 1 < currentQuestions.length) {
+                    setCurrentIndex(prev => prev + 1);
+                } else {
+                    finishTest();
+                }
+            };
+
+            const finishTest = () => {
+                const finalPercentage = Math.round((score / questionCount) * 100);
+                db.collection("leaderboard").add({
+                    name: userName,
+                    region: userRegion,
+                    score: score,
+                    total: questionCount,
+                    percentage: finalPercentage,
+                    date: new Date().toLocaleDateString('uz-UZ')
+                }).catch(e => console.log(e));
+                setView('result');
+            };
+
+            const getCertGrade = (pct) => {
+                if (pct >= 86) return { grade: "A+", color: "text-emerald-600", bg: "bg-emerald-50", desc: "Oliy darajali milliy sertifikat" };
+                if (pct >= 75) return { grade: "A", color: "text-green-600", bg: "bg-green-50", desc: "Yuqori darajali milliy sertifikat" };
+                if (pct >= 65) return { grade: "B+", color: "text-blue-600", bg: "bg-blue-50", desc: "O'rta-yuqori darajali milliy sertifikat" };
+                if (pct >= 55) return { grade: "B", color: "text-amber-600", bg: "bg-amber-50", desc: "O'rta darajali milliy sertifikat" };
+                return { grade: "C", color: "text-rose-600", bg: "bg-rose-50", desc: "Sertifikat darajasi yetarli emas" };
+            };
+
+            return (
+                <div className="max-w-3xl mx-auto p-4 sm:p-6 my-6">
+                    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 mb-6 flex justify-between items-center">
+                        <div className="flex items-center gap-3">
+                            <div className="bg-emerald-600 text-white p-2.5 rounded-xl">
+                                <i data-lucide="dna" className="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h1 className="font-bold text-slate-800 text-lg leading-tight">Biologiya Milliy Sertifikat</h1>
+                                <p className="text-xs text-slate-500">BMBA / DTM standartlari asosida</p>
+                            </div>
+                        </div>
+                        {view !== 'welcome' && (
+                            <button onClick={() => setView('welcome')} className="text-xs font-semibold text-slate-600 bg-slate-100 px-3 py-2 rounded-lg">Bosh sahifa</button>
+                        )}
+                    </div>
+
+                    {view === 'welcome' && (
+                        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
+                            <h2 className="text-xl font-bold text-slate-800 mb-2">Xush kelibsiz!</h2>
+                            <p className="text-sm text-slate-600 mb-6">Bilimni baholash agentligi standartlariga mos biologiya fanidan milliy sertifikat topshirish platformasi.</p>
+                            <div className="space-y-4 mb-6">
+                                <div>
+                                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Ism va Familiyangiz</label>
+                                    <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Masalan: Ali Valiyev" className="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm" />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Viloyat / Hudud</label>
+                                    <select value={userRegion} onChange={(e) => setUserRegion(e.target.value)} className="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm bg-white">
+                                        <option>Toshkent sh.</option>
+                                        <option>Qashqadaryo</option>
+                                        <option>Samarqand</option>
+                                        <option>Andijon</option>
+                                        <option>Farg'ona</option>
+                                        <option>Namangan</option>
+                                        <option>Buxoro</option>
+                                        <option>Xorazm</option>
+                                        <option>Surxondaryo</option>
+                                        <option>Jizzax</option>
+                                        <option>Sirdaryo</option>
+                                        <option>Navoiy</option>
+                                        <option>Qoraqalpog'iston</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Savollar soni</label>
+                                    <div className="grid grid-cols-4 gap-2">
+                                        {[10, 20, 30, 50].map((count) => (
+                                            <button key={count} type="button" onClick={() => setQuestionCount(count)} className={`py-2.5 rounded-xl font-bold text-sm border ${questionCount === count ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-slate-50 text-slate-700 border-slate-200'}`}>{count} ta</button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                            <button onClick={startTest} className="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-lg mb-4">Testni Boshlash</button>
+                            <button onClick={() => setView('leaderboard')} className="w-full border border-slate-200 bg-slate-50 text-slate-700 font-medium py-2.5 rounded-xl text-sm">Umumiy Reyting</button>
+                        </div>
+                    )}
+
+                    {view === 'test' && currentQuestions.length > 0 && (
+                        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
+                            <div className="flex justify-between items-center mb-6 pb-4 border-b">
+                                <span className="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full uppercase">{currentQuestions[currentIndex].category}</span>
+                                <span className="text-sm font-bold text-slate-500">{currentIndex + 1} / {currentQuestions.length}</span>
+                            </div>
+                            <h3 className="text-lg font-bold text-slate-900 mb-6">{currentQuestions[currentIndex].question}</h3>
+                            <div className="space-y-3 mb-6">
+                                {currentQuestions[currentIndex].options.map((option, idx) => {
+                                    let btnStyle = "w-full text-left p-4 rounded-xl border transition text-sm font-medium flex justify-between items-center ";
+                                    if (isAnswered) {
+                                        if (idx === currentQuestions[currentIndex].correct) btnStyle += "bg-emerald-100 border-emerald-500 text-emerald-900 font-bold";
+                                        else if (idx === selectedOption) btnStyle += "bg-rose-100 border-rose-500 text-rose-900 font-bold";
+                                        else btnStyle += "bg-white border-slate-200 text-slate-400 opacity-50";
+                                    } else {
+                                        btnStyle += "bg-white border-slate-200 hover:border-emerald-500 text-slate-700";
+                                    }
+                                    return (
+                                        <button key={idx} onClick={() => handleOptionClick(idx)} disabled={isAnswered} className={btnStyle}>
+                                            <span>{option}</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                            {isAnswered && (
+                                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 mb-6">
+                                    <span className="font-bold text-slate-900 block mb-1">Tushuntirish:</span>
+                                    {currentQuestions[currentIndex].explanation}
+                                </div>
+                            )}
+                            {isAnswered && (
+                                <button onClick={handleNext} className="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-md">
+                                    {currentIndex + 1 === currentQuestions.length ? "Natijani ko'rish" : "Keyingi savol"}
+                                </button>
+                            )}
+                        </div>
+                    )}
+
+                    {view === 'result' && (
+                        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8 text-center">
+                            {(() => {
+                                const pct = Math.round((score / questionCount) * 100);
+                                const cert = getCertGrade(pct);
+                                return (
+                                    <>
+                                        <h2 className="text-2xl font-extrabold text-slate-800 mb-1">Test Yakunlandi!</h2>
+                                        <p className="text-xs text-slate-500 mb-6">{userName} ({userRegion})</p>
+                                        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 mb-6">
+                                            <div className="text-4xl font-extrabold text-slate-900 mb-2">{score} / {questionCount}</div>
+                                            <div className="text-sm font-semibold text-slate-600 mb-4">Natija: <span className="text-emerald-600">{pct}%</span></div>
+                                            <div className="border-t border-slate-200 pt-4">
+                                                <span className={`text-2xl font-black ${cert.color}`}>{cert.grade}</span>
+                                                <p className="text-xs font-bold text-slate-700 mt-1">{cert.desc}</p>
+                                            </div>
+                                        </div>
+                                        <button onClick={startTest} className="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md">Qayta Topshirish</button>
+                                    </>
+                                );
+                            })()}
+                        </div>
+                    )}
+
+                    {view === 'leaderboard' && (
+                        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
+                            <h2 className="text-xl font-bold text-slate-800 mb-4">Respublika Reytingi</h2>
+                            <div className="space-y-3 mb-6 max-h-96 overflow-y-auto">
+                                {leaderboard.length === 0 ? (
+                                    <p className="text-sm text-slate-500 text-center py-6">Hozircha natijalar yo'q.</p>
+                                ) : (
+                                    leaderboard.map((item, idx) => (
+                                        <div key={idx} className="flex items-center justify-between p-3.5 rounded-xl border border-slate-100 bg-slate-50">
+                                            <div>
+                                                <div className="font-bold text-slate-800 text-sm">{item.name}</div>
+                                                <div className="text-xs text-slate-400">{item.region}</div>
+                                            </div>
+                                            <div className="text-right font-bold text-emerald-600 text-sm">{item.score}/{item.total} ({item.percentage}%)</div>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                            <button onClick={() => setView('welcome')} className="w-full bg-slate-100 text-slate-700 font-bold py-3 rounded-xl">Orqaga</button>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
