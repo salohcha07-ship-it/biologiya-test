@@ -677,7 +677,7 @@ const questions = [
     explanation: "Oshqozon osti bezi insulin va glyukagon gormonlarini ishlab chiqarib, qonda glyukoza miqdorini doimiy me'yorda saqlaydi."
   },
   {
-    question: "Biogeosenozda trofik darajalar (oziq zanjiri pog'onalari) bo'ylab energiya o'tishida ekologik qoida bo'yicha taxminan qancha energiya keyingi bosqichga o'tadi?",
+    question: "Biogeosenozda trofik darajalar (oziq zanjiri pog'onalari) bo'ylab energiya o'tishida ekologik qoida bo'yicha taxminan qancha energiya keyingi pog'onaga o'tadi?",
     options: ["Taxminan 10%", "100%", "Faqat 1%", "50%"],
     answer: 0,
     explanation: "Lindman qoidasiga (10% qoidasiga) ko'ra, har bir yuqori trofik pog'onaga oldingi pog'ona energiyasining atigi 10 foizigina o'tadi."
@@ -689,7 +689,7 @@ const questions = [
     explanation: "Og'izcha hujayralariga suv kirib turgori oshganda teshik ochiladi, suv chiqib ketib turgor pasayganda esa yopiladi."
   },
   {
-    question: "Odamda jinsiy xromosomalar orqali irsiylanadigan kasalliklarga tashxis qo'yilganda, erkaklarda kasallikning ayollarga nisbatan tezroq namoyon bo'lish sababi nimada?",
+    question: "Odamda jinsiy xromosomalar orqali irsiylanishi mumkin bo'lgan kasalliklarga tashxis qo'yilganda, erkaklarda kasallikning ayollarga nisbatan tezroq namoyon bo'lish sababi nimada?",
     options: ["Erkaklarda xromosomalar umuman yo'qligida", "Erkaklarda bitta X-xromosoma mavjud bo'lib, undagi retsessiv genlarni to'suvchi ikkinchi X yo'qligida", "Ayollarda genlar umuman bo'lmasligida", "Faqat yoshga bog'liqligida"],
     answer: 1,
     explanation: "Erkaklar geterogametik (XY) bo'lgani uchun X xromosomadagi har qanday retsessiv patologik gen darhol fenotipda namoyon bo'ladi."
