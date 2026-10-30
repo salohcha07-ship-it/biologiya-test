@@ -181,20 +181,18 @@
 
   <script>
     // ================== FIREBASE SOZLAMASI ==================
-    // Firebase konsolidan olgan ma'lumotlaringizni shu yerga qo'ying.
-    // Qo'ymasangiz, reyting faqat shu telefonda saqlanadi.
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
+      apiKey: "AIzaSyAsZNgGFOUbMErDL6ps_Dk6d1t1vO8Vcto",
+      authDomain: "biologiya-test-3ccaa.firebaseapp.com",
+      projectId: "biologiya-test-3ccaa",
+      storageBucket: "biologiya-test-3ccaa.firebasestorage.app",
+      messagingSenderId: "860475153668",
+      appId: "1:860475153668:web:b4d6a436ec5a1994c84451"
     };
 
     let db = null;
     try {
-      if (typeof firebase !== 'undefined' && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+      if (typeof firebase !== 'undefined' && firebaseConfig.apiKey) {
         firebase.initializeApp(firebaseConfig);
         db = firebase.firestore();
       }
