@@ -299,8 +299,8 @@ const questions = [
     options: ["Gavhar", "To'r parda", "Qorachiq (pupila)", "Shishasimon tana"],
     answer: 2,
     explanation: "Qorachiq ko'zga tushadigan yorug'lik miqdorini boshqarish uchun ko'zning rangdor pardasidagi teshik bo'lib xizmat qiladi."
-  }
-];
+  },
+
   // --- 51-100 savollar ---
   {
     question: "Odam organizmida buyrak usti bezining qobiq qismi gormonlaridan biri bo'lgan aldosteronning asosiy vazifasi nima?",
@@ -321,7 +321,7 @@ const questions = [
     explanation: "tRNK (transport RNK) o'zining bir uchida muayyan aminokislotani, ikkinchi uchida esa antikodonni saqlab, ribosomaga yetkazib beradi."
   },
   {
-    question: "Odamda bosh miyaning qaysi qismi haroratni boshqarish, moddalar almashinuvi, ochlik, to'yinganlik va chanqoqlik markazlarini o'z ichiga oladi?",
+    question: "Odamda bosh miyaning qaysi qismi haroratni boshqarish, moddalar almashinuvini, ochlik, to'yinganlik va chanqoqlik markazlarini o'z ichiga oladi?",
     options: ["Miyacha", "Uzunchoq miya", "Peshona bo'lagi", "Oraliq miya (gipotalamus)"],
     answer: 3,
     explanation: "Gipotalamus (oraliq miya tarkibida) vegetativ asab tizimining oliy markazi bo'lib, tana harorati, suv-tuz va moddalar almashinuvini nazorat qiladi."
@@ -460,7 +460,7 @@ const questions = [
   },
   {
     question: "O'simliklarda barglarning pastki qismida ko'proq joylashgan va gaz almashinuvini ta'minlovchi og'izchalar qaysi to'qimaga tegishli?",
-    options: ["O'tkazuvchi to'qima", "Asosiy to'qima (parenxima)", "Qoplovchi to'qima (epidermisning hosilasi)", "Mexanik to'qima"],
+    options: ["O'tkazuvchi to'qima", "Asosiy to'qima (parenxima)", "Qoplovchi to me (epidermisning hosilasi)", "Mexanik to'qima"],
     answer: 2,
     explanation: "Og'izchalar qoplovchi to'qima bo'lgan epidermisning maxsus juft hujayralari bo'lib, transpiratsiya va gaz almashinuvini boshqaradi."
   },
@@ -589,8 +589,8 @@ const questions = [
     options: ["Barcha tirik organizmlarda bir xil kodonlar bir xil aminokislotalarni kodlashini", "Faqat bitta turga xos ekanligini", "Kodonlarning doim o'zgarib turishini", "Oqsillarning mutlaqo har xil tuzilishini"],
     answer: 0,
     explanation: "Genetik kodning universalligi shundan iboratki, bakteriyadan tortib odamgacha barcha tirik organizmlarda bir xil tripletlar bir xil aminokislotalarni belgilaydi."
-  }
-];
+  },
+
   // --- 101-150 savollar ---
   {
     question: "Odam organizmida erkak jinsiy hujayralari — spermatozoyidlar yetilib chiqadigan va harakatchanligini ta'minlaydigan asosiy organ qanday ataladi?",
@@ -741,8 +741,8 @@ const questions = [
     options: ["Aminokislota", "Monosaxarid", "Nukleotid", "Glikogen"],
     answer: 2,
     explanation: "Har bir DNK zanjiri azotli asos, dezoksiriboza va fosfat guruhidan iborat nukleotid monomerlarining birikishidan hosil bo'ladi."
-  }
-];
+  },
+
   // --- 151-200 savollar ---
   {
     question: "Odam organizmida qon aylanishining katta doirasi qayerdan boshlanib qayerda tugaydi?",
@@ -781,7 +781,7 @@ const questions = [
     explanation: "Kambiy ksilema (yog'ochlik) va floema (loks) o'tkazuvchi to'qimalari orasida joylashgan bo'lib, eniga o'sishni ta'minlaydi."
   },
   {
-    question: "Odam organizmida qon ivishining buzilishi va irsiylanuvchi kasallik — daltonizm (rang ajratolmaslik) qanday irsiylanadi?",
+    question: "Odam organizmida qon ivishining buzilishi va irsiylanuvchi kasallik — daltonizm (rang ajratolmaslik) qanday irsiynadi?",
     options: ["Y-xromosomaga dominant tarzda", "X-xromosomaga birikkan retsessiv belgisi sifatida", "Autosomada kodominant tarzda", "Mitoxondrial yo'l bilan"],
     answer: 1,
     explanation: "Daltonizm ham gemofiliya kabi X-xromosomaga birikkan retsessiv kasallik bo'lib, erkaklarda tezroq namoyon bo'ladi."
@@ -893,8 +893,8 @@ const questions = [
     options: ["RNK", "DNK (dezoksiribonuklein kislota)", "Atsetilxolin", "Glyukogen"],
     answer: 1,
     explanation: "DNK barcha tirik organizmlarda irsiy axborotni saqlash va nusxalash vazifasini bajaruvchi asosiy makromolekuladir."
-  }
-];
+  },
+
   // --- 201-250 savollar ---
   {
     question: "Odam organizmida buyrak usti bezining miya qismidan ishlab chiqariladigan va shoshilinch holatlarda qonga chiqariladigan asosiy gormonlar qaysilar?",
@@ -1045,8 +1045,8 @@ const questions = [
     options: ["Genli mutatsiyalar", "Xromosomal mutatsiyalar (aberatsiyalar)", "Genomli mutatsiyalar", "Modifikatsiyalar"],
     answer: 1,
     explanation: "Xromosomal mutatsiyalar xromosomaning tuzilishi o'zgarishi (delyatsiya, inversiya, translyokatsiya) bilan tavsiflanadi."
-  }
-];
+  },
+
   // --- 251-300 savollar ---
   {
     question: "Odam organizmida erkak jinsiy gormoni bo'lgan testosteron asosan qayerda ishlab chiqariladi?",
@@ -1116,7 +1116,7 @@ const questions = [
   },
   {
     question: "Odamda qon aylanishining kichik doirasi qayerdan boshlanib qayerda tugaydi?",
-    options: ["Chap qorincha — Chap bo'lmacha", "O'ng qorincha — Chap bo'lmacha", "Chap qorincha — O'ng bo'lmacha", "O'ng qorincha — O'ng bo'lmacha"],
+    options: ["Chap qorincha — Chap bo'lmacha", "O'ng qorincha — Chap bo'lmacha", "Chap qorincha — O'ng bo'lmacha", "O'ng qorincha — O me bo'lmacha"],
     answer: 1,
     explanation: "Kichik qon aylanish doirasi o'ng qorinchadan chiqib, o'pka kapilyarlarida kislorodga boyib, chap bo'lmachaga kelib tugaydi."
   },
