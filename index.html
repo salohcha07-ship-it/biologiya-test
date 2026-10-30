@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0b1020">
-<title>Biologiya | Milliy Sertifikat</title>
+<meta name="theme-color" content="#100b20">
+<title>Biologiya Milliy Sertifikat | Premium</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -93,6 +93,13 @@ main {
   background:linear-gradient(145deg,#182440,#111a2e);
   box-shadow:0 18px 45px #0005;
 }
+.biology-caption { text-align:center;color:#c9a9f0;font-size:9px;font-weight:900;letter-spacing:2px;margin:-5px 0 13px; }
+.biology-image-wrap { height:132px;position:relative;overflow:hidden;border-radius:17px;margin:0 0 18px;border:1px solid #76549a;background:linear-gradient(135deg,#43285e,#171024); }
+.biology-image { width:100%;height:100%;object-fit:cover;opacity:.72;display:block; }
+.biology-image-shade { position:absolute;inset:0;background:linear-gradient(90deg,#170f27c9,transparent 85%),linear-gradient(0deg,#170f2770,transparent 70%); }
+.biology-image-label { position:absolute;left:13px;bottom:12px;color:#fff;font-size:10px;font-weight:900;letter-spacing:1.3px;text-shadow:0 2px 8px #000; }
+.biology-image-label i { color:#d7b6ff;margin-right:5px; }
+body.light-mode .biology-image-wrap { border-color:#d2bce9; }
 .hero-icon {
   width:75px;height:75px;margin:0 auto 15px;
   display:grid;place-items:center;
@@ -270,6 +277,85 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
   .question-title { font-size:17px; }
   .option-btn { font-size:14px; }
 }
+
+/* PREMIUM BIOLOGY THEME */
+:root {
+  --bg:#090713; --panel:#171126; --panel2:#211735; --border:#45315f;
+  --accent:#c4a5ff; --accent2:#9565ed; --text:#f5efff; --muted:#b8a9ce;
+}
+body {
+  background: radial-gradient(ellipse at 50% -12%,#48256e 0%,transparent 48%),
+              radial-gradient(ellipse at 100% 35%,#25133d 0%,transparent 42%),var(--bg);
+  background-attachment:fixed;
+}
+header { background:rgba(13,9,24,.91); border-bottom-color:#493361; }
+.brand-icon { background:linear-gradient(135deg,#d8baff,#8c5be4); color:#1b1030; box-shadow:0 7px 25px #a16cf255; }
+.brand p { color:#c3addf; }
+.leaderboard-btn { border-color:#63468b;background:#281b40;color:#f0e5ff; }
+.leaderboard-btn i { color:#ffd780; }
+.header-actions { display:flex;align-items:center;gap:8px; }
+.theme-btn { width:43px;height:43px;border-radius:13px;border:1px solid #63468b;background:#211632;color:#e6d5ff;font-size:16px; }
+.panel { border-color:#49345f;background:linear-gradient(145deg,rgba(36,25,55,.97),rgba(17,13,29,.98));box-shadow:0 22px 60px #0008; }
+.hero-icon { background:linear-gradient(135deg,#4b2d70,#24163d);border-color:#8057ad;color:#d7bdff;box-shadow:0 12px 35px #a16cf222; }
+.heading { letter-spacing:-.5px; }
+.primary-btn { background:linear-gradient(120deg,#d8baff,#9565ed);color:#1a102b;box-shadow:0 9px 26px #9565ed45; }
+.secondary-btn { border-color:#63468b;background:#2b1e43;color:#eee2ff; }
+.field input,.field select { background:#100c1d;border-color:#49365f; }
+.count-btn { background:#1b142b;border-color:#49365f;color:#dfd0f5; }
+.count-btn.active { background:linear-gradient(135deg,#d8baff,#9565ed);border-color:#e4d1ff;color:#1b1030; }
+.progress-label { background:#35234e;border-color:#684a8c;color:#eadcff; }
+.progress-track { background:#302342; }
+.progress-fill { background:linear-gradient(90deg,#9565ed,#d5b6ff); }
+.option-btn { background:#211832;border-color:#49365f; }
+.option-btn.selected { background:#5b3c8270;border-color:#c4a5ff; }
+.opt-letter { background:#3a2852;color:#e7d6ff; }
+.option-btn.selected .opt-letter { background:#c4a5ff;color:#211332; }
+.score-cell { background:#120e20;border-color:#49365f; }
+.score-cell .big { color:#d0b5ff; }
+.result-icon { background:#392653;color:#ddc5ff; }
+.explanation { background:#211832;border-color:#49365f; }
+.explanation .why { background:#120e20;color:#e0d4f3; }
+.rank-item { background:#1d152c;border-color:#49365f; }
+.rank-score { color:#d5baff; }
+footer { background:#100c1c;border-top-color:#49365f; }
+.banner { background:#49301955;color:#ffe1a4;border-bottom-color:#88602c55; }
+/* motion */
+.panel { animation:panelIn .48s cubic-bezier(.2,.75,.25,1) both; }
+@keyframes panelIn { from { opacity:0;transform:translateY(12px) scale(.99) } to { opacity:1;transform:translateY(0) scale(1) } }
+.primary-btn,.secondary-btn,.option-btn,.count-btn,.leaderboard-btn,.theme-btn { transition:transform .18s,filter .18s,box-shadow .18s,border-color .18s; }
+.primary-btn:active,.secondary-btn:active,.option-btn:active,.count-btn:active,.theme-btn:active { transform:scale(.975); }
+.option-btn:hover { border-color:#9870c7;box-shadow:0 5px 18px #0003; }
+.rank-item:first-child { border-color:#b58aef;background:linear-gradient(100deg,#493064,#241832); }
+.rank-item:nth-child(2) { border-color:#80649c; }
+.rank-item:nth-child(3) { border-color:#76523f; }
+.achievement-panel { margin:18px 0 22px;padding:15px;border:1px solid #63468b;border-radius:17px;background:linear-gradient(135deg,#332149,#1a1329); }
+.achievement-heading { font-size:14px;font-weight:850;margin-bottom:12px;color:#eadbff; }
+.achievement-heading i { color:#ffd780;margin-right:6px; }
+.achievement-list { display:flex;flex-wrap:wrap;gap:8px; }
+.achievement-chip { display:flex;align-items:center;gap:7px;padding:8px 10px;border-radius:12px;background:#171024;border:1px solid #684a8c;color:#e9dcfa;font-size:11px;font-weight:750; }
+.achievement-chip i { color:#ffd780;font-size:14px; }
+.achievement-chip.locked { opacity:.45;filter:grayscale(1); }
+body.light-mode {
+  --bg:#f4effb;--panel:#fff;--panel2:#f3ecfc;--border:#d8c8eb;--text:#261b35;--muted:#766687;
+  background:radial-gradient(ellipse at 50% -10%,#e2d0fa 0%,transparent 55%),#f4effb;color:#261b35;
+}
+body.light-mode header { background:rgba(250,247,255,.94);border-bottom-color:#ddcdec; }
+body.light-mode .brand p,body.light-mode .subheading,body.light-mode .field label { color:#766687; }
+body.light-mode .panel { background:linear-gradient(145deg,#fff,#f7f1ff);border-color:#ddcdec; }
+body.light-mode .field input,body.light-mode .field select { background:#faf7ff;color:#261b35;border-color:#d8c8eb; }
+body.light-mode .count-btn,body.light-mode .option-btn,body.light-mode .rank-item { background:#f4effb;color:#302340;border-color:#ddcdec; }
+body.light-mode .opt-letter { background:#e7daf7;color:#51366f; }
+body.light-mode .score-cell,body.light-mode .explanation .why { background:#f5effb;color:#49385d;border-color:#ddcdec; }
+body.light-mode .explanation { background:#faf7ff;border-color:#ddcdec; }
+body.light-mode .secondary-btn,body.light-mode .leaderboard-btn,body.light-mode .theme-btn { background:#eee4fa;color:#493064;border-color:#d2bce9; }
+body.light-mode footer { background:#eee7f6;color:#766687;border-color:#ddcdec; }
+body.light-mode .achievement-panel { background:#f0e6fb;border-color:#d2bce9; }
+body.light-mode .achievement-heading { color:#493064; }
+body.light-mode .achievement-chip { background:#fff;color:#493064;border-color:#d2bce9; }
+body.light-mode .rank-item:first-child { background:#efe2ff; }
+@media(max-width:380px) { .header-actions { gap:5px; }.theme-btn { width:39px;height:40px; }.leaderboard-btn { min-height:40px; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important; } }
+
 </style>
 </head>
 
@@ -283,15 +369,20 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
         <p>BMBA / DTM standartlariga mos sinovlar</p>
       </div>
     </div>
-    <button class="leaderboard-btn" onclick="toggleLeaderboard()">
-      <i class="fa-solid fa-trophy"></i> Reyting
-    </button>
+    <div class="header-actions">
+      <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Rang rejimini almashtirish" title="Tungi/kunduzgi rejim">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+      <button class="leaderboard-btn" onclick="toggleLeaderboard()">
+        <i class="fa-solid fa-trophy"></i> Reyting
+      </button>
+    </div>
   </div>
 </header>
 
 <div id="testBanner" class="banner">
   <i class="fa-solid fa-flask"></i>
-  Sayt test rejimida ishlamoqda.
+  Platforma sinov rejimida ishlamoqda.
   <a href="https://t.me/Asomiddin0721" target="_blank" rel="noopener noreferrer">@Asomiddin0721</a>
   ga yozing.
 </div>
@@ -299,7 +390,13 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
 <main>
   <!-- BOSHLASH -->
   <section id="startView" class="panel">
-    <div class="hero-icon"><i class="fa-solid fa-microscope"></i></div>
+    <div class="hero-icon"><i class="fa-solid fa-dna"></i></div>
+    <div class="biology-caption"><i class="fa-solid fa-leaf"></i> BIOLOGY • KNOWLEDGE • FUTURE</div>
+    <div class="biology-image-wrap">
+      <img class="biology-image" src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1000&q=85" alt="Biologiya laboratoriyasida mikroskop va ilmiy tadqiqot" loading="lazy">
+      <div class="biology-image-shade"></div>
+      <span class="biology-image-label"><i class="fa-solid fa-microscope"></i> ILM SARI QADAM</span>
+    </div>
     <h2 class="heading">Bilimingizni sinang!</h2>
     <p class="subheading">Biologiya milliy sertifikat test platformasi</p>
 
@@ -389,6 +486,11 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
       </div>
     </div>
 
+    <section class="achievement-panel" id="achievementPanel">
+      <div class="achievement-heading"><i class="fa-solid fa-medal"></i> Sizning yutuqlaringiz</div>
+      <div class="achievement-list" id="achievementList"></div>
+    </section>
+
     <h3 style="font-weight:800;font-size:16px;margin-bottom:13px">
       <i class="fa-solid fa-book-open"></i> Batafsil natijalar
     </h3>
@@ -431,6 +533,33 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
 
 <script src="questions.js"></script>
 <script>
+// Tungi/kunduzgi rejim
+function applyTheme(mode) {
+  document.body.classList.toggle("light-mode", mode === "light");
+  const icon = document.querySelector("#themeToggle i");
+  if(icon) icon.className = mode === "light" ? "fa-solid fa-moon" : "fa-solid fa-sun";
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", mode === "light" ? "#f4effb" : "#100b20");
+}
+function toggleTheme() {
+  const next = document.body.classList.contains("light-mode") ? "dark" : "light";
+  try { localStorage.setItem("bio_theme", next); } catch(e) {}
+  applyTheme(next);
+}
+try { applyTheme(localStorage.getItem("bio_theme") || "dark"); } catch(e) { applyTheme("dark"); }
+
+function renderAchievements(score, correct, total) {
+  const host = document.getElementById("achievementList");
+  if(!host) return;
+  const badges = [
+    {icon:"fa-seedling",name:"Ilk qadam",earned:correct>=1},
+    {icon:"fa-book-open",name:"Bilimdon",earned:score>=60},
+    {icon:"fa-award",name:"A'lochi",earned:score>=80},
+    {icon:"fa-crown",name:"Biologiya ustasi",earned:score===100},
+    {icon:"fa-bolt",name:"Tezkor",earned:secondsElapsed<=total*20}
+  ];
+  host.innerHTML = badges.map(b => `<div class="achievement-chip ${b.earned?'':'locked'}"><i class="fa-solid ${b.icon}"></i>${b.name}</div>`).join("");
+}
+
 const firebaseConfig = {
   apiKey: "AIzaSyAsZNgGFOUbMErDL6ps_Dk6d1t1vO8Vcto",
   authDomain: "biologiya-test-3ccaa.firebaseapp.com",
@@ -693,6 +822,7 @@ function finishQuiz() {
   document.getElementById("resultSummary").innerText =
     `Siz ${total} ta savoldan ${correctCount} tasiga to‘g‘ri javob berdingiz!`;
   document.getElementById("scorePercent").innerText = scorePct+"%";
+  renderAchievements(scorePct,correctCount,total);
 
   const mins = String(Math.floor(secondsElapsed/60)).padStart(2,"0");
   const secs = String(secondsElapsed%60).padStart(2,"0");
