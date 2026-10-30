@@ -2,82 +2,316 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biologiya Milliy Sertifikat Test Platformasi</title>
-  <meta name="theme-color" content="#0b0d18">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { theme: { extend: { colors: { emerald: {
-      50:'#f3f4ff',100:'#e9ebff',200:'#d6dbff',300:'#bcc4ff',400:'#9fabff',
-      500:'#8b95c9',600:'#5566d9',700:'#343b66',800:'#232846',900:'#171b33',950:'#0f1226'
-    } } } } };
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  <style>
-    body { background:#0b0d18; color:#e1e5ff; font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; font-size:17px; line-height:1.5; -webkit-tap-highlight-color:transparent; }
-    .card-custom { background:#12152a; border:1px solid #232846; box-shadow:0 12px 32px -12px rgba(0,0,0,.65); }
-    .btn-emerald { background:#8b9cff; color:#0b0d18; font-weight:700; min-height:52px; transition:background .15s, transform .1s; }
-    .btn-emerald:hover { background:#a5b2ff; }
-    .btn-emerald:active { transform:scale(.98); }
-    .option-btn { display:flex; align-items:center; min-height:58px; font-size:17px; border-radius:14px; background:#161a30; border:1px solid #2a3050; color:#e1e5ff; transition:background .15s, border-color .15s; }
-    .option-btn:hover { background:#1d2240; }
-    .option-btn.selected { background:#252b55; border-color:#8b9cff; }
-    .opt-letter { width:32px; height:32px; flex:none; margin-right:12px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; background:#232846; color:#bcc4ff; font-weight:700; font-size:15px; }
-    .option-btn.selected .opt-letter { background:#8b9cff; color:#0b0d18; }
-    .input-error { border-color:#f87171 !important; }
-    input, select { font-size:16px; min-height:52px; }
-    select option { background:#12152a; color:#e1e5ff; }
-    button:focus-visible, input:focus-visible, select:focus-visible { outline:2px solid #8b9cff; outline-offset:2px; }
-  </style>
-</head>
-<body class="min-h-screen flex flex-col justify-between">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<title>Biologiya | Milliy Sertifikat</title>
 
-<header class="p-4 bg-emerald-950 border-b border-emerald-800 shadow-md">
-  <div class="max-w-4xl mx-auto flex justify-between items-center">
-    <div class="flex items-center space-x-3">
-      <i class="fa-solid fa-dna text-emerald-400 text-3xl"></i>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+<style>
+:root {
+  --bg:#090e1c;
+  --panel:#121b30;
+  --panel2:#182440;
+  --border:#2a3a5b;
+  --accent:#91a6ff;
+  --accent2:#6e87f5;
+  --text:#edf1ff;
+  --muted:#9baaca;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  background:
+    radial-gradient(ellipse at 50% -10%,#263969 0%,transparent 55%),
+    var(--bg);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;
+  -webkit-tap-highlight-color:transparent;
+}
+button,input,select { font:inherit; }
+button { cursor:pointer; }
+header {
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(11,16,32,.94);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  padding:13px 15px;
+}
+.header-inner {
+  max-width:650px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.brand { display:flex;align-items:center;gap:11px;min-width:0; }
+.brand-icon {
+  width:43px;height:43px;flex:none;
+  display:grid;place-items:center;
+  border-radius:15px;
+  background:linear-gradient(135deg,#91a6ff,#657df0);
+  color:#101831;font-size:22px;
+  box-shadow:0 5px 18px #7189ff40;
+}
+.brand h1 { font-size:16px;font-weight:800;line-height:1.25; }
+.brand p { font-size:10px;color:#9eafd8;margin-top:4px; }
+.leaderboard-btn {
+  min-height:43px;padding:0 12px;
+  border:1px solid #455b89;border-radius:13px;
+  background:#1a2948;color:#dce5ff;
+  font-size:12px;font-weight:700;white-space:nowrap;
+}
+.leaderboard-btn i { color:#ffd66e;margin-right:5px; }
+.banner {
+  padding:9px 12px;text-align:center;
+  font-size:12px;color:#f4d99c;
+  background:#4a351b55;border-bottom:1px solid #80602d55;
+}
+.banner a { color:#a9bbff;font-weight:800;text-decoration:none; }
+.banner a:active { text-decoration:underline; }
+main {
+  width:100%;max-width:650px;
+  margin:auto;padding:18px 13px 30px;
+  min-height:65vh;
+}
+.panel {
+  width:100%;
+  padding:21px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:linear-gradient(145deg,#182440,#111a2e);
+  box-shadow:0 18px 45px #0005;
+}
+.hero-icon {
+  width:75px;height:75px;margin:0 auto 15px;
+  display:grid;place-items:center;
+  border-radius:24px;
+  background:linear-gradient(135deg,#283e70,#1a2b4e);
+  border:1px solid #455e91;
+  color:#a9bbff;font-size:34px;
+}
+.heading { font-size:24px;font-weight:850;text-align:center; }
+.subheading { text-align:center;color:var(--muted);font-size:13px;margin-top:6px; }
+.field { margin-top:19px; }
+.field label {
+  display:block;font-size:13px;font-weight:700;
+  color:#c5d1f1;margin-bottom:8px;
+}
+.field input,.field select {
+  width:100%;height:54px;padding:0 15px;
+  color:white;background:#0d172b;
+  border:1px solid #344667;border-radius:14px;
+  outline:none;font-size:16px;
+}
+.field input:focus,.field select:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px #91a6ff20;
+}
+.field select option { background:#121b30;color:white; }
+.error { color:#ff9696;font-size:12px;margin-top:7px; }
+.hidden { display:none !important; }
+
+.count-grid {
+  display:grid;grid-template-columns:repeat(4,1fr);gap:9px;
+}
+.count-btn {
+  min-height:53px;border-radius:14px;
+  color:#c8d4f8;background:#111d35;
+  border:1px solid #34496d;font-weight:800;font-size:17px;
+}
+.count-btn.active {
+  color:#101831;
+  background:linear-gradient(135deg,#a9baff,#718af7);
+  border-color:#b9c7ff;
+  box-shadow:0 5px 16px #7189ff35;
+}
+.primary-btn {
+  width:100%;min-height:55px;
+  border:0;border-radius:16px;
+  background:linear-gradient(120deg,#a8b8ff,#7189f5);
+  color:#101831;font-weight:850;font-size:16px;
+  box-shadow:0 8px 22px #7189ff35;
+  transition:transform .15s,filter .15s;
+}
+.primary-btn:active { transform:scale(.98);filter:brightness(.95); }
+.secondary-btn {
+  min-height:49px;padding:0 15px;
+  border-radius:14px;border:1px solid #40557c;
+  background:#1b2b4b;color:#dce5ff;font-weight:700;
+}
+.quiz-top {
+  display:flex;justify-content:space-between;
+  align-items:center;gap:10px;
+  padding-bottom:15px;border-bottom:1px solid var(--border);
+}
+.progress-label {
+  padding:8px 12px;border-radius:30px;
+  background:#26385e;color:#d4deff;
+  border:1px solid #455d91;font-size:12px;font-weight:800;
+}
+.timer {
+  display:flex;align-items:center;gap:7px;
+  color:#ffda83;font-size:18px;font-weight:850;
+  font-variant-numeric:tabular-nums;
+}
+.progress-track {
+  height:7px;border-radius:20px;
+  margin:15px 0 21px;background:#293652;overflow:hidden;
+}
+.progress-fill {
+  height:100%;width:0%;
+  background:linear-gradient(90deg,#718af5,#b0bdff);
+  border-radius:20px;transition:width .25s;
+}
+.question-title {
+  font-size:19px;font-weight:750;
+  line-height:1.6;margin-bottom:19px;
+  overflow-wrap:anywhere;
+}
+.options { display:grid;gap:11px; }
+.option-btn {
+  width:100%;min-height:61px;
+  display:flex;align-items:center;gap:12px;
+  padding:12px 14px;text-align:left;
+  border-radius:16px;background:#17233d;
+  border:1px solid #344565;color:#edf1ff;
+  font-size:15px;line-height:1.45;
+  transition:background .15s,border .15s;
+}
+.option-btn.selected {
+  background:#34477570;border:2px solid #91a6ff;
+}
+.opt-letter {
+  width:34px;height:34px;flex:none;
+  display:grid;place-items:center;
+  border-radius:11px;background:#2b3c60;
+  color:#c9d5ff;font-size:14px;font-weight:850;
+}
+.option-btn.selected .opt-letter {
+  background:#91a6ff;color:#101831;
+}
+.quiz-actions {
+  display:flex;gap:9px;margin-top:22px;
+  padding-top:17px;border-top:1px solid var(--border);
+}
+.quiz-actions button { min-height:51px; }
+.quiz-actions .primary-btn { flex:1; }
+.quiz-actions .secondary-btn { min-width:95px; }
+.score-box {
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin:20px 0;
+}
+.score-cell {
+  text-align:center;padding:16px 8px;
+  border:1px solid #344667;border-radius:17px;
+  background:#0e192e;
+}
+.score-cell span { display:block; }
+.score-cell .small { font-size:12px;color:#9eafd8; }
+.score-cell .big { font-size:25px;font-weight:900;color:#b7c5ff;margin-top:4px; }
+.result-icon {
+  width:72px;height:72px;margin:0 auto 12px;
+  display:grid;place-items:center;
+  border-radius:23px;background:#27395d;
+  color:#b4c4ff;font-size:32px;
+}
+.result-summary { color:#b9c8f5;font-size:14px;margin-top:9px; }
+.explanation {
+  padding:15px;border-radius:16px;
+  border:1px solid #344565;background:#17233b;
+  overflow-wrap:anywhere;
+}
+.explanation.correct { border-color:#287c65;background:#12342e80; }
+.explanation.wrong { border-color:#87485b;background:#3c202d80; }
+.explanation .question { font-size:14px;font-weight:800;margin-bottom:9px; }
+.explanation .detail { font-size:12px;line-height:1.7;color:#c3cde6; }
+.explanation .why {
+  font-size:12px;line-height:1.6;
+  margin-top:9px;padding:10px;
+  border-radius:10px;background:#0c172b;color:#d5def8;
+}
+.rank-item {
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;padding:13px;border-radius:15px;
+  border:1px solid #344565;background:#14213a;
+}
+.rank-left { display:flex;align-items:center;gap:11px;min-width:0; }
+.rank-number { font-weight:900;color:#9eafd8;min-width:25px; }
+.rank-name { font-size:13px;font-weight:800;overflow-wrap:anywhere; }
+.rank-info { font-size:11px;color:#9eafd8;margin-top:3px; }
+.rank-score { text-align:right;color:#b9c7ff;font-weight:850;font-size:14px;white-space:nowrap; }
+.rank-time { display:block;font-size:11px;color:#9eafd8;font-weight:500; }
+footer {
+  padding:20px 12px calc(20px + env(safe-area-inset-bottom));
+  border-top:1px solid var(--border);
+  background:#0e172a;text-align:center;
+  color:#9eafd8;font-size:12px;line-height:1.9;
+}
+footer a { color:#b4c4ff;font-weight:800;text-decoration:none; }
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
+  outline:2px solid #a9bbff;outline-offset:3px;
+}
+@media(max-width:380px) {
+  .panel { padding:16px; }
+  .brand h1 { font-size:14px; }
+  .brand p { font-size:9px; }
+  .leaderboard-btn { padding:0 9px;font-size:11px; }
+  .question-title { font-size:17px; }
+  .option-btn { font-size:14px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-dna"></i></div>
       <div>
-        <h1 class="text-xl font-bold text-emerald-300">Biologiya Milliy Sertifikat</h1>
-        <p class="text-xs text-emerald-500">BMBA / DTM Standartlariga mos sinovlar</p>
+        <h1>Biologiya Milliy Sertifikat</h1>
+        <p>BMBA / DTM standartlariga mos sinovlar</p>
       </div>
     </div>
-    <button onclick="toggleLeaderboard()" class="px-4 py-2 bg-emerald-800 hover:bg-emerald-700 rounded-lg text-sm font-semibold flex items-center gap-2 text-emerald-200 border border-emerald-600 transition">
-      <i class="fa-solid fa-trophy text-yellow-400"></i> Reyting
+    <button class="leaderboard-btn" onclick="toggleLeaderboard()">
+      <i class="fa-solid fa-trophy"></i> Reyting
     </button>
   </div>
 </header>
 
-<!-- TELEGRAM HAVOLASI TUZATILDI -->
-<div id="testBanner" class="bg-amber-950/60 border-b border-amber-800 text-amber-200 text-sm text-center px-4 py-2">
-  <i class="fa-solid fa-flask mr-2"></i>
-  Sayt test rejimida ishlamoqda. Xato topsangiz,
-  <a href="https://t.me/Asomiddin0721" target="_blank" rel="noopener noreferrer" class="text-emerald-300 font-bold hover:underline">
-    @Asomiddin0721
-  </a>
+<div id="testBanner" class="banner">
+  <i class="fa-solid fa-flask"></i>
+  Sayt test rejimida ishlamoqda.
+  <a href="https://t.me/Asomiddin0721" target="_blank" rel="noopener noreferrer">@Asomiddin0721</a>
   ga yozing.
 </div>
 
-<main class="max-w-3xl mx-auto w-full p-4 flex-grow flex items-center justify-center">
+<main>
+  <!-- BOSHLASH -->
+  <section id="startView" class="panel">
+    <div class="hero-icon"><i class="fa-solid fa-microscope"></i></div>
+    <h2 class="heading">Bilimingizni sinang!</h2>
+    <p class="subheading">Biologiya milliy sertifikat test platformasi</p>
 
-  <div id="startView" class="card-custom rounded-2xl p-6 w-full text-center">
-    <div class="mb-6">
-      <i class="fa-solid fa-microscope text-5xl text-emerald-400 mb-3"></i>
-      <h2 class="text-2xl font-bold text-emerald-100">Testni Boshlash</h2>
-      <p class="text-sm text-emerald-400 mt-1">O'zingizga mos rejim va savollar sonini tanlang</p>
+    <div class="field">
+      <label for="userNameInput"><i class="fa-solid fa-user"></i> Ism va familiyangiz</label>
+      <input type="text" id="userNameInput" maxlength="60" placeholder="Masalan: Ali Valiyev">
+      <p id="nameError" class="error hidden">Ismingizni kiriting</p>
     </div>
 
-    <div class="mb-4 text-left">
-      <label class="block text-sm font-medium mb-2 text-emerald-300">Ism va Familiyangiz:</label>
-      <input type="text" id="userNameInput" maxlength="60" placeholder="Masalan: Ali Valiyev" class="w-full p-3 rounded-lg bg-emerald-950 border border-emerald-700 text-emerald-100 focus:outline-none focus:border-emerald-400">
-      <p id="nameError" class="hidden text-red-400 text-sm mt-2">Ismingizni kiriting</p>
-    </div>
-
-    <div class="mb-6 text-left">
-      <label class="block text-sm font-medium mb-2 text-emerald-300">Viloyatingiz:</label>
-      <select id="regionSelect" class="w-full p-3 rounded-lg bg-emerald-950 border border-emerald-700 text-emerald-100 focus:outline-none focus:border-emerald-400">
+    <div class="field">
+      <label for="regionSelect"><i class="fa-solid fa-location-dot"></i> Viloyatingiz</label>
+      <select id="regionSelect">
         <option value="">Viloyatni tanlang</option>
         <option>Toshkent shahri</option>
         <option>Toshkent viloyati</option>
@@ -94,98 +328,108 @@
         <option>Sirdaryo viloyati</option>
         <option>Surxondaryo viloyati</option>
       </select>
-      <p id="regionError" class="hidden text-red-400 text-sm mt-2">Viloyatingizni tanlang</p>
+      <p id="regionError" class="error hidden">Viloyatingizni tanlang</p>
     </div>
 
-    <div class="mb-6 text-left">
-      <label class="block text-sm font-medium mb-2 text-emerald-300">Savollar soni:</label>
-      <div class="grid grid-cols-4 gap-3">
-        <button onclick="selectCount(10)" class="count-btn p-3 h-14 text-lg rounded-xl border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-10">10</button>
-        <button onclick="selectCount(20)" class="count-btn p-3 h-14 text-lg rounded-xl border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-20">20</button>
-        <button onclick="selectCount(30)" class="count-btn p-3 h-14 text-lg rounded-xl border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-30">30</button>
-        <button onclick="selectCount(50)" class="count-btn p-3 h-14 text-lg rounded-xl border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-50">50</button>
+    <div class="field">
+      <label><i class="fa-solid fa-list-ol"></i> Savollar soni</label>
+      <div class="count-grid">
+        <button class="count-btn" id="count-10" onclick="selectCount(10)">10</button>
+        <button class="count-btn" id="count-20" onclick="selectCount(20)">20</button>
+        <button class="count-btn" id="count-30" onclick="selectCount(30)">30</button>
+        <button class="count-btn" id="count-50" onclick="selectCount(50)">50</button>
       </div>
     </div>
 
-    <button onclick="startQuiz()" class="w-full py-3 rounded-xl btn-emerald text-lg font-bold shadow-lg">
-      Testni Boshlash <i class="fa-solid fa-arrow-right ml-2"></i>
-    </button>
-  </div>
-
-  <div id="quizView" class="card-custom rounded-2xl p-6 w-full hidden">
-    <div class="flex justify-between items-center mb-4 pb-3 border-b border-emerald-800">
-      <span id="questionProgress" class="text-xs font-semibold px-3 py-1 bg-emerald-900 text-emerald-300 rounded-full border border-emerald-700">Savol 1 / 10</span>
-      <div class="flex items-center gap-2 text-yellow-400 font-mono font-bold">
-        <i class="fa-regular fa-clock"></i>
-        <span id="timer">00:00</span>
-      </div>
-    </div>
-    <div class="mb-6">
-      <h3 id="questionText" class="text-xl font-semibold text-emerald-100 leading-relaxed mb-5">Savol matni yuklanmoqda...</h3>
-      <div id="optionsContainer" class="space-y-3"></div>
-      <p id="answerError" class="hidden text-red-400 text-sm mt-3">Davom etish uchun javobni belgilang</p>
-    </div>
-    <div class="flex justify-between items-center pt-4 border-t border-emerald-800">
-      <button id="prevBtn" onclick="prevQuestion()" class="px-5 py-3 min-h-[52px] bg-emerald-900 text-emerald-200 rounded-xl text-base font-semibold hover:bg-emerald-800 disabled:opacity-40">Orqaga</button>
-      <button id="nextBtn" onclick="nextQuestion()" class="flex-1 ml-3 py-3 btn-emerald rounded-xl text-base font-semibold">Keyingisi</button>
-    </div>
-  </div>
-
-  <div id="resultView" class="card-custom rounded-2xl p-6 w-full hidden">
-    <div class="text-center mb-6">
-      <i class="fa-solid fa-square-poll-vertical text-5xl text-emerald-400 mb-2"></i>
-      <h2 id="resultTitle" class="text-2xl font-bold text-emerald-100">Test Natijasi</h2>
-      <p id="resultSummary" class="text-lg font-semibold text-emerald-300 mt-2"></p>
-    </div>
-    <div class="bg-emerald-950 p-4 rounded-xl border border-emerald-800 mb-6 flex justify-around text-center">
-      <div>
-        <span class="block text-xs text-emerald-500">Ball</span>
-        <span id="scorePercent" class="text-xl font-bold text-emerald-300">80%</span>
-      </div>
-      <div>
-        <span class="block text-xs text-emerald-500">Vaqt</span>
-        <span id="timeTaken" class="text-xl font-bold text-emerald-300">04:12</span>
-      </div>
-    </div>
-    <h3 class="font-bold text-lg text-emerald-200 mb-3">Savollar va Batafsil Tushuntirishlar:</h3>
-    <div id="explanationsList" class="space-y-4 max-h-96 overflow-y-auto pr-2 mb-6"></div>
-    <button id="retryWrongBtn" onclick="retryWrongAnswers()" class="hidden w-full py-3 mb-3 rounded-xl bg-emerald-800 hover:bg-emerald-700 border border-emerald-500 text-emerald-100 text-lg font-bold transition">
-      Xatolarni takrorlash <i class="fa-solid fa-circle-exclamation ml-2"></i>
-    </button>
-    <button onclick="restartQuiz()" class="w-full py-3 rounded-xl btn-emerald text-lg font-bold">
-      Qayta topshirish <i class="fa-solid fa-rotate-right ml-2"></i>
-    </button>
-  </div>
-
-  <div id="leaderboardView" class="card-custom rounded-2xl p-6 w-full hidden">
-    <div class="flex justify-between items-center mb-3 border-b border-emerald-800 pb-3">
-      <h2 class="text-xl font-bold text-emerald-100 flex items-center gap-2">
-        <i class="fa-solid fa-trophy text-yellow-400"></i> Jonli Reyting
-      </h2>
-      <button onclick="closeLeaderboard()" class="text-emerald-400 hover:text-emerald-200">
-        <i class="fa-solid fa-xmark text-xl"></i>
+    <div style="margin-top:24px">
+      <button class="primary-btn" onclick="startQuiz()">
+        Testni boshlash <i class="fa-solid fa-arrow-right"></i>
       </button>
     </div>
-    <p id="leaderboardNote" class="text-xs text-emerald-500 mb-4"></p>
-    <div class="space-y-3 max-h-80 overflow-y-auto pr-1" id="leaderboardList">
-      <p class="text-center text-sm text-emerald-500">Reyting yuklanmoqda...</p>
-    </div>
-  </div>
+    <p class="subheading" style="margin-top:15px">
+      <i class="fa-solid fa-shield-halved"></i>
+      Bilimingizni sinab ko'ring va natijangizni biling
+    </p>
+  </section>
 
+  <!-- TEST -->
+  <section id="quizView" class="panel hidden">
+    <div class="quiz-top">
+      <span id="questionProgress" class="progress-label">Savol 1 / 10</span>
+      <div class="timer"><i class="fa-regular fa-clock"></i><span id="timer">00:00</span></div>
+    </div>
+    <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+
+    <h3 id="questionText" class="question-title">Savol yuklanmoqda...</h3>
+    <div id="optionsContainer" class="options"></div>
+    <p id="answerError" class="error hidden">Davom etish uchun javobni belgilang</p>
+
+    <div class="quiz-actions">
+      <button id="prevBtn" class="secondary-btn" onclick="prevQuestion()">
+        <i class="fa-solid fa-arrow-left"></i> Orqaga
+      </button>
+      <button id="nextBtn" class="primary-btn" onclick="nextQuestion()">Keyingisi</button>
+    </div>
+  </section>
+
+  <!-- NATIJA -->
+  <section id="resultView" class="panel hidden">
+    <div class="result-icon"><i class="fa-solid fa-chart-column"></i></div>
+    <h2 id="resultTitle" class="heading">Test natijasi</h2>
+    <p id="resultSummary" class="result-summary text-center"></p>
+
+    <div class="score-box">
+      <div class="score-cell">
+        <span class="small">To'g'ri javoblar</span>
+        <span id="scorePercent" class="big">80%</span>
+      </div>
+      <div class="score-cell">
+        <span class="small">Sarflangan vaqt</span>
+        <span id="timeTaken" class="big">04:12</span>
+      </div>
+    </div>
+
+    <h3 style="font-weight:800;font-size:16px;margin-bottom:13px">
+      <i class="fa-solid fa-book-open"></i> Batafsil natijalar
+    </h3>
+    <div id="explanationsList" style="display:grid;gap:11px;max-height:450px;overflow-y:auto;margin-bottom:20px"></div>
+
+    <button id="retryWrongBtn" onclick="retryWrongAnswers()" class="secondary-btn hidden" style="width:100%;margin-bottom:10px">
+      <i class="fa-solid fa-rotate"></i> Xatolarni takrorlash
+    </button>
+    <button onclick="restartQuiz()" class="primary-btn">
+      <i class="fa-solid fa-rotate-right"></i> Qayta topshirish
+    </button>
+  </section>
+
+  <!-- REYTING -->
+  <section id="leaderboardView" class="panel hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--border)">
+      <h2 style="font-size:19px;font-weight:850">
+        <i class="fa-solid fa-trophy" style="color:#ffd66e"></i> Jonli reyting
+      </h2>
+      <button onclick="closeLeaderboard()" class="secondary-btn" style="min-height:40px;padding:0 13px">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <p id="leaderboardNote" class="subheading" style="text-align:left;margin:12px 0"></p>
+    <div id="leaderboardList" style="display:grid;gap:10px">
+      <p class="subheading">Reyting yuklanmoqda...</p>
+    </div>
+  </section>
 </main>
 
-<footer class="p-4 bg-emerald-950 border-t border-emerald-800 text-center text-sm text-emerald-500">
-  <p>Muallif: <span class="text-emerald-300 font-semibold">Azmiddinov Salohiddin Azmiddin o'g'li</span></p>
-  <p class="mt-1">
-    Taklif va fikrlar uchun:
-    <a href="https://t.me/Asomiddin0721" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline font-semibold">
-      <i class="fa-brands fa-telegram mr-1"></i>@Asomiddin0721
+<footer>
+  <p>Muallif: <strong style="color:#c3d0ff">Azmiddinov Salohiddin Azmiddin o'g'li</strong></p>
+  <p>Taklif va fikrlar:
+    <a href="https://t.me/Asomiddin0721" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-telegram"></i> @Asomiddin0721
     </a>
   </p>
+  <p style="margin-top:7px;font-size:10px">Biologiya Milliy Sertifikat Platformasi</p>
 </footer>
 
 <script src="questions.js"></script>
-
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyAsZNgGFOUbMErDL6ps_Dk6d1t1vO8Vcto",
@@ -198,22 +442,25 @@ const firebaseConfig = {
 
 let db = null;
 try {
-  if (typeof firebase !== 'undefined' && firebaseConfig.apiKey) {
+  if (typeof firebase !== "undefined") {
     firebase.initializeApp(firebaseConfig);
     db = firebase.firestore();
   }
-} catch (e) {
-  console.error("Firebase xatosi:", e);
+} catch(e) {
+  console.error("Firebase xatosi:",e);
   db = null;
 }
 
 const TEST_MODE = true;
-document.getElementById('testBanner').classList.toggle('hidden', !TEST_MODE);
+document.getElementById("testBanner").classList.toggle("hidden",!TEST_MODE);
 
-const biologyQuestionsDB = (typeof questions !== 'undefined' && Array.isArray(questions))
+const biologyQuestionsDB =
+  (typeof questions !== "undefined" && Array.isArray(questions))
   ? questions.filter(q =>
-      q && typeof q.question === 'string' && Array.isArray(q.options) && q.options.length >= 2 &&
-      Number.isInteger(q.answer) && q.answer >= 0 && q.answer < q.options.length)
+      q && typeof q.question === "string" &&
+      Array.isArray(q.options) && q.options.length >= 2 &&
+      Number.isInteger(q.answer) &&
+      q.answer >= 0 && q.answer < q.options.length)
   : [];
 
 let currentQuestions = [];
@@ -228,160 +475,170 @@ let isRetry = false;
 let advanceTimer = null;
 
 function escapeHtml(str) {
-  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  return String(str)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#39;");
 }
 
 function shuffle(arr) {
-  return [...arr].sort(() => 0.5 - Math.random());
+  return [...arr].sort(() => Math.random() - 0.5);
 }
 
 function selectCount(count) {
   selectedQuestionCount = count;
-  document.querySelectorAll('.count-btn').forEach(btn => btn.classList.remove('bg-emerald-600', 'text-white'));
-  document.getElementById(`count-${count}`).classList.add('bg-emerald-600', 'text-white');
+  document.querySelectorAll(".count-btn").forEach(btn => btn.classList.remove("active"));
+  document.getElementById("count-"+count).classList.add("active");
 }
 
-document.querySelectorAll('.count-btn').forEach(btn => {
-  const n = Number(btn.id.replace('count-', ''));
-  if (n > biologyQuestionsDB.length) btn.classList.add('hidden');
+document.querySelectorAll(".count-btn").forEach(btn => {
+  const n = Number(btn.id.replace("count-",""));
+  if(n > biologyQuestionsDB.length) btn.classList.add("hidden");
 });
 selectCount(10);
 
-document.getElementById('userNameInput').addEventListener('input', () => {
-  document.getElementById('nameError').classList.add('hidden');
-  document.getElementById('userNameInput').classList.remove('input-error');
+document.getElementById("userNameInput").addEventListener("input",() => {
+  document.getElementById("nameError").classList.add("hidden");
 });
-
-document.getElementById('regionSelect').addEventListener('change', () => {
-  document.getElementById('regionError').classList.add('hidden');
-  document.getElementById('regionSelect').classList.remove('input-error');
+document.getElementById("regionSelect").addEventListener("change",() => {
+  document.getElementById("regionError").classList.add("hidden");
 });
 
 function startQuiz() {
-  const nameField = document.getElementById('userNameInput');
-  const nameError = document.getElementById('nameError');
-  const regionField = document.getElementById('regionSelect');
-  const regionError = document.getElementById('regionError');
+  const nameField = document.getElementById("userNameInput");
+  const regionField = document.getElementById("regionSelect");
   const nameInput = nameField.value.trim();
   const regionInput = regionField.value;
+  const nameError = document.getElementById("nameError");
+  const regionError = document.getElementById("regionError");
 
-  if (biologyQuestionsDB.length === 0) {
-    nameError.innerText = "Savollar yuklanmadi. questions.js fayli index.html bilan bir papkada ekanini tekshiring.";
-    nameError.classList.remove('hidden');
+  if(biologyQuestionsDB.length === 0) {
+    nameError.innerText = "Savollar yuklanmadi. questions.js faylini tekshiring.";
+    nameError.classList.remove("hidden");
     return;
   }
 
   let ok = true;
   nameError.innerText = "Ismingizni kiriting";
-  if (!nameInput) {
-    nameError.classList.remove('hidden');
-    nameField.classList.add('input-error');
+  if(!nameInput) {
+    nameError.classList.remove("hidden");
     ok = false;
   }
-  if (!regionInput) {
-    regionError.classList.remove('hidden');
-    regionField.classList.add('input-error');
+  if(!regionInput) {
+    regionError.classList.remove("hidden");
     ok = false;
   }
-  if (!ok) {
-    (!nameInput ? nameField : regionField).focus();
-    return;
-  }
+  if(!ok) return;
 
-  nameError.classList.add('hidden');
-  regionError.classList.add('hidden');
   userName = nameInput;
   userRegion = regionInput;
-
-  const countToUse = Math.min(selectedQuestionCount, biologyQuestionsDB.length);
-  beginQuiz(shuffle(biologyQuestionsDB).slice(0, countToUse), false);
+  const count = Math.min(selectedQuestionCount,biologyQuestionsDB.length);
+  beginQuiz(shuffle(biologyQuestionsDB).slice(0,count),false);
 }
 
-function beginQuiz(questionList, retry) {
+function beginQuiz(questionList,retry) {
   clearAdvance();
   isRetry = retry;
   currentQuestions = questionList;
   currentIndex = 0;
   selectedAnswers = new Array(currentQuestions.length).fill(null);
   secondsElapsed = 0;
-  document.getElementById('startView').classList.add('hidden');
-  document.getElementById('resultView').classList.add('hidden');
-  document.getElementById('quizView').classList.remove('hidden');
+
+  ["startView","resultView","leaderboardView"].forEach(id =>
+    document.getElementById(id).classList.add("hidden")
+  );
+  document.getElementById("quizView").classList.remove("hidden");
   startTimer();
   renderQuestion();
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function startTimer() {
   clearInterval(timerInterval);
-  document.getElementById('timer').innerText = "00:00";
+  document.getElementById("timer").innerText = "00:00";
   timerInterval = setInterval(() => {
     secondsElapsed++;
-    const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-    const secs = String(secondsElapsed % 60).padStart(2, '0');
-    document.getElementById('timer').innerText = `${mins}:${secs}`;
-  }, 1000);
+    const mins = String(Math.floor(secondsElapsed/60)).padStart(2,"0");
+    const secs = String(secondsElapsed%60).padStart(2,"0");
+    document.getElementById("timer").innerText = mins+":"+secs;
+  },1000);
 }
 
 function renderQuestion() {
   const q = currentQuestions[currentIndex];
-  document.getElementById('questionProgress').innerText = `Savol ${currentIndex + 1} / ${currentQuestions.length}`;
-  document.getElementById('questionText').innerText = q.question;
-  const container = document.getElementById('optionsContainer');
+  document.getElementById("questionProgress").innerText =
+    `Savol ${currentIndex+1} / ${currentQuestions.length}`;
+  document.getElementById("questionText").innerText = q.question;
+  document.getElementById("progressFill").style.width =
+    ((currentIndex+1)/currentQuestions.length*100)+"%";
+
+  const container = document.getElementById("optionsContainer");
   container.innerHTML = "";
 
-  q.options.forEach((opt, idx) => {
-    const btn = document.createElement('button');
-    btn.className = `option-btn w-full text-left px-4 py-3 ${selectedAnswers[currentIndex] === idx ? 'selected font-semibold' : ''}`;
-    btn.innerHTML = `<span class="opt-letter">${String.fromCharCode(65 + idx)}</span><span>${escapeHtml(opt)}</span>`;
+  q.options.forEach((opt,idx) => {
+    const btn = document.createElement("button");
+    btn.className = "option-btn"+(selectedAnswers[currentIndex]===idx ? " selected":"");
+    const letter = document.createElement("span");
+    letter.className = "opt-letter";
+    letter.textContent = String.fromCharCode(65+idx);
+    const text = document.createElement("span");
+    text.textContent = opt;
+    btn.append(letter,text);
     btn.onclick = () => selectOption(idx);
     container.appendChild(btn);
   });
 
-  const isLast = currentIndex === currentQuestions.length - 1;
-  const nextBtn = document.getElementById('nextBtn');
-  document.getElementById('prevBtn').disabled = currentIndex === 0;
-  nextBtn.innerText = isLast ? "Yakunlash" : "Keyingisi";
-  nextBtn.classList.toggle('hidden', !(isLast || (selectedAnswers[currentIndex] !== null && !advanceTimer)));
+  const isLast = currentIndex === currentQuestions.length-1;
+  const nextBtn = document.getElementById("nextBtn");
+  document.getElementById("prevBtn").disabled = currentIndex === 0;
+  nextBtn.innerHTML = isLast
+    ? 'Yakunlash <i class="fa-solid fa-flag-checkered"></i>'
+    : 'Keyingisi <i class="fa-solid fa-arrow-right"></i>';
+  nextBtn.classList.toggle("hidden",
+    !(isLast || (selectedAnswers[currentIndex]!==null && !advanceTimer)));
 }
 
 function clearAdvance() {
-  if (advanceTimer) {
+  if(advanceTimer) {
     clearTimeout(advanceTimer);
     advanceTimer = null;
   }
 }
 
 function selectOption(idx) {
-  if (advanceTimer) return;
+  if(advanceTimer) return;
   selectedAnswers[currentIndex] = idx;
-  document.getElementById('answerError').classList.add('hidden');
+  document.getElementById("answerError").classList.add("hidden");
 
-  if (currentIndex < currentQuestions.length - 1) {
+  if(currentIndex < currentQuestions.length-1) {
     advanceTimer = setTimeout(() => {
       advanceTimer = null;
       currentIndex++;
       renderQuestion();
-    }, 400);
+    },450);
   }
   renderQuestion();
 }
 
 function prevQuestion() {
   clearAdvance();
-  if (currentIndex > 0) {
+  if(currentIndex > 0) {
     currentIndex--;
-    document.getElementById('answerError').classList.add('hidden');
+    document.getElementById("answerError").classList.add("hidden");
     renderQuestion();
   }
 }
 
 function nextQuestion() {
-  if (selectedAnswers[currentIndex] === null) {
-    document.getElementById('answerError').classList.remove('hidden');
+  if(selectedAnswers[currentIndex] === null) {
+    document.getElementById("answerError").classList.remove("hidden");
     return;
   }
-  document.getElementById('answerError').classList.add('hidden');
-  if (currentIndex < currentQuestions.length - 1) {
+  document.getElementById("answerError").classList.add("hidden");
+  if(currentIndex < currentQuestions.length-1) {
+    clearAdvance();
     currentIndex++;
     renderQuestion();
   } else {
@@ -390,187 +647,197 @@ function nextQuestion() {
 }
 
 function finishQuiz() {
+  clearAdvance();
   clearInterval(timerInterval);
-  document.getElementById('quizView').classList.add('hidden');
-  document.getElementById('resultView').classList.remove('hidden');
+  document.getElementById("quizView").classList.add("hidden");
+  document.getElementById("resultView").classList.remove("hidden");
 
   let correctCount = 0;
-  const expContainer = document.getElementById('explanationsList');
+  const expContainer = document.getElementById("explanationsList");
   expContainer.innerHTML = "";
 
-  currentQuestions.forEach((q, idx) => {
+  currentQuestions.forEach((q,idx) => {
     const userAns = selectedAnswers[idx];
     const isCorrect = userAns === q.answer;
-    if (isCorrect) correctCount++;
+    if(isCorrect) correctCount++;
 
-    const item = document.createElement('div');
-    item.className = `p-4 rounded-xl border ${isCorrect ? 'bg-green-950/40 border-green-800' : 'bg-red-950/30 border-red-900'}`;
-    item.innerHTML = `
-      <div class="font-bold mb-1 text-sm ${isCorrect ? 'text-green-400' : 'text-red-400'}">${idx + 1}. ${escapeHtml(q.question)}</div>
-      <div class="text-xs mb-2">
-        <span class="text-emerald-500">Sizning javobingiz:</span> ${userAns !== null ? escapeHtml(q.options[userAns]) : 'Belgilanmagan'}<br>
-        <span class="text-green-400">To'g'ri javob:</span> ${escapeHtml(q.options[q.answer])}
-      </div>
-      <div class="text-xs bg-emerald-900/50 p-2 rounded border border-emerald-800 text-emerald-200">
-        <strong>Izoh:</strong> ${escapeHtml(q.explanation || '')}
-      </div>`;
+    const item = document.createElement("div");
+    item.className = "explanation "+(isCorrect ? "correct":"wrong");
+
+    const question = document.createElement("div");
+    question.className = "question";
+    question.textContent = (idx+1)+". "+q.question;
+
+    const detail = document.createElement("div");
+    detail.className = "detail";
+    detail.innerHTML =
+      '<span style="color:#aabaff">Sizning javobingiz:</span> '+
+      (userAns!==null ? escapeHtml(q.options[userAns]):"Belgilanmagan")+
+      '<br><span style="color:#8ce0b5">To‘g‘ri javob:</span> '+
+      escapeHtml(q.options[q.answer]);
+
+    const why = document.createElement("div");
+    why.className = "why";
+    why.innerHTML = "<strong>Izoh:</strong> "+escapeHtml(q.explanation || "Izoh mavjud emas.");
+
+    item.append(question,detail,why);
     expContainer.appendChild(item);
   });
 
   const total = currentQuestions.length;
-  const wrongCount = total - correctCount;
-  const scorePct = Math.round((correctCount / total) * 100);
+  const wrongCount = total-correctCount;
+  const scorePct = Math.round(correctCount/total*100);
 
-  document.getElementById('resultTitle').innerText = isRetry ? "Xatolar ustida ishlash" : "Test Natijasi";
-  document.getElementById('resultSummary').innerText = `Siz ${total} ta savoldan ${correctCount} tasiga to'g'ri javob berdingiz!`;
-  document.getElementById('scorePercent').innerText = `${scorePct}%`;
+  document.getElementById("resultTitle").innerText =
+    isRetry ? "Xatolar ustida ishlash":"Test natijasi";
+  document.getElementById("resultSummary").innerText =
+    `Siz ${total} ta savoldan ${correctCount} tasiga to‘g‘ri javob berdingiz!`;
+  document.getElementById("scorePercent").innerText = scorePct+"%";
 
-  const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-  const secs = String(secondsElapsed % 60).padStart(2, '0');
-  const timeStr = `${mins}:${secs}`;
-  document.getElementById('timeTaken').innerText = timeStr;
+  const mins = String(Math.floor(secondsElapsed/60)).padStart(2,"0");
+  const secs = String(secondsElapsed%60).padStart(2,"0");
+  const timeStr = mins+":"+secs;
+  document.getElementById("timeTaken").innerText = timeStr;
+  document.getElementById("retryWrongBtn").classList.toggle("hidden",wrongCount===0);
 
-  document.getElementById('retryWrongBtn').classList.toggle('hidden', wrongCount === 0);
-
-  if (!isRetry) {
-    saveScore(userName, userRegion, scorePct, correctCount, total, secondsElapsed, timeStr);
-  }
+  if(!isRetry) saveScore(userName,userRegion,scorePct,correctCount,total,secondsElapsed,timeStr);
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function retryWrongAnswers() {
-  const wrong = currentQuestions.filter((q, idx) => selectedAnswers[idx] !== q.answer);
-  if (wrong.length === 0) return;
-  beginQuiz(shuffle(wrong), true);
+  const wrong = currentQuestions.filter((q,idx) => selectedAnswers[idx]!==q.answer);
+  if(wrong.length) beginQuiz(shuffle(wrong),true);
 }
 
 function getLocalScores() {
   try {
-    return JSON.parse(localStorage.getItem('bio_leaderboard') || '[]');
-  } catch (e) {
+    return JSON.parse(localStorage.getItem("bio_leaderboard") || "[]");
+  } catch(e) {
     return [];
   }
 }
 
-function saveScore(name, region, score, correct, total, seconds, timeStr) {
+function saveScore(name,region,score,correct,total,seconds,timeStr) {
   const entry = {
-    name, region, score, correct, total, seconds,
-    time: timeStr,
-    date: new Date().toLocaleDateString()
+    name,region,score,correct,total,seconds,
+    time:timeStr,date:new Date().toLocaleDateString()
   };
 
   const scores = getLocalScores();
   scores.push(entry);
-  scores.sort((a, b) => b.score - a.score);
+  scores.sort((a,b) => b.score-a.score);
 
   try {
-    localStorage.setItem('bio_leaderboard', JSON.stringify(scores.slice(0, 100)));
-  } catch (e) {
+    localStorage.setItem("bio_leaderboard",JSON.stringify(scores.slice(0,100)));
+  } catch(e) {
     console.error(e);
   }
 
-  if (db) {
-    db.collection('results')
-      .add({ ...entry, createdAt: firebase.firestore.FieldValue.serverTimestamp() })
-      .catch(err => console.error("Natijani yuborib bo'lmadi:", err));
+  if(db) {
+    db.collection("results")
+      .add({...entry,createdAt:firebase.firestore.FieldValue.serverTimestamp()})
+      .catch(err => console.error("Natijani yuborib bo‘lmadi:",err));
   }
 }
 
 function renderLeaderboard(items) {
-  const list = document.getElementById('leaderboardList');
-
-  if (!items || items.length === 0) {
-    list.innerHTML = `<p class="text-center text-sm text-emerald-500">Hozircha natijalar mavjud emas.</p>`;
+  const list = document.getElementById("leaderboardList");
+  if(!items || items.length===0) {
+    list.innerHTML = '<p class="subheading">Hozircha natijalar mavjud emas.</p>';
     return;
   }
 
-  const better = (a, b) => (a.score > b.score) || (a.score === b.score && (a.seconds || 0) < (b.seconds || 0));
+  const better = (a,b) =>
+    a.score>b.score ||
+    (a.score===b.score && (a.seconds||0)<(b.seconds||0));
   const best = new Map();
 
   items.forEach(it => {
-    const key = String(it.name || '').trim().toLowerCase() + '|' + (it.region || '');
+    const key = String(it.name||"").trim().toLowerCase()+"|"+(it.region||"");
     const cur = best.get(key);
-    if (!cur || better(it, cur)) best.set(key, it);
+    if(!cur || better(it,cur)) best.set(key,it);
   });
 
   const top = [...best.values()]
-    .sort((a, b) => (b.score - a.score) || ((a.seconds || 0) - (b.seconds || 0)))
-    .slice(0, 50);
+    .sort((a,b) => (b.score-a.score)||((a.seconds||0)-(b.seconds||0)))
+    .slice(0,50);
 
-  list.innerHTML = top.map((item, idx) => `
-    <div class="flex justify-between items-center p-3 rounded-lg bg-emerald-950 border border-emerald-800">
-      <div class="flex items-center gap-3">
-        <span class="font-bold ${idx === 0 ? 'text-yellow-400' : idx === 1 ? 'text-slate-300' : idx === 2 ? 'text-amber-600' : 'text-emerald-500'}">#${idx + 1}</span>
-        <div>
-          <div class="font-semibold text-emerald-200 text-sm">${escapeHtml(item.name)}</div>
-          ${item.region ? `<div class="text-xs text-emerald-400"><i class="fa-solid fa-location-dot mr-1"></i>${escapeHtml(item.region)}</div>` : ''}
-          <div class="text-xs text-emerald-500">${escapeHtml(item.date || '')}${item.total ? ' · ' + escapeHtml(item.correct) + '/' + escapeHtml(item.total) : ''}</div>
+  list.innerHTML = top.map((item,idx) => `
+    <div class="rank-item">
+      <div class="rank-left">
+        <span class="rank-number" style="color:${idx===0?"#ffd66e":idx===1?"#cbd5e1":idx===2?"#d9a16d":"#9eafd8"}">#${idx+1}</span>
+        <div style="min-width:0">
+          <div class="rank-name">${escapeHtml(item.name||"")}</div>
+          <div class="rank-info">${escapeHtml(item.region||"")}</div>
+          <div class="rank-info">${escapeHtml(item.date||"")}${item.total?" · "+escapeHtml(item.correct)+"/"+escapeHtml(item.total):""}</div>
         </div>
       </div>
-      <div class="text-right">
-        <span class="font-bold text-emerald-300 text-sm">${escapeHtml(item.score)}%</span>
-        <span class="block text-xs text-emerald-500">${escapeHtml(item.time || '')}</span>
+      <div class="rank-score">
+        ${escapeHtml(item.score)}%
+        <span class="rank-time">${escapeHtml(item.time||"")}</span>
       </div>
     </div>
-  `).join('');
+  `).join("");
 }
 
-let viewBeforeLeaderboard = 'startView';
+let viewBeforeLeaderboard = "startView";
 
 async function toggleLeaderboard() {
-  const lb = document.getElementById('leaderboardView');
+  const lb = document.getElementById("leaderboardView");
 
-  if (lb.classList.contains('hidden')) {
-    const visible = ['startView', 'quizView', 'resultView'].find(id =>
-      !document.getElementById(id).classList.contains('hidden')
+  if(lb.classList.contains("hidden")) {
+    const visible = ["startView","quizView","resultView"].find(id =>
+      !document.getElementById(id).classList.contains("hidden")
     );
-    viewBeforeLeaderboard = visible || 'startView';
+    viewBeforeLeaderboard = visible || "startView";
   }
 
-  ['startView', 'quizView', 'resultView'].forEach(id =>
-    document.getElementById(id).classList.add('hidden')
+  ["startView","quizView","resultView"].forEach(id =>
+    document.getElementById(id).classList.add("hidden")
   );
+  lb.classList.remove("hidden");
 
-  lb.classList.remove('hidden');
-
-  const list = document.getElementById('leaderboardList');
-  const note = document.getElementById('leaderboardNote');
-
-  list.innerHTML = `<p class="text-center text-sm text-emerald-500">Reyting yuklanmoqda...</p>`;
+  const list = document.getElementById("leaderboardList");
+  const note = document.getElementById("leaderboardNote");
+  list.innerHTML = '<p class="subheading">Reyting yuklanmoqda...</p>';
   note.innerText = "";
 
   let items = null;
 
-  if (db) {
+  if(db) {
     try {
-      const snap = await db.collection('results').orderBy('score', 'desc').limit(300).get();
+      const snap = await db.collection("results")
+        .orderBy("score","desc").limit(300).get();
       items = snap.docs.map(d => d.data());
-      note.innerText = "Barcha o'quvchilar natijalari";
-    } catch (e) {
-      console.error("Reytingni yuklab bo'lmadi:", e);
+      note.innerText = "Barcha o‘quvchilar natijalari";
+    } catch(e) {
+      console.error("Reytingni yuklab bo‘lmadi:",e);
     }
   }
 
-  if (!items) {
+  if(!items) {
     items = getLocalScores();
     note.innerText = db
-      ? "Umumiy reytingni yuklab bo'lmadi. Faqat shu telefondagi natijalar ko'rsatilmoqda."
+      ? "Umumiy reyting yuklanmadi. Shu telefondagi natijalar ko‘rsatilmoqda."
       : "Faqat shu telefondagi natijalar.";
   }
-
   renderLeaderboard(items);
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function closeLeaderboard() {
-  document.getElementById('leaderboardView').classList.add('hidden');
-  document.getElementById(viewBeforeLeaderboard).classList.remove('hidden');
+  document.getElementById("leaderboardView").classList.add("hidden");
+  document.getElementById(viewBeforeLeaderboard).classList.remove("hidden");
 }
 
 function restartQuiz() {
+  clearAdvance();
+  clearInterval(timerInterval);
   isRetry = false;
-  document.getElementById('resultView').classList.add('hidden');
-  document.getElementById('startView').classList.remove('hidden');
+  document.getElementById("resultView").classList.add("hidden");
+  document.getElementById("startView").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 </script>
-
 </body>
 </html>
