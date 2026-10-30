@@ -49,6 +49,10 @@
     </div>
   </header>
 
+  <div id="testBanner" class="bg-amber-950/60 border-b border-amber-800 text-amber-200 text-sm text-center px-4 py-2">
+    <i class="fa-solid fa-flask mr-2"></i>Sayt test rejimida ishlamoqda. Xato topsangiz, @Azmiddinov_n2 ga yozing.
+  </div>
+
   <main class="max-w-3xl mx-auto w-full p-4 flex-grow flex items-center justify-center">
 
     <!-- Start View -->
@@ -199,6 +203,10 @@
       db = null;
     }
     // =========================================================
+
+    // Test rejimi yozuvi: tayyor bo'lganda true ni false qiling
+    const TEST_MODE = true;
+    document.getElementById('testBanner').classList.toggle('hidden', !TEST_MODE);
 
     const biologyQuestionsDB = (typeof questions !== 'undefined' && Array.isArray(questions))
       ? questions.filter(q =>
