@@ -4,52 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biologiya Milliy Sertifikat Test Platformasi</title>
+  <meta name="theme-color" content="#0b0d18">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { emerald: {
+      50:'#f3f4ff',100:'#e9ebff',200:'#d6dbff',300:'#bcc4ff',400:'#9fabff',
+      500:'#8b95c9',600:'#5566d9',700:'#343b66',800:'#232846',900:'#171b33',950:'#0f1226'
+    } } } } };
+  </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-
   <style>
-    body {
-      background-color: #064e3b;
-      color: #ecfdf5;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .card-custom {
-      background-color: #022c22;
-      border: 1px solid #065f46;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-    }
-    .btn-emerald {
-      background-color: #10b981;
-      color: #022c22;
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
-    }
-    .btn-emerald:hover {
-      background-color: #34d399;
-      transform: translateY(-2px);
-    }
-    .option-btn {
-      background-color: #064e3b;
-      border: 1px solid #047857;
-      transition: all 0.2s;
-    }
-    .option-btn:hover {
-      background-color: #047857;
-    }
-    .option-btn.selected {
-      background-color: #059669;
-      border-color: #34d399;
-    }
-    .input-error {
-      border-color: #f87171 !important;
-    }
+    body { background:#0b0d18; color:#e1e5ff; font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; font-size:17px; line-height:1.5; -webkit-tap-highlight-color:transparent; }
+    .card-custom { background:#12152a; border:1px solid #232846; box-shadow:0 12px 32px -12px rgba(0,0,0,.65); }
+    .btn-emerald { background:#8b9cff; color:#0b0d18; font-weight:700; min-height:52px; transition:background .15s, transform .1s; }
+    .btn-emerald:hover { background:#a5b2ff; }
+    .btn-emerald:active { transform:scale(.98); }
+    .option-btn { display:flex; align-items:center; min-height:58px; font-size:17px; border-radius:14px; background:#161a30; border:1px solid #2a3050; color:#e1e5ff; transition:background .15s, border-color .15s; }
+    .option-btn:hover { background:#1d2240; }
+    .option-btn.selected { background:#252b55; border-color:#8b9cff; }
+    .opt-letter { width:32px; height:32px; flex:none; margin-right:12px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; background:#232846; color:#bcc4ff; font-weight:700; font-size:15px; }
+    .option-btn.selected .opt-letter { background:#8b9cff; color:#0b0d18; }
+    .input-error { border-color:#f87171 !important; }
+    input, select { font-size:16px; min-height:52px; }
+    select option { background:#12152a; color:#e1e5ff; }
+    button:focus-visible, input:focus-visible, select:focus-visible { outline:2px solid #8b9cff; outline-offset:2px; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- Header -->
   <header class="p-4 bg-emerald-950 border-b border-emerald-800 shadow-md">
     <div class="max-w-4xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-3">
@@ -65,7 +49,6 @@
     </div>
   </header>
 
-  <!-- Main Container -->
   <main class="max-w-3xl mx-auto w-full p-4 flex-grow flex items-center justify-center">
 
     <!-- Start View -->
@@ -76,19 +59,41 @@
         <p class="text-sm text-emerald-400 mt-1">O'zingizga mos rejim va savollar sonini tanlang</p>
       </div>
 
-      <div class="mb-6 text-left">
+      <div class="mb-4 text-left">
         <label class="block text-sm font-medium mb-2 text-emerald-300">Ism va Familiyangiz:</label>
         <input type="text" id="userNameInput" maxlength="60" placeholder="Masalan: Ali Valiyev" class="w-full p-3 rounded-lg bg-emerald-950 border border-emerald-700 text-emerald-100 focus:outline-none focus:border-emerald-400">
         <p id="nameError" class="hidden text-red-400 text-sm mt-2">Ismingizni kiriting</p>
       </div>
 
       <div class="mb-6 text-left">
+        <label class="block text-sm font-medium mb-2 text-emerald-300">Viloyatingiz:</label>
+        <select id="regionSelect" class="w-full p-3 rounded-lg bg-emerald-950 border border-emerald-700 text-emerald-100 focus:outline-none focus:border-emerald-400">
+          <option value="">Viloyatni tanlang</option>
+          <option>Toshkent shahri</option>
+          <option>Toshkent viloyati</option>
+          <option>Andijon viloyati</option>
+          <option>Buxoro viloyati</option>
+          <option>Farg'ona viloyati</option>
+          <option>Jizzax viloyati</option>
+          <option>Xorazm viloyati</option>
+          <option>Namangan viloyati</option>
+          <option>Navoiy viloyati</option>
+          <option>Qashqadaryo viloyati</option>
+          <option>Qoraqalpog'iston Respublikasi</option>
+          <option>Samarqand viloyati</option>
+          <option>Sirdaryo viloyati</option>
+          <option>Surxondaryo viloyati</option>
+        </select>
+        <p id="regionError" class="hidden text-red-400 text-sm mt-2">Viloyatingizni tanlang</p>
+      </div>
+
+      <div class="mb-6 text-left">
         <label class="block text-sm font-medium mb-2 text-emerald-300">Savollar soni:</label>
         <div class="grid grid-cols-4 gap-3">
-          <button onclick="selectCount(10)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-10">10</button>
-          <button onclick="selectCount(20)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-20">20</button>
-          <button onclick="selectCount(30)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-30">30</button>
-          <button onclick="selectCount(50)" class="count-btn p-3 rounded-lg border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-50">50</button>
+          <button onclick="selectCount(10)" class="count-btn p-3 h-14 text-lg rounded-xl border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-10">10</button>
+          <button onclick="selectCount(20)" class="count-btn p-3 h-14 text-lg rounded-xl border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-20">20</button>
+          <button onclick="selectCount(30)" class="count-btn p-3 h-14 text-lg rounded-xl border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-30">30</button>
+          <button onclick="selectCount(50)" class="count-btn p-3 h-14 text-lg rounded-xl border border-emerald-700 bg-emerald-950 text-emerald-300 font-bold" id="count-50">50</button>
         </div>
       </div>
 
@@ -106,16 +111,14 @@
           <span id="timer">00:00</span>
         </div>
       </div>
-
       <div class="mb-6">
-        <h3 id="questionText" class="text-lg font-semibold text-emerald-100 leading-relaxed mb-4">Savol matni yuklanmoqda...</h3>
+        <h3 id="questionText" class="text-xl font-semibold text-emerald-100 leading-relaxed mb-5">Savol matni yuklanmoqda...</h3>
         <div id="optionsContainer" class="space-y-3"></div>
         <p id="answerError" class="hidden text-red-400 text-sm mt-3">Davom etish uchun javobni belgilang</p>
       </div>
-
       <div class="flex justify-between items-center pt-4 border-t border-emerald-800">
-        <button id="prevBtn" onclick="prevQuestion()" class="px-4 py-2 bg-emerald-900 text-emerald-300 rounded-lg text-sm font-semibold hover:bg-emerald-800 disabled:opacity-50">Orqaga</button>
-        <button id="nextBtn" onclick="nextQuestion()" class="px-5 py-2 btn-emerald rounded-lg text-sm font-semibold">Keyingisi</button>
+        <button id="prevBtn" onclick="prevQuestion()" class="px-5 py-3 min-h-[52px] bg-emerald-900 text-emerald-200 rounded-xl text-base font-semibold hover:bg-emerald-800 disabled:opacity-40">Orqaga</button>
+        <button id="nextBtn" onclick="nextQuestion()" class="flex-1 ml-3 py-3 btn-emerald rounded-xl text-base font-semibold">Keyingisi</button>
       </div>
     </div>
 
@@ -124,9 +127,8 @@
       <div class="text-center mb-6">
         <i class="fa-solid fa-square-poll-vertical text-5xl text-emerald-400 mb-2"></i>
         <h2 id="resultTitle" class="text-2xl font-bold text-emerald-100">Test Natijasi</h2>
-        <p id="resultSummary" class="text-lg font-semibold text-emerald-300 mt-2">Siz 10 ta savoldan 8 tasiga to'g'ri javob berdingiz!</p>
+        <p id="resultSummary" class="text-lg font-semibold text-emerald-300 mt-2"></p>
       </div>
-
       <div class="bg-emerald-950 p-4 rounded-xl border border-emerald-800 mb-6 flex justify-around text-center">
         <div>
           <span class="block text-xs text-emerald-500">Ball</span>
@@ -137,14 +139,11 @@
           <span id="timeTaken" class="text-xl font-bold text-emerald-300">04:12</span>
         </div>
       </div>
-
       <h3 class="font-bold text-lg text-emerald-200 mb-3">Savollar va Batafsil Tushuntirishlar:</h3>
       <div id="explanationsList" class="space-y-4 max-h-96 overflow-y-auto pr-2 mb-6"></div>
-
       <button id="retryWrongBtn" onclick="retryWrongAnswers()" class="hidden w-full py-3 mb-3 rounded-xl bg-emerald-800 hover:bg-emerald-700 border border-emerald-500 text-emerald-100 text-lg font-bold transition">
         Xatolarni takrorlash <i class="fa-solid fa-circle-exclamation ml-2"></i>
       </button>
-
       <button onclick="restartQuiz()" class="w-full py-3 rounded-xl btn-emerald text-lg font-bold">
         Qayta topshirish <i class="fa-solid fa-rotate-right ml-2"></i>
       </button>
@@ -161,7 +160,6 @@
         </button>
       </div>
       <p id="leaderboardNote" class="text-xs text-emerald-500 mb-4"></p>
-
       <div class="space-y-3 max-h-80 overflow-y-auto pr-1" id="leaderboardList">
         <p class="text-center text-sm text-emerald-500">Reyting yuklanmoqda...</p>
       </div>
@@ -169,8 +167,9 @@
 
   </main>
 
-  <footer class="p-4 bg-emerald-950 border-t border-emerald-800 text-center text-xs text-emerald-500">
-    Muallif: <a href="https://t.me/Azmiddinov_n2" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline font-semibold"><i class="fa-brands fa-telegram mr-1"></i>@Azmiddinov_n2</a>
+  <footer class="p-4 bg-emerald-950 border-t border-emerald-800 text-center text-sm text-emerald-500">
+    <p>Muallif: <span class="text-emerald-300 font-semibold">Azmiddinov Salohiddin Azmiddin o'g'li</span></p>
+    <p class="mt-1">Taklif va fikrlar uchun: <a href="https://t.me/Azmiddinov_n2" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline font-semibold"><i class="fa-brands fa-telegram mr-1"></i>@Azmiddinov_n2</a></p>
   </footer>
 
   <!-- Savollar bazasi (questions.js bilan bir papkada bo'lishi kerak) -->
@@ -178,7 +177,7 @@
 
   <script>
     // ================== FIREBASE SOZLAMASI ==================
-    // Firebase konsolidan olgan o'z ma'lumotlaringizni shu yerga qo'ying.
+    // Firebase konsolidan olgan ma'lumotlaringizni shu yerga qo'ying.
     // Qo'ymasangiz, reyting faqat shu telefonda saqlanadi.
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
@@ -201,17 +200,10 @@
     }
     // =========================================================
 
-    // Savollar questions.js dan olinadi, buzilgan savollar o'tkazib yuboriladi
     const biologyQuestionsDB = (typeof questions !== 'undefined' && Array.isArray(questions))
       ? questions.filter(q =>
-          q &&
-          typeof q.question === 'string' &&
-          Array.isArray(q.options) &&
-          q.options.length >= 2 &&
-          Number.isInteger(q.answer) &&
-          q.answer >= 0 &&
-          q.answer < q.options.length
-        )
+          q && typeof q.question === 'string' && Array.isArray(q.options) && q.options.length >= 2 &&
+          Number.isInteger(q.answer) && q.answer >= 0 && q.answer < q.options.length)
       : [];
 
     let currentQuestions = [];
@@ -221,15 +213,11 @@
     let secondsElapsed = 0;
     let selectedQuestionCount = 10;
     let userName = "";
+    let userRegion = "";
     let isRetry = false;
 
     function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
     }
 
     function shuffle(arr) {
@@ -242,29 +230,28 @@
       document.getElementById(`count-${count}`).classList.add('bg-emerald-600', 'text-white');
     }
 
-    // Bazadagi savollar sonidan ko'p bo'lgan tugmalarni yashirish
     document.querySelectorAll('.count-btn').forEach(btn => {
       const n = Number(btn.id.replace('count-', ''));
-      if (n > biologyQuestionsDB.length) {
-        btn.classList.add('hidden');
-      }
+      if (n > biologyQuestionsDB.length) btn.classList.add('hidden');
     });
-
-    // Default 10 tanlangandek qilish
     selectCount(10);
 
-    // Ism yozishni boshlaganda xato xabari yo'qoladi
     document.getElementById('userNameInput').addEventListener('input', () => {
-      const err = document.getElementById('nameError');
-      err.classList.add('hidden');
-      err.innerText = "Ismingizni kiriting";
+      document.getElementById('nameError').classList.add('hidden');
       document.getElementById('userNameInput').classList.remove('input-error');
+    });
+    document.getElementById('regionSelect').addEventListener('change', () => {
+      document.getElementById('regionError').classList.add('hidden');
+      document.getElementById('regionSelect').classList.remove('input-error');
     });
 
     function startQuiz() {
       const nameField = document.getElementById('userNameInput');
       const nameError = document.getElementById('nameError');
+      const regionField = document.getElementById('regionSelect');
+      const regionError = document.getElementById('regionError');
       const nameInput = nameField.value.trim();
+      const regionInput = regionField.value;
 
       if (biologyQuestionsDB.length === 0) {
         nameError.innerText = "Savollar yuklanmadi. questions.js fayli index.html bilan bir papkada ekanini tekshiring.";
@@ -272,32 +259,42 @@
         return;
       }
 
+      let ok = true;
+      nameError.innerText = "Ismingizni kiriting";
       if (!nameInput) {
-        nameError.innerText = "Ismingizni kiriting";
         nameError.classList.remove('hidden');
         nameField.classList.add('input-error');
-        nameField.focus();
+        ok = false;
+      }
+      if (!regionInput) {
+        regionError.classList.remove('hidden');
+        regionField.classList.add('input-error');
+        ok = false;
+      }
+      if (!ok) {
+        (!nameInput ? nameField : regionField).focus();
         return;
       }
+
       nameError.classList.add('hidden');
-      nameField.classList.remove('input-error');
+      regionError.classList.add('hidden');
       userName = nameInput;
+      userRegion = regionInput;
 
       const countToUse = Math.min(selectedQuestionCount, biologyQuestionsDB.length);
       beginQuiz(shuffle(biologyQuestionsDB).slice(0, countToUse), false);
     }
 
     function beginQuiz(questionList, retry) {
+      clearAdvance();
       isRetry = retry;
       currentQuestions = questionList;
       currentIndex = 0;
       selectedAnswers = new Array(currentQuestions.length).fill(null);
       secondsElapsed = 0;
-
       document.getElementById('startView').classList.add('hidden');
       document.getElementById('resultView').classList.add('hidden');
       document.getElementById('quizView').classList.remove('hidden');
-
       startTimer();
       renderQuestion();
     }
@@ -317,29 +314,46 @@
       const q = currentQuestions[currentIndex];
       document.getElementById('questionProgress').innerText = `Savol ${currentIndex + 1} / ${currentQuestions.length}`;
       document.getElementById('questionText').innerText = q.question;
-
       const container = document.getElementById('optionsContainer');
       container.innerHTML = "";
-
       q.options.forEach((opt, idx) => {
         const btn = document.createElement('button');
-        btn.className = `option-btn w-full text-left p-4 rounded-xl border border-emerald-700 text-emerald-100 flex items-center justify-between ${selectedAnswers[currentIndex] === idx ? 'selected font-bold text-white' : ''}`;
-        btn.innerHTML = `<span>${String.fromCharCode(65 + idx)}) ${escapeHtml(opt)}</span>`;
+        btn.className = `option-btn w-full text-left px-4 py-3 ${selectedAnswers[currentIndex] === idx ? 'selected font-semibold' : ''}`;
+        btn.innerHTML = `<span class="opt-letter">${String.fromCharCode(65 + idx)}</span><span>${escapeHtml(opt)}</span>`;
         btn.onclick = () => selectOption(idx);
         container.appendChild(btn);
       });
-
+      const isLast = currentIndex === currentQuestions.length - 1;
+      const nextBtn = document.getElementById('nextBtn');
       document.getElementById('prevBtn').disabled = currentIndex === 0;
-      document.getElementById('nextBtn').innerText = currentIndex === currentQuestions.length - 1 ? "Yakunlash" : "Keyingisi";
+      nextBtn.innerText = isLast ? "Yakunlash" : "Keyingisi";
+      // "Keyingisi" faqat oldin javob berilgan savolga qaytganda ko'rinadi; oxirgi savolda "Yakunlash" doim bor
+      nextBtn.classList.toggle('hidden', !(isLast || (selectedAnswers[currentIndex] !== null && !advanceTimer)));
+    }
+
+    let advanceTimer = null;
+
+    function clearAdvance() {
+      if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
     }
 
     function selectOption(idx) {
+      if (advanceTimer) return;
       selectedAnswers[currentIndex] = idx;
       document.getElementById('answerError').classList.add('hidden');
+      // Oxirgi savoldan boshqasida javobdan keyin avtomatik keyingisiga o'tadi
+      if (currentIndex < currentQuestions.length - 1) {
+        advanceTimer = setTimeout(() => {
+          advanceTimer = null;
+          currentIndex++;
+          renderQuestion();
+        }, 400);
+      }
       renderQuestion();
     }
 
     function prevQuestion() {
+      clearAdvance();
       if (currentIndex > 0) {
         currentIndex--;
         document.getElementById('answerError').classList.add('hidden');
@@ -348,14 +362,11 @@
     }
 
     function nextQuestion() {
-      // Javob belgilanmagan bo'lsa keyingisiga o'tishga qo'ymaydi
       if (selectedAnswers[currentIndex] === null) {
         document.getElementById('answerError').classList.remove('hidden');
         return;
       }
-
       document.getElementById('answerError').classList.add('hidden');
-
       if (currentIndex < currentQuestions.length - 1) {
         currentIndex++;
         renderQuestion();
@@ -377,21 +388,17 @@
         const userAns = selectedAnswers[idx];
         const isCorrect = userAns === q.answer;
         if (isCorrect) correctCount++;
-
         const item = document.createElement('div');
-        item.className = `p-4 rounded-xl border ${isCorrect ? 'bg-emerald-950/60 border-emerald-600' : 'bg-red-950/30 border-red-800'}`;
+        item.className = `p-4 rounded-xl border ${isCorrect ? 'bg-green-950/40 border-green-800' : 'bg-red-950/30 border-red-900'}`;
         item.innerHTML = `
-          <div class="font-bold mb-1 text-sm ${isCorrect ? 'text-emerald-400' : 'text-red-400'}">
-            ${idx + 1}. ${escapeHtml(q.question)}
-          </div>
+          <div class="font-bold mb-1 text-sm ${isCorrect ? 'text-green-400' : 'text-red-400'}">${idx + 1}. ${escapeHtml(q.question)}</div>
           <div class="text-xs mb-2">
             <span class="text-emerald-500">Sizning javobingiz:</span> ${userAns !== null ? escapeHtml(q.options[userAns]) : 'Belgilanmagan'}<br>
-            <span class="text-emerald-400">To'g'ri javob:</span> ${escapeHtml(q.options[q.answer])}
+            <span class="text-green-400">To'g'ri javob:</span> ${escapeHtml(q.options[q.answer])}
           </div>
           <div class="text-xs bg-emerald-900/50 p-2 rounded border border-emerald-800 text-emerald-200">
             <strong>Izoh:</strong> ${escapeHtml(q.explanation || '')}
-          </div>
-        `;
+          </div>`;
         expContainer.appendChild(item);
       });
 
@@ -408,12 +415,10 @@
       const timeStr = `${mins}:${secs}`;
       document.getElementById('timeTaken').innerText = timeStr;
 
-      // Xatolarni takrorlash tugmasi faqat xato bo'lsa ko'rinadi
       document.getElementById('retryWrongBtn').classList.toggle('hidden', wrongCount === 0);
 
-      // Takrorlash natijasi reytingga yozilmaydi
       if (!isRetry) {
-        saveScore(userName, scorePct, correctCount, total, secondsElapsed, timeStr);
+        saveScore(userName, userRegion, scorePct, correctCount, total, secondsElapsed, timeStr);
       }
     }
 
@@ -431,18 +436,9 @@
       }
     }
 
-    function saveScore(name, score, correct, total, seconds, timeStr) {
-      const entry = {
-        name,
-        score,
-        correct,
-        total,
-        seconds,
-        time: timeStr,
-        date: new Date().toLocaleDateString()
-      };
+    function saveScore(name, region, score, correct, total, seconds, timeStr) {
+      const entry = { name, region, score, correct, total, seconds, time: timeStr, date: new Date().toLocaleDateString() };
 
-      // Shu telefonda saqlash
       const scores = getLocalScores();
       scores.push(entry);
       scores.sort((a, b) => b.score - a.score);
@@ -452,7 +448,6 @@
         console.error(e);
       }
 
-      // Umumiy reytingga yuborish
       if (db) {
         db.collection('results')
           .add({ ...entry, createdAt: firebase.firestore.FieldValue.serverTimestamp() })
@@ -462,14 +457,18 @@
 
     function renderLeaderboard(items) {
       const list = document.getElementById('leaderboardList');
-
       if (!items || items.length === 0) {
         list.innerHTML = `<p class="text-center text-sm text-emerald-500">Hozircha natijalar mavjud emas.</p>`;
         return;
       }
-
-      items.sort((a, b) => (b.score - a.score) || ((a.seconds || 0) - (b.seconds || 0)));
-      const top = items.slice(0, 50);
+      const better = (a, b) => (a.score > b.score) || (a.score === b.score && (a.seconds || 0) < (b.seconds || 0));
+      const best = new Map();
+      items.forEach(it => {
+        const key = String(it.name || '').trim().toLowerCase() + '|' + (it.region || '');
+        const cur = best.get(key);
+        if (!cur || better(it, cur)) best.set(key, it);
+      });
+      const top = [...best.values()].sort((a, b) => (b.score - a.score) || ((a.seconds || 0) - (b.seconds || 0))).slice(0, 50);
 
       list.innerHTML = top.map((item, idx) => `
         <div class="flex justify-between items-center p-3 rounded-lg bg-emerald-950 border border-emerald-800">
@@ -477,6 +476,7 @@
             <span class="font-bold ${idx === 0 ? 'text-yellow-400' : idx === 1 ? 'text-slate-300' : idx === 2 ? 'text-amber-600' : 'text-emerald-500'}">#${idx + 1}</span>
             <div>
               <div class="font-semibold text-emerald-200 text-sm">${escapeHtml(item.name)}</div>
+              ${item.region ? `<div class="text-xs text-emerald-400"><i class="fa-solid fa-location-dot mr-1"></i>${escapeHtml(item.region)}</div>` : ''}
               <div class="text-xs text-emerald-500">${escapeHtml(item.date || '')}${item.total ? ' · ' + escapeHtml(item.correct) + '/' + escapeHtml(item.total) : ''}</div>
             </div>
           </div>
@@ -488,12 +488,16 @@
       `).join('');
     }
 
+    let viewBeforeLeaderboard = 'startView';
+
     async function toggleLeaderboard() {
-      clearInterval(timerInterval);
-      document.getElementById('startView').classList.add('hidden');
-      document.getElementById('quizView').classList.add('hidden');
-      document.getElementById('resultView').classList.add('hidden');
-      document.getElementById('leaderboardView').classList.remove('hidden');
+      const lb = document.getElementById('leaderboardView');
+      if (lb.classList.contains('hidden')) {
+        const visible = ['startView', 'quizView', 'resultView'].find(id => !document.getElementById(id).classList.contains('hidden'));
+        viewBeforeLeaderboard = visible || 'startView';
+      }
+      ['startView', 'quizView', 'resultView'].forEach(id => document.getElementById(id).classList.add('hidden'));
+      lb.classList.remove('hidden');
 
       const list = document.getElementById('leaderboardList');
       const note = document.getElementById('leaderboardNote');
@@ -501,30 +505,27 @@
       note.innerText = "";
 
       let items = null;
-
       if (db) {
         try {
-          const snap = await db.collection('results').orderBy('score', 'desc').limit(100).get();
+          const snap = await db.collection('results').orderBy('score', 'desc').limit(300).get();
           items = snap.docs.map(d => d.data());
           note.innerText = "Barcha o'quvchilar natijalari";
         } catch (e) {
           console.error("Reytingni yuklab bo'lmadi:", e);
         }
       }
-
       if (!items) {
         items = getLocalScores();
         note.innerText = db
           ? "Umumiy reytingni yuklab bo'lmadi. Faqat shu telefondagi natijalar ko'rsatilmoqda."
           : "Faqat shu telefondagi natijalar.";
       }
-
       renderLeaderboard(items);
     }
 
     function closeLeaderboard() {
       document.getElementById('leaderboardView').classList.add('hidden');
-      document.getElementById('startView').classList.remove('hidden');
+      document.getElementById(viewBeforeLeaderboard).classList.remove('hidden');
     }
 
     function restartQuiz() {
