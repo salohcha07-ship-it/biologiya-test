@@ -698,6 +698,35 @@ function prepareQuestions(list) {
   });
 }
 
+// ===== Mavzu bo'yicha test =====
+let selectedTopic = "ALL";
+function buildTopicPicker() {
+  const grid = document.getElementById("countGrid");
+  if(!grid || document.getElementById("topicField")) return;
+  const counts = {};
+  biologyQuestionsDB.forEach(q => { if(q.topic) counts[q.topic] = (counts[q.topic]||0)+1; });
+  const names = Object.keys(counts).sort();
+  if(!names.length) return;
+  const field = document.createElement("div");
+  field.className = "field"; field.id = "topicField";
+  const label = document.createElement("label");
+  label.innerHTML = '<i class="fa-solid fa-layer-group"></i> Mavzu';
+  const sel = document.createElement("select");
+  sel.id = "topicSelect";
+  const all = new Option("Aralash (barcha mavzular) – "+biologyQuestionsDB.length+" ta","ALL");
+  sel.add(all);
+  names.forEach(n => sel.add(new Option(n+" – "+counts[n]+" ta",n)));
+  const hint = document.createElement("p");
+  hint.id = "topicHint"; hint.style.cssText = "font-size:12px;color:#b8a9ce;margin-top:7px";
+  sel.addEventListener("change",() => {
+    selectedTopic = sel.value;
+    const n = selectedTopic==="ALL" ? biologyQuestionsDB.length : counts[selectedTopic];
+    hint.textContent = n < selectedQuestionCount ? "Bu mavzuda "+n+" ta savol bor, test shuncha savoldan iborat bo'ladi." : "";
+  });
+  field.append(label,sel,hint);
+  grid.parentNode.parentNode.insertBefore(field,grid.parentNode.nextSibling);
+}
+
 function selectCount(count) {
   count = Number(count);
   if(!count) return;
@@ -716,6 +745,7 @@ document.getElementById("countGrid").addEventListener("click", e => {
 });
 
 selectCount(10);
+buildTopicPicker();
 
 document.getElementById("userNameInput").addEventListener("input",() => {
   document.getElementById("nameError").classList.add("hidden");
@@ -752,8 +782,9 @@ function startQuiz() {
 
   userName = nameInput;
   userRegion = regionInput;
-  const count = Math.min(selectedQuestionCount,biologyQuestionsDB.length);
-  beginQuiz(shuffle(prepareQuestions(biologyQuestionsDB)).slice(0,count),false);
+  const pool = selectedTopic === "ALL" ? biologyQuestionsDB : biologyQuestionsDB.filter(q => q.topic === selectedTopic);
+  const count = Math.min(selectedQuestionCount,pool.length);
+  beginQuiz(shuffle(prepareQuestions(pool)).slice(0,count),false);
 }
 
 function beginQuiz(questionList,retry) {
