@@ -1395,5 +1395,204 @@ const questions = [
     topic: "Genetika",
     answer: 1,
     explanation: "DNK zanjiri azotli asos, dezoksiriboza va fosfat guruhidan iborat millionlab nukleotid monomerlarining birikishidan hosil bo'ladi."
-  }
-];
+  },
+
+  // --- 199-248 savollar (qiyin, milliy sertifikat darajasi) ---
+  {
+    question: "Oziq zanjiri: o't → quyon → tulki → burgut. Lindeman qoidasiga (10%) ko'ra burgut biomassasi 5 kg bo'lsa, shu zanjirni ta'minlash uchun kamida qancha o't biomassasi kerak?",
+    options: ["500 kg", "5000 kg", "50 000 kg", "50 kg"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Har bir pog'onada biomassa 10 marta ortib boradi: burgut 5 kg → tulki 50 kg → quyon 500 kg → o't 5000 kg."
+  },
+  {
+    question: "Producentlarda 20 000 kJ energiya to'plangan. Lindeman qoidasiga ko'ra bu energiyaning qancha qismi ikkinchi tartibli iste'molchilarga (uchinchi trofik daraja) o'tadi?",
+    options: ["2000 kJ", "20 kJ", "200 kJ", "2 kJ"],
+    topic: "Ekologiya",
+    answer: 2,
+    explanation: "Har pog'onada energiyaning taxminan 10% o'tadi: 20 000 → 2000 (birinchi tartibli iste'molchi) → 200 kJ (ikkinchi tartibli iste'molchi)."
+  },
+  {
+    question: "Okeanda fitoplanktonning ayni paytdagi biomassasi zooplanktonnikidan kam bo'lishi (biomassa piramidasining teskari bo'lishi) mumkin. Buning asosiy sababi nima?",
+    options: ["Fitoplanktonning bo'linish va yangilanish tezligi juda yuqori, kam biomassa ham ko'p mahsulot beradi", "Zooplankton fotosintez qiladi", "Fitoplankton energiyani o'zlashtirmaydi", "Okeanda producentlar umuman bo'lmaydi"],
+    topic: "Ekologiya",
+    answer: 0,
+    explanation: "Fitoplankton bir necha kunda yangilanadi, shuning uchun kichik biomassa bilan ham zooplanktonni oziqlantiradi; energiya piramidasi esa hech qachon teskari bo'lmaydi."
+  },
+  {
+    question: "Yalang'och qoyatosh yuzasida birlamchi sukkessiyani qaysi organizmlar boshlab beradi?",
+    options: ["Ignabargli daraxtlar", "Qalin o'tli o'simliklar", "Sutemizuvchi hayvonlar", "Lishayniklar"],
+    topic: "Ekologiya",
+    answer: 3,
+    explanation: "Pioner organizmlar — lishayniklar kislotalar ajratib toshni yemiradi va dastlabki tuproq hosil qiladi, keyin moxlar, o'tlar, butalar va daraxtlar keladi."
+  },
+  {
+    question: "Quyidagi munosabatlardan qaysi biri kommensalizmga misol bo'ladi?",
+    options: ["Dukkakli o'simlik va tuganak bakteriyalar", "Bit va odam", "Akula va unga yopishib yuruvchi remora baliq", "Lishayniklardagi zamburug' va suvo'ti"],
+    topic: "Ekologiya",
+    answer: 2,
+    explanation: "Remora akuladan foyda ko'radi (transport, oziq qoldig'i), akulaga esa na foyda, na zarar. Boshqa misollar: mutualizm va parazitizm."
+  },
+  {
+    question: "Tuproqda ammoniy tuzlarining nitritlarga, so'ngra nitratlarga aylanishi qanday ataladi?",
+    options: ["Denitrifikatsiya", "Nitrifikatsiya", "Ammonifikatsiya", "Molekulyar azotni biriktirish"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Nitrifikatsiya — nitrifikatsiyalovchi bakteriyalar (Nitrosomonas, Nitrobacter) tomonidan amalga oshiriladi. Denitrifikatsiyada esa nitratlar erkin azotgacha qaytariladi."
+  },
+  {
+    question: "Populyatsiya soni muhit sig'imiga (K) yetganda quyidagilardan qaysi biri yuz beradi?",
+    options: ["Tug'ilish o'limdan ancha ko'payadi", "Populyatsiya zudlik bilan butunlay yo'qoladi", "Individlar soni eksponensial o'sishda davom etadi", "Tug'ilish va o'lim tenglashib, son nisbatan barqarorlashadi"],
+    topic: "Ekologiya",
+    answer: 3,
+    explanation: "Logistik o'sishda resurslar cheklanganligi tufayli o'sish sekinlashadi va son muhit sig'imi atrofida barqarorlashadi."
+  },
+  {
+    question: "Stratosferadagi ozon qatlamining yemirilishiga asosan qaysi moddalar sabab bo'ladi?",
+    options: ["Metan", "Freonlar (xlorftoruglerodlar)", "Azot", "Argon"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Freonlardan ajralgan xlor atomlari ozon molekulalarini parchalaydi, natijada ultrabinafsha nurlanishdan himoya susayadi."
+  },
+  {
+    question: "Biotsenoz (tirik organizmlar yig'indisi) va uning yashash joyi — biotop birgalikda nima deb ataladi?",
+    options: ["Populyatsiya", "Biosfera", "Areal", "Biogeosenoz (ekotizim)"],
+    topic: "Ekologiya",
+    answer: 3,
+    explanation: "Biotsenoz + biotop = biogeosenoz (ekotizim) — moddalar aylanishi va energiya oqimi kuzatiladigan birlik."
+  },
+  {
+    question: "Libix qonuniga (minimum qonuni) ko'ra o'simlik hosildorligini qaysi omil belgilaydi?",
+    options: ["Eng ko'p miqdordagi omil", "Miqdori optimaldan eng ko'p chetga chiqqan, minimumdagi omil", "Haroratning o'rtacha ko'rsatkichi", "Yorug'lik, qanday bo'lmasin"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Organizm hayoti eng yetishmaydigan (cheklovchi) omil bilan belgilanadi, boshqa omillar mo'l bo'lsa ham."
+  },
+  {
+    question: "Baliqlar yuragi nechta kamerali va qon aylanish doirasi nechta?",
+    options: ["Ikki kamerali, bitta doira", "Uch kamerali, ikkita doira", "Ikki kamerali, ikkita doira", "To'rt kamerali, ikkita doira"],
+    topic: "Zoologiya",
+    answer: 0,
+    explanation: "Baliqlar yuragi bitta bo'lmacha va bitta qorinchadan iborat, unda faqat venoz qon bo'ladi; qon aylanish doirasi bitta."
+  },
+  {
+    question: "Suvda va quruqlikda yashovchilar (masalan, baqa) yuragi qanday tuzilgan?",
+    options: ["Bitta bo'lmacha va bitta qorincha", "Ikki bo'lmacha va ikki qorincha", "Bitta bo'lmacha va ikki qorincha", "Ikki bo'lmacha va bitta qorincha"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "Uch kamerali yurak: ikki bo'lmacha, bitta qorincha; ikki qon aylanish doirasi, lekin qorinchada qon qisman aralashadi."
+  },
+  {
+    question: "Sudralib yuruvchilardan qaysi birining yuragi to'rt kamerali bo'ladi?",
+    options: ["Kaltakesak", "Ilon", "Timsoh", "Toshbaqa"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Timsohlarning qorinchasi to'liq to'siq bilan bo'lingan; boshqa sudralib yuruvchilarda yurak uch kamerali (qorinchada chala to'siq)."
+  },
+  {
+    question: "Qushlarda 'ikki karra nafas olish' nimani anglatadi?",
+    options: ["Qushlar nafas olishda ikki marta og'iz ochadi", "Nafas olishda ham, nafas chiqarishda ham o'pkada gaz almashinuvi davom etadi", "Nafas olish faqat havo xaltachalari orqali o'tadi", "Qushlar ham o'pka, ham jabra orqali nafas oladi"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Havo xaltachalari tufayli havo o'pka orqali ikki marta o'tadi, shu sababli nafas olishda ham, nafas chiqarishda ham kislorod qonga o'tadi."
+  },
+  {
+    question: "Tuxum qo'yib ko'payadigan sutemizuvchilar (ornitorink, exidna) qaysi guruhga kiradi?",
+    options: ["Yo'ldoshlilar", "Xaltalilar", "Kloakalilar (birinchi hayvonlar)", "Hasharotxo'rlar"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Kloakalilar tuxum qo'yadi, bolalarini sut bilan boqadi; ularda kloaka bor."
+  },
+  {
+    question: "Quyidagi hasharotlardan qaysi biri to'liq o'zgarish bilan rivojlanadi?",
+    options: ["Chigirtka", "Tarakan", "Ninachi", "Asalari"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "Asalari: tuxum → lichinka → g'umbak → voyaga yetgan hasharot. Chigirtka, tarakan va ninachida g'umbak bosqichi yo'q."
+  },
+  {
+    question: "O'rgimchaksimonlar sinfi vakillariga xos belgilar qaysi javobda to'g'ri keltirilgan?",
+    options: ["3 juft oyoq, tanasi bosh, ko'krak va qorindan iborat", "4 juft oyoq, tanasi bosh-ko'krak va qorindan iborat, mo'ylovi yo'q", "5 juft oyoq, 2 juft mo'ylov", "4 juft oyoq, tanasi uch bo'limli"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "O'rgimchaksimonlarda 4 juft yurish oyog'i, tana 2 bo'limli (bosh-ko'krak va qorin), mo'ylovlar yo'q."
+  },
+  {
+    question: "Halqali chuvalchanglarning yumaloq chuvalchanglardan asosiy progressiv belgisi nima?",
+    options: ["Ikkilamchi tana bo'shlig'i (selom) va yopiq qon aylanish tizimi", "Birlamchi tana bo'shlig'i", "Hazm yo'lining bir teshikligi", "Faqat ayrim jinsliligi"],
+    topic: "Zoologiya",
+    answer: 0,
+    explanation: "Halqali chuvalchanglarda selom va yopiq qon aylanish tizimi bor, tana segmentlarga bo'lingan."
+  },
+  {
+    question: "Mollyuskalar orasida eng murakkab asab tizimi va yaxshi rivojlangan ko'zlar qaysi sinfda uchraydi?",
+    options: ["Ikki pallalilar", "Boshoyoqlilar", "Qorinoyoqlilar", "Xitonlar"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Boshoyoqlilar (sakkizoyoq, kalmar) yuqori darajada rivojlangan bosh miya va murakkab ko'zlarga ega."
+  },
+  {
+    question: "Gidraning himoya va hujum vazifasini bajaruvchi hujayralari qaysilar?",
+    options: ["Oraliq hujayralar", "Epiteliy-mushak hujayralari", "Nerv hujayralari", "Chaqaruvchi hujayralar"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "Chaqaruvchi hujayralardagi zaharli iplar o'ljani falajlaydi, ular asosan paypaslagichlarda joylashgan."
+  },
+  {
+    question: "Bezgak plazmodiysining jinsiy ko'payishi qayerda kechadi?",
+    options: ["Odam jigarida", "Odam eritrotsitlarida", "Anofeles chivinining oshqozonida", "Kulex chivinining so'lak bezlarida"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Jinsiy ko'payish anofeles chivinida kechadi (chivin — yakuniy xo'jayin); odamda jinssiz ko'payish (shizogoniya) bo'ladi."
+  },
+  {
+    question: "Xordalilar tipiga xos belgilar qaysi qatorda to'g'ri keltirilgan?",
+    options: ["Xorda, orqa tomonda nerv naychasi, halqumda jabra yoriqlari", "Xorda, qorin tomonda nerv zanjiri, tashqi skelet", "Orqa miya, xitin qoplam, ochiq qon aylanish", "Faqat xorda bo'lib, nerv naychasi yo'q"],
+    topic: "Zoologiya",
+    answer: 0,
+    explanation: "Xordalilar embrional rivojlanishida xorda, nerv naychasi (orqada) va halqum jabra yoriqlari paydo bo'ladi."
+  },
+  {
+    question: "Lansetnikning qon aylanish tizimi qanday tuzilgan?",
+    options: ["Ochiq, yuragi ikki kamerali", "Yopiq, yuragi yo'q", "Yopiq, yuragi uch kamerali", "Ochiq, yuragi yo'q"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Lansetnikda qon aylanish tizimi yopiq, yurak yo'q; qorin aortasi qon haydovchi vazifani bajaradi."
+  },
+  {
+    question: "Sistematik kategoriyalarning kichikdan kattaga to'g'ri ketma-ketligini ko'rsating.",
+    options: ["Tur – oila – avlod – turkum – sinf – tip", "Tur – turkum – avlod – oila – sinf – tip", "Tur – avlod – turkum – oila – tip – sinf", "Tur – avlod – oila – turkum – sinf – tip"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "To'g'ri tartib: tur → avlod → oila → turkum → sinf → tip → olam."
+  },
+  {
+    question: "Ikki qavatli gastrula bosqichida qaysi kurtak varaqlar mavjud bo'ladi?",
+    options: ["Ektoderma va mezoderma", "Mezoderma va endoderma", "Ektoderma va endoderma", "Faqat endoderma"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Gastrulyatsiya natijasida avval ektoderma va endoderma hosil bo'ladi; mezoderma uch qavatli hayvonlarda keyin paydo bo'ladi."
+  },
+  {
+    question: "Krebs sikli (trikarbon kislotalar sikli) hujayraning qaysi qismida kechadi?",
+    options: ["Sitoplazmada", "Yadroda", "Mitoxondriya matriksida", "Golji apparatida"],
+    topic: "Sitologiya",
+    answer: 2,
+    explanation: "Krebs sikli mitoxondriya matriksida o'tadi, oxirgi bosqich — oksidlovchi fosforlanish — kristalarda."
+  },
+  {
+    question: "Fotosintezning yorug'lik fazasida ajralib chiqadigan kislorod qaysi moddadan hosil bo'ladi?",
+    options: ["Karbonat angidriddan", "Suvdan", "Glyukozadan", "ATFdan"],
+    topic: "Sitologiya",
+    answer: 1,
+    explanation: "Kislorod suvning fotolizidan hosil bo'ladi (tilakoid membranalarida)."
+  },
+  {
+    question: "Krossingover meyozning qaysi bosqichida sodir bo'ladi?",
+    options: ["Anafaza II", "Profaza I", "Metafaza I", "Telofaza II"],
+    topic: "Sitologiya",
+    answer: 1,
+    explanation: "Profaza I da gomologik xromosomalar konyugatsiyalanib, o'zaro uchastkalar almashadi."
+  },
+  {
+    quest
