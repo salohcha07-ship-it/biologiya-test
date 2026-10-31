@@ -624,6 +624,7 @@ body.light-mode .lb-tab.active { background:linear-gradient(135deg,#c9a4ff,#8e5b
 </footer>
 
 <script src="questions.js"></script>
+<script src="rasmli_savollar.js"></script>
 <script>
 // Tungi/kunduzgi rejim
 function applyTheme(mode) {
@@ -676,13 +677,14 @@ const TEST_MODE = true;
 document.getElementById("testBanner").classList.toggle("hidden",!TEST_MODE);
 
 const biologyQuestionsDB =
-  (typeof questions !== "undefined" && Array.isArray(questions))
-  ? questions.filter(q =>
+  [].concat(
+    (typeof questions !== "undefined" && Array.isArray(questions)) ? questions : [],
+    (typeof rasmliSavollar !== "undefined" && Array.isArray(rasmliSavollar)) ? rasmliSavollar : []
+  ).filter(q =>
       q && typeof q.question === "string" &&
       Array.isArray(q.options) && q.options.length >= 2 &&
       Number.isInteger(q.answer) &&
-      q.answer >= 0 && q.answer < q.options.length)
-  : [];
+      q.answer >= 0 && q.answer < q.options.length);
 
 let currentQuestions = [];
 let currentIndex = 0;
@@ -845,6 +847,15 @@ function renderQuestion() {
   document.getElementById("questionProgress").innerText =
     `Savol ${currentIndex+1} / ${currentQuestions.length}`;
   document.getElementById("questionText").innerText = q.question;
+  const oldImg = document.getElementById("qImage");
+  if(oldImg) oldImg.remove();
+  if(q.image){
+    const imgBox = document.createElement("div");
+    imgBox.id = "qImage";
+    imgBox.style.cssText = "margin:12px 0;padding:8px;border-radius:16px;background:#f8fafc;text-align:center";
+    imgBox.innerHTML = q.image;
+    document.getElementById("questionText").insertAdjacentElement("afterend", imgBox);
+  }
   document.getElementById("progressFill").style.width =
     ((currentIndex+1)/currentQuestions.length*100)+"%";
 
@@ -954,7 +965,14 @@ function finishQuiz() {
     why.className = "why";
     why.innerHTML = "<strong>Izoh:</strong> "+escapeHtml(q.explanation || "Izoh mavjud emas.");
 
-    item.append(question,detail,why);
+    if(q.image){
+      const pic = document.createElement("div");
+      pic.style.cssText = "max-width:260px;margin:8px 0;border-radius:12px;overflow:hidden";
+      pic.innerHTML = q.image;
+      item.append(question,pic,detail,why);
+    } else {
+      item.append(question,detail,why);
+    }
     expContainer.appendChild(item);
   });
 
@@ -1194,7 +1212,7 @@ function restartQuiz() {
   function seeded(n,seed){let x=seed*9301+49297;return [...Array(n).keys()].sort(()=>{x=(x*9301+49297)%233280;return x/233280-.5;});}
 
   function dailyQuestion(g){
-    const pool=biologyQuestionsDB; if(!pool.length) return null;
+    const pool=biologyQuestionsDB.filter(q=>!q.image); if(!pool.length) return null;
     const t=today();
     if(!g.dq||g.dq.date!==t){const idx=dayNum(t)%pool.length;g.dq={date:t,idx:idx,pick:null};}
     const q=pool[g.dq.idx]; const order=seeded(q.options.length,g.dq.idx+1);
