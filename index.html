@@ -7,7 +7,6 @@
 <meta name="theme-color" content="#100b20">
 <title>Biologiya Milliy Sertifikat | Premium</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -128,11 +127,14 @@ body.light-mode .biology-image-wrap { border-color:#d2bce9; }
 .field select option { background:#121b30;color:white; }
 .error { color:#ff9696;font-size:12px;margin-top:7px; }
 .hidden { display:none !important; }
+.text-center { text-align:center; }
 
 .count-grid {
   display:grid;grid-template-columns:repeat(4,1fr);gap:9px;
 }
+.count-grid { position:relative;z-index:1; }
 .count-btn {
+  position:relative;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent;
   min-height:53px;border-radius:14px;
   color:#c8d4f8;background:#111d35;
   border:1px solid #34496d;font-weight:800;font-size:17px;
@@ -430,11 +432,11 @@ body.light-mode .rank-item:first-child { background:#efe2ff; }
 
     <div class="field">
       <label><i class="fa-solid fa-list-ol"></i> Savollar soni</label>
-      <div class="count-grid">
-        <button class="count-btn" id="count-10" onclick="selectCount(10)">10</button>
-        <button class="count-btn" id="count-20" onclick="selectCount(20)">20</button>
-        <button class="count-btn" id="count-30" onclick="selectCount(30)">30</button>
-        <button class="count-btn" id="count-50" onclick="selectCount(50)">50</button>
+      <div class="count-grid" id="countGrid">
+        <button type="button" class="count-btn" id="count-10" data-count="10" aria-pressed="false">10</button>
+        <button type="button" class="count-btn" id="count-20" data-count="20" aria-pressed="false">20</button>
+        <button type="button" class="count-btn" id="count-30" data-count="30" aria-pressed="false">30</button>
+        <button type="button" class="count-btn" id="count-50" data-count="50" aria-pressed="false">50</button>
       </div>
     </div>
 
@@ -617,15 +619,22 @@ function shuffle(arr) {
 }
 
 function selectCount(count) {
+  count = Number(count);
+  if(!count) return;
   selectedQuestionCount = count;
-  document.querySelectorAll(".count-btn").forEach(btn => btn.classList.remove("active"));
-  document.getElementById("count-"+count).classList.add("active");
+  document.querySelectorAll(".count-btn").forEach(btn => {
+    const on = Number(btn.dataset.count) === count;
+    btn.classList.toggle("active", on);
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+  });
 }
 
-document.querySelectorAll(".count-btn").forEach(btn => {
-  const n = Number(btn.id.replace("count-",""));
-  if(n > biologyQuestionsDB.length) btn.classList.add("hidden");
+// Bitta umumiy tinglovchi: sichqoncha, sensor va klaviatura uchun ishlaydi
+document.getElementById("countGrid").addEventListener("click", e => {
+  const btn = e.target.closest(".count-btn");
+  if(btn) selectCount(btn.dataset.count);
 });
+
 selectCount(10);
 
 document.getElementById("userNameInput").addEventListener("input",() => {
