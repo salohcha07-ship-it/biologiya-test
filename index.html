@@ -423,6 +423,17 @@ main { max-width:520px;padding:16px 14px calc(34px + env(safe-area-inset-bottom)
 .g-badge.locked { opacity:.38;filter:grayscale(1); }
 .xp-gain { text-align:center;margin:14px 0;padding:14px;border-radius:18px;background:linear-gradient(120deg,#3a2468,#241540);border:1px solid #8f5cf0; }
 .xp-gain b { font-size:24px;color:#ffda83; } .xp-gain div { font-size:12px;color:#d5c8ea;margin-top:4px; }
+
+/* ===== 4-QADAM: STATISTIKA VA BATAFSIL TAHLIL ===== */
+.t-row { margin:10px 0; } .t-head { display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px; } .t-head span:last-child { color:#b8a9ce;white-space:nowrap; }
+.t-bar { height:9px;border-radius:10px;background:#2c1f45;overflow:hidden; } .t-bar i { display:block;height:100%;border-radius:10px;transition:width .5s; }
+.c-good { background:linear-gradient(90deg,#2e9e74,#6fe0b0); } .c-mid { background:linear-gradient(90deg,#d99a2b,#ffda83); } .c-bad { background:linear-gradient(90deg,#b13a55,#ff8aa3); }
+.a-note { margin-top:12px;padding:12px;border-radius:14px;background:#120c22;border:1px solid #4a3470;font-size:12.5px;line-height:1.65;color:#e0d4f3; }
+.a-stats { display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:6px; } .a-stats div { text-align:center;padding:10px 4px;border-radius:14px;background:#120c22;border:1px solid #4a3470; }
+.a-stats b { display:block;font-size:18px;color:#c9a8ff; } .a-stats small { font-size:10.5px;color:#b8a9ce; }
+.h-chart { display:flex;align-items:flex-end;gap:6px;height:70px;margin-top:6px; } .h-chart div { flex:1;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#c9a8ff,#8f5cf0);min-height:4px; }
+.h-lbl { display:flex;gap:6px;margin-top:4px; } .h-lbl span { flex:1;text-align:center;font-size:10px;color:#b8a9ce; }
+.a-btn { width:100%;margin-top:10px;min-height:46px; }
 </style>
 </head>
 
@@ -1199,6 +1210,84 @@ function restartQuiz() {
   const origRestart=window.restartQuiz;
   window.restartQuiz=function(){origRestart();render();};
   render();
+})();
+</script>
+
+<script>
+// ===== 4-QADAM: STATISTIKA VA BATAFSIL TAHLIL =====
+(function(){
+  const SK="bio_stats_v1";
+  const loadS=()=>{let o={};try{o=JSON.parse(localStorage.getItem(SK))||{};}catch(e){}return Object.assign({topics:{},history:[]},o);};
+  const saveS=o=>{try{localStorage.setItem(SK,JSON.stringify(o));}catch(e){}};
+  const cls=p=>p>=80?"c-good":p>=50?"c-mid":"c-bad";
+  const el=(tag,cls_,txt)=>{const e=document.createElement(tag);if(cls_)e.className=cls_;if(txt!==undefined)e.textContent=txt;return e;};
+  function row(name,c,t){
+    const p=t?Math.round(c/t*100):0, r=el("div","t-row"), h=el("div","t-head");
+    h.append(el("span","",name),el("span","",c+"/"+t+" · "+p+"%"));
+    const b=el("div","t-bar"), f=el("i",cls(p)); f.style.width=p+"%"; b.append(f); r.append(h,b); return r;
+  }
+  function topicsOf(){const m={};currentQuestions.forEach((q,i)=>{const k=q.topic||"Boshqa";m[k]=m[k]||[0,0,0];m[k][1]++;if(selectedAnswers[i]===q.answer)m[k][0]++;if(selectedAnswers[i]===null)m[k][2]++;});return m;}
+
+  function analysis(){
+    const rv=document.getElementById("resultView"), list=document.getElementById("explanationsList"); if(!rv||!list) return;
+    let box=document.getElementById("analysisBox"); if(box) box.remove();
+    box=el("div","g-card"); box.id="analysisBox";
+    const tot=currentQuestions.length, m=topicsOf();
+    let corr=0,un=0;Object.values(m).forEach(v=>{corr+=v[0];un+=v[2];});
+    const avg=(secondsElapsed/tot).toFixed(1);
+    box.append(el("div","g-h","Batafsil tahlil"));
+    const st=el("div","a-stats");
+    [[corr+"/"+tot,"to'g'ri"],[tot-corr-un,"xato"],[avg+" s","bir savolga"]].forEach(a=>{const d=el("div");d.append(el("b","",String(a[0])),el("small","",a[1]));st.append(d);});
+    box.append(st);
+    box.append(el("div","g-h","Mavzular bo'yicha natija"));
+    const names=Object.keys(m).sort((a,b)=>m[a][0]/m[a][1]-m[b][0]/m[b][1]);
+    names.forEach(n=>box.append(row(n,m[n][0],m[n][1])));
+    const weak=names.find(n=>m[n][1]>=2&&m[n][0]/m[n][1]<0.8);
+    const strong=names.slice().reverse().find(n=>m[n][1]>=2&&m[n][0]/m[n][1]>=0.8);
+    let txt="";
+    if(strong) txt+="Kuchli tomoningiz: "+strong+". ";
+    if(weak) txt+="Ko'proq e'tibor kerak: "+weak+" ("+Math.round(m[weak][0]/m[weak][1]*100)+"%). Quyidagi izohlarni o'qib chiqib, shu mavzuda mashq qiling. ";
+    else txt+="Barcha mavzularda yaxshi natija, davom eting! ";
+    if(un) txt+=un+" ta savol javobsiz qoldi. ";
+    txt+=avg<=20?"Tezligingiz yaxshi.":avg>=60?"Savollarga ko'p vaqt ketdi: avval bilganlaringizni belgilab, qiyinlariga qaytib keling.":"Vaqtni yaxshi taqsimladingiz.";
+    box.append(el("div","a-note",txt));
+    if(weak && !isRetry){
+      const b=el("button","secondary-btn a-btn","Zaif mavzuni mashq qilish: "+weak); b.type="button";
+      b.onclick=()=>{restartQuiz();const sel=document.getElementById("topicSelect");if(sel){sel.value=weak;sel.dispatchEvent(new Event("change"));}window.scrollTo({top:0,behavior:"smooth"});};
+      box.append(b);
+    }
+    rv.insertBefore(box,list);
+  }
+  function record(){
+    if(isRetry) return;
+    const S=loadS(), m=topicsOf(), tot=currentQuestions.length; let c=0;
+    Object.keys(m).forEach(n=>{const t=S.topics[n]||[0,0];t[0]+=m[n][0];t[1]+=m[n][1];S.topics[n]=t;c+=m[n][0];});
+    S.history.push({d:Date.now(),s:Math.round(c/tot*100),c:c,t:tot,sec:secondsElapsed});
+    S.history=S.history.slice(-30); saveS(S);
+  }
+  function renderStats(){
+    const sv=document.getElementById("startView"); if(!sv) return;
+    let host=document.getElementById("statsPanel");
+    if(!host){host=el("div");host.id="statsPanel";const g=document.getElementById("gamePanel");(g&&g.nextSibling)?sv.insertBefore(host,g.nextSibling):sv.appendChild(host);}
+    host.innerHTML="";
+    const S=loadS(); if(!S.history.length) return;
+    const card=el("div","g-card"); card.append(el("div","g-h","Mening statistikam"));
+    let C=0,T=0;Object.values(S.topics).forEach(v=>{C+=v[0];T+=v[1];});
+    const best=Math.max(...S.history.map(h=>h.s)), st=el("div","a-stats");
+    [[S.history.length,"test"],[T?Math.round(C/T*100)+"%":"–","umumiy aniqlik"],[best+"%","eng yaxshi"]].forEach(a=>{const d=el("div");d.append(el("b","",String(a[0])),el("small","",a[1]));st.append(d);});
+    card.append(st);
+    const last=S.history.slice(-7), ch=el("div","h-chart"), lb=el("div","h-lbl");
+    last.forEach(h=>{const d=el("div");d.style.height=Math.max(4,h.s*0.7)+"px";d.title=h.s+"%";ch.append(d);lb.append(el("span","",h.s+"%"));});
+    card.append(el("div","g-sub","Oxirgi natijalar"),ch,lb);
+    const names=Object.keys(S.topics).filter(n=>S.topics[n][1]>=3).sort((a,b)=>S.topics[a][0]/S.topics[a][1]-S.topics[b][0]/S.topics[b][1]);
+    if(names.length){const h=el("div","g-h","Mavzular bo'yicha aniqlik");h.style.marginTop="14px";card.append(h);names.forEach(n=>card.append(row(n,S.topics[n][0],S.topics[n][1])));}
+    host.append(card);
+  }
+  const f0=window.finishQuiz;
+  window.finishQuiz=function(){f0();try{record();analysis();renderStats();}catch(e){console.error(e);}};
+  const r0=window.restartQuiz;
+  window.restartQuiz=function(){r0();renderStats();};
+  renderStats();
 })();
 </script>
 </body>
