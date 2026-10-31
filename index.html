@@ -434,6 +434,16 @@ main { max-width:520px;padding:16px 14px calc(34px + env(safe-area-inset-bottom)
 .h-chart { display:flex;align-items:flex-end;gap:6px;height:70px;margin-top:6px; } .h-chart div { flex:1;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#c9a8ff,#8f5cf0);min-height:4px; }
 .h-lbl { display:flex;gap:6px;margin-top:4px; } .h-lbl span { flex:1;text-align:center;font-size:10px;color:#b8a9ce; }
 .a-btn { width:100%;margin-top:10px;min-height:46px; }
+
+/* ---- Reyting yorliqlari (haftalik / umumiy) ---- */
+.lb-tabs { display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 4px; }
+.lb-tab { min-height:46px;border-radius:15px;border:1.5px solid #4f3874;background:#1a1230;color:#dfd0f5;font:inherit;font-weight:800;font-size:14px;cursor:pointer; }
+.lb-tab i { margin-right:6px; }
+.lb-tab.active { background:linear-gradient(135deg,#d8baff,#9565ed);border-color:#e6d4ff;color:#1c0f35; }
+.rank-item.me { outline:2px solid #b58aef;outline-offset:-2px; }
+.me-tag { display:inline-block;margin-left:6px;padding:1px 7px;border-radius:9px;background:#9565ed;color:#fff;font-size:10px;font-weight:800;vertical-align:middle; }
+body.light-mode .lb-tab { background:#f4effb;color:#302340;border-color:#ddcdec; }
+body.light-mode .lb-tab.active { background:linear-gradient(135deg,#c9a4ff,#8e5bea);color:#fff;border-color:#b58aef; }
 </style>
 </head>
 
@@ -591,6 +601,10 @@ main { max-width:520px;padding:16px 14px calc(34px + env(safe-area-inset-bottom)
       <button onclick="closeLeaderboard()" class="secondary-btn" style="min-height:40px;padding:0 13px">
         <i class="fa-solid fa-xmark"></i>
       </button>
+    </div>
+    <div class="lb-tabs">
+      <button id="lbTabWeek" class="lb-tab active" onclick="setLeaderboardTab('week')"><i class="fa-solid fa-calendar-week"></i>Haftalik</button>
+      <button id="lbTabAll" class="lb-tab" onclick="setLeaderboardTab('all')"><i class="fa-solid fa-crown"></i>Umumiy</button>
     </div>
     <p id="leaderboardNote" class="subheading" style="text-align:left;margin:12px 0"></p>
     <div id="leaderboardList" style="display:grid;gap:10px">
@@ -981,7 +995,8 @@ function getLocalScores() {
 function saveScore(name,region,score,correct,total,seconds,timeStr) {
   const entry = {
     name,region,score,correct,total,seconds,
-    time:timeStr,date:new Date().toLocaleDateString()
+    time:timeStr,date:new Date().toLocaleDateString(),
+    ts:Date.now()
   };
 
   const scores = getLocalScores();
@@ -1023,12 +1038,15 @@ function renderLeaderboard(items) {
     .sort((a,b) => (b.score-a.score)||((a.seconds||0)-(b.seconds||0)))
     .slice(0,50);
 
+  const meInput = document.getElementById("userNameInput");
+  const meName = String((userName || (meInput ? meInput.value : "") || "")).trim().toLowerCase();
+
   list.innerHTML = top.map((item,idx) => `
-    <div class="rank-item">
+    <div class="rank-item${meName && String(item.name||"").trim().toLowerCase()===meName ? " me" : ""}">
       <div class="rank-left">
         <span class="rank-number" style="color:${idx===0?"#ffd66e":idx===1?"#cbd5e1":idx===2?"#d9a16d":"#9eafd8"}">#${idx+1}</span>
         <div style="min-width:0">
-          <div class="rank-name">${escapeHtml(item.name||"")}</div>
+          <div class="rank-name">${escapeHtml(item.name||"")}${meName && String(item.name||"").trim().toLowerCase()===meName ? '<span class="me-tag">Siz</span>' : ""}</div>
           <div class="rank-info">${escapeHtml(item.region||"")}</div>
           <div class="rank-info">${escapeHtml(item.date||"")}${item.total?" · "+escapeHtml(item.correct)+"/"+escapeHtml(item.total):""}</div>
         </div>
@@ -1042,6 +1060,20 @@ function renderLeaderboard(items) {
 }
 
 let viewBeforeLeaderboard = "startView";
+
+let leaderboardMode = "week";
+
+function getWeekStart() {
+  const d = new Date();
+  d.setHours(0,0,0,0);
+  d.setDate(d.getDate() - ((d.getDay()+6)%7));
+  return d;
+}
+
+function weekDaysLeft() {
+  const day = (new Date().getDay()+6)%7;
+  return 7 - day;
+}
 
 async function toggleLeaderboard() {
   const lb = document.getElementById("leaderboardView");
@@ -1057,20 +1089,43 @@ async function toggleLeaderboard() {
     document.getElementById(id).classList.add("hidden")
   );
   lb.classList.remove("hidden");
+  await loadLeaderboard();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function setLeaderboardTab(mode) {
+  leaderboardMode = mode;
+  loadLeaderboard();
+}
+
+async function loadLeaderboard() {
+  const weekly = leaderboardMode === "week";
+  document.getElementById("lbTabWeek").classList.toggle("active",weekly);
+  document.getElementById("lbTabAll").classList.toggle("active",!weekly);
 
   const list = document.getElementById("leaderboardList");
   const note = document.getElementById("leaderboardNote");
   list.innerHTML = '<p class="subheading">Reyting yuklanmoqda...</p>';
   note.innerText = "";
 
+  const weekStart = getWeekStart();
   let items = null;
 
   if(db) {
     try {
-      const snap = await db.collection("results")
-        .orderBy("score","desc").limit(300).get();
+      let snap;
+      if(weekly) {
+        snap = await db.collection("results")
+          .where("createdAt",">=",firebase.firestore.Timestamp.fromDate(weekStart))
+          .limit(500).get();
+      } else {
+        snap = await db.collection("results")
+          .orderBy("score","desc").limit(300).get();
+      }
       items = snap.docs.map(d => d.data());
-      note.innerText = "Barcha o‘quvchilar natijalari";
+      note.innerText = weekly
+        ? "Shu haftadagi natijalar (dushanbadan yakshanbagacha). Hafta tugashiga " + weekDaysLeft() + " kun qoldi."
+        : "Barcha o‘quvchilarning eng yaxshi natijalari";
     } catch(e) {
       console.error("Reytingni yuklab bo‘lmadi:",e);
     }
@@ -1078,12 +1133,14 @@ async function toggleLeaderboard() {
 
   if(!items) {
     items = getLocalScores();
+    if(weekly) {
+      items = items.filter(it => (it.ts||0) >= weekStart.getTime());
+    }
     note.innerText = db
       ? "Umumiy reyting yuklanmadi. Shu telefondagi natijalar ko‘rsatilmoqda."
       : "Faqat shu telefondagi natijalar.";
   }
   renderLeaderboard(items);
-  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function closeLeaderboard() {
