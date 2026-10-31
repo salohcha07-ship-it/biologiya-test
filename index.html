@@ -401,6 +401,28 @@ main { max-width:520px;padding:16px 14px calc(34px + env(safe-area-inset-bottom)
   main { margin-top:6px; }
   .panel { padding:30px; }
 }
+
+/* ===== 3-QADAM: XP, DARAJA, KUNLIK TOPSHIRIQ, KUN SAVOLI, NISHONLAR ===== */
+.g-card { background:#1a1230;border:1px solid #4a3470;border-radius:20px;padding:14px;margin-bottom:14px; }
+.g-top { display:flex;align-items:center;gap:12px; }
+.g-lvl { width:54px;height:54px;border-radius:17px;flex:none;display:grid;place-items:center;font-size:21px;font-weight:900;color:#1c0f35;background:linear-gradient(135deg,#c9a8ff,#8f5cf0);box-shadow:0 8px 22px #8f5cf055; }
+.g-info { flex:1;min-width:0; } .g-title { font-weight:850;font-size:15px; } .g-sub { font-size:12px;color:#b8a9ce;margin-top:2px; }
+.g-bar { height:9px;border-radius:10px;background:#2c1f45;margin-top:8px;overflow:hidden; }
+.g-bar i { display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#8f5cf0,#c9a8ff);transition:width .5s; }
+.g-streak { text-align:center;font-weight:900;color:#ffda83;font-size:18px;line-height:1.1; } .g-streak small { display:block;font-size:10px;color:#b8a9ce;font-weight:600; }
+.g-h { font-size:13px;font-weight:850;color:#eadbff;margin-bottom:10px; }
+.g-task { display:flex;align-items:center;gap:10px;font-size:13px;padding:8px 0;border-top:1px solid #3a2a58; } .g-task:first-of-type { border-top:0; }
+.g-task .t { flex:1; } .g-task .p { font-size:11px;color:#b8a9ce;white-space:nowrap; } .g-task.done { color:#8ce0b5; }
+.g-chk { width:22px;height:22px;border-radius:50%;border:2px solid #6a4a9c;display:grid;place-items:center;font-size:12px;flex:none; } .done .g-chk { background:#2e9e74;border-color:#2e9e74;color:#fff; }
+.dq-q { font-size:14px;line-height:1.55;font-weight:700;margin-bottom:10px; }
+.dq-opt { display:block;width:100%;text-align:left;padding:11px 12px;margin-top:7px;border-radius:14px;background:#120c22;border:1.5px solid #4a3470;color:#edf1ff;font-size:13.5px; }
+.dq-opt.ok { border-color:#2e9e74;background:#12342e99; } .dq-opt.no { border-color:#a8485f;background:#3c202d99; }
+.dq-note { margin-top:10px;font-size:12px;line-height:1.6;color:#d5c8ea; }
+.g-badges { display:flex;flex-wrap:wrap;gap:8px; }
+.g-badge { display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:12px;background:#120c22;border:1px solid #684a8c;font-size:11px;font-weight:750;color:#e9dcfa; }
+.g-badge.locked { opacity:.38;filter:grayscale(1); }
+.xp-gain { text-align:center;margin:14px 0;padding:14px;border-radius:18px;background:linear-gradient(120deg,#3a2468,#241540);border:1px solid #8f5cf0; }
+.xp-gain b { font-size:24px;color:#ffda83; } .xp-gain div { font-size:12px;color:#d5c8ea;margin-top:4px; }
 </style>
 </head>
 
@@ -1035,6 +1057,118 @@ function restartQuiz() {
   document.getElementById("startView").classList.remove("hidden");
   window.scrollTo({top:0,behavior:"smooth"});
 }
+</script>
+
+<script>
+// ===== 3-QADAM: O'YIN TIZIMI (XP, daraja, kunlik topshiriq, kun savoli, nishonlar) =====
+(function(){
+  const KEY="bio_game_v1";
+  const LEVELS=["Yangi boshlovchi","Izlanuvchi","Bilimdon","Tajribali","Biolog","Mutaxassis","Ekspert","Professor","Akademik","Biologiya ustasi"];
+  const BADGES=[
+    {i:"fa-seedling",n:"Ilk test",f:g=>g.tests>=1},
+    {i:"fa-fire",n:"3 kunlik seriya",f:g=>g.best>=3},
+    {i:"fa-fire-flame-curved",n:"7 kunlik seriya",f:g=>g.best>=7},
+    {i:"fa-book-open",n:"10 ta test",f:g=>g.tests>=10},
+    {i:"fa-bullseye",n:"100 to'g'ri javob",f:g=>g.correct>=100},
+    {i:"fa-crown",n:"100% natija",f:g=>g.perfect>=1},
+    {i:"fa-star",n:"5-daraja",f:g=>lvl(g.xp)>=5},
+    {i:"fa-calendar-check",n:"Kun savoli x5",f:g=>g.dqWins>=5}
+  ];
+  const lvl=xp=>Math.floor(Math.sqrt(xp/60))+1;
+  const need=l=>60*l*l;           // keyingi darajagacha jami XP
+  const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
+  const dayNum=ds=>Math.floor(new Date(ds+"T00:00:00").getTime()/864e5);
+  function load(){let g={};try{g=JSON.parse(localStorage.getItem(KEY))||{};}catch(e){}
+    return Object.assign({xp:0,tests:0,correct:0,perfect:0,streak:0,best:0,last:"",dqWins:0,day:"",tasks:{t:0,c:0,h:0},dq:null,badges:[]},g);}
+  function save(g){try{localStorage.setItem(KEY,JSON.stringify(g));}catch(e){}}
+  function rollDay(g){const t=today();
+    if(g.day!==t){g.day=t;g.tasks={t:0,c:0,h:0,done:[]};}
+    if(!g.tasks.done) g.tasks.done=[];
+    return g;}
+  const TASKS=[
+    {id:"t",txt:"1 ta testni yakunlang",goal:1,xp:20,v:g=>g.tasks.t},
+    {id:"c",txt:"20 ta savolga to'g'ri javob bering",goal:20,xp:30,v:g=>g.tasks.c},
+    {id:"h",txt:"Bitta testda 80% va undan yuqori oling",goal:1,xp:40,v:g=>g.tasks.h}
+  ];
+  function claim(g){let add=0;TASKS.forEach(k=>{if(k.v(g)>=k.goal&&!g.tasks.done.includes(k.id)){g.tasks.done.push(k.id);add+=k.xp;}});g.xp+=add;return add;}
+  function newBadges(g){const out=[];BADGES.forEach(b=>{if(b.f(g)&&!g.badges.includes(b.n)){g.badges.push(b.n);out.push(b.n);}});return out;}
+  function seeded(n,seed){let x=seed*9301+49297;return [...Array(n).keys()].sort(()=>{x=(x*9301+49297)%233280;return x/233280-.5;});}
+
+  function dailyQuestion(g){
+    const pool=biologyQuestionsDB; if(!pool.length) return null;
+    const t=today();
+    if(!g.dq||g.dq.date!==t){const idx=dayNum(t)%pool.length;g.dq={date:t,idx:idx,pick:null};}
+    const q=pool[g.dq.idx]; const order=seeded(q.options.length,g.dq.idx+1);
+    return {q:q,order:order,opts:order.map(i=>q.options[i]),ans:order.indexOf(q.answer)};
+  }
+
+  function render(){
+    const sv=document.getElementById("startView"); if(!sv) return;
+    let g=rollDay(load()); save(g);
+    let host=document.getElementById("gamePanel");
+    if(!host){host=document.createElement("div");host.id="gamePanel";
+      sv.appendChild(host);host.style.marginTop="22px";}
+    const L=lvl(g.xp), lo=need(L-1), hi=need(L), pct=Math.max(0,Math.min(100,(g.xp-lo)/(hi-lo)*100));
+    const streakAlive=g.last===today()||(g.last&&dayNum(today())-dayNum(g.last)===1)?g.streak:0;
+    const dq=dailyQuestion(g); save(g);
+    let h='<div class="g-card"><div class="g-top"><div class="g-lvl">'+L+'</div><div class="g-info"><div class="g-title">'+LEVELS[Math.min(L-1,LEVELS.length-1)]+'</div>'+
+      '<div class="g-sub">'+g.xp+' XP · keyingi darajagacha '+(hi-g.xp)+' XP</div><div class="g-bar"><i style="width:'+pct+'%"></i></div></div>'+
+      '<div class="g-streak"><i class="fa-solid fa-fire"></i> '+streakAlive+'<small>kun seriya</small></div></div></div>';
+    h+='<div class="g-card"><div class="g-h"><i class="fa-solid fa-list-check"></i> Kunlik topshiriqlar</div>'+TASKS.map(k=>{const v=Math.min(k.v(g),k.goal),d=g.tasks.done.includes(k.id);
+      return '<div class="g-task'+(d?' done':'')+'"><span class="g-chk">'+(d?'✓':'')+'</span><span class="t">'+k.txt+'</span><span class="p">'+v+'/'+k.goal+' · +'+k.xp+' XP</span></div>';}).join("")+'</div>';
+    if(dq){h+='<div class="g-card"><div class="g-h"><i class="fa-solid fa-lightbulb"></i> Kun savoli · +15 XP</div><div class="dq-q"></div><div id="dqOpts"></div><div class="dq-note hidden" id="dqNote"></div></div>';}
+    h+='<div class="g-card"><div class="g-h"><i class="fa-solid fa-medal"></i> Yutuq nishonlari ('+g.badges.length+'/'+BADGES.length+')</div><div class="g-badges">'+
+      BADGES.map(b=>'<div class="g-badge'+(g.badges.includes(b.n)?'':' locked')+'"><i class="fa-solid '+b.i+'"></i>'+b.n+'</div>').join("")+'</div></div>';
+    host.innerHTML=h;
+    if(dq){host.querySelector(".dq-q").textContent=dq.q.question;drawDq(g,dq);}
+  }
+  function drawDq(g,dq){
+    const box=document.getElementById("dqOpts"); box.innerHTML="";
+    const answered=g.dq.pick!==null;
+    dq.opts.forEach((o,i)=>{const b=document.createElement("button");b.type="button";b.className="dq-opt";b.textContent=String.fromCharCode(65+i)+") "+o;
+      if(answered){if(i===dq.ans)b.classList.add("ok");else if(i===g.dq.pick)b.classList.add("no");}
+      b.onclick=()=>{ if(g.dq.pick!==null) return; const G=rollDay(load()); if(!G.dq||G.dq.date!==today()) return;
+        if(G.dq.pick!==null) return; G.dq.pick=i;
+        if(i===dq.ans){G.xp+=15;G.dqWins++;} newBadges(G); save(G); render(); };
+      box.appendChild(b);});
+    if(answered){const n=document.getElementById("dqNote");n.classList.remove("hidden");
+      n.textContent=(g.dq.pick===dq.ans?"To'g'ri! +15 XP. ":"Noto'g'ri. ")+(dq.q.explanation||"");}
+  }
+
+  // Test yakunlanganda chaqiriladi
+  window.gameAfterQuiz=function(correct,total,pct,retry){
+    let g=rollDay(load()), before=lvl(g.xp), gain=0;
+    gain+=retry?correct*5:correct*10+20+(pct>=90?50:0);
+    if(!retry){g.tests++;g.tasks.t++;if(pct>=80)g.tasks.h++;if(pct===100)g.perfect++;
+      const t=today();
+      if(g.last!==t){g.streak=(g.last&&dayNum(t)-dayNum(g.last)===1)?g.streak+1:1;g.last=t;g.best=Math.max(g.best,g.streak);}}
+    g.correct+=correct; g.tasks.c+=correct;
+    g.xp+=gain; const tasksXp=claim(g); gain+=tasksXp;
+    const nb=newBadges(g); save(g);
+    const after=lvl(g.xp);
+    let box=document.getElementById("xpGain");
+    if(!box){box=document.createElement("div");box.id="xpGain";box.className="xp-gain";
+      const r=document.getElementById("resultView");r.insertBefore(box,document.getElementById("achievementList").parentNode);}
+    box.innerHTML="";
+    const b=document.createElement("b");b.textContent="+"+gain+" XP";box.appendChild(b);
+    const d=document.createElement("div");
+    d.textContent=(retry?"Xatolar ustida ishlash: har bir to'g'ri javob uchun 5 XP. ":"")+
+      (tasksXp?"Kunlik topshiriq mukofoti: +"+tasksXp+" XP. ":"")+
+      (after>before?"Yangi daraja: "+after+" – "+LEVELS[Math.min(after-1,LEVELS.length-1)]+"! ":"")+
+      (nb.length?"Yangi nishon: "+nb.join(", ")+".":"");
+    box.appendChild(d);
+  };
+  const origFinish=window.finishQuiz;
+  window.finishQuiz=function(){
+    origFinish();
+    let c=0;currentQuestions.forEach((q,i)=>{if(selectedAnswers[i]===q.answer)c++;});
+    const tot=currentQuestions.length;
+    try{window.gameAfterQuiz(c,tot,Math.round(c/tot*100),isRetry);}catch(e){console.error(e);}
+  };
+  const origRestart=window.restartQuiz;
+  window.restartQuiz=function(){origRestart();render();};
+  render();
+})();
 </script>
 </body>
 </html>
