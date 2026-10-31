@@ -19,13 +19,20 @@ const RASMLAR = {
     _L(1, 150, 45, 150, 70) + _L(2, 60, 50, 68, 82) + _L(3, 225, 40, 230, 68) + _L(4, 70, 165, 96, 157) + _L(5, 16, 40, 39, 51)
   ),
   yurak: _svg(
-    '<path d="M205 118 L205 40 Q205 15 230 15 Q255 15 255 45 L255 100" stroke="#dc2626" stroke-width="14" fill="none"/>' +
-    '<rect x="85" y="12" width="22" height="50" rx="4" fill="#1d4ed8"/>' +
-    '<rect x="70" y="60" width="65" height="50" rx="14" fill="#93c5fd" stroke="#1d4ed8" stroke-width="2"/>' +
-    '<rect x="145" y="60" width="65" height="50" rx="14" fill="#fca5a5" stroke="#b91c1c" stroke-width="2"/>' +
-    '<rect x="65" y="115" width="70" height="75" rx="20" fill="#60a5fa" stroke="#1d4ed8" stroke-width="2"/>' +
-    '<rect x="145" y="115" width="80" height="75" rx="24" fill="#f87171" stroke="#b91c1c" stroke-width="2"/>' +
-    _b(1, 102, 85) + _b(2, 177, 85) + _b(3, 100, 152) + _b(4, 185, 152) + _b(5, 230, 15) + _b(6, 96, 32)
+    '<path d="M142 120 L142 48 Q142 36 122 33" stroke="#60a5fa" stroke-width="12" fill="none" stroke-linecap="round"/>' +
+    '<path d="M160 118 L160 44 Q160 15 195 15 Q237 15 237 50" stroke="#dc2626" stroke-width="14" fill="none"/>' +
+    '<polygon points="229,50 245,50 237,66" fill="#dc2626"/>' +
+    '<path d="M222 82 L262 76 M222 102 L262 108" stroke="#ef4444" stroke-width="8" stroke-linecap="round"/>' +
+    '<rect x="80" y="10" width="18" height="48" rx="3" fill="#1d4ed8"/>' +
+    '<rect x="72" y="55" width="60" height="50" rx="10" fill="#93c5fd" stroke="#1d4ed8" stroke-width="2"/>' +
+    '<rect x="172" y="55" width="53" height="50" rx="10" fill="#fca5a5" stroke="#b91c1c" stroke-width="2"/>' +
+    '<path d="M75 112 L145 112 L145 182 Q95 165 75 125 Z" fill="#60a5fa" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round"/>' +
+    '<path d="M152 112 L228 112 Q230 160 195 192 L152 182 Z" fill="#f87171" stroke="#b91c1c" stroke-width="2" stroke-linejoin="round"/>' +
+    '<rect x="88" y="105" width="30" height="7" rx="2" fill="#475569"/><rect x="180" y="105" width="35" height="7" rx="2" fill="#475569"/>' +
+    '<circle cx="12" cy="14" r="5" fill="#3b82f6"/><text x="21" y="18" font-size="9" fill="#334155" font-family="Arial,sans-serif">venoz</text>' +
+    '<circle cx="12" cy="30" r="5" fill="#ef4444"/><text x="21" y="34" font-size="9" fill="#334155" font-family="Arial,sans-serif">arterial</text>' +
+    '<text x="12" y="195" font-size="11" fill="#64748b" font-family="Arial,sans-serif">O\'ng</text><text x="262" y="195" font-size="11" fill="#64748b" font-family="Arial,sans-serif">Chap</text>' +
+    _b(1, 102, 80) + _b(2, 198, 80) + _b(3, 108, 150) + _b(4, 190, 150) + _b(5, 197, 15) + _b(6, 89, 32) + _b(7, 142, 62) + _b(8, 246, 79)
   ),
   nefron: _svg(
     '<circle cx="45" cy="60" r="28" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/><circle cx="45" cy="60" r="14" fill="#ef4444"/>' +
@@ -104,9 +111,9 @@ const rasmliSavollar = [
     options: ["Arterial qon, to'qimalarga", "Venoz qon, o'pkaga", "Venoz qon, yurakka", "Arterial qon, yurakka"],
     answer: 0, explanation: "5 - aorta: chap qorinchadan chiqib, kislorodga boy arterial qonni katta doira bo'ylab to'qimalarga olib boradi." },
   { topic: "Yurak", image: RASMLAR.yurak,
-    question: "2-raqam bilan ko'rsatilgan bo'lmachaga qaysi tomirlardan qon quyiladi?",
-    options: ["O'pka venalaridan", "Kovak venalardan", "O'pka arteriyasidan", "Aortadan"],
-    answer: 0, explanation: "2 - chap bo'lmacha: o'pka venalari orqali o'pkadan arterial qon keladi." },
+    question: "7-raqam bilan ko'rsatilgan tomir qaysi qorinchadan chiqadi va qanday qon olib boradi?",
+    options: ["Chap qorinchadan, arterial qon", "O'ng qorinchadan, venoz qon", "O'ng qorinchadan, arterial qon", "Chap qorinchadan, venoz qon"],
+    answer: 1, explanation: "7 - o'pka arteriyasi: o'ng qorinchadan chiqib, venoz qonni o'pkaga olib boradi (kichik doira boshi). Arteriyada venoz qon oqadigan yagona tomir." },
   { topic: "Yurak", image: RASMLAR.yurak,
     question: "1 va 3 raqamli bo'limlar orasidagi klapan qanday nomlanadi?",
     options: ["Ikki tabaqali", "Uch tabaqali", "Yarim oysimon", "Aorta klapani"],
@@ -115,6 +122,10 @@ const rasmliSavollar = [
     question: "6-raqam bilan ko'rsatilgan tomir qonni qaysi bo'limga keltiradi?",
     options: ["Chap bo'lmachaga", "O'ng qorinchaga", "O'ng bo'lmachaga", "Chap qorinchaga"],
     answer: 2, explanation: "6 - yuqori kovak vena: tananing yuqori qismidan venoz qonni o'ng bo'lmachaga keltiradi (katta doira oxiri)." },
+  { topic: "Yurak", image: RASMLAR.yurak,
+    question: "8-raqam bilan ko'rsatilgan tomirlarda qanday qon oqadi va qayerga boradi?",
+    options: ["Venoz qon, o'pkadan chap bo'lmachaga", "Arterial qon, o'ng bo'lmachadan o'pkaga", "Arterial qon, o'pkadan chap bo'lmachaga", "Venoz qon, o'ng qorinchadan o'pkaga"],
+    answer: 2, explanation: "8 - o'pka venalari: o'pkada kislorodga boyigan arterial qonni chap bo'lmachaga olib keladi (kichik doira oxiri). Venada arterial qon oqadigan tomir." },
 
   // ===== NEFRON =====
   { topic: "Ayirish a'zolari", image: RASMLAR.nefron,
@@ -254,14 +265,16 @@ Object.assign(RASMLAR, {
     _L(1, 40, 9, 60, 22) + _b(2, 40, 33) + _b(3, 80, 62) + _b(4, 50, 125) + _L(5, 235, 188, 205, 164) + _L(6, 160, 100, 116, 108) + _L(7, 160, 140, 116, 124)
   ),
   miya: _svg(
-    '<rect x="128" y="118" width="24" height="16" fill="#fdba74" stroke="#c2410c" stroke-width="1.5"/>' +
-    '<rect x="130" y="150" width="20" height="40" rx="8" fill="#86efac" stroke="#15803d" stroke-width="1.5"/>' +
-    '<ellipse cx="140" cy="142" rx="18" ry="11" fill="#a5b4fc" stroke="#4338ca" stroke-width="1.5"/>' +
-    '<ellipse cx="200" cy="140" rx="34" ry="20" fill="#fde68a" stroke="#ca8a04" stroke-width="2"/>' +
-    '<path d="M175 135 q25-6 50 0 M173 143 q27-6 54 0 M178 151 q22-6 44 0" stroke="#ca8a04" stroke-width="1.5" fill="none"/>' +
-    '<ellipse cx="140" cy="70" rx="90" ry="52" fill="#fbcfe8" stroke="#be185d" stroke-width="2.5"/>' +
-    '<path d="M70 70 q20-18 40 0 t40 0 t40 0 t30 0 M75 92 q20-16 40 0 t40 0 t40 0 M95 50 q20-14 40 0 t40 0" stroke="#be185d" stroke-width="2" fill="none"/>' +
-    _b(1, 110, 70) + _L(2, 265, 115, 230, 135) + _L(3, 85, 125, 128, 125) + _L(4, 85, 160, 124, 142) + _L(5, 85, 185, 130, 172)
+    '<ellipse cx="222" cy="158" rx="34" ry="22" fill="#fde68a" stroke="#ca8a04" stroke-width="2"/>' +
+    '<path d="M194 152 q28-7 56 0 M192 160 q30-7 60 0 M197 168 q25-7 50 0" stroke="#ca8a04" stroke-width="1.5" fill="none"/>' +
+    '<path d="M55 95 Q40 55 85 32 Q135 10 195 25 Q250 42 252 88 Q254 118 228 128 L205 130 Q180 150 140 148 Q95 146 80 125 Q58 120 55 95 Z" fill="#fbcfe8" stroke="#be185d" stroke-width="2.5" stroke-linejoin="round"/>' +
+    '<path d="M75 70 q15-18 30 0 t30 0 t30 0 t30 0 t30 0 M70 95 q15-16 30 0 t30 0 t30 0 t30 0 t25 0 M95 50 q15-14 30 0 t30 0 t30 0 t30 0" stroke="#be185d" stroke-width="2" fill="none"/>' +
+    '<path d="M120 108 Q160 100 200 118" stroke="#9d174d" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+    '<rect x="156" y="138" width="24" height="16" rx="4" fill="#fdba74" stroke="#c2410c" stroke-width="1.5"/>' +
+    '<ellipse cx="168" cy="162" rx="23" ry="11" fill="#a5b4fc" stroke="#4338ca" stroke-width="1.5"/>' +
+    '<path d="M156 168 L180 168 L176 198 L160 198 Z" fill="#86efac" stroke="#15803d" stroke-width="1.5" stroke-linejoin="round"/>' +
+    '<text x="12" y="16" font-size="10" fill="#64748b" font-family="Arial,sans-serif">Old</text><text x="262" y="16" font-size="10" fill="#64748b" font-family="Arial,sans-serif">Orqa</text>' +
+    _b(1, 110, 72) + _L(2, 272, 135, 252, 152) + _L(3, 95, 152, 157, 146) + _L(4, 95, 175, 146, 162) + _L(5, 100, 190, 160, 186)
   ),
   opka: _svg(
     '<path d="M145 60 Q60 60 60 130 Q60 175 110 175 L145 175 Z" fill="#fda4af" stroke="#be123c" stroke-width="2"/>' +
