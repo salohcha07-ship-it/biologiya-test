@@ -1,92 +1,179 @@
 // RASMLI SAVOLLAR (SVG chizmalar bilan) - Biologiya Milliy Sertifikat
 // Har bir savolda: topic, image (SVG matn), question, options, answer (0-3 indeks), explanation
 
-const _bg = '<rect width="300" height="200" rx="12" fill="#f8fafc"/>';
-const _b = (n, x, y) =>
-  `<circle cx="${x}" cy="${y}" r="9" fill="#7c3aed"/><text x="${x}" y="${y + 4}" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff" font-family="Arial,sans-serif">${n}</text>`;
-const _L = (n, bx, by, tx, ty) =>
-  `<line x1="${bx}" y1="${by}" x2="${tx}" y2="${ty}" stroke="#334155" stroke-width="1.3"/><circle cx="${tx}" cy="${ty}" r="2.5" fill="#334155"/>` + _b(n, bx, by);
-const _svg = (inner) =>
-  `<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;height:auto">${_bg}${inner}</svg>`;
-
-const RASMLAR = {
-  hujayra: _svg(
-    '<ellipse cx="150" cy="100" rx="135" ry="88" fill="#fef3c7" stroke="#b45309" stroke-width="3"/>' +
-    '<circle cx="150" cy="100" r="32" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/><circle cx="150" cy="100" r="9" fill="#1e3a8a"/>' +
-    '<ellipse cx="70" cy="90" rx="24" ry="12" fill="#fca5a5" stroke="#b91c1c" stroke-width="2"/><path d="M54 90 q5-8 10 0 t10 0 t10 0" stroke="#b91c1c" fill="none" stroke-width="1.5"/>' +
-    '<path d="M210 70 q20-10 40 0 M212 80 q18-10 36 0 M214 90 q16-10 32 0" stroke="#15803d" stroke-width="4" fill="none" stroke-linecap="round"/>' +
-    '<circle cx="105" cy="155" r="10" fill="#c4b5fd" stroke="#6d28d9" stroke-width="2"/>' +
-    _L(1, 150, 45, 150, 70) + _L(2, 60, 50, 68, 82) + _L(3, 225, 40, 230, 68) + _L(4, 70, 165, 96, 157) + _L(5, 16, 40, 39, 51)
-  ),
-  yurak: _svg(
-    '<path d="M142 120 L142 48 Q142 36 122 33" stroke="#60a5fa" stroke-width="12" fill="none" stroke-linecap="round"/>' +
-    '<path d="M160 118 L160 44 Q160 15 195 15 Q237 15 237 50" stroke="#dc2626" stroke-width="14" fill="none"/>' +
-    '<polygon points="229,50 245,50 237,66" fill="#dc2626"/>' +
-    '<path d="M222 82 L262 76 M222 102 L262 108" stroke="#ef4444" stroke-width="8" stroke-linecap="round"/>' +
-    '<rect x="80" y="10" width="18" height="48" rx="3" fill="#1d4ed8"/>' +
-    '<rect x="72" y="55" width="60" height="50" rx="10" fill="#93c5fd" stroke="#1d4ed8" stroke-width="2"/>' +
-    '<rect x="172" y="55" width="53" height="50" rx="10" fill="#fca5a5" stroke="#b91c1c" stroke-width="2"/>' +
-    '<path d="M75 112 L145 112 L145 182 Q95 165 75 125 Z" fill="#60a5fa" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round"/>' +
-    '<path d="M152 112 L228 112 Q230 160 195 192 L152 182 Z" fill="#f87171" stroke="#b91c1c" stroke-width="2" stroke-linejoin="round"/>' +
-    '<rect x="88" y="105" width="30" height="7" rx="2" fill="#475569"/><rect x="180" y="105" width="35" height="7" rx="2" fill="#475569"/>' +
-    '<circle cx="12" cy="14" r="5" fill="#3b82f6"/><text x="21" y="18" font-size="9" fill="#334155" font-family="Arial,sans-serif">venoz</text>' +
-    '<circle cx="12" cy="30" r="5" fill="#ef4444"/><text x="21" y="34" font-size="9" fill="#334155" font-family="Arial,sans-serif">arterial</text>' +
-    '<text x="12" y="195" font-size="11" fill="#64748b" font-family="Arial,sans-serif">O\'ng</text><text x="262" y="195" font-size="11" fill="#64748b" font-family="Arial,sans-serif">Chap</text>' +
-    _b(1, 102, 80) + _b(2, 198, 80) + _b(3, 108, 150) + _b(4, 190, 150) + _b(5, 197, 15) + _b(6, 89, 32) + _b(7, 142, 62) + _b(8, 246, 79)
-  ),
-  nefron: _svg(
-    '<circle cx="45" cy="60" r="28" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/><circle cx="45" cy="60" r="14" fill="#ef4444"/>' +
-    '<path d="M72 62 q12-22 24 0 t24 0 t24 0" stroke="#f59e0b" stroke-width="7" fill="none" stroke-linecap="round"/>' +
-    '<path d="M144 62 L144 170 Q158 188 172 170 L172 80" stroke="#0ea5e9" stroke-width="7" fill="none" stroke-linejoin="round"/>' +
-    '<path d="M172 80 q10-20 20 0 t20 0 L246 80" stroke="#22c55e" stroke-width="7" fill="none" stroke-linecap="round"/>' +
-    '<path d="M250 20 L250 180" stroke="#a855f7" stroke-width="10" stroke-linecap="round"/>' +
-    _L(1, 15, 15, 26, 41) + _L(6, 20, 105, 38, 66) + _L(2, 96, 20, 96, 62) + _L(3, 115, 130, 141, 130) + _L(4, 192, 125, 192, 82) + _L(5, 215, 150, 245, 150)
-  ),
-  koz: _svg(
-    '<circle cx="160" cy="100" r="75" fill="#f1f5f9" stroke="#64748b" stroke-width="3"/>' +
-    '<path d="M90 70 Q60 100 90 130" stroke="#38bdf8" stroke-width="6" fill="none" stroke-linecap="round"/>' +
-    '<path d="M105 60 L105 85 M105 115 L105 140" stroke="#92400e" stroke-width="8" stroke-linecap="round"/>' +
-    '<ellipse cx="118" cy="100" rx="10" ry="22" fill="#fde68a" stroke="#ca8a04" stroke-width="2"/>' +
-    '<path d="M217 52 A75 75 0 0 1 217 148" stroke="#dc2626" stroke-width="5" fill="none"/>' +
-    '<rect x="233" y="92" width="55" height="16" rx="6" fill="#facc15" stroke="#a16207" stroke-width="2"/>' +
-    _L(1, 28, 65, 74, 98) + _L(2, 100, 20, 105, 66) + _L(3, 118, 185, 118, 121) + _b(4, 165, 100) + _L(5, 270, 45, 229, 69) + _L(6, 268, 145, 262, 108)
-  ),
-  gul: _svg(
-    '<rect x="146" y="165" width="8" height="35" fill="#16a34a"/>' +
-    '<ellipse cx="70" cy="95" rx="14" ry="48" transform="rotate(-20 70 95)" fill="#f9a8d4" stroke="#be185d" stroke-width="2"/>' +
-    '<ellipse cx="230" cy="95" rx="14" ry="48" transform="rotate(20 230 95)" fill="#f9a8d4" stroke="#be185d" stroke-width="2"/>' +
-    '<ellipse cx="118" cy="152" rx="22" ry="8" transform="rotate(20 118 152)" fill="#4ade80" stroke="#166534" stroke-width="2"/>' +
-    '<ellipse cx="182" cy="152" rx="22" ry="8" transform="rotate(-20 182 152)" fill="#4ade80" stroke="#166534" stroke-width="2"/>' +
-    '<ellipse cx="150" cy="162" rx="30" ry="8" fill="#a16207"/>' +
-    '<path d="M132 140 L112 75 M168 140 L188 75" stroke="#15803d" stroke-width="3" fill="none"/>' +
-    '<ellipse cx="110" cy="68" rx="7" ry="10" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>' +
-    '<ellipse cx="190" cy="68" rx="7" ry="10" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>' +
-    '<rect x="147" y="60" width="6" height="40" fill="#22c55e"/><circle cx="150" cy="56" r="8" fill="#f43f5e"/>' +
-    '<ellipse cx="150" cy="115" rx="16" ry="22" fill="#86efac" stroke="#166534" stroke-width="2"/>' +
-    '<circle cx="143" cy="126" r="4" fill="#166534"/><circle cx="157" cy="126" r="4" fill="#166534"/>' +
-    _L(1, 120, 35, 146, 53) + _b(2, 150, 106) + _L(3, 232, 35, 192, 62) + _L(4, 35, 135, 66, 115) + _L(5, 65, 185, 105, 156) + _L(6, 240, 125, 181, 100)
-  ),
-  neyron: _svg(
-    '<path d="M70 88 L32 52 M70 95 L20 95 M72 112 L28 148 M32 52 L18 40 M28 148 L14 160" stroke="#475569" stroke-width="3" fill="none" stroke-linecap="round"/>' +
-    '<path d="M112 100 L255 100" stroke="#475569" stroke-width="4"/>' +
-    '<rect x="125" y="91" width="35" height="18" rx="8" fill="#fb923c" stroke="#c2410c" stroke-width="1.5"/>' +
-    '<rect x="170" y="91" width="35" height="18" rx="8" fill="#fb923c" stroke="#c2410c" stroke-width="1.5"/>' +
-    '<rect x="215" y="91" width="30" height="18" rx="8" fill="#fb923c" stroke="#c2410c" stroke-width="1.5"/>' +
-    '<path d="M255 100 L285 80 M255 100 L287 100 M255 100 L285 120" stroke="#475569" stroke-width="3" stroke-linecap="round"/>' +
-    '<circle cx="90" cy="100" r="22" fill="#fde68a" stroke="#a16207" stroke-width="2"/><circle cx="90" cy="100" r="8" fill="#92400e"/>' +
-    _L(1, 15, 70, 35, 95) + _L(2, 90, 150, 90, 118) + _L(3, 118, 60, 118, 98) + _L(4, 142, 60, 142, 92) + _L(5, 165, 140, 165, 102) + _L(6, 262, 45, 270, 90)
-  ),
-};
-
+// Chizmalar ilmiy jihatdan qayta ko'rib chiqildi va yangilandi (yurak, nefron, ko'z, gul, DNK, hazm, barg, miya, nafas a'zolari, hujayra)
+// ===== YORDAMCHI FUNKSIYALAR =====
 const _eduSvg = (body) => `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;max-width:100%;height:auto" role="img" aria-label="Biologiya o‘quv chizmasi"><defs><linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f1f5f9"/></linearGradient><linearGradient id="tissue" x2="1" y2="1"><stop stop-color="#fda4af"/><stop offset="1" stop-color="#be4565"/></linearGradient></defs><rect width="600" height="400" rx="14" fill="url(#paper)"/><g stroke-linecap="round" stroke-linejoin="round" font-family="Arial,sans-serif">${body}</g></svg>`;
 const _tag = (n,x,y,tx,ty) => `<path d="M${x} ${y} L${tx} ${ty}" stroke="#334155" stroke-width="2.2" fill="none"/><circle cx="${tx}" cy="${ty}" r="4" fill="#334155"/><circle cx="${x}" cy="${y}" r="17" fill="#5b21b6" stroke="#fff" stroke-width="3"/><text x="${x}" y="${y+6}" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">${n}</text>`;
+// tomir: oq hoshiya + rangli ichki chiziq
+const _v = (d,c,w) => `<path d="${d}" stroke="#fff" stroke-width="${w+5}" fill="none" stroke-linecap="round"/><path d="${d}" stroke="${c}" stroke-width="${w}" fill="none" stroke-linecap="round"/>`;
+// beshburchak (dezoksiriboza)
+const _pent = (cx,cy,d) => `<polygon points="${cx},${cy-18} ${cx+17*d},${cy-6} ${cx+10.5*d},${cy+14.5} ${cx-10.5*d},${cy+14.5} ${cx-17*d},${cy-6}" fill="#86efac" stroke="#166534" stroke-width="3"/>`;
+
+const RASMLAR = {};
 Object.assign(RASMLAR, {
- hujayra:_eduSvg(`<ellipse cx="300" cy="205" rx="245" ry="155" fill="#fef3c7" stroke="#a16207" stroke-width="7"/><ellipse cx="300" cy="205" rx="232" ry="142" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/><circle cx="300" cy="205" r="62" fill="#93c5fd" stroke="#1d4ed8" stroke-width="5"/><circle cx="300" cy="205" r="20" fill="#1e40af"/><path d="M275 160 Q300 145 325 160 M275 250 Q300 265 325 250" stroke="#2563eb" stroke-width="3" fill="none"/><g fill="#fb923c" stroke="#9a3412" stroke-width="4"><ellipse cx="145" cy="170" rx="42" ry="22"/><ellipse cx="420" cy="270" rx="42" ry="22"/></g><g stroke="#7c2d12" stroke-width="4" fill="none"><path d="M112 170 q12 -20 24 0 t24 0 t24 0 M387 270 q12 -20 24 0 t24 0 t24 0"/></g><g fill="#86efac" stroke="#15803d" stroke-width="3"><path d="M405 100 q35 -20 65 0 q-30 18 -65 0 M410 122 q30 -18 55 0"/></g><g fill="#c4b5fd" stroke="#6d28d9" stroke-width="3"><circle cx="155" cy="285" r="18"/><circle cx="190" cy="95" r="12"/></g>${_tag(1,300,65,300,143)}${_tag(2,90,90,140,150)}${_tag(3,510,75,445,112)}${_tag(4,95,330,155,285)}${_tag(5,25,205,58,205)}`),
- yurak:_eduSvg(`<path d="M290 120 C250 70 175 85 165 155 C145 245 230 315 300 360 C370 315 455 245 435 155 C425 85 350 70 310 120 L300 135Z" fill="url(#tissue)" stroke="#9f1239" stroke-width="7"/><path d="M300 140 L300 335" stroke="#7f1d1d" stroke-width="7"/><path d="M185 170 Q235 130 285 180 L285 260 Q235 275 195 235Z" fill="#93c5fd" stroke="#1d4ed8" stroke-width="5"/><path d="M315 180 Q365 130 415 170 L405 235 Q365 275 315 260Z" fill="#fca5a5" stroke="#b91c1c" stroke-width="5"/><path d="M195 245 Q240 225 285 270 L285 335 Q225 315 195 245Z" fill="#60a5fa" stroke="#1d4ed8" stroke-width="5"/><path d="M315 270 Q365 225 405 245 Q375 320 315 335Z" fill="#f87171" stroke="#b91c1c" stroke-width="5"/><path d="M230 125 C220 65 225 35 250 25" stroke="#2563eb" stroke-width="24" fill="none"/><path d="M345 130 C360 55 390 35 420 45" stroke="#dc2626" stroke-width="27" fill="none"/><path d="M285 145 C270 85 285 55 305 35" stroke="#2563eb" stroke-width="18" fill="none"/><path d="M390 170 C440 115 470 110 490 125" stroke="#dc2626" stroke-width="16" fill="none"/>${_tag(1,145,170,210,190)}${_tag(2,455,185,380,190)}${_tag(3,145,290,225,285)}${_tag(4,455,300,370,290)}${_tag(5,505,35,415,45)}${_tag(6,165,35,230,55)}${_tag(7,275,25,295,45)}${_tag(8,520,120,480,125)}`),
- nefron:_eduSvg(`<path d="M145 95 C80 40 40 115 95 155 C145 190 190 120 145 95Z" fill="#fee2e2" stroke="#b91c1c" stroke-width="5"/><g fill="none" stroke="#dc2626" stroke-width="8"><path d="M90 110 q-20 -35 5 -40 t30 35 t30 -20 t-5 55 t-35 5 t-25 -35"/></g><path d="M160 125 C210 115 210 160 245 155 C285 150 270 210 250 225 C225 245 250 300 290 300 C330 300 340 255 315 230 C290 205 315 170 355 170 C395 170 400 210 435 200" fill="none" stroke="#f59e0b" stroke-width="18"/><path d="M250 220 L250 320 Q280 350 310 320 L310 220" fill="none" stroke="#0ea5e9" stroke-width="16"/><path d="M435 80 L435 340" stroke="#16a34a" stroke-width="20" fill="none"/><path d="M130 75 C190 20 240 35 250 80" stroke="#dc2626" stroke-width="6" fill="none"/><path d="M435 200 C475 185 480 150 480 125" stroke="#16a34a" stroke-width="7" fill="none"/>${_tag(1,55,45,105,85)}${_tag(6,30,190,95,145)}${_tag(2,215,80,220,145)}${_tag(3,180,330,255,285)}${_tag(4,375,260,365,175)}${_tag(5,500,330,435,300)}`),
- koz:_eduSvg(`<path d="M65 200 Q170 55 350 80 Q470 95 520 200 Q465 305 350 320 Q170 345 65 200Z" fill="#f8fafc" stroke="#475569" stroke-width="8"/><path d="M65 200 Q95 130 145 115 Q120 200 145 285 Q95 270 65 200Z" fill="#7dd3fc" stroke="#0284c7" stroke-width="5"/><path d="M145 115 Q205 75 350 85 Q470 95 500 200 Q470 305 350 315 Q205 325 145 285" fill="#fef3c7" fill-opacity=".45" stroke="#d97706" stroke-width="5"/><path d="M200 100 Q175 200 200 300" stroke="#0f766e" stroke-width="18" fill="none"/><ellipse cx="220" cy="200" rx="30" ry="62" fill="#bfdbfe" stroke="#2563eb" stroke-width="5"/><path d="M470 105 Q515 200 470 295" stroke="#be123c" stroke-width="10" fill="none"/><path d="M500 200 L585 200" stroke="#facc15" stroke-width="20"/><path d="M505 185 L585 185 M505 215 L585 215" stroke="#a16207" stroke-width="3"/><circle cx="200" cy="200" r="11" fill="#0f172a"/>${_tag(1,40,100,85,180)}${_tag(2,175,45,195,130)}${_tag(3,230,365,220,260)}${_tag(4,340,200,350,200)}${_tag(5,480,45,475,110)}${_tag(6,550,300,520,205)}`),
- gul:_eduSvg(`<g fill="#f9a8d4" stroke="#be185d" stroke-width="4"><ellipse cx="300" cy="115" rx="55" ry="105"/><ellipse cx="300" cy="115" rx="55" ry="105" transform="rotate(72 300 200)"/><ellipse cx="300" cy="115" rx="55" ry="105" transform="rotate(144 300 200)"/><ellipse cx="300" cy="115" rx="55" ry="105" transform="rotate(216 300 200)"/><ellipse cx="300" cy="115" rx="55" ry="105" transform="rotate(288 300 200)"/></g><path d="M300 190 L300 335" stroke="#15803d" stroke-width="12"/><g stroke="#15803d" stroke-width="7" fill="none"><path d="M300 190 L300 90"/><path d="M285 205 Q250 155 245 95 M315 205 Q350 155 355 95"/></g><g fill="#fbbf24" stroke="#a16207" stroke-width="4"><ellipse cx="245" cy="90" rx="13" ry="25"/><ellipse cx="355" cy="90" rx="13" ry="25"/></g><path d="M300 80 L300 225" stroke="#16a34a" stroke-width="9"/><circle cx="300" cy="72" r="15" fill="#be123c"/><path d="M265 235 Q245 265 285 255 L300 245 L315 255 Q355 265 335 235 L315 220 L300 230 L285 220Z" fill="#4ade80" stroke="#166534" stroke-width="5"/><ellipse cx="300" cy="230" rx="35" ry="45" fill="#86efac" stroke="#166534" stroke-width="5"/><ellipse cx="300" cy="240" rx="15" ry="20" fill="#fef3c7" stroke="#a16207" stroke-width="3"/>${_tag(1,300,20,300,58)}${_tag(2,360,330,310,255)}${_tag(3,430,65,355,90)}${_tag(4,75,145,150,170)}${_tag(5,80,300,270,250)}${_tag(6,500,150,330,140)}`),
- neyron:_eduSvg(`<g stroke="#64748b" stroke-width="9" fill="none"><path d="M155 195 L85 115 L35 85 M85 115 L65 45 M155 195 L70 215 L25 260 M70 215 L45 300 M155 195 L110 285 M155 195 L225 195"/></g><circle cx="155" cy="195" r="58" fill="#fde68a" stroke="#a16207" stroke-width="6"/><circle cx="155" cy="195" r="20" fill="#92400e"/><path d="M210 195 L520 195" stroke="#475569" stroke-width="12"/><g fill="#fbbf24" stroke="#c2410c" stroke-width="4"><rect x="250" y="170" width="65" height="50" rx="22"/><rect x="335" y="170" width="65" height="50" rx="22"/><rect x="420" y="170" width="65" height="50" rx="22"/></g><g stroke="#475569" stroke-width="7" fill="none"><path d="M520 195 L565 145 M520 195 L575 195 M520 195 L565 245"/></g>${_tag(1,35,30,75,100)}${_tag(2,150,335,155,255)}${_tag(3,220,90,225,190)}${_tag(4,360,90,365,170)}${_tag(5,405,290,325,195)}${_tag(6,560,90,555,150)}`)
+ // ---------- HAYVON HUJAYRASI ----------
+ hujayra:_eduSvg(`
+<ellipse cx="300" cy="205" rx="245" ry="155" fill="#fff7ed" stroke="#b45309" stroke-width="7"/>
+<g fill="none" stroke="#94a3b8" stroke-width="5"><path d="M215 288 q25 14 50 0 t50 0 t50 0"/><path d="M225 306 q25 12 50 0 t50 0 t40 0"/></g>
+<g fill="#475569"><circle cx="240" cy="291" r="2.8"/><circle cx="265" cy="285" r="2.8"/><circle cx="290" cy="277" r="2.8"/><circle cx="315" cy="285" r="2.8"/><circle cx="340" cy="291" r="2.8"/><circle cx="365" cy="285" r="2.8"/><circle cx="250" cy="308" r="2.8"/><circle cx="275" cy="302" r="2.8"/><circle cx="300" cy="294" r="2.8"/><circle cx="325" cy="302" r="2.8"/><circle cx="345" cy="308" r="2.8"/></g>
+<circle cx="300" cy="190" r="62" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="5"/><circle cx="300" cy="190" r="55" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+<path d="M262 170 q10 -12 20 0 t20 0 t20 0 M262 212 q10 12 20 0 t20 0 t20 0" stroke="#2563eb" stroke-width="2.5" fill="none"/>
+<circle cx="300" cy="190" r="17" fill="#1e3a8a"/>
+<g fill="#fdba74" stroke="#9a3412" stroke-width="4"><ellipse cx="150" cy="170" rx="46" ry="24"/><ellipse cx="435" cy="290" rx="46" ry="24"/></g>
+<g fill="#fed7aa" stroke="#9a3412" stroke-width="2"><ellipse cx="150" cy="170" rx="38" ry="16"/><ellipse cx="435" cy="290" rx="38" ry="16"/></g>
+<g stroke="#9a3412" stroke-width="2.5" fill="none"><path d="M128 155 L128 172 M142 185 L142 168 M156 155 L156 172 M170 185 L170 168"/><path d="M413 275 L413 292 M427 305 L427 288 M441 275 L441 292 M455 305 L455 288"/></g>
+${Array.from({length:5},(_,i)=>`<path d="M395 ${150+i*13} Q440 ${130+i*13} 485 ${150+i*13}" stroke="#15803d" stroke-width="10" fill="none"/><path d="M395 ${150+i*13} Q440 ${130+i*13} 485 ${150+i*13}" stroke="#86efac" stroke-width="5" fill="none"/>`).join('')}
+<g fill="#bbf7d0" stroke="#15803d" stroke-width="2.5"><circle cx="383" cy="160" r="6"/><circle cx="381" cy="190" r="6"/><circle cx="498" cy="168" r="6"/><circle cx="500" cy="196" r="6"/></g>
+<circle cx="160" cy="290" r="17" fill="#ddd6fe" stroke="#6d28d9" stroke-width="4"/>
+<g fill="#5b21b6"><circle cx="153" cy="285" r="2.8"/><circle cx="166" cy="288" r="2.8"/><circle cx="158" cy="297" r="2.8"/><circle cx="168" cy="297" r="2.8"/></g>
+<circle cx="205" cy="98" r="11" fill="#ddd6fe" stroke="#6d28d9" stroke-width="3"/>
+<text x="300" y="388" text-anchor="middle" font-size="16" fill="#64748b">Hayvon hujayrasi</text>
+${_tag(1,300,28,300,130)}${_tag(2,70,100,111,160)}${_tag(3,520,70,470,144)}${_tag(4,95,345,147,301)}${_tag(5,25,205,57,205)}`),
+
+ // ---------- YURAK (old ko'rinish) ----------
+ yurak:_eduSvg(`
+<path d="M290 130 C250 80 175 95 165 165 C145 255 230 325 300 365 C370 325 455 255 435 165 C425 95 350 80 310 130 L300 145Z" fill="url(#tissue)" stroke="#9f1239" stroke-width="7"/>
+<path d="M300 150 L300 345" stroke="#7f1d1d" stroke-width="7"/>
+<path d="M185 180 Q235 140 285 190 L285 270 Q235 285 195 245Z" fill="#93c5fd" stroke="#1d4ed8" stroke-width="5"/>
+<path d="M315 190 Q365 140 415 180 L405 245 Q365 285 315 270Z" fill="#fca5a5" stroke="#b91c1c" stroke-width="5"/>
+<path d="M195 255 Q240 235 285 280 L285 345 Q225 325 195 255Z" fill="#60a5fa" stroke="#1d4ed8" stroke-width="5"/>
+<path d="M315 280 Q365 235 405 255 Q375 330 315 345Z" fill="#f87171" stroke="#b91c1c" stroke-width="5"/>
+<path d="M200 254 Q238 244 270 264" stroke="#475569" stroke-width="5" fill="none"/>
+<g fill="#e2e8f0" stroke="#475569" stroke-width="2.5"><path d="M204 258 L222 254 L214 277Z"/><path d="M226 254 L244 257 L236 280Z"/><path d="M248 259 L266 266 L258 286Z"/></g>
+<path d="M334 270 Q366 246 404 256" stroke="#475569" stroke-width="5" fill="none"/>
+<g fill="#e2e8f0" stroke="#475569" stroke-width="2.5"><path d="M338 264 L364 252 L358 285Z"/><path d="M368 252 L398 258 L384 291Z"/></g>
+${_v("M556 155 C515 155 455 172 415 193",'#dc2626',10)}${_v("M556 238 C515 236 455 228 410 224",'#dc2626',10)}
+${_v("M192 28 L194 180",'#2563eb',16)}
+${_v("M280 290 L280 130",'#2563eb',16)}${_v("M280 130 C268 106 252 96 230 92",'#2563eb',12)}${_v("M280 130 C292 108 330 98 368 106",'#2563eb',12)}
+${_v("M322 290 L322 128 C322 74 372 52 408 64 C436 74 446 100 446 138",'#dc2626',18)}
+<polygon points="436,136 456,136 446,158" fill="#dc2626"/>
+<g font-size="14" fill="#334155"><circle cx="26" cy="338" r="7" fill="#2563eb"/><text x="40" y="343">venoz qon</text><circle cx="26" cy="362" r="7" fill="#dc2626"/><text x="40" y="367">arterial qon</text></g>
+<text x="300" y="392" text-anchor="middle" font-size="12" fill="#64748b">Old tomondan ko‘rinishi: rasmning chap tomoni — yurakning o‘ng yarmi</text>
+${_tag(1,95,200,220,215)}${_tag(2,505,290,380,225)}${_tag(3,95,290,230,305)}${_tag(4,505,345,370,310)}${_tag(5,500,40,412,56)}${_tag(6,105,70,188,80)}${_tag(7,250,28,280,190)}${_tag(8,565,95,500,160)}`),
+
+ // ---------- NEFRON ----------
+ nefron:_eduSvg(`
+<path d="M55 18 L88 64" stroke="#ef4444" stroke-width="14"/><path d="M125 64 L152 20" stroke="#f87171" stroke-width="8"/>
+<circle cx="105" cy="110" r="55" fill="#fff1f2" stroke="#be123c" stroke-width="7"/><circle cx="105" cy="110" r="46" fill="none" stroke="#fb7185" stroke-width="2"/>
+<circle cx="105" cy="110" r="34" fill="#fecaca"/>
+<g stroke="#dc2626" stroke-width="5" fill="none"><path d="M88 66 C80 84 78 100 88 112"/><path d="M122 66 C130 84 132 100 122 112"/><path d="M82 92 C95 78 120 80 130 96 C138 112 118 134 98 130 C80 126 76 108 90 98 C102 90 118 96 118 108 C118 120 100 122 96 112"/></g>
+<path d="M148 148 C185 150 205 135 225 150 C250 168 230 195 205 200 C180 206 190 235 220 235 C250 235 262 255 240 270" fill="none" stroke="#f59e0b" stroke-width="14"/>
+<path d="M240 270 L240 345" stroke="#0ea5e9" stroke-width="7" fill="none"/>
+<path d="M240 345 Q262 372 284 345" stroke="#0ea5e9" stroke-width="9" fill="none"/>
+<path d="M284 345 L284 275" stroke="#0369a1" stroke-width="12" fill="none"/>
+<path d="M284 275 C284 245 310 238 325 255 C345 278 375 262 370 238 C365 212 335 205 345 180 C355 158 395 165 410 170 L440 170" fill="none" stroke="#84cc16" stroke-width="14"/>
+<path d="M450 40 L450 325" stroke="#8b5cf6" stroke-width="18"/><polygon points="435,320 465,320 450,352" fill="#8b5cf6"/>
+${_tag(1,35,190,66,149)}${_tag(6,205,50,125,100)}${_tag(2,300,95,225,152)}${_tag(3,150,355,240,335)}${_tag(4,400,300,370,238)}${_tag(5,520,300,456,290)}`),
+
+ // ---------- KO'Z ----------
+ koz:_eduSvg(`
+<circle cx="340" cy="200" r="133" fill="#f0fdfa"/>
+<path d="M222 124 Q150 200 222 276 L262 262 L262 138Z" fill="#dbeafe"/>
+<path d="M222 124 A140 140 0 1 1 222 276" fill="none" stroke="#94a3b8" stroke-width="12"/>
+<path d="M228 128 A133 133 0 1 1 228 272" fill="none" stroke="#7c2d12" stroke-width="4"/>
+<path d="M265 98 A127 127 0 1 1 265 302" fill="none" stroke="#e11d48" stroke-width="6"/>
+<path d="M222 124 Q150 200 222 276" stroke="#38bdf8" stroke-width="9" fill="none"/>
+<path d="M236 128 L262 136 L268 158 L244 150Z" fill="#c4b5fd" stroke="#6d28d9" stroke-width="2.5"/><path d="M236 272 L262 264 L268 242 L244 250Z" fill="#c4b5fd" stroke="#6d28d9" stroke-width="2.5"/>
+<path d="M262 150 L286 158 M262 250 L286 242" stroke="#64748b" stroke-width="1.8"/>
+<path d="M258 140 L258 172" stroke="#0f766e" stroke-width="12"/><path d="M258 228 L258 260" stroke="#0f766e" stroke-width="12"/>
+<ellipse cx="290" cy="200" rx="24" ry="50" fill="#bfdbfe" stroke="#2563eb" stroke-width="4"/>
+<path d="M470 197 L562 185 L562 245 L470 233Z" fill="#fde047" stroke="#a16207" stroke-width="3"/>
+<ellipse cx="468" cy="216" rx="6" ry="14" fill="#fef9c3" stroke="#a16207" stroke-width="2"/>
+${_tag(1,70,100,195,162)}${_tag(2,255,38,258,150)}${_tag(3,292,372,292,238)}${_tag(4,420,375,380,240)}${_tag(5,500,50,422,103)}${_tag(6,545,300,471,218)}`),
+
+ // ---------- GUL (bo'ylama kesim) ----------
+ gul:_eduSvg(`
+<path d="M300 332 L300 398" stroke="#15803d" stroke-width="14"/>
+<path d="M285 318 C250 335 215 320 195 290 C230 290 260 300 285 318Z" fill="#4ade80" stroke="#166534" stroke-width="4"/>
+<path d="M315 318 C350 335 385 320 405 290 C370 290 340 300 315 318Z" fill="#4ade80" stroke="#166534" stroke-width="4"/>
+<path d="M282 302 C225 270 175 190 185 120 C230 150 290 230 282 302Z" fill="#f9a8d4" stroke="#be185d" stroke-width="4"/>
+<path d="M318 302 C375 270 425 190 415 120 C370 150 310 230 318 302Z" fill="#f9a8d4" stroke="#be185d" stroke-width="4"/>
+<ellipse cx="300" cy="318" rx="34" ry="12" fill="#ca8a04" stroke="#854d0e" stroke-width="3"/>
+<path d="M276 312 C262 260 258 200 262 150" stroke="#15803d" stroke-width="5" fill="none"/><path d="M324 312 C338 260 342 200 338 150" stroke="#15803d" stroke-width="5" fill="none"/>
+<ellipse cx="262" cy="138" rx="11" ry="20" fill="#fbbf24" stroke="#a16207" stroke-width="3"/><ellipse cx="338" cy="138" rx="11" ry="20" fill="#fbbf24" stroke="#a16207" stroke-width="3"/>
+<g fill="#fde68a"><circle cx="258" cy="132" r="2.5"/><circle cx="266" cy="141" r="2.5"/><circle cx="334" cy="132" r="2.5"/><circle cx="342" cy="141" r="2.5"/></g>
+<path d="M300 256 L300 90" stroke="#16a34a" stroke-width="8"/>
+<ellipse cx="300" cy="285" rx="28" ry="33" fill="#bbf7d0" stroke="#166534" stroke-width="4"/>
+<g fill="#fef3c7" stroke="#a16207" stroke-width="2"><ellipse cx="289" cy="282" rx="7" ry="9"/><ellipse cx="311" cy="282" rx="7" ry="9"/><ellipse cx="300" cy="300" rx="7" ry="9"/></g>
+<ellipse cx="300" cy="78" rx="16" ry="11" fill="#be123c" stroke="#881337" stroke-width="3"/>
+${_tag(1,400,40,313,75)}${_tag(2,500,300,328,288)}${_tag(3,470,100,348,133)}${_tag(4,540,200,392,190)}${_tag(5,110,345,240,307)}${_tag(6,110,200,261,197)}`)
+});
+Object.assign(RASMLAR, {
+ // ---------- DNK (nukleotidlar va juftlashish) ----------
+ dnk:_eduSvg(`
+<g stroke="#94a3b8" stroke-width="9"><path d="M170 28 L170 372"/><path d="M430 28 L430 372"/></g>
+${[45,165,285].map(y=>`<circle cx="170" cy="${y}" r="15" fill="#fbbf24" stroke="#92400e" stroke-width="3"/><circle cx="430" cy="${y}" r="15" fill="#fbbf24" stroke="#92400e" stroke-width="3"/>`).join('')}
+${[105,225,345].map(y=>_pent(170,y,1)+_pent(430,y,-1)).join('')}
+${[[105,'A','#3b82f6','T','#ef4444',2],[225,'G','#eab308','C','#a855f7',3],[345,'T','#ef4444','A','#3b82f6',2]].map(([y,l,lc,r,rc,n])=>`<rect x="190" y="${y-11}" width="90" height="22" rx="5" fill="${lc}"/><rect x="320" y="${y-11}" width="90" height="22" rx="5" fill="${rc}"/><text x="235" y="${y+6}" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">${l}</text><text x="365" y="${y+6}" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">${r}</text><path d="${n===2?`M280 ${y-5} H320 M280 ${y+5} H320`:`M280 ${y-7} H320 M280 ${y} H320 M280 ${y+7} H320`}" stroke="#0f172a" stroke-width="3" stroke-dasharray="5 4" fill="none"/>`).join('')}
+${_tag(1,70,45,154,45)}${_tag(2,70,118,156,108)}${_tag(3,235,380,235,355)}${_tag(4,300,28,300,100)}`),
+
+ // ---------- HAZM QILISH A'ZOLARI ----------
+ hazm:_eduSvg(`
+<path d="M300 8 L300 74" stroke="#eab08b" stroke-width="20"/>
+<path d="M236 226 C275 214 335 216 385 224 C415 228 438 218 452 210 C460 220 454 238 434 244 C392 256 305 254 255 246 C238 242 230 234 236 226Z" fill="#fde047" stroke="#a16207" stroke-width="4"/>
+<path d="M300 70 C320 48 405 52 428 100 C452 150 438 200 392 206 C355 211 318 206 298 194 C328 176 346 128 322 98 C312 85 303 82 300 70Z" fill="#fda4af" stroke="#be123c" stroke-width="5"/>
+<path d="M105 80 C135 52 215 50 285 80 C280 125 262 165 225 178 C165 190 110 150 105 80Z" fill="#a16207" stroke="#78350f" stroke-width="5"/>
+<path d="M222 178 C205 182 200 205 212 215 C226 222 240 206 236 188Z" fill="#22c55e" stroke="#166534" stroke-width="3"/>
+<path d="M195 372 L195 272 L455 272 L455 360 Q455 384 428 384 Q404 384 400 372" fill="none" stroke="#65a30d" stroke-width="20" stroke-linejoin="round"/>
+<path d="M195 372 L195 272 L455 272 L455 360 Q455 384 428 384 Q404 384 400 372" fill="none" stroke="#d9f99d" stroke-width="20" stroke-linecap="butt" stroke-dasharray="3 13"/>
+<path d="M298 190 C262 198 232 208 228 232 C226 252 240 262 256 262 L244 283 L234 296" fill="none" stroke="#fb923c" stroke-width="14"/>
+<path d="M232 298 H410 q18 0 18 9 t-18 9 H240 q-18 0 -18 9 t18 9 H410 q18 0 18 9 t-18 9 H250" fill="none" stroke="#fb923c" stroke-width="12"/>
+${_tag(1,225,28,295,32)}${_tag(2,520,110,420,118)}${_tag(3,60,100,135,100)}${_tag(4,520,240,425,232)}${_tag(5,300,383,300,352)}${_tag(6,105,330,190,330)}`),
+
+ // ---------- BARG KESIMI ----------
+ barg:_eduSvg(`
+<rect x="40" y="194" width="520" height="112" fill="#f0fdf4"/>
+<rect x="40" y="38" width="520" height="9" fill="#facc15" stroke="#a16207" stroke-width="2"/>
+${Array.from({length:18},(_,i)=>`<rect x="${42+i*28.6}" y="49" width="27" height="38" rx="3" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>`).join('')}
+${Array.from({length:19},(_,i)=>{const x=44+i*27;return `<rect x="${x}" y="92" width="23" height="98" rx="10" fill="#86efac" stroke="#166534" stroke-width="2"/><circle cx="${x+6}" cy="106" r="3.5" fill="#15803d"/><circle cx="${x+17}" cy="128" r="3.5" fill="#15803d"/><circle cx="${x+6}" cy="150" r="3.5" fill="#15803d"/><circle cx="${x+17}" cy="172" r="3.5" fill="#15803d"/>`}).join('')}
+${[0,1,2].flatMap(r=>Array.from({length:12},(_,j)=>({x:(r===1?101:80)+j*42,y:222+r*30}))).filter(c=>c.x<545&&!(c.x>205&&c.x<315&&c.y<290)&&!(Math.abs(c.x-413)<48&&c.y>265)).map(c=>`<ellipse cx="${c.x}" cy="${c.y}" rx="17" ry="14" fill="#bbf7d0" stroke="#166534" stroke-width="2"/><circle cx="${c.x-4}" cy="${c.y-2}" r="3" fill="#15803d"/><circle cx="${c.x+5}" cy="${c.y+4}" r="3" fill="#15803d"/>`).join('')}
+<ellipse cx="260" cy="246" rx="48" ry="42" fill="#f0fdf4" stroke="#15803d" stroke-width="3"/>
+<g fill="#7dd3fc" stroke="#0369a1" stroke-width="2.5"><circle cx="240" cy="230" r="9"/><circle cx="260" cy="224" r="9"/><circle cx="280" cy="230" r="9"/></g>
+<g fill="#fdba74" stroke="#c2410c" stroke-width="2"><circle cx="240" cy="256" r="6"/><circle cx="256" cy="262" r="6"/><circle cx="272" cy="262" r="6"/><circle cx="284" cy="256" r="6"/><circle cx="262" cy="274" r="6"/></g>
+${Array.from({length:18},(_,i)=>i).filter(i=>i!==12&&i!==13).map(i=>`<rect x="${42+i*28.6}" y="306" width="27" height="38" rx="3" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>`).join('')}
+<ellipse cx="401" cy="325" rx="8" ry="18" fill="#4ade80" stroke="#166534" stroke-width="2.5"/><ellipse cx="425" cy="325" rx="8" ry="18" fill="#4ade80" stroke="#166534" stroke-width="2.5"/>
+<circle cx="401" cy="323" r="2.5" fill="#15803d"/><circle cx="425" cy="327" r="2.5" fill="#15803d"/>
+<rect x="40" y="344" width="369" height="5" fill="#fde68a" stroke="#a16207" stroke-width="1.5"/><rect x="417" y="344" width="143" height="5" fill="#fde68a" stroke="#a16207" stroke-width="1.5"/>
+${_tag(1,22,20,62,42)}${_tag(2,22,68,58,68)}${_tag(3,22,140,56,140)}${_tag(4,22,222,72,222)}${_tag(5,470,378,426,332)}${_tag(6,545,200,288,228)}${_tag(7,262,382,262,274)}`),
+
+ // ---------- BOSH MIYA (yon ko'rinish) ----------
+ miya:_eduSvg(`
+<ellipse cx="420" cy="283" rx="64" ry="38" fill="#fbcfe8" stroke="#9d174d" stroke-width="5"/>
+<g stroke="#be567c" stroke-width="3" fill="none"><path d="M375 270 Q420 262 465 270"/><path d="M370 283 Q420 275 470 283"/><path d="M375 296 Q420 288 465 296"/><path d="M385 308 Q420 301 455 308"/></g>
+<path d="M312 262 L350 262 L352 304 L310 304Z" fill="#fb923c" stroke="#9a3412" stroke-width="4"/>
+<path d="M302 304 L360 304 Q368 322 360 340 L302 340 Q294 322 302 304Z" fill="#f59e0b" stroke="#92400e" stroke-width="4"/>
+<path d="M308 340 L356 340 L346 384 L318 384Z" fill="#c2410c" stroke="#7c2d12" stroke-width="4"/>
+<path d="M320 384 L344 384 L344 400 L320 400Z" fill="#cbd5e1" stroke="#64748b" stroke-width="3"/>
+<g transform="translate(0,-20)">
+<path d="M100 170 C70 90 145 35 230 55 C285 25 385 55 420 115 C470 125 495 200 450 245 C425 290 355 300 300 275 C240 315 145 280 130 235 C90 230 80 200 100 170Z" fill="#f9b4c7" stroke="#9d174d" stroke-width="7"/>
+<g fill="none" stroke="#be567c" stroke-width="5"><path d="M130 125 q30 -40 65 0 t65 0 t65 0 t65 0 M115 170 q35 -35 70 0 t70 0 t70 0 t70 0 M145 215 q30 -30 60 0 t60 0 t60 0"/></g>
+</g>
+<text x="586" y="392" text-anchor="end" font-size="13" fill="#64748b">Yon ko‘rinish: chapda — old</text>
+${_tag(1,70,40,175,105)}${_tag(2,540,330,470,300)}${_tag(3,190,300,316,285)}${_tag(4,190,345,300,322)}${_tag(5,190,382,314,362)}`),
+
+ // ---------- NAFAS A'ZOLARI ----------
+ opka:_eduSvg(`
+<path d="M262 112 C190 105 125 175 122 265 C120 325 168 350 225 340 C270 332 288 300 285 245 C283 178 285 118 262 112Z" fill="#fda4af" stroke="#be123c" stroke-width="6"/>
+<path d="M338 112 C410 105 475 175 478 265 C480 325 432 350 375 340 C338 333 325 315 330 296 C312 285 312 250 314 222 C315 160 318 118 338 112Z" fill="#fda4af" stroke="#be123c" stroke-width="6"/>
+<path d="M300 160 L262 200 M300 160 L340 205" stroke="#fb7185" stroke-width="14" fill="none"/>
+<g stroke="#dc2626" stroke-width="6" fill="none"><path d="M262 200 L225 235 L185 285 M262 200 L250 250 L240 305 M225 235 L170 225"/><path d="M340 205 L385 240 L425 285 M340 205 L352 258 L358 294 M385 240 L440 225"/></g>
+<g fill="#fff" stroke="#dc2626" stroke-width="2.5"><circle cx="185" cy="285" r="6"/><circle cx="240" cy="305" r="6"/><circle cx="170" cy="225" r="6"/><circle cx="425" cy="285" r="6"/><circle cx="358" cy="294" r="6"/><circle cx="440" cy="225" r="6"/></g>
+<path d="M0 352 L70 350 Q300 280 530 350 L600 352 L600 400 L0 400Z" fill="#f1f5f9"/>
+<path d="M70 350 Q300 280 530 350" stroke="#b45309" stroke-width="16" fill="none"/>
+<rect x="291" y="70" width="18" height="92" fill="#fee2e2"/>
+${[78,90,102,114,126,138,150].map(y=>`<rect x="286" y="${y}" width="28" height="8" rx="3" fill="#f87171" stroke="#b91c1c" stroke-width="1.5"/>`).join('')}
+<path d="M276 20 L324 20 L318 66 L282 66Z" fill="#fde68a" stroke="#b45309" stroke-width="4"/>
+<path d="M288 20 Q300 2 312 20Z" fill="#fcd34d" stroke="#b45309" stroke-width="2"/>
+<path d="M286 46 L298 54 M314 46 L302 54" stroke="#92400e" stroke-width="3" fill="none"/>
+<path d="M440 225 L490 140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+<circle cx="530" cy="90" r="58" fill="#fff" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6 5"/>
+${[[508,76],[550,72],[530,112]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="20" fill="#ffe4e6" stroke="#dc2626" stroke-width="3"/><circle cx="${x}" cy="${y}" r="26" fill="none" stroke="#2563eb" stroke-width="3" stroke-dasharray="5 4"/>`).join('')}
+${_tag(1,150,40,281,45)}${_tag(2,150,118,288,116)}${_tag(3,50,215,272,190)}${_tag(4,565,205,536,131)}${_tag(5,60,385,136,333)}${_tag(6,555,320,455,300)}`)
+});
+Object.assign(RASMLAR, {
+ // ---------- NEYRON ----------
+ neyron:_eduSvg(`<g stroke="#64748b" stroke-width="9" fill="none"><path d="M155 195 L85 115 L35 85 M85 115 L65 45 M155 195 L70 215 L25 260 M70 215 L45 300 M155 195 L110 285 M155 195 L225 195"/></g><circle cx="155" cy="195" r="58" fill="#fde68a" stroke="#a16207" stroke-width="6"/><circle cx="155" cy="195" r="20" fill="#92400e"/><path d="M210 195 L520 195" stroke="#475569" stroke-width="12"/><g fill="#fbbf24" stroke="#c2410c" stroke-width="4"><rect x="250" y="170" width="65" height="50" rx="22"/><rect x="335" y="170" width="65" height="50" rx="22"/><rect x="420" y="170" width="65" height="50" rx="22"/></g><g stroke="#475569" stroke-width="7" fill="none"><path d="M520 195 L565 145 M520 195 L575 195 M520 195 L565 245"/></g>${_tag(1,35,30,60,100)}${_tag(2,150,335,155,255)}${_tag(3,220,90,225,190)}${_tag(4,360,90,365,170)}${_tag(5,405,290,325,195)}${_tag(6,560,90,555,150)}`)
 });
 
 const rasmliSavollar = [
@@ -238,75 +325,6 @@ const rasmliSavollar = [
     options: ["Mielin", "Gormon", "Ferment", "Mediator (neyrotransmitter)"],
     answer: 3, explanation: "6 - akson uchlari: sinaptik tirqishga mediator (masalan, atsetilxolin) ajratib, impulsni keyingi hujayraga uzatadi." },
 ];
-
-// ================= QO'SHIMCHA MAVZULAR =================
-const _pent = (x, y) =>
-  `<polygon points="${x},${y - 9} ${x + 9},${y - 3} ${x + 6},${y + 8} ${x - 6},${y + 8} ${x - 9},${y - 3}" fill="#22c55e" stroke="#166534" stroke-width="1.5"/>`;
-
-Object.assign(RASMLAR, {
-  dnk: _svg(
-    '<path d="M100 15 L100 185 M200 15 L200 185" stroke="#94a3b8" stroke-width="6"/>' +
-    [30, 95, 160].map(y => `<circle cx="100" cy="${y}" r="8" fill="#f59e0b" stroke="#b45309" stroke-width="1.5"/><circle cx="200" cy="${y}" r="8" fill="#f59e0b" stroke="#b45309" stroke-width="1.5"/>`).join('') +
-    [62, 127].map(y => _pent(100, y) + _pent(200, y)).join('') +
-    '<rect x="108" y="58" width="38" height="9" rx="3" fill="#3b82f6"/><rect x="154" y="58" width="38" height="9" rx="3" fill="#ef4444"/>' +
-    '<rect x="108" y="123" width="38" height="9" rx="3" fill="#facc15"/><rect x="154" y="123" width="38" height="9" rx="3" fill="#a855f7"/>' +
-    '<path d="M146 60 L154 60 M146 65 L154 65 M146 125 L154 125 M146 128 L154 128 M146 131 L154 131" stroke="#0f172a" stroke-width="1.5"/>' +
-    _L(1, 45, 30, 92, 30) + _L(2, 45, 62, 91, 63) + _L(3, 127, 22, 127, 58) + _L(4, 150, 175, 150, 129)
-  ),
-  hazm: _svg(
-    '<path d="M95 190 L95 108 L210 108 L210 190" stroke="#a16207" stroke-width="10" fill="none" stroke-linejoin="round"/>' +
-    '<path d="M130 120 Q175 122 170 133 T130 146 T170 159 T130 172" stroke="#f472b6" stroke-width="8" fill="none" stroke-linecap="round"/>' +
-    '<path d="M150 8 L150 55" stroke="#fb7185" stroke-width="8"/>' +
-    '<ellipse cx="105" cy="72" rx="32" ry="18" transform="rotate(-8 105 72)" fill="#b45309" stroke="#78350f" stroke-width="2"/>' +
-    '<ellipse cx="165" cy="72" rx="30" ry="18" transform="rotate(15 165 72)" fill="#fda4af" stroke="#be123c" stroke-width="2"/>' +
-    '<ellipse cx="168" cy="98" rx="28" ry="6" fill="#fde047" stroke="#a16207" stroke-width="1.5"/>' +
-    _L(1, 100, 28, 146, 30) + _L(2, 250, 60, 193, 75) + _L(3, 35, 60, 74, 76) + _L(4, 250, 100, 192, 98) + _L(5, 250, 140, 172, 133) + _L(6, 255, 175, 210, 165)
-  ),
-  barg: _svg(
-    '<rect x="20" y="42" width="260" height="40" fill="#4ade80"/>' +
-    Array.from({ length: 13 }, (_, i) => `<rect x="${22 + i * 20}" y="44" width="16" height="36" rx="5" fill="#22c55e" stroke="#166534"/>`).join('') +
-    '<rect x="20" y="82" width="260" height="68" fill="#dcfce7"/>' +
-    Array.from({ length: 14 }, (_, i) => `<ellipse cx="${35 + i * 18}" cy="${98 + (i % 3) * 18}" rx="8" ry="7" fill="#4ade80" stroke="#166534"/>`).join('') +
-    '<rect x="20" y="24" width="260" height="18" fill="#bbf7d0" stroke="#15803d"/>' +
-    '<rect x="20" y="20" width="260" height="4" fill="#facc15"/>' +
-    '<rect x="20" y="150" width="260" height="18" fill="#bbf7d0" stroke="#15803d"/>' +
-    '<ellipse cx="190" cy="159" rx="6" ry="8" fill="#166534"/><ellipse cx="210" cy="159" rx="6" ry="8" fill="#166534"/>' +
-    '<rect x="196" y="150" width="8" height="19" fill="#f8fafc"/>' +
-    '<circle cx="110" cy="115" r="20" fill="#fef3c7" stroke="#a16207" stroke-width="2"/><circle cx="110" cy="108" r="6" fill="#3b82f6"/><circle cx="110" cy="124" r="6" fill="#f97316"/>' +
-    _L(1, 40, 9, 60, 22) + _b(2, 40, 33) + _b(3, 80, 62) + _b(4, 50, 125) + _L(5, 235, 188, 205, 164) + _L(6, 160, 100, 116, 108) + _L(7, 160, 140, 116, 124)
-  ),
-  miya: _svg(
-    '<ellipse cx="222" cy="158" rx="34" ry="22" fill="#fde68a" stroke="#ca8a04" stroke-width="2"/>' +
-    '<path d="M194 152 q28-7 56 0 M192 160 q30-7 60 0 M197 168 q25-7 50 0" stroke="#ca8a04" stroke-width="1.5" fill="none"/>' +
-    '<path d="M55 95 Q40 55 85 32 Q135 10 195 25 Q250 42 252 88 Q254 118 228 128 L205 130 Q180 150 140 148 Q95 146 80 125 Q58 120 55 95 Z" fill="#fbcfe8" stroke="#be185d" stroke-width="2.5" stroke-linejoin="round"/>' +
-    '<path d="M75 70 q15-18 30 0 t30 0 t30 0 t30 0 t30 0 M70 95 q15-16 30 0 t30 0 t30 0 t30 0 t25 0 M95 50 q15-14 30 0 t30 0 t30 0 t30 0" stroke="#be185d" stroke-width="2" fill="none"/>' +
-    '<path d="M120 108 Q160 100 200 118" stroke="#9d174d" stroke-width="3" fill="none" stroke-linecap="round"/>' +
-    '<rect x="156" y="138" width="24" height="16" rx="4" fill="#fdba74" stroke="#c2410c" stroke-width="1.5"/>' +
-    '<ellipse cx="168" cy="162" rx="23" ry="11" fill="#a5b4fc" stroke="#4338ca" stroke-width="1.5"/>' +
-    '<path d="M156 168 L180 168 L176 198 L160 198 Z" fill="#86efac" stroke="#15803d" stroke-width="1.5" stroke-linejoin="round"/>' +
-    '<text x="12" y="16" font-size="10" fill="#64748b" font-family="Arial,sans-serif">Old</text><text x="262" y="16" font-size="10" fill="#64748b" font-family="Arial,sans-serif">Orqa</text>' +
-    _b(1, 110, 72) + _L(2, 272, 135, 252, 152) + _L(3, 95, 152, 157, 146) + _L(4, 95, 175, 146, 162) + _L(5, 100, 190, 160, 186)
-  ),
-  opka: _svg(
-    '<path d="M145 60 Q60 60 60 130 Q60 175 110 175 L145 175 Z" fill="#fda4af" stroke="#be123c" stroke-width="2"/>' +
-    '<path d="M155 60 Q240 60 240 130 Q240 175 190 175 L155 175 Z" fill="#fda4af" stroke="#be123c" stroke-width="2"/>' +
-    '<rect x="143" y="25" width="14" height="60" fill="#fecaca" stroke="#b91c1c" stroke-width="1.5"/>' +
-    '<path d="M143 38 L157 38 M143 48 L157 48 M143 58 L157 58 M143 68 L157 68 M143 78 L157 78" stroke="#b91c1c" stroke-width="1.5"/>' +
-    '<ellipse cx="150" cy="20" rx="12" ry="8" fill="#fcd34d" stroke="#b45309" stroke-width="1.5"/>' +
-    '<path d="M150 85 L110 115 M150 85 L190 115 L202 124" stroke="#fb7185" stroke-width="7" fill="none" stroke-linecap="round"/>' +
-    '<circle cx="205" cy="118" r="6" fill="#fff" stroke="#be123c"/><circle cx="214" cy="126" r="6" fill="#fff" stroke="#be123c"/><circle cx="205" cy="134" r="6" fill="#fff" stroke="#be123c"/><circle cx="195" cy="128" r="6" fill="#fff" stroke="#be123c"/>' +
-    '<path d="M40 185 Q150 150 260 185" stroke="#7c3aed" stroke-width="6" fill="none"/>' +
-    _L(1, 100, 20, 139, 21) + _L(2, 100, 55, 143, 55) + _L(3, 270, 70, 170, 100) + _L(4, 272, 135, 220, 128) + _L(5, 30, 150, 84, 174) + _b(6, 100, 115)
-  ),
-});
-
-Object.assign(RASMLAR, {
- dnk:_eduSvg(`<g stroke="#64748b" stroke-width="10" fill="none"><path d="M180 35 C500 100 100 300 420 365"/><path d="M420 35 C100 100 500 300 180 365"/></g><g stroke-width="9" stroke-linecap="round"><path d="M210 55 L390 55 M255 105 L345 105 M280 155 L320 155 M280 245 L320 245 M255 295 L345 295 M210 345 L390 345" stroke="#2563eb"/><path d="M390 55 L210 55 M345 105 L255 105 M320 155 L280 155 M320 245 L280 245 M345 295 L255 295 M390 345 L210 345" stroke="#dc2626"/></g><g fill="#fbbf24" stroke="#92400e" stroke-width="3"><circle cx="180" cy="35" r="15"/><circle cx="420" cy="35" r="15"/><circle cx="420" cy="365" r="15"/><circle cx="180" cy="365" r="15"/></g><g fill="#86efac" stroke="#166534" stroke-width="3"><polygon points="210,85 230,75 245,95 230,115 210,105"/><polygon points="370,85 390,75 405,95 390,115 370,105"/></g>${_tag(1,80,35,180,35)}${_tag(2,80,120,220,100)}${_tag(3,500,145,390,105)}${_tag(4,500,300,300,245)}`),
- hazm:_eduSvg(`<path d="M285 25 L285 105" stroke="#eab08b" stroke-width="28"/><path d="M285 105 C230 100 220 170 270 190 C320 210 380 180 365 135 C350 105 315 105 285 105" fill="#fda4af" stroke="#be123c" stroke-width="6"/><path d="M250 175 Q185 140 150 180 Q120 215 170 230 Q200 240 225 220" fill="#a16207" stroke="#78350f" stroke-width="7"/><path d="M340 190 Q420 185 430 240 Q440 280 400 300" fill="none" stroke="#dc8b36" stroke-width="20"/><path d="M300 215 C240 245 245 300 300 300 C360 300 360 340 300 350 C240 360 235 315 270 300" fill="none" stroke="#f59e0b" stroke-width="18"/><path d="M270 300 Q210 265 190 300 Q175 335 220 355 Q270 375 300 350" fill="none" stroke="#16a34a" stroke-width="14"/><path d="M380 185 Q410 155 445 175 Q465 195 440 215" fill="#b45309" stroke="#78350f" stroke-width="5"/><path d="M380 205 Q340 225 340 245" stroke="#facc15" stroke-width="9" fill="none"/>${_tag(1,230,35,285,65)}${_tag(2,420,105,355,145)}${_tag(3,80,160,160,185)}${_tag(4,500,220,430,205)}${_tag(5,500,330,340,310)}${_tag(6,110,330,190,320)}`),
- barg:_eduSvg(`<rect x="45" y="55" width="510" height="24" fill="#facc15" stroke="#a16207" stroke-width="3"/><rect x="45" y="79" width="510" height="50" fill="#bbf7d0" stroke="#15803d" stroke-width="3"/><g fill="#4ade80" stroke="#15803d" stroke-width="3">${Array.from({length:12},(_,i)=>`<rect x="${60+i*40}" y="135" width="28" height="90" rx="12"/>`).join('')}</g><rect x="45" y="230" width="510" height="95" fill="#dcfce7" stroke="#15803d" stroke-width="3"/><g fill="#86efac" stroke="#166534" stroke-width="2">${Array.from({length:12},(_,i)=>`<ellipse cx="${70+i*40}" cy="265" rx="12" ry="8"/>`).join('')}</g><path d="M45 325 L555 325 L555 350 L45 350Z" fill="#bbf7d0" stroke="#15803d" stroke-width="3"/><path d="M440 325 Q460 285 480 325 M460 325 Q480 285 500 325" stroke="#166534" stroke-width="5" fill="none"/><path d="M290 145 L290 310" stroke="#0ea5e9" stroke-width="12"/><path d="M315 145 L315 310" stroke="#f59e0b" stroke-width="12"/>${_tag(1,30,35,55,55)}${_tag(2,120,95,120,80)}${_tag(3,160,180,160,175)}${_tag(4,100,280,120,270)}${_tag(5,520,375,475,330)}${_tag(6,290,115,290,160)}${_tag(7,350,115,315,160)}`),
- miya:_eduSvg(`<path d="M100 170 C70 90 145 35 230 55 C285 25 385 55 420 115 C470 125 495 200 450 245 C425 290 355 300 300 275 C240 315 145 280 130 235 C90 230 80 200 100 170Z" fill="#f9b4c7" stroke="#9d174d" stroke-width="7"/><g fill="none" stroke="#be567c" stroke-width="5"><path d="M130 125 q30 -40 65 0 t65 0 t65 0 t65 0 M115 170 q35 -35 70 0 t70 0 t70 0 t70 0 M145 215 q30 -30 60 0 t60 0 t60 0"/></g><path d="M360 250 Q390 220 420 245 Q450 270 425 300 Q390 325 360 290Z" fill="#e9a3ad" stroke="#9d174d" stroke-width="5"/><path d="M310 250 L310 290 L340 315 L350 350" fill="none" stroke="#c2410c" stroke-width="22"/><path d="M315 290 Q280 300 280 330" fill="none" stroke="#ea580c" stroke-width="18"/><path d="M330 315 L330 380" stroke="#9a3412" stroke-width="17"/>${_tag(1,120,40,170,75)}${_tag(2,500,300,420,275)}${_tag(3,260,350,310,275)}${_tag(4,450,350,335,320)}${_tag(5,530,385,345,365)}`),
- opka:_eduSvg(`<path d="M285 25 L315 25 L315 135 L285 135Z" fill="#fda4af" stroke="#be123c" stroke-width="5"/><g stroke="#be123c" stroke-width="4"><path d="M285 50 L315 50 M285 75 L315 75 M285 100 L315 100 M285 125 L315 125"/></g><path d="M300 130 L235 190 M300 130 L365 190" stroke="#dc6b80" stroke-width="18" fill="none"/><path d="M235 190 Q175 125 130 190 Q70 260 115 345 Q165 380 245 330 Q270 270 235 190Z" fill="#fda4af" stroke="#be123c" stroke-width="6"/><path d="M365 190 Q425 125 470 190 Q530 260 485 345 Q435 380 355 330 Q330 270 365 190Z" fill="#fda4af" stroke="#be123c" stroke-width="6"/><g stroke="#b91c1c" stroke-width="8" fill="none"><path d="M235 190 L180 245 L155 295 M235 190 L220 265 L205 325 M365 190 L420 245 L445 295 M365 190 L380 265 L395 325"/></g><path d="M95 365 Q300 300 505 365" stroke="#7c2d12" stroke-width="18" fill="none"/><g fill="#fff" stroke="#dc2626" stroke-width="4"><circle cx="510" cy="80" r="28"/><circle cx="550" cy="65" r="22"/><circle cx="545" cy="110" r="22"/></g><g stroke="#dc2626" stroke-width="3"><path d="M490 80 L530 80 M510 60 L510 100 M535 65 L565 65 M545 45 L545 85"/></g>${_tag(1,200,25,300,25)}${_tag(2,90,100,290,75)}${_tag(3,520,160,390,205)}${_tag(4,570,35,530,80)}${_tag(5,45,375,180,355)}${_tag(6,95,245,135,250)}`)
-});
 
 rasmliSavollar.push(
   // ===== DNK =====
