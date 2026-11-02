@@ -2798,5 +2798,355 @@ const questions = [
     topic: "Botanika",
     answer: 2,
     explanation: "Don — bir urug'li meva (donak): meva qobig'i urug' po'sti bilan qo'shilib o'sgan. Haqiqiy urug'da esa po'st mevadan ajralgan bo'ladi."
+  },
+  {
+    question: "Otasi III qon guruhli (IᴮI⁰), onasi II qon guruhli (IᴬI⁰) oilada farzandning I qon guruhli (I⁰I⁰) bo'lish ehtimoli qancha?",
+    options: ["0%","25%","50%","75%"],
+    topic: "Genetika",
+    answer: 1,
+    explanation: "Gametalar: ota Iᴮ yoki I⁰, ona Iᴬ yoki I⁰. Farzandlar IᴬIᴮ, Iᴮ I⁰, IᴬI⁰, I⁰I⁰ nisbatda 1:1:1:1 bo'ladi, shuning uchun I guruh ehtimoli 25%."
+  },
+  {
+    question: "Onasi rezus-manfiy (dd), otasi rezus-musbat geterozigota (Dd) bo'lgan oilada rezus-manfiy farzand tug'ilish ehtimoli qancha?",
+    options: ["0%","25%","50%","100%"],
+    topic: "Genetika",
+    answer: 2,
+    explanation: "dd × Dd → Dd (Rh+) va dd (Rh−) nisbatda 1:1, ya'ni Rh-manfiy farzand ehtimoli 50%."
+  },
+  {
+    question: "Tungi go'zal o'simligida qizil gul (AA) va oq gul (aa) chatishtirilganda F₁ pushti (Aa) bo'ladi (to'liq bo'lmagan dominantlik). F₁ dagi pushti o'simlik qizil gulli (AA) o'simlik bilan chatishtirilsa, nasl fenotipi qanday bo'ladi?",
+    options: ["1 qizil : 1 pushti","1 qizil : 2 pushti : 1 oq","Hammasi pushti","3 qizil : 1 oq"],
+    topic: "Genetika",
+    answer: 0,
+    explanation: "Aa × AA → 1 AA (qizil) : 1 Aa (pushti). Genotip va fenotip bo'yicha ajralish bir xil, 1:1."
+  },
+  {
+    question: "Sariq tukli sichqonlar o'zaro chatishtirilganda nasl 2 sariq : 1 kulrang nisbatda ajraladi. Buni qanday izohlash mumkin?",
+    options: ["Sariq rang geni retsessiv va gomozigota holatda hayotchan","Sariq rang polimer genlar ta'sirida hosil bo'ladi","Sariq rang geni jinsga birikkan","Sariq rang geni dominant, lekin gomozigota holatda letal (embrion nobud bo'ladi)"],
+    topic: "Genetika",
+    answer: 3,
+    explanation: "Yy × Yy → 1 YY (nobud) : 2 Yy (sariq) : 1 yy (kulrang), shuning uchun tirik nasl nisbati 2:1."
+  },
+  {
+    question: "Labrador itlarida rang quyidagicha irsiylanadi: B- qora, bb jigarrang; ee genotip pigment hosil bo'lishini to'sadi (sariq), bunda B va b allellari namoyon bo'lmaydi. BbEe × BbEe chatishtirilganda sariq kuchuklar ulushi qancha?",
+    options: ["18,75%","25%","56,25%","6,25%"],
+    topic: "Genetika",
+    answer: 1,
+    explanation: "Retsessiv epistaz: ee genotip (1/4) rangni to'sadi. Nisbat 9 qora : 3 jigarrang : 4 sariq, sariq ulushi 4/16 = 25%."
+  },
+  {
+    question: "AB/ab genotipli organizm aabb (ab/ab) bilan chatishtirildi. Genlar bitta xromosomada joylashgan, ular orasidagi masofa 20 morganida (20% krossingover). Naslda AaBb genotipli individlar ulushi qancha?",
+    options: ["40%","10%","20%","50%"],
+    topic: "Genetika",
+    answer: 0,
+    explanation: "Krossoversiz gametalar AB va ab har biri 40%, krossoverli Ab va aB har biri 10%. AaBb (AB/ab) 40% hosil bo'ladi."
+  },
+  {
+    question: "Tovuqlarda jins ZZ (erkak), ZW (urg'ochi). Retsessiv gomozigota erkak (ZᵃZᵃ) dominant belgili urg'ochi (ZᴬW) bilan chatishtirildi. F₁ da belgi qanday namoyon bo'ladi?",
+    options: ["Hamma nasl dominant belgili","Erkaklar retsessiv, urg'ochilar dominant belgili","Erkaklar dominant belgili, urg'ochilar retsessiv belgili","Har ikki jinsda 1:1 ajralish"],
+    topic: "Genetika",
+    answer: 2,
+    explanation: "ZᵃZᵃ × ZᴬW → ZᴬZᵃ (erkak, dominant) va ZᵃW (urg'ochi, retsessiv). Ota Z-xromosomasi qizlariga o'tadi."
+  },
+  {
+    question: "Ikki sog'lom ota-onadan autosomal retsessiv kasallik bilan tug'ilgan birinchi bola bor. Ikkinchi farzandning sog'lom bo'lib, shu allelni tashuvchi bo'lish ehtimoli qancha?",
+    options: ["25%","66,7%","75%","50%"],
+    topic: "Genetika",
+    answer: 3,
+    explanation: "Ota-onalar Aa × Aa: 1/4 AA, 2/4 Aa, 1/4 aa. Sog'lom tashuvchi (Aa) ehtimoli 2/4 = 50%. 66,7% — sog'lom farzandlar orasida tashuvchi ulushi."
+  },
+  {
+    question: "Klaynfelter sindromli (XXY) erkak somatik hujayralarida xromosomalar soni va jinsiy xromatin (Barr tanachasi) soni qanday?",
+    options: ["46 xromosoma, 0 ta Barr tanachasi","47 xromosoma, 1 ta Barr tanachasi","47 xromosoma, 2 ta Barr tanachasi","45 xromosoma, 1 ta Barr tanachasi"],
+    topic: "Genetika",
+    answer: 1,
+    explanation: "44 autosoma + XXY = 47 xromosoma. Barr tanachalari soni X-xromosomalar sonidan bitta kam, ya'ni 1."
+  },
+  {
+    question: "Triploid (3n) tarvuz yoki banan mevalarining urug'siz bo'lishiga sabab nima?",
+    options: ["Gullari changlanmaydi","Hosil bo'lgan zigotalar doim nobud bo'ladi","Meyozda gomologik xromosomalar juftlasha olmaydi va tekis taqsimlanmaydi, unumdor gametalar hosil bo'lmaydi","Ular faqat jinssiz ko'payadi"],
+    topic: "Genetika",
+    answer: 2,
+    explanation: "Toq (uchta) gomologik xromosoma meyozda to'g'ri juftlashmaydi, gametalarda xromosomalar to'plami buziladi va ular hayotchan bo'lmaydi."
+  },
+  {
+    question: "Geterozis (duragay kuchi) F₁ avlodda yuqori bo'lib, keyingi avlodlarda susayib boradi. Buning asosiy sababi nima?",
+    options: ["Geterozigotalik kamayib, zararli retsessiv allellar gomozigota holatda namoyon bo'ladi","Mutatsiyalar tezligi oshadi","Gametalar soni kamayadi","Xromosomalar soni ikki marta kamayadi"],
+    topic: "Genetika",
+    answer: 0,
+    explanation: "F₁ da ko'pgina genlar geterozigota, zararli retsessiv allellar yashirin. Keyingi avlodlarda gomozigotalar ko'payadi va ustunlik pasayadi."
+  },
+  {
+    question: "Dolli qo'y sut bezi hujayrasining yadrosini yadrosiz tuxum hujayraga ko'chirish yo'li bilan hosil qilingan. Dolli yadro genlari bo'yicha kimga o'xshaydi?",
+    options: ["Tuxum hujayra donoriga","Embrionni ko'targan surrogat onaga","Hech kimga, yangi genotip hosil bo'lgan","Sut bezi hujayrasi yadrosi olingan qo'yga"],
+    topic: "Genetika",
+    answer: 3,
+    explanation: "Yadro genomi yadro donoriga mos keladi. Mitoxondriya DNKsi esa tuxum hujayra donoridan keladi."
+  },
+  {
+    question: "Rekombinant DNK olishda restriktaza fermenti qanday vazifani bajaradi?",
+    options: ["DNK bo'laklarini bir-biriga tikadi","DNKdagi aniq nukleotid ketma-ketlikni tanib, shu joydan kesadi","DNKni yangi nusxalarga ko'paytiradi","RNKdan DNK sintezlaydi"],
+    topic: "Genetika",
+    answer: 1,
+    explanation: "Restriktazalar ma'lum ketma-ketlikni (restriksiya joyi) taniydi va DNKni kesadi. Bo'laklarni DNK-ligaza biriktiradi."
+  },
+  {
+    question: "Odam insulin genini bakteriyaga ko'chirishda genni odam DNKsidan emas, mRNK asosida teskari transkriptaza yordamida sintezlangan nusxa (kDNK) sifatida olish qulay. Buning sababi nima?",
+    options: ["kDNKda intronlar yo'q, bakteriya esa intronlarni qirqib ola olmaydi","kDNK uzunroq va barqarorroq","Bakteriyalar faqat RNK genomini taniydi","kDNK bakteriya xromosomasiga o'zi birikadi"],
+    topic: "Genetika",
+    answer: 0,
+    explanation: "Eukariot genida intronlar bor, bakteriyalarda splaysing mexanizmi yo'q. Yetuk mRNK asosida olingan kDNK faqat ekzonlardan iborat."
+  },
+  {
+    question: "PCR (polimeraza zanjir reaksiyasi) da Taq-polimeraza ishlatilishining sababi nima?",
+    options: ["U faqat RNK asosida sintez qiladi","U praymersiz ishlay oladi","U yuqori haroratga (DNK denaturatsiyasi sharoitiga) chidamli","U DNKni parchalaydi"],
+    topic: "Genetika",
+    answer: 2,
+    explanation: "PCRda har siklda DNK ~95°C da denaturatsiyalanadi. Termofil bakteriyadan olingan Taq-polimeraza bunda parchalanmaydi."
+  },
+  {
+    question: "Gel elektroforezida DNK fragmentlari qaysi elektrod tomon va qanday tezlikda harakatlanadi?",
+    options: ["Manfiy elektrodga, katta fragmentlar tezroq","Musbat elektrodga, kichik fragmentlar tezroq","Musbat elektrodga, katta fragmentlar tezroq","Manfiy elektrodga, kichik fragmentlar tezroq"],
+    topic: "Genetika",
+    answer: 1,
+    explanation: "Fosfat guruhlari tufayli DNK manfiy zaryadli va musbat elektrod tomon siljiydi. Gel g'ovakligi katta bo'laklarni ko'proq sekinlashtiradi."
+  },
+  {
+    question: "DNK metillanishi (sitozin asosiga metil guruh qo'shilishi) gen faoliyatiga qanday ta'sir qiladi?",
+    options: ["Nukleotid ketma-ketligini o'zgartiradi (mutatsiya)","Transkripsiyani kuchaytiradi va nukleotid tartibini o'zgartiradi","DNK replikatsiyasini butunlay to'xtatadi","Nukleotid ketma-ketligini o'zgartirmasdan genning transkripsiyasini ko'pincha susaytiradi"],
+    topic: "Genetika",
+    answer: 3,
+    explanation: "DNK metillanishi epigenetik o'zgarish: ketma-ketlik o'zgarmaydi, lekin gen ifodasi susayishi mumkin va bu holat hujayra bo'linishida ham saqlanadi."
+  },
+  {
+    question: "Eukariot genining kodlovchi qismi (tarjimalanmaydigan hududlarsiz) 1800 nukleotiddan iborat, shundan 3 ta intron jami 600 nukleotidni tashkil etadi. Yetuk mRNKdan sintezlangan peptidda nechta aminokislota bo'ladi? (stop-kodon aminokislota kodlamaydi)",
+    options: ["399","400","599","600"],
+    topic: "Genetika",
+    answer: 0,
+    explanation: "Ekzonlar 1800−600=1200 nukleotid = 400 kodon. Bundan bittasi stop-kodon, shuning uchun peptidda 399 aminokislota bo'ladi."
+  },
+  {
+    question: "Reaksiya normasi tushunchasi nimani bildiradi?",
+    options: ["Belgining nasldan-naslga o'tmaydigan o'zgarishini","Mutatsiya natijasida paydo bo'lgan yangi belgini","Genotip belgilaydigan, belgi muhit ta'sirida o'zgarishi mumkin bo'lgan chegarani","Belgining faqat muhitga bog'liqligini"],
+    topic: "Genetika",
+    answer: 2,
+    explanation: "Genotip belgi o'zgarishining chegarasini belgilaydi. Masalan, sigir sut mahsuldorligi oziqlantirishga qarab o'zgaradi, lekin ma'lum yuqori chegaradan oshmaydi."
+  },
+  {
+    question: "Egizaklar usuli yordamida nimani aniqlash mumkin?",
+    options: ["Xromosomalar sonini","Belgi rivojlanishida irsiyat va muhit ta'sirining ulushini (monozigot va dizigot egizaklar o'xshashligini taqqoslab)","Gen mutatsiyalari tezligini","Genlarning xromosomadagi joylashuvini"],
+    topic: "Genetika",
+    answer: 1,
+    explanation: "Monozigot egizaklar genotipi bir xil. Ularning belgilardagi farqi muhit ta'sirini, dizigot egizaklar bilan taqqoslash esa irsiyat hissasini ko'rsatadi."
+  },
+  {
+    question: "Rodoslovda ikki sog'lom ota-onadan kasal bola tug'ilgan. Bu belgi qanday irsiylangan?",
+    options: ["Dominant, autosomada","Dominant, Y-xromosomaga birikkan","Mitoxondrial, ona orqali","Retsessiv, ota-onalar tashuvchi (geterozigota)"],
+    topic: "Genetika",
+    answer: 3,
+    explanation: "Belgi ota-onada namoyon bo'lmay, bolada paydo bo'lgan, demak retsessiv. Ota-onalar yashirin tashuvchi."
+  },
+  {
+    question: "Dominant belgili organizm genotipi (AA yoki Aa) ni aniqlash uchun tahlil qiluvchi chatishtirish qanday o'tkaziladi?",
+    options: ["U Aa genotipli individ bilan chatishtiriladi","U AA genotipli individ bilan chatishtiriladi","U retsessiv gomozigota (aa) bilan chatishtiriladi; nasl bir xil bo'lsa AA, 1:1 ajralsa Aa","U o'zi bilan chatishtiriladi"],
+    topic: "Genetika",
+    answer: 2,
+    explanation: "aa individ faqat a gametalar beradi, shuning uchun nasl fenotipi tekshirilayotgan organizm gametalarini ko'rsatadi."
+  },
+  {
+    question: "Mendelning ikkinchi qonuni (belgilar ajralishi) ning sitologik asosi qaysi?",
+    options: ["Meyoz I anafazasida gomologik xromosomalarning ajralishi","Mitozda xromatidlarning ajralishi","Profazada xromosomalarning spirallashishi","Meyoz II da sentromeralarning bo'linishi"],
+    topic: "Genetika",
+    answer: 0,
+    explanation: "Meyoz I da gomologik xromosomalar qutblarga ajraladi, shu sababli allellar turli gametalarga tushadi."
+  },
+  {
+    question: "M qon guruhli (LᴹLᴹ) ota va MN qon guruhli (LᴹLᴺ) onadan tug'ilgan farzandlarda qanday guruhlar kuzatiladi?",
+    options: ["Hammasi M guruhli","50% M va 50% MN","50% MN va 50% N","25% M, 50% MN, 25% N"],
+    topic: "Genetika",
+    answer: 1,
+    explanation: "LᴹLᴹ × LᴹLᴺ → 1 LᴹLᴹ (M) : 1 LᴹLᴺ (MN). MN guruhida ikkala allel ham namoyon bo'lgani uchun bu kodominantlikdir."
+  },
+  {
+    question: "Mendelning uchinchi qonuni (belgilarning mustaqil irsiylanishi) bajarilishi uchun genlar qanday joylashishi kerak?",
+    options: ["Bitta xromosomada yonma-yon","Jinsiy xromosomada","Bitta gomologik juftning ikki xromatidida","Turli juft gomologik xromosomalarda"],
+    topic: "Genetika",
+    answer: 3,
+    explanation: "Turli juft xromosomalardagi genlar meyozda mustaqil taqsimlanadi. Birikkan genlar esa birga irsiylanadi."
+  },
+  {
+    question: "Shelford tolerantlik qonuniga ko'ra organizmning yashashini nima cheklashi mumkin?",
+    options: ["Faqat minimumda bo'lgan omil","Faqat maksimumdan ortiq bo'lgan omil","Omilning ham yetishmasligi, ham ortiqligi (tolerantlik chegarasi)","Faqat biotik omillar"],
+    topic: "Ekologiya",
+    answer: 2,
+    explanation: "Har bir omil uchun minimum, optimum va maksimum bor. Omilning yetishmasligi ham, ortiqligi ham organizmga salbiy ta'sir qiladi."
+  },
+  {
+    question: "Shaharda 2 000 000 aholi bor. Bir yilda tug'ilish 25‰, o'lim 9‰, migratsiya saldosi (kelganlar minus ketganlar) +4‰ bo'ldi. Aholi soni yil davomida qanchaga o'zgaradi?",
+    options: ["+40 000","+32 000","+68 000","+76 000"],
+    topic: "Ekologiya",
+    answer: 0,
+    explanation: "Umumiy o'sish 25−9+4=20‰. 2 000 000 × 0,02 = 40 000."
+  },
+  {
+    question: "Quyidagi elementlardan qaysi birining biogeokimyoviy aylanishida atmosferadagi gazsimon bosqich deyarli yo'q?",
+    options: ["Uglerod","Azot","Kislorod","Fosfor"],
+    topic: "Ekologiya",
+    answer: 3,
+    explanation: "Fosfor asosan tog' jinslari, tuproq va suv orqali aylanadi. Uglerod, azot va kislorodning gazsimon shakllari (CO₂, N₂, O₂) atmosferada bor."
+  },
+  {
+    question: "Mikorizada zamburug' bilan o'simlik o'rtasidagi o'zaro foydali munosabat qanday ifodalanadi?",
+    options: ["O'simlik zamburug'ga suv va mineral tuzlar beradi, zamburug' o'simlikdan karbonsuvlar oladi","Zamburug' o'simlikka suv va mineral moddalarni (ayniqsa fosfor) so'rishda yordam beradi, o'simlik unga organik moddalar beradi","Zamburug' o'simlik to'qimalarini parchalab oziqlanadi","Ikkalasi bir-biriga hech qanday ta'sir qilmaydi"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Zamburug' gifalari tuproqdan suv va tuzlarni samarali so'radi, o'simlik esa fotosintez mahsulotlarini zamburug'ga beradi. Bu mutualizm."
+  },
+  {
+    question: "Yirtqich–o'lja tizimida (Lotka–Volterra modeli) sonlar tebranishi qanday kechadi?",
+    options: ["Yirtqichlar soni avval ko'payadi, so'ng o'lja ko'payadi","Ikkalasi bir vaqtda o'zgaradi","O'lja soni ortadi, bir oz kechikib yirtqichlar soni oshadi; keyin o'lja kamayadi, yirtqichlar ham kamayadi","Sonlar doimiy qoladi"],
+    topic: "Ekologiya",
+    answer: 2,
+    explanation: "O'lja ko'payishi yirtqichga oziq bo'ladi, yirtqichlar ko'payib o'ljani kamaytiradi. Oziq kamayishi yirtqichlarning kamayishiga olib keladi va davr takrorlanadi."
+  },
+  {
+    question: "Klimaks jamoasiga yetgan ekotizimda sof birlamchi mahsuldorlik qanday bo'ladi?",
+    options: ["Nolga yaqin, chunki fotosintez va nafas olish tezliklari deyarli teng","Maksimal, chunki biomassa tez ortadi","Manfiy, chunki biomassa kamayadi","Faqat bahorda nolga teng"],
+    topic: "Ekologiya",
+    answer: 0,
+    explanation: "Klimaksda biomassa barqaror, yalpi fotosintez nafasga sarflanadigan miqdorga yaqin bo'ladi, shuning uchun sof mahsuldorlik nolga yaqin."
+  },
+  {
+    question: "Allen qoidasiga ko'ra issiqqonli hayvonlar sovuq iqlimda qanday moslashadi?",
+    options: ["Quloq, dum va oyoqlari uzunroq bo'ladi","Tanadan chiqib turgan qismlar (quloq, dum, oyoq) qisqaroq bo'ladi, issiqlik yo'qotilishi kamayadi","Tana yuzasi nisbatan kattalashadi","Teri osti yog'i yo'qoladi"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Chiqib turgan a'zolar issiqlikni ko'p yo'qotadi. Shuning uchun arktik tulkining quloqlari cho'l tulkisinikidan kichik."
+  },
+  {
+    question: "Markaziy Osiyo cho'llarida efemer o'simliklar hayot siklini qanday o'tkazadi?",
+    options: ["Butun yoz davomida o'sib, issiqda gullaydi","Qish davomida o'sadi, bahorda urug'laydi","Chuqur ildizlari bilan yer osti suvlaridan foydalanib yil bo'yi yashil turadi","Bahorgi namlik davrida tez rivojlanib urug' beradi, quruq va issiq mavsumni urug' holida o'tkazadi"],
+    topic: "Ekologiya",
+    answer: 3,
+    explanation: "Efemerlar bahor yog'inlari bilan qisqa muddatda o'sadi, gullaydi va urug' beradi, yoz issig'ini urug' holida o'tkazadi."
+  },
+  {
+    question: "Cho'l o'simligi saksovulning moslashuvlari qaysi javobda to'g'ri ko'rsatilgan?",
+    options: ["Keng barglari va sayoz ildiz tizimi","Qalin kutikulali yirik barglar, yaltiroq poya","Barglari reduksiyalangan, fotosintez yashil novdalarda boradi, ildizi chuqur kirib boradi","Faqat bahorda o'sadigan bir yillik o't"],
+    topic: "Ekologiya",
+    answer: 2,
+    explanation: "Barglarning reduksiyasi transpiratsiyani kamaytiradi, yashil novdalar fotosintez qiladi, chuqur ildiz yer osti suvini oladi."
+  },
+  {
+    question: "Tundra o'simliklari asosan past bo'yli bo'lishining sababi nima?",
+    options: ["Abadiy muzloq tufayli ildizlar chuqur kirolmasligi, kuchli shamol va qisqa vegetatsiya davri","Tuproqda mineral tuzlar haddan tashqari ko'pligi","Yil davomida issiq va quruq iqlim","Yorug'likning juda ko'pligi"],
+    topic: "Ekologiya",
+    answer: 0,
+    explanation: "Muzlagan qatlam ildizning chuqurlashishini to'sadi. Shamol va qisqa yoz baland o'sishga imkon bermaydi."
+  },
+  {
+    question: "A jamoada 100 individ 2 turga mansub (50 va 50), B jamoada 100 individ 10 turga mansub (har biridan 10 tadan). Qaysi javob to'g'ri?",
+    options: ["A jamoada tur xilma-xilligi yuqori, chunki individlar ko'p","B jamoada tur xilma-xilligi yuqori: turlar soni ko'p va individlar tekis taqsimlangan","Ikkala jamoada xilma-xillik teng","Xilma-xillikni individlar soni belgilaydi, turlar soni ahamiyatsiz"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Tur xilma-xilligi turlar soniga va ularning individlar bo'yicha tekis taqsimlanishiga bog'liq. Individlar umumiy soni ikkala jamoada bir xil."
+  },
+  {
+    question: "Tirik qolish egri chizig'ining III tipi (yosh organizmlar orasida o'lim juda yuqori) qaysi organizmlarga xos?",
+    options: ["Odam va yirik sutemizuvchilar","Barcha qushlar","Gidra va boshqa ichakbo'shliqlilar","Juda ko'p tuxum yoki urug' beradigan organizmlar (ko'pchilik baliqlar, dengiz umurtqasizlari, daraxtlar)"],
+    topic: "Ekologiya",
+    answer: 3,
+    explanation: "Bunday turlar ko'p nasl qoldiradi, lekin yoshlikda ko'plari nobud bo'ladi, omon qolganlar uzoq yashaydi. Odam va yirik sutemizuvchilarda I tip kuzatiladi."
+  },
+  {
+    question: "Quyidagi omillardan qaysi biri zichlikka bog'liq bo'lmagan omil hisoblanadi?",
+    options: ["Oziq uchun ichki turlararo raqobat","Yuqumli kasalliklar epidemiyasi","Kuchli sovuq yoki qurg'oqchilik","Yirtqichlar soni ortishi"],
+    topic: "Ekologiya",
+    answer: 2,
+    explanation: "Ob-havo ofatlari populyatsiya zichligidan qat'i nazar ta'sir qiladi. Raqobat, kasalliklar va yirtqichlik zichlik oshganda kuchayadi."
+  },
+  {
+    question: "Fundamental nisha va realizatsiyalangan nisha o'rtasidagi farq nimada?",
+    options: ["Realizatsiyalangan nisha raqobat va boshqa biotik ta'sirlar tufayli fundamentaldan odatda torroq bo'ladi","Fundamental nisha doim realizatsiyalangandan torroq","Ikkalasi bir xil","Fundamental nisha faqat yirtqichlarga xos"],
+    topic: "Ekologiya",
+    answer: 0,
+    explanation: "Fundamental nisha turning imkoniyat doirasi, realizatsiyalangan nisha esa raqobatchilar va yirtqichlar ta'sirida haqiqatda egallaydigan doirasi."
+  },
+  {
+    question: "Yangi hududga olib kirilgan (introduksiya qilingan) tur ba'zan juda tez ko'payib ketadi. Buning asosiy sababi nima?",
+    options: ["U doimo yangi turga evolyutsiyalanadi","U yangi hududda fotosintez qila boshlaydi","U mahalliy turlar bilan chatishib yuqori duragay kuchi beradi","Tabiiy dushmanlari (yirtqich, parazit) va raqobatchilari kam yoki yo'q bo'ladi"],
+    topic: "Ekologiya",
+    answer: 3,
+    explanation: "Yangi muhitda sonni cheklovchi tabiiy dushmanlar bo'lmasa, tur eksponensial ko'payishi va mahalliy turlarni siqib chiqarishi mumkin."
+  },
+  {
+    question: "Orol dengizi sathining keskin pasayishining asosiy sababi nima?",
+    options: ["Iqlimning keskin sovishi va yog'inlar ko'payishi","Amudaryo va Sirdaryo suvlarining katta qismi sug'orishga olinib, dengizga quyilishi keskin kamayishi","Dengiz tubining tektonik ko'tarilishi","Dengiz suvi okeanga oqib ketishi"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Dengizga quyiladigan suv miqdori bug'lanishdan kam bo'lib qolgan. Natijada sho'rlanish ortgan, tub ochilib, tuz-chang ko'chishi kuchaygan."
+  },
+  {
+    question: "V.I. Vernadskiy ta'limotiga ko'ra tirik moddaning konsentratsion funksiyasi nimani bildiradi?",
+    options: ["Atmosfera gazlari tarkibini tartibga solish","Organik moddalarni mineral moddalarga aylantirish","Organizmlarning ma'lum kimyoviy elementlarni o'z tanasida to'plashi (masalan, dengiz o'tlarida yod)","Quyosh energiyasini kimyoviy energiyaga aylantirish"],
+    topic: "Ekologiya",
+    answer: 2,
+    explanation: "Konsentratsion funksiya — tirik organizmlarning atrof-muhitdan tarqoq elementlarni yig'ib, tanasida to'plashi."
+  },
+  {
+    question: "Yong'oq daraxti ostida ko'pgina o'simliklarning yaxshi o'smasligi qanday hodisa bilan izohlanadi?",
+    options: ["Allelopatiya: daraxt ajratadigan kimyoviy moddalar boshqa o'simliklar o'sishini susaytiradi","Mikoriza hosil bo'lishi","Kommensalizm","Simbiotik azot fiksatsiyasi"],
+    topic: "Ekologiya",
+    answer: 0,
+    explanation: "Allelopatiya — organizmlarning ajratgan biologik faol moddalari orqali bir-biriga ta'siri. Yong'oq barglari va ildizlari o'sishni to'sadigan moddalar ajratadi."
+  },
+  {
+    question: "Orol biogeografiyasi nazariyasiga (MacArthur–Wilson) ko'ra qaysi orolda tur xilma-xilligi eng yuqori bo'ladi?",
+    options: ["Kichik va materikdan uzoq orolda","Katta va materikka yaqin orolda","Kichik va materikka yaqin orolda","Katta va materikdan uzoq orolda"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Materikka yaqin orolga yangi turlar ko'proq kirib keladi, katta orolda esa turlar yo'qolishi ehtimoli kam bo'ladi."
+  },
+  {
+    question: "Yalpi birlamchi mahsuldorlik 12 000 kJ, o'simliklarning nafas olishga sarfi 4 800 kJ bo'lsa, sof birlamchi mahsuldorlik qancha?",
+    options: ["4 800 kJ","16 800 kJ","2 400 kJ","7 200 kJ"],
+    topic: "Ekologiya",
+    answer: 3,
+    explanation: "Sof birlamchi mahsuldorlik = yalpi mahsuldorlik − nafasga sarf = 12 000 − 4 800 = 7 200 kJ."
+  },
+  {
+    question: "Bergman qoidasiga ko'ra bir turga mansub issiqqonli hayvonlarning sovuqroq iqlimda yashovchi populyatsiyalari qanday bo'ladi?",
+    options: ["Kichikroq tana o'lchamli","Tana o'lchami o'zgarmaydi","Yiriqroq tana o'lchamli, chunki tana hajmiga nisbatan sirt kichrayadi va issiqlik kam yo'qoladi","Faqat dumi uzun bo'ladi"],
+    topic: "Ekologiya",
+    answer: 2,
+    explanation: "Tana kattalashganda sirt hajmga nisbatan sekin ortadi, issiqlik yo'qotilishi nisbatan kamayadi. Shuning uchun shimoliy populyatsiyalar yiriqroq."
+  },
+  {
+    question: "Issiqxona effektining mohiyati nimada?",
+    options: ["Atmosfera gazlari Quyoshdan kelayotgan yorug'likni to'liq qaytaradi","CO₂, CH₄, N₂O kabi gazlar Yer yuzasidan qaytayotgan uzun to'lqinli (infraqizil) nurlanishni ushlab qoladi","Ozon qatlami ultrabinafsha nurni o'tkazib yuboradi","Okeanlar Yer haroratini pasaytiradi"],
+    topic: "Ekologiya",
+    answer: 1,
+    explanation: "Issiqxona gazlari Quyosh nurini o'tkazadi, lekin Yer chiqargan issiqlik nurlanishini ushlab qoladi, natijada pastki atmosfera isiydi."
+  },
+  {
+    question: "Shahar havosidagi oltingugurt dioksidi darajasini taxminan baholash uchun qaysi organizmlar bioindikator sifatida ishlatiladi?",
+    options: ["Lishayniklar","Bir yillik begona o'tlar","Chuchuk suv baliqlari","Tuproq qurtlari"],
+    topic: "Ekologiya",
+    answer: 0,
+    explanation: "Lishayniklar suv va moddalarni butun yuzasi bilan so'radi, SO₂ ga sezgir. Havo ifloslanganda ular yo'qoladi."
+  },
+  {
+    question: "O'rmon biotsenozidagi yarusli tuzilishning (tabaqalanish) ekologik ahamiyati nima?",
+    options: ["Mahsuldorlikni kamaytiradi","Faqat o'simliklarni himoya qiladi","Yorug'lik va makondan samarali foydalanish va turlar o'rtasida raqobatni kamaytirish","Tuproq eroziyasini oshiradi"],
+    topic: "Ekologiya",
+    answer: 2,
+    explanation: "Daraxt, buta va o't yaruslari yorug'likni turlicha egallaydi. Shu sababli turli turlar bir joyda birgalikda yashay oladi."
+  },
+  {
+    question: "Zararkunandalarga qarshi biologik usulga qaysi misol to'g'ri?",
+    options: ["Zaharli pestitsidlar sepish","Zararlangan o'simliklarni yoqib yuborish","Tuproqqa ko'p mineral o'g'it solish","Zararkunanda tuxumlariga trixogramma kabi tabiiy dushmanlarni qo'yib yuborish"],
+    topic: "Ekologiya",
+    answer: 3,
+    explanation: "Biologik usulda zararkunandalarning tabiiy dushmanlari (trixogramma, oltinko'z, qo'ng'izlar) ko'paytiriladi. Bu usulda kimyoviy moddalar tabiiy muhitda to'planmaydi."
   }
 ];
