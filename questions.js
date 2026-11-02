@@ -2098,5 +2098,355 @@ const questions = [
     topic: "Odam anatomiyasi",
     answer: 3,
     explanation: "Oshqozon osti bezining alfa-hujayralari ishlab chiqaradigan glyukagon gormoni qondagi glyukoza kamayganda uni oshiradi."
+  },
+  {
+    question: "Populyatsiyada retsessiv gomozigota (aa) fenotipli individlar 9% ni tashkil etadi (Xardi–Vaynberg muvozanati). Dominant belgili individlar orasida geterozigotalar ulushi taxminan qancha?",
+    options: ["42%","46%","49%","70%"],
+    topic: "Evolyutsiya",
+    answer: 1,
+    explanation: "q²=0,09 → q=0,3, p=0,7. Aa=2pq=0,42. Dominant fenotipli individlar ulushi 1−0,09=0,91. Geterozigotalar ulushi 0,42/0,91≈0,46 (46%)."
+  },
+  {
+    question: "Odam populyatsiyasida erkaklarning 8% i X-xromosomaga birikkan retsessiv belgi (masalan, daltonizm) bilan kasallangan. Populyatsiya muvozanatda deb hisoblab, kasal ayollar ulushini toping.",
+    options: ["0,64%","1,6%","8%","14,7%"],
+    topic: "Evolyutsiya",
+    answer: 0,
+    explanation: "Erkaklarda belgi chastotasi allel chastotasiga teng: q=0,08. Ayol kasal bo'lishi uchun ikkala X da allel kerak: q²=0,0064 (0,64%). 14,7% — tashuvchi ayollar ulushi (2pq)."
+  },
+  {
+    question: "Bir necha urug' tasodifan okean orolida yangi populyatsiya hosil qildi. Ota populyatsiyada nodir (0,5%) bo'lgan allel yangi populyatsiyada 12% chastotada uchraydi. Buning eng ehtimoliy sababi nima?",
+    options: ["Barqarorlashtiruvchi tanlanish","Orttirilgan belgilarning irsiylanishi","Asoschi effekti (genetik drift turi)","Yo'nalishli mutatsiya bosimi"],
+    topic: "Evolyutsiya",
+    answer: 2,
+    explanation: "Yangi populyatsiyani kam sonli asoschilar yaratganda ularning genofondi ota populyatsiyaning tasodifiy namunasi bo'ladi, shuning uchun nodir allel chastotasi keskin o'zgarishi mumkin (asoschi effekti)."
+  },
+  {
+    question: "Antibiotiklarga chidamli bakteriyalar paydo bo'lishini Darvin ta'limoti nuqtai nazaridan qaysi fikr to'g'ri tushuntiradi?",
+    options: ["Antibiotik bakteriyalarda chidamlilik genini hosil qiladi","Bakteriyalar antibiotikka o'rganib, chidamlilikni avlodlarga beradi","Chidamlilik faqat boshqa turlardan gen olish orqali paydo bo'ladi","Populyatsiyada oldindan mavjud chidamli variantlar antibiotik ta'sirida tanlanib, ko'payadi"],
+    topic: "Evolyutsiya",
+    answer: 3,
+    explanation: "Mutatsiyalar tasodifiy va muhit ta'siridan oldin paydo bo'ladi. Antibiotik yo'naltiruvchi tanlanish omili sifatida chidamli variantlarni saqlab qoladi, sezgirlarini yo'q qiladi."
+  },
+  {
+    question: "Retsessiv letal allel (aa genotip nobud bo'ladi) chastotasi q=0,2 ga teng. Muvozanatdagi populyatsiyada bir avloddan keyin shu allel chastotasi taxminan qanday bo'ladi?",
+    options: ["0,04","0,10","0,17","0,20"],
+    topic: "Evolyutsiya",
+    answer: 2,
+    explanation: "Nobud bo'lgan aa ulushi q²=0,04. Qolganlar orasida q′=pq/(1−q²)=0,16/0,96≈0,17 (q′=q/(1+q)=1/6)."
+  },
+  {
+    question: "Quyidagi misollardan qaysi biri to'g'ri tasniflangan?",
+    options: ["Qushlarda to'rt kamerali yurakning paydo bo'lishi — idioadaptatsiya","Parazit tasmasimon chuvalchanglarda hazm tizimining yo'qolishi — degeneratsiya","Gulli o'simliklarda qo'sh urug'lanish — degeneratsiya","Qushlar tumshug'ining turli shaklga ega bo'lishi — aromorfoz"],
+    topic: "Evolyutsiya",
+    answer: 1,
+    explanation: "Parazitlikka o'tish tufayli organlarning soddalashishi va yo'qolishi degeneratsiya hisoblanadi. To'rt kamerali yurak va qo'sh urug'lanish — aromorfozlar, tumshuq shakllari esa idioadaptatsiya."
+  },
+  {
+    question: "Biologik progress mezonlari qaysi javobda to'liq va to'g'ri berilgan?",
+    options: ["Individlar sonining ko'payishi, arealning kengayishi, yangi kenja turlar va taksonlar sonining ortishi","Individlar sonining kamayishi, arealning torayishi, tur xilma-xilligining ortishi","Faqat morfologik murakkablashuv va tuzilishning takomillashuvi","Individlar sonining ko'payishi, arealning torayishi, taksonlarning kamayishi"],
+    topic: "Evolyutsiya",
+    answer: 0,
+    explanation: "A.N. Severtsov va I.I. Shmalgauzen bo'yicha biologik progress: son ortishi, areal kengayishi va kenja taksonlarning ko'payishi. Regressda bu ko'rsatkichlar teskari yo'nalishda bo'ladi."
+  },
+  {
+    question: "Sintetik evolyutsiya nazariyasiga ko'ra elementar birlik, elementar material va elementar hodisa qaysi javobda to'g'ri ko'rsatilgan?",
+    options: ["Individ; kombinativ o'zgaruvchanlik; tur hosil bo'lishi","Tur; modifikatsion o'zgaruvchanlik; tabiiy tanlanish","Biotsenoz; mutatsiya; gen oqimi","Populyatsiya; mutatsion va kombinativ o'zgaruvchanlik; populyatsiya genofondining yo'nalishli o'zgarishi"],
+    topic: "Evolyutsiya",
+    answer: 3,
+    explanation: "Evolyutsiya populyatsiyada kechadi (elementar birlik), uning materiali mutatsion va kombinativ o'zgaruvchanlik, elementar hodisa esa populyatsiya genofondining barqaror o'zgarishi."
+  },
+  {
+    question: "Ot va eshak chatishtirilganda hosil bo'ladigan xachir naslsiz bo'ladi. Bu qaysi reproduktiv izolyatsiya shakliga misol?",
+    options: ["Prezigotik: etologik izolyatsiya","Prezigotik: mexanik izolyatsiya","Postzigotik: duragaylarning steril bo'lishi","Geografik izolyatsiya"],
+    topic: "Evolyutsiya",
+    answer: 2,
+    explanation: "Chatishish va urug'lanish sodir bo'ladi, zigota rivojlanadi, lekin duragay (xachir) steril. Bu zigotadan keyingi (postzigotik) izolyatsiya shakli."
+  },
+  {
+    question: "G.D. Karpechenko turp (2n=18) va karam (2n=18) ni chatishtirdi. F₁ duragaylari 18 xromosomali va steril bo'ldi, xromosomalar soni ikki marta oshirilgach (36) unumdor bo'ldi. Sterillik sababi va unumdorlik tiklanishi izohi qaysi javobda to'g'ri?",
+    options: ["Xromosomalar soni toq, shuning uchun mitoz kechmaydi; ikkilanganda son juft bo'ladi","F₁ da gomologik xromosomalar yo'q, meyozda konyugatsiya buziladi; ikkilanganda har bir xromosoma o'z juftini topadi","F₁ da genlar dominantlik qilmaydi; ikkilanganda dominantlik tiklanadi","Duragay gametalari o'lik bo'ladi; ikkilanganda mutatsiyalar yo'qoladi"],
+    topic: "Evolyutsiya",
+    answer: 1,
+    explanation: "F₁ da 9 turp va 9 karam xromosomasi bor, ular o'zaro gomologik emas, meyozda juftlashmaydi. Poliploidiyadan keyin har bir xromosoma gomologik juft topadi va unumdor gametalar hosil bo'ladi."
+  },
+  {
+    question: "Ot evolyutsiyasi filogenetik qatorida (eogippusdan hozirgi otgacha) oldingi oyoq barmoqlari soni qanday o'zgargan?",
+    options: ["To'rt barmoqdan uch barmoqqa, so'ng bitta barmoqqa kamaygan, oyoq uzaygan","Bir barmoqdan uch barmoqqa ko'paygan","Besh barmoqdan ikki barmoqqa kamaygan","O'zgarmagan, faqat gavdasi kattalashgan"],
+    topic: "Evolyutsiya",
+    answer: 0,
+    explanation: "V.O. Kovalevskiy tadqiqotlariga ko'ra ot ajdodlarida barmoqlar soni kamayib, III barmoq asosiy tayanchga aylangan, oyoq uzaygan, tishlar murakkablashgan."
+  },
+  {
+    question: "Quruqlikka chiqqan dastlabki umurtqalilar (stegosefallar) qaysi guruhdan va qaysi geologik davrda kelib chiqqan?",
+    options: ["Tog'ay baliqlardan, Silur davrida","Nurli suzgichli baliqlardan, Perm davrida","Sudralib yuruvchilardan, Karbon davrida","Lobsimon suzgichli (kross-pterigiy) baliqlardan, Devon davrida"],
+    topic: "Evolyutsiya",
+    answer: 3,
+    explanation: "Devon davrida lobsimon suzgichli baliqlardan ilk suvda-quruqlikda yashovchilar (stegosefallar) kelib chiqqan."
+  },
+  {
+    question: "Neandertallar haqidagi qaysi fikr zamonaviy antropologiya ma'lumotlariga ko'proq mos keladi?",
+    options: ["Ular Homo sapiensning to'g'ridan-to'g'ri va yagona ajdodi","Ular Homo sapiens bilan hech qachon bir vaqtda yashamagan","Ular Homo sapiensning ajdodi emas, evolyutsiyaning yon shoxi bo'lib, u bilan bir davrda yonma-yon yashagan","Ular Australopitekning eng qadimgi vakillari"],
+    topic: "Evolyutsiya",
+    answer: 2,
+    explanation: "Neandertallar (paleoantroplar) Yevropa va G'arbiy Osiyoda yashagan, Kroman'on odami (neoantrop) bilan bir davrda uchragan. Ular hozirgi odamning to'g'ridan-to'g'ri ajdodi emas, yon shox hisoblanadi."
+  },
+  {
+    question: "S.S. Chetverikov tabiiy populyatsiyalarni 'mutatsiyalar shimgichi' deb atagan. Bunga sabab nima?",
+    options: ["Mutatsiyalar tanlanish ta'sirida tezda yo'qoladi","Retsessiv mutatsiyalar geterozigota holatda fenotipda namoyon bo'lmay, tanlanishdan chetda saqlanib to'planadi","Mutatsiyalar faqat gametalarda paydo bo'ladi","Populyatsiyada faqat dominant mutatsiyalar saqlanadi"],
+    topic: "Evolyutsiya",
+    answer: 1,
+    explanation: "Retsessiv allellar geterozigotalarda yashirin holda saqlanadi, shu sababli populyatsiya yashirin o'zgaruvchanlik zaxirasiga ega bo'ladi."
+  },
+  {
+    question: "Bezgak keng tarqalgan hududlarda o'roqsimon hujayrali anemiya allelining (HbS) chastotasi yuqori bo'ladi. Buning eng to'g'ri izohi qaysi?",
+    options: ["Geterozigotalar (HbA/HbS) bezgakka chidamli va moslashuvchanligi yuqori; tanlanish ikkala allelni saqlab turadi","HbS allel bezgak plazmodiysi ta'sirida paydo bo'ladi","HbS gomozigotalar bezgakdan to'liq himoyalangan","Bu allel faqat genetik drift tufayli ko'paygan, tanlanishga aloqasi yo'q"],
+    topic: "Evolyutsiya",
+    answer: 0,
+    explanation: "Geterozigotalar ustunligi (balanslovchi tanlanish): HbA/HbS bezgakda omon qolish ehtimoli yuqori, HbS/HbS esa noqulay, shu sababli populyatsiyada ikkala allel saqlanadi."
+  },
+  {
+    question: "Darvin Madagaskarda nektar shpori 30 sm bo'lgan orxideya borligini ko'rib, uni changlatuvchi, xartumi shunday uzun kapalak bo'lishi kerak, deb taxmin qilgan (keyinchalik topilgan). Orxideya shpori va kapalak xartumining birgalikda uzayishi qanday jarayonga misol?",
+    options: ["Konvergensiya","Adaptiv radiatsiya","Genetik drift","Koevolyutsiya"],
+    topic: "Evolyutsiya",
+    answer: 3,
+    explanation: "Ikki turning o'zaro ta'sirda bir-birining evolyutsiyasiga ta'sir ko'rsatib, birgalikda o'zgarishi koevolyutsiya deyiladi."
+  },
+  {
+    question: "Ikki zaharli (achchiq) kapalak turi bir-biriga o'xshash ogohlantiruvchi rangga ega bo'lib, yirtqichlar ularni bir xil tarzda eslab qoladi. Bu hodisa qanday ataladi?",
+    options: ["Beyts mimikriyasi","Kriptik (yashiruvchi) rang","Myuller mimikriyasi","Maskirovka"],
+    topic: "Evolyutsiya",
+    answer: 2,
+    explanation: "Myuller mimikriyasida bir nechta himoyalangan (zaharli) tur o'zaro o'xshash bo'ladi. Beyts mimikriyasida esa himoyasiz tur himoyalangan turga taqlid qiladi."
+  },
+  {
+    question: "Tovus erkagining uzun va yorqin dumi yirtqichlarga qulay nishon bo'lsa-da, populyatsiyada saqlanib qolgan. Buni qaysi tushuncha eng yaxshi izohlaydi?",
+    options: ["Barqarorlashtiruvchi tanlanish","Jinsiy tanlanish (urg'ochilar tanlovi)","Genetik drift","Orttirilgan belgilarning irsiylanishi"],
+    topic: "Evolyutsiya",
+    answer: 1,
+    explanation: "Jinsiy tanlanishda belgi omon qolishga emas, juftlashish va nasl qoldirish muvaffaqiyatiga ta'sir qiladi. Urg'ochilar yorqin erkaklarni afzal ko'rgani uchun belgi saqlanadi."
+  },
+  {
+    question: "Miller va Yuri tajribasida (1953) dastlabki Yer atmosferasini taqlid qilish uchun qaysi gazlar aralashmasi va qanday ta'sir qo'llangan?",
+    options: ["Metan, ammiak, vodorod va suv bug'i; elektr uchqunlari","Kislorod, azot va karbonat angidrid; ultrabinafsha nurlar","Metan, kislorod va suv bug'i; yuqori bosim","Azot, vodorod sulfid va kislorod; radiatsiya"],
+    topic: "Evolyutsiya",
+    answer: 0,
+    explanation: "Tajribada qaytaruvchi atmosfera (CH₄, NH₃, H₂, H₂O bug'i) elektr razryadlari ta'sirida aminokislotalar kabi organik moddalar hosil qilgan."
+  },
+  {
+    question: "Quyidagi xususiyatlardan qaysi biri mitoxondriya va xloroplastlarning endosimbiotik kelib chiqishiga zid (uni qo'llab-quvvatlamaydi)?",
+    options: ["Halqasimon DNK mavjudligi","70S ribosomalarning mavjudligi","Ikkiga bo'linish yo'li bilan ko'payishi","DNKsining yadro DNKsi kabi gistonlar bilan o'ralgan va oqsil sintezi 80S ribosomalarda kechishi"],
+    topic: "Evolyutsiya",
+    answer: 3,
+    explanation: "Bu organoidlarda prokariotlarga o'xshash halqasimon yalang'och DNK, 70S ribosomalar va ikkiga bo'linish bor, bu endosimbioz dalillari. Histonli DNK va 80S ribosoma esa eukariot yadro xususiyati."
+  },
+  {
+    question: "Populyatsiya ichidagi genetik xilma-xillikni odatda oshiradigan omillar juftligi qaysi?",
+    options: ["Genetik drift va yo'nalishli tanlanish","Izolyatsiya va barqarorlashtiruvchi tanlanish","Mutatsiya jarayoni va gen oqimi (migratsiya)","Yaqin qarindoshlar chatishuvi va genetik drift"],
+    topic: "Evolyutsiya",
+    answer: 2,
+    explanation: "Mutatsiya yangi allellar hosil qiladi, migratsiya esa boshqa populyatsiyalardan yangi allellarni olib keladi. Drift, yo'nalishli va barqarorlashtiruvchi tanlanish, qarindoshlar chatishuvi odatda xilma-xillikni kamaytiradi."
+  },
+  {
+    question: "Fosil suyakda ¹⁴C miqdori tirik organizmdagiga nisbatan 25% ni tashkil etadi. ¹⁴C yarim yemirilish davri 5730 yil bo'lsa, qoldiq taxminan necha yillik?",
+    options: ["5730","11 460","17 190","22 920"],
+    topic: "Evolyutsiya",
+    answer: 1,
+    explanation: "25% = 1/4 = (1/2)². Demak, 2 yarim yemirilish davri o'tgan: 2×5730=11 460 yil."
+  },
+  {
+    question: "Populyatsiyada 500 ta individdan 200 tasi AA, 200 tasi Aa, 100 tasi aa genotipli. A allel chastotasi va populyatsiyaning Xardi–Vaynberg holati haqida qaysi javob to'g'ri?",
+    options: ["p=0,6; muvozanatda emas: geterozigotalar kutilganidan kam","p=0,6; muvozanatda, chunki allel chastotalari o'zgarmagan","p=0,4; muvozanatda emas: geterozigotalar kutilganidan ko'p","p=0,5; muvozanatda"],
+    topic: "Evolyutsiya",
+    answer: 0,
+    explanation: "p=(2×200+200)/1000=0,6, q=0,4. Muvozanatda AA=180, Aa=240, aa=80 bo'lishi kerak edi. Kuzatilgan Aa=200 kutilganidan kam, demak populyatsiya muvozanatda emas."
+  },
+  {
+    question: "Latimeriya va ginkgo kabi turlar geologik o'tmishdagi guruhlarning xususiyatlarini saqlab qolgan holda hozirgacha yashab kelmoqda. Ular qanday ataladi?",
+    options: ["Atavizmlar","Rudimentlar","Invaziv turlar","Tirik fossillar (relikt shakllar)"],
+    topic: "Evolyutsiya",
+    answer: 3,
+    explanation: "Qadimgi guruhlarning belgilarini saqlagan, hozirgi kunda kam sonli turlar bilan vakil bo'lgan organizmlar relikt (tirik fossil) shakllar deyiladi."
+  },
+  {
+    question: "Darvin ta'limotiga ko'ra yashash uchun kurashning eng shiddatli shakli qaysi?",
+    options: ["Turlararo kurash","Noqulay abiotik sharoitlar bilan kurash","Ichkituriy kurash (bir tur individlari o'rtasidagi)","Yirtqich va o'lja o'rtasidagi kurash"],
+    topic: "Evolyutsiya",
+    answer: 2,
+    explanation: "Bir tur individlarining ehtiyojlari (oziq, makon, juft) bir xil bo'lgani uchun ular o'rtasidagi raqobat eng kuchli bo'ladi."
+  },
+  {
+    question: "Prokariot genida kodlanadigan oqsil 120 ta aminokislotadan iborat. Stop-kodonni hisobga olib, shu genning ikki zanjirli DNK qismidagi jami nukleotidlar sonini toping (intronlar yo'q).",
+    options: ["360","363","720","726"],
+    topic: "Sitologiya",
+    answer: 3,
+    explanation: "120 aminokislota + 1 stop-kodon = 121 kodon → bir zanjirda 363 nukleotid, ikki zanjirda 363×2=726."
+  },
+  {
+    question: "Ikki zanjirli DNK fragmentida jami 3000 ta nukleotid bor, timin 20% ni tashkil etadi. Shu fragmentdagi vodorod bog'lari soni qancha?",
+    options: ["3300","3600","3900","4500"],
+    topic: "Sitologiya",
+    answer: 2,
+    explanation: "T=A=600, G=C=900 (har biri 30%). A=T orasida 2 ta, G≡C orasida 3 ta bog' bor: 600×2+900×3=1200+2700=3900."
+  },
+  {
+    question: "7 molekula glyukozadan 4 tasi to'liq kislorodli oksidlandi (glikolizda 2 ATF va kislorodli bosqichda 36 ATF hosil bo'ladi), 3 tasi esa sut kislotali bijg'ishga uchradi. Hosil bo'lgan jami ATF sonini toping.",
+    options: ["158","164","176","266"],
+    topic: "Sitologiya",
+    answer: 0,
+    explanation: "To'liq oksidlanish: 4×(2+36)=152 ATF. Bijg'ish: 3×2=6 ATF. Jami 152+6=158."
+  },
+  {
+    question: "2n=20 bo'lgan organizmda meyoz I ning anafazasida hujayraning bir qutbiga ketayotgan xromosomalar va xromatidlar soni qanday?",
+    options: ["20 xromosoma, 20 xromatid","10 xromosoma, 20 xromatid","10 xromosoma, 10 xromatid","20 xromosoma, 40 xromatid"],
+    topic: "Sitologiya",
+    answer: 1,
+    explanation: "Meyoz I anafazasida gomologik xromosomalar ajraladi, xromatidlar esa ajralmaydi. Har qutbga 10 ta ikki xromatidli xromosoma boradi, ya'ni 20 xromatid."
+  },
+  {
+    question: "2n=12 bo'lgan organizmda krossingover bo'lmaganda, gomologik xromosomalarning mustaqil taqsimlanishi hisobiga nechta xil gameta hosil bo'lishi mumkin?",
+    options: ["6","12","36","64"],
+    topic: "Sitologiya",
+    answer: 3,
+    explanation: "Gameta xillari soni 2ⁿ, bunda n — gaploid to'plamdagi xromosomalar soni (6). 2⁶=64."
+  },
+  {
+    question: "2n=18 bo'lgan hujayrada meyoz I telofazasi oxirida hosil bo'lgan har bir hujayrada xromosoma soni va DNK miqdori (c) qanday?",
+    options: ["9 xromosoma, 1c","18 xromosoma, 2c","9 xromosoma, 2c","18 xromosoma, 4c"],
+    topic: "Sitologiya",
+    answer: 2,
+    explanation: "Meyoz I natijasida xromosomalar soni ikki marta kamayadi (n=9), lekin har bir xromosoma hali ikki xromatidli, shuning uchun DNK miqdori 2c. 1c ga meyoz II dan keyin tushiladi."
+  },
+  {
+    question: "Genning matritsa zanjiri 3'-TAC-GGT-CCA-5' ketma-ketligiga ega. Ikkinchi kodonga mos keluvchi tRNK antikodoni qaysi?",
+    options: ["CCA","GGU","UAC","CCU"],
+    topic: "Sitologiya",
+    answer: 1,
+    explanation: "Matritsa GGT → mRNK kodoni CCA → tRNK antikodoni GGU (matritsa tripleti bilan bir xil, faqat T o'rniga U)."
+  },
+  {
+    question: "Quyidagi gen mutatsiyalaridan qaysi biri oqsil tuzilishiga eng kam ta'sir ko'rsatishi mumkin?",
+    options: ["Kodondagi uchinchi nukleotid almashinuvi natijasida o'sha aminokislotani kodlovchi sinonim kodon hosil bo'lishi","Genning boshida bitta nukleotid qo'shilishi","Aminokislota kodonining stop-kodonga aylanishi","Genning o'rtasida ikkita nukleotid yo'qolishi"],
+    topic: "Sitologiya",
+    answer: 0,
+    explanation: "Genetik kod degeneratsiyalangan: ko'pincha uchinchi nukleotid almashinuvi bir xil aminokislotani beradi (jim mutatsiya). Kadr siljishi va nonsens mutatsiyalar oqsilni keskin o'zgartiradi."
+  },
+  {
+    question: "Laktoza yo'qligida E. coli lak-operoni 'o'chiq' bo'ladi. Muhitga laktoza qo'shilganda nima sodir bo'ladi?",
+    options: ["Laktoza RNK-polimerazaga bog'lanib promotorni yopadi","Laktoza (allolaktoza) repressor oqsilga bog'lanib uni operatordan ajratadi va strukturaviy genlar transkripsiyalanadi","Laktoza operatorga bevosita bog'lanib transkripsiyani to'xtatadi","Laktoza gen-regulyatorni mutatsiyaga uchratadi"],
+    topic: "Sitologiya",
+    answer: 1,
+    explanation: "Repressor operatorga bog'lanib transkripsiyani to'sib turadi. Induktor (laktoza) repressorni inaktivlaydi, RNK-polimeraza operon genlarini o'qiy boshlaydi."
+  },
+  {
+    question: "Quyidagi moddalar juftligidan qaysi biri plazmatik membrananing lipid qatlami orqali tashuvchi oqsilsiz, oddiy diffuziya bilan o'ta oladi?",
+    options: ["Glyukoza va aminokislotalar","Na⁺ va K⁺ ionlari","Suvda eriydigan yirik oqsil molekulalari","Kislorod va steroid gormonlar"],
+    topic: "Sitologiya",
+    answer: 3,
+    explanation: "Kichik nopolyar (gidrofob) molekulalar va gazlar (O₂, CO₂, steroidlar) lipid qatlamdan erkin o'tadi. Qutbli va zaryadlangan moddalar uchun tashuvchi yoki kanal oqsillar kerak."
+  },
+  {
+    question: "Kalvin sikli natijasida 1 molekula glyukoza sintezlanishi uchun jami nechta CO₂, ATF va NADF·H sarflanadi?",
+    options: ["6 CO₂, 12 ATF, 18 NADF·H","12 CO₂, 18 ATF, 12 NADF·H","6 CO₂, 18 ATF, 12 NADF·H","6 CO₂, 36 ATF, 6 NADF·H"],
+    topic: "Sitologiya",
+    answer: 2,
+    explanation: "6 CO₂ ning 6 marta biriktirilishi uchun 18 ATF va 12 NADF·H sarflanadi va 1 glyukoza hosil bo'ladi."
+  },
+  {
+    question: "Fotosintez jarayonida 18 g glyukoza hosil bo'lganda ajralib chiqqan kislorod massasi qancha? (Ar: C=12, H=1, O=16)",
+    options: ["19,2 g","9,6 g","32 g","38,4 g"],
+    topic: "Sitologiya",
+    answer: 0,
+    explanation: "6CO₂+6H₂O→C₆H₁₂O₆+6O₂. 180 g glyukozaga 6×32=192 g O₂ to'g'ri keladi. 18 g glyukoza uchun 19,2 g O₂."
+  },
+  {
+    question: "Kemosintez haqidagi qaysi fikr to'g'ri?",
+    options: ["Kemosintezlovchi bakteriyalar CO₂ dan organik modda hosil qilishda yorug'lik energiyasidan foydalanadi","Nitrifikatsiyalovchi bakteriyalar ammiak yoki nitritni oksidlab ajralgan energiya hisobiga CO₂ dan organik modda sintezlaydi","Kemosintez faqat eukariotlarga xos","Kemosintezda suv fotolizlanib kislorod ajraladi"],
+    topic: "Sitologiya",
+    answer: 1,
+    explanation: "Kemosintezda energiya anorganik moddalar (NH₃, H₂S, Fe²⁺ va b.) oksidlanishidan olinadi. Bu jarayon yorug'likka va suv fotolliziga bog'liq emas, faqat prokariotlarda uchraydi."
+  },
+  {
+    question: "OIV (retrovirus) hujayraga kirgach irsiy axborot oqimi qanday kechadi?",
+    options: ["DNK → RNK → oqsil","RNK → oqsil, DNK hosil bo'lmaydi","Oqsil → RNK → DNK","RNK → DNK (teskari transkriptaza) → RNK → oqsil"],
+    topic: "Sitologiya",
+    answer: 3,
+    explanation: "Retroviruslarda teskari transkriptaza virus RNKsi asosida DNK sintezlaydi. Bu DNK xo'jayin genomiga kiradi va undan yana RNK hamda oqsillar hosil bo'ladi."
+  },
+  {
+    question: "Genetik kodning 'ustma-ust tushmaslik' xususiyati nimani bildiradi?",
+    options: ["Bitta aminokislota bir nechta kodon bilan kodlanadi","Barcha tirik organizmlarda kod bir xil","mRNKdagi har bir nukleotid faqat bitta kodon tarkibiga kiradi","Kodonlar oralig'ida ajratuvchi belgilar bor"],
+    topic: "Sitologiya",
+    answer: 2,
+    explanation: "O'qish bir kodondan keyin keyingisiga o'tadi, nukleotidlar ikki kodonga bir vaqtda kirmaydi. Birinchi javob — degeneratsiya, ikkinchisi — universallik."
+  },
+  {
+    question: "Og'ir azot (¹⁵N) bilan belgilangan DNKli bakteriyalar oddiy (¹⁴N) muhitga o'tkazilib, 3 marta bo'lindi. Hosil bo'lgan 8 ta DNK molekulasidan nechtasida ¹⁵N saqlanadi?",
+    options: ["1","2","4","8"],
+    topic: "Sitologiya",
+    answer: 1,
+    explanation: "Replikatsiya yarim konservativ. Dastlabki ikkita ¹⁵N zanjir har doim bittadan yangi molekulaga o'tadi, shuning uchun 8 ta molekulaning faqat 2 tasida ¹⁵N bor (¹⁵N/¹⁴N duragay)."
+  },
+  {
+    question: "Replikatsiya vilkasida orqada qoluvchi zanjirda hosil bo'lgan Okazaki fragmentlarini bir-biriga tikib, yaxlit zanjir hosil qiluvchi ferment qaysi?",
+    options: ["DNK-ligaza","Xelikaza","RNK-polimeraza","Restriktaza"],
+    topic: "Sitologiya",
+    answer: 0,
+    explanation: "Orqada qoluvchi zanjir qisqa bo'laklar (Okazaki fragmentlari) bilan sintezlanadi. Ularni DNK-ligaza kovalent bog' bilan biriktiradi."
+  },
+  {
+    question: "Lizosomalarning gidrolitik fermentlari hujayrada qaysi ketma-ketlikda hosil bo'ladi va qadoqlanadi?",
+    options: ["Silliq EPT da sintezlanadi, yadroda qadoqlanadi","Mitoxondriyada sintezlanadi, lizosomaga o'tadi","Donador EPT ribosomalarida sintezlanadi, Golji kompleksida qadoqlanadi, lizosoma pufakchalari ajraladi","Erkin ribosomalarda sintezlanadi, peroksisomaga o'tadi"],
+    topic: "Sitologiya",
+    answer: 2,
+    explanation: "Membrana bilan o'ralgan organoidlarga mo'ljallangan oqsillar donador EPT dagi ribosomalarda sintezlanadi, Golji kompleksida o'zgartirilib, lizosoma pufakchalariga o'raladi."
+  },
+  {
+    question: "Hujayraning qaysi organoidida katalaza fermenti zararli vodorod peroksidni suv va kislorodga parchalaydi?",
+    options: ["Lizosoma","Golji kompleksi","Vakuola","Peroksisoma"],
+    topic: "Sitologiya",
+    answer: 3,
+    explanation: "Peroksisomalarda oksidlanish reaksiyalari natijasida hosil bo'lgan H₂O₂ katalaza fermenti yordamida 2H₂O₂→2H₂O+O₂ ga parchalanadi."
+  },
+  {
+    question: "Kolxitsin moddasi mitozda nima uchun hujayralarni metafazada to'xtatib qo'yadi?",
+    options: ["DNK replikatsiyasini to'xtatadi","Urchuq iplari (mikronaychalar) hosil bo'lishini buzadi","Sentromerani bo'ladi","Yadro qobig'ining erishini oldini oladi"],
+    topic: "Sitologiya",
+    answer: 1,
+    explanation: "Kolxitsin tubulin polimerizatsiyasini to'sadi, urchuq ipi shakllanmaydi, xromosomalar qutblarga tortilmaydi. Shu sababli poliploid hujayralar olishda ishlatiladi."
+  },
+  {
+    question: "Quyidagi qatorlarning qaysi birida keltirilgan tuzilmalarning hammasi ham bakteriya, ham o'simlik hujayrasida bo'ladi?",
+    options: ["Ribosoma, plazmatik membrana, sitoplazma","Mitoxondriya, nukleoid, ribosoma","Plazmatik membrana, Golji kompleksi, hujayra devori","Yadro, ribosoma, xloroplast"],
+    topic: "Sitologiya",
+    answer: 0,
+    explanation: "Mitoxondriya, Golji kompleksi, yadro va xloroplast bakteriyalarda yo'q. Ribosoma, plazmatik membrana va sitoplazma barcha hujayralarga xos."
+  },
+  {
+    question: "Xromatinning asosiy tuzilma birligi — nukleosoma qanday tuzilgan?",
+    options: ["Faqat oqsil bilan bog'lanmagan DNK bo'lagi","Histon bo'lmagan 4 ta oqsil molekulasiga o'ralgan RNK","8 ta histon oqsili molekulasidan iborat o'zak va uni o'rab turgan DNK bo'lagi","Ikki xromatid birlashgan joy"],
+    topic: "Sitologiya",
+    answer: 2,
+    explanation: "Nukleosomada DNK ipi sakkizta histon oqsili (oktamer) atrofiga o'raladi. Nukleosomalar zanjirsimon joylashib xromatinni hosil qiladi."
+  },
+  {
+    question: "Hujayrada DNK jiddiy shikastlanganda p53 oqsili qanday vazifani bajaradi?",
+    options: ["Hujayra siklini to'xtatib, tuzatish imkonini beradi; tuzatib bo'lmasa apoptozni ishga tushiradi","Hujayra bo'linishini tezlashtiradi","DNK replikatsiyasini ikki baravar oshiradi","Telomerazani faollashtirib hujayrani o'lmas qiladi"],
+    topic: "Sitologiya",
+    answer: 0,
+    explanation: "p53 'genom qo'riqchisi': shikastlanishda siklni to'xtatadi, DNK tiklanishini ishga soladi, tuzatib bo'lmasa hujayrani apoptozga yo'naltiradi. Uning yo'qolishi o'sma rivojlanishiga olib kelishi mumkin."
+  },
+  {
+    question: "Raqobatli ingibitor ferment faolligini qanday pasaytiradi va uning ta'sirini qanday kamaytirish mumkin?",
+    options: ["Fermentni denaturatsiyalaydi; haroratni oshirish bilan","Substratga o'xshash bo'lib aktiv markazga bog'lanadi; substrat konsentratsiyasini oshirish bilan","Aktiv markazdan uzoqda bog'lanib ferment shaklini o'zgartiradi; substratni ko'paytirish bilan","Substratni parchalaydi; ferment konsentratsiyasini kamaytirish bilan"],
+    topic: "Sitologiya",
+    answer: 1,
+    explanation: "Raqobatli ingibitor substrat bilan aktiv markaz uchun raqobatlashadi. Substrat konsentratsiyasi oshganda ingibitor siqib chiqariladi. Uchinchi javob — raqobatsiz ingibitorga xos."
+  },
+  {
+    question: "Mitoxondriyada oksidlovchi fosforlanish jarayonida ATF sintezi uchun to'g'ridan-to'g'ri energiya manbai nima?",
+    options: ["Glikoliz natijasida hosil bo'lgan piruvat","Krebs siklida ajraladigan CO₂","Kislorodning ATF-sintazaga to'g'ridan-to'g'ri bog'lanishi","Ichki membrananing ikki tomonidagi H⁺ (proton) gradienti"],
+    topic: "Sitologiya",
+    answer: 3,
+    explanation: "Elektron tashish zanjiri protonlarni matriksdan membranalararo bo'shliqqa chiqaradi. Protonlar ATF-sintaza orqali matriksga qaytishda ajralgan energiya ATF sintezini ta'minlaydi."
   }
 ];
