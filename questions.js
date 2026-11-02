@@ -2448,5 +2448,355 @@ const questions = [
     topic: "Sitologiya",
     answer: 3,
     explanation: "Elektron tashish zanjiri protonlarni matriksdan membranalararo bo'shliqqa chiqaradi. Protonlar ATF-sintaza orqali matriksga qaytishda ajralgan energiya ATF sintezini ta'minlaydi."
+  },
+  {
+    question: "Jigar qurti (Fasciola hepatica) hayot siklida oraliq xo'jayin va yangi xo'jayinni yuqtiruvchi invazion bosqich qaysi javobda to'g'ri ko'rsatilgan?",
+    options: ["Planariya; sista","Qoramol; finna","Kichik hovuz salyangozi; adoleskariya","Anofeles chivini; sporozoit"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Miratsidiy kichik hovuz salyangoziga kirib, sporosista, redi va serkariya bosqichlaridan o'tadi. Serkariya o'simlikka yopishib adoleskariyaga (sistaga) aylanadi va o'txo'r hayvon yoki odam yutganda yuqadi."
+  },
+  {
+    question: "Quyidagi qatorlarning qaysi birida faqat chala o'zgarish (pupa bosqichisiz) bilan rivojlanadigan hasharotlar keltirilgan?",
+    options: ["Chigirtka, tarakan, shira","Kapalak, asalari, chumoli","Pashsha, chivin, burga","Qo'ng'iz, ari, pashsha"],
+    topic: "Zoologiya",
+    answer: 0,
+    explanation: "Chigirtka, tarakan va shirada tuxum → lichinka (nimfa) → imago bosqichlari o'tadi, pupa yo'q. Kapalak, asalari, pashsha, chivin, burga va qo'ng'izlar to'liq o'zgarish bilan rivojlanadi."
+  },
+  {
+    question: "Daryo qisqichbaqasi (qisqichbaqasimonlar sinfi) o'rgimchaksimonlardan qaysi belgisi bilan farq qiladi?",
+    options: ["Boshko'krak bo'limining yo'qligi","O'pka xaltachalari va traxeya bilan nafas olishi","Mo'ylovlarining bo'lmasligi","Ikki juft mo'ylovi (antenna) bo'lishi va jabra bilan nafas olishi"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "Qisqichbaqasimonlarda ikki juft mo'ylov va jabra nafasi xos. O'rgimchaksimonlarda mo'ylov yo'q, nafas o'pka xaltachalari yoki traxeya orqali kechadi."
+  },
+  {
+    question: "Quyon va kemiruvchilarning tishlari tuzilishiga xos qaysi javob to'g'ri?",
+    options: ["Qoziq tishlari kuchli rivojlangan, kesuvchi tishlari yo'q","Qoziq tishlari yo'q, kesuvchi tishlari ildizsiz bo'lib umr bo'yi o'sadi, ular va oziq tishlar orasida tishsiz oraliq bor","Barcha tishlari bir xil shaklda va ildizsiz","Yirtqich tishlari ildizli, kesuvchi tishlari o'smaydi"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Kesuvchi tishlar yemirilgani sari o'sib turadi. Qoziq tishlar bo'lmagani uchun kesuvchi va oziq tishlar orasida tishsiz oraliq (diastema) hosil bo'ladi."
+  },
+  {
+    question: "Yirtqich sutemizuvchilarning 'yirtqich tishi' deb nomlangan tishlari qaysilar?",
+    options: ["Yuqori va pastki jag'dagi qoziq tishlar","Yuqori va pastki jag'dagi birinchi kesuvchi tishlar","Yuqori jag'ning oxirgi kichik oziq tishi va pastki jag'ning birinchi katta oziq tishi","Yuqori va pastki jag'ning oxirgi katta oziq tishlari"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Qoziq tishlar o'ljani ushlab turadi, yirtqich tishlar esa qaychisimon ishlab go'shtni kesadi."
+  },
+  {
+    question: "Qushlarda siydik pufagining bo'lmasligi va ayirish mahsuloti sifatida siydik kislotasi ajralishining biologik ahamiyati nima?",
+    options: ["Suvni tejash va tana massasini kamaytirish (uchishga moslashuv)","Tanadagi tuzlar miqdorini oshirish","Qonning kislorod tashish xususiyatini kuchaytirish","Qanotlarning issiqlik rejimini tartibga solish"],
+    topic: "Zoologiya",
+    answer: 0,
+    explanation: "Siydik kislotasi kam suv bilan quyuq holda chiqariladi, siydik pufagi yo'qligi esa tana massasini yengillashtiradi. Ikkalasi uchishga moslashuvdir."
+  },
+  {
+    question: "Ilon tilini tez-tez chiqarib kiritishining asosiy sababi nima?",
+    options: ["Tana haroratini pasaytirish","Havodagi hid molekulalarini tutib, tanglaydagi hid bilish (Yakobson) organiga yetkazish","Ovoz chiqarish","Suv ichish uchun suyuqlikni so'rish"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Ikkiga bo'lingan til hid zarralarini tutadi va ularni Yakobson organiga yetkazadi. Ilon shu yo'l bilan o'ljani va dushmanni sezadi."
+  },
+  {
+    question: "Sudralib yuruvchilarning quruqlikda ko'payishga moslashuvi sifatida qaysi javob to'g'ri?",
+    options: ["Tashqi urug'lanish va suvda tuxum qo'yish","Embrionning suvdagi lichinka bosqichini o'tishi","Tuxumda faqat sariqlik bo'lishi, embrion qobiqlarining bo'lmasligi","Ichki urug'lanish, tuxumning zich po'st bilan o'ralishi va embrion qobiqlari (amnion, allantois) hosil bo'lishi"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "Amnion embrionni suyuq muhitda saqlaydi, allantois ayirish mahsulotlarini yig'adi va gaz almashinuvida qatnashadi. Shuning uchun sudralib yuruvchilar suvdan mustaqil ko'payadi."
+  },
+  {
+    question: "Qaysi hayvonlar guruhida asab tizimi halqumusti asab halqasi va qorin tomonda joylashgan zanjirsimon asab tugunlaridan iborat?",
+    options: ["Ichakbo'shliqlilar va g'ovaklilar","Xordalilar va ignatanlilar","Halqali chuvalchanglar va bo'g'imoyoqlilar","Yassi va yumaloq chuvalchanglar"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Halqali chuvalchanglar va bo'g'imoyoqlilarda qorin asab zanjiri bo'ladi. Xordalilarda asab tizimi naychasimon va orqa tomonda joylashgan, ichakbo'shliqlilarda esa tarqoq (to'rsimon) tuzilgan."
+  },
+  {
+    question: "Odam qanday holatda cho'chqa solityori (Taenia solium) ning oraliq xo'jayiniga aylanadi?",
+    options: ["Parazit tuxumlarini yutganda: onkosfera qon orqali to'qimalarga o'tib, finnaga aylanadi (sistitserkoz)","Pishmagan finnali go'sht yeganda","Faqat onasining qornida homila davrida","Chivin chaqqanda"],
+    topic: "Zoologiya",
+    answer: 0,
+    explanation: "Finnali go'shtni yeyish solityorning voyaga yetgan shakli ichakda rivojlanishiga olib keladi. Tuxumlarni yutish esa finna to'qimalarda rivojlanishiga, ya'ni sistitserkozga sabab bo'ladi."
+  },
+  {
+    question: "Teri leyshmanioziga (pend yarasi) sabab bo'luvchi leyshmaniyalarni odamga qaysi hasharot tashiydi?",
+    options: ["Anofeles chivini","Moskit (Phlebotomus)","Se-se pashshasi","Bit"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Leyshmaniyalar mayda qon so'ruvchi moskitlar orqali yuqadi. Anofeles bezgak plazmodiysini, se-se pashshasi tripanosomani tashiydi."
+  },
+  {
+    question: "Infuzoriya-tufelkada konyugatsiya jarayonining natijasi qanday?",
+    options: ["Individlar soni ikki baravar ko'payadi","Makronukleus ikkiga bo'linib ko'payish sodir bo'ladi","Ikkala individ qo'shilib bitta hujayra hosil qiladi","Individlar mikronukleus materiali bilan almashadi, genetik jihatdan yangilanadi, soni ko'paymaydi"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "Konyugatsiya jinsiy jarayon: irsiy material almashinadi, lekin individlar soni ko'paymaydi. Tufelka odatda ikkiga bo'linib ko'payadi."
+  },
+  {
+    question: "Evglena hayvonlar va o'simliklar o'rtasidagi o'tish shakli deb hisoblanadi. Buning sababi nima?",
+    options: ["Yorug'likda xloroplastlari yordamida fotosintez qiladi, qorong'ida esa tayyor organik moddalar bilan oziqlanadi","Faqat avtotrof oziqlanadi va xivchini yo'q","Hujayra devori sellyulozadan iborat va harakatlanmaydi","Faqat parazit holda yashaydi"],
+    topic: "Zoologiya",
+    answer: 0,
+    explanation: "Evglena miksotrof: yorug'likda avtotrof, qorong'ida geterotrof oziqlanadi. Shuningdek, xivchin yordamida harakatlanadi."
+  },
+  {
+    question: "Birlamchi og'izlilar (halqali chuvalchanglar, yumshoqtanlilar, bo'g'imoyoqlilar) embrional rivojlanishida gastrulyatsiyadan keyin blastopor nimaga aylanadi?",
+    options: ["Anal teshikka","Bosh miyaga","Og'iz teshigiga","Tana bo'shlig'iga"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Birlamchi og'izlilarda blastopor og'izga aylanadi, anal teshik keyin hosil bo'ladi. Ikkilamchi og'izlilarda esa blastopor anal teshik hosil qiladi."
+  },
+  {
+    question: "Tog'ay baliqlarda (akula) suzgich pufagi bo'lmasa-da, ular suv tubiga cho'kib ketmaydi. Bunga qaysi omillar yordam beradi?",
+    options: ["Katta o'pkalari va havo yutishi","Yog'ga boy yengil jigar va harakat paytida suzgichlarning hosil qiladigan ko'taruvchi kuchi","Tana suyaklarining havo bilan to'ldirilganligi","Terisidagi havo pufakchalari"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Akula jigari ko'p yog' saqlaydi, bu tanani yengillashtiradi. Doimiy harakat va yassi ko'krak suzgichlari ko'taruvchi kuch hosil qiladi."
+  },
+  {
+    question: "Tovuq va o'rdak jo'jalari tuxumdan tuklangan, ko'zi ochiq holda chiqadi va darrov onasiga ergashadi. Bu holat tuxumning qaysi xususiyati bilan bog'liq?",
+    options: ["Tuxumda sariqlik kam bo'lishi bilan","Embrional rivojlanishning juda qisqaligi bilan","Tuxumning ona tanasida rivojlanishi bilan","Tuxumda sariqlik zaxirasi ko'pligi va embrion rivojlanishining uzoq davom etishi bilan"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "Sariqlik zaxirasi ko'p bo'lgani uchun embrion tuxum ichida uzoq rivojlanadi va jo'ja tuxumdan yetuk holda chiqadi."
+  },
+  {
+    question: "Xaltali sutemizuvchilar (kenguru) bolalari juda kam rivojlangan holda tug'ilib, ona xaltasida rivojlanishini davom ettiradi. Buning sababi nima?",
+    options: ["Ular tuxum qo'yadi","Ularda sut bezlari bo'lmaydi","Yo'ldosh (plasenta) bo'lmaydi yoki juda sodda bo'ladi, embrion ona organizmidan uzoq oziqlana olmaydi","Homiladorlik davri juda uzoq davom etadi"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Yo'ldosh yo'qligi yoki sodda ekanligi sababli bola erta tug'iladi va xaltada sut bilan oziqlanib rivojlanadi."
+  },
+  {
+    question: "Ikki pallali mollyuskalarda (midiya, marvarid chig'anog'i) bosh va radulaning reduksiyalanishi (yo'qolishi) nima bilan bog'liq?",
+    options: ["Hayotning o'troq bo'lishi va jabralar yordamida suvdan oziq zarralarini filtrlab oziqlanish bilan","Yirtqichlik bilan oziqlanish bilan","Quruqlikda yashashga o'tish bilan","Faol suzish bilan"],
+    topic: "Zoologiya",
+    answer: 0,
+    explanation: "O'troq ikki pallalilar oziqni jabralar yordamida suvdan filtrlab oladi, shuning uchun ularga bosh va radula (qirg'ich) kerak emas."
+  },
+  {
+    question: "Marjon poliplari to'qimalarida yashaydigan bir hujayrali suvo'tlar (zooxantellalar) bilan poliplar o'rtasidagi o'zaro munosabat qanday ataladi va ahamiyati nima?",
+    options: ["Parazitlik: suvo'tlar poliplarni zaiflashtiradi","Mutualizm: suvo'tlar fotosintez mahsulotlarini beradi, poliplar ularga boshpana va CO₂ hamda biogen moddalar beradi","Kommensalizm: suvo'tlar foyda ko'radi, poliplarga ta'sir qilmaydi","Raqobat: ikkalasi bir xil resursdan foydalanadi"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Ikkala tomon ham foyda ko'radi, bu mutualizm. Suvo'tlar yo'qolsa marjonlar oqarib qoladi (bleaching)."
+  },
+  {
+    question: "G'ovaklilar (shimgichlar) tanasidagi xoanotsitlar (yoqali hujayralar) qanday vazifani bajaradi?",
+    options: ["Skelet igna-spikulalarini hosil qiladi","Tanani tashqi muhitdan qoplab turadi","Jinsiy hujayralarni ishlab chiqaradi","Xivchinlari bilan suv oqimini hosil qiladi va ovqat zarralarini tutib hazm qiladi"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "Xoanotsitlar xivchinlari bilan tana ichiga suv oqimini yo'naltiradi, suvdagi mayda zarralarni tutib, hujayra ichida hazm qiladi."
+  },
+  {
+    question: "Tibbiyot zulugi so'lagidagi girudin moddasi qanday vazifani bajaradi?",
+    options: ["Qon ivishini tezlashtiradi","Qon bosimini oshiradi","Qonning ivishiga to'sqinlik qiladi","Qon hujayralarini parchalaydi"],
+    topic: "Zoologiya",
+    answer: 2,
+    explanation: "Girudin trombinni inaktivlaydi va qon ivishini to'sadi. Shu sababli zuluk so'rayotganda qon suyuq holda qoladi."
+  },
+  {
+    question: "Hasharotlarda yuvenil (yoshlik) gormoni yuqori konsentratsiyada bo'lganda tullash natijasida nima sodir bo'ladi?",
+    options: ["Lichinka tez pupaga aylanadi","Lichinka keyingi yoshdagi lichinkaga o'tadi, metamorfoz sodir bo'lmaydi","Imago bevosita tuxum qo'yadi","Lichinka nobud bo'ladi"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Ekdizon tullashni boshlaydi, yuvenil gormon esa lichinka belgilarini saqlaydi. Uning miqdori kamayganda pupa va imagoga o'tiladi."
+  },
+  {
+    question: "K. Frish tadqiqotlariga ko'ra asalarilarning aylana raqsi va 8 shaklidagi raqsi qanday axborot beradi?",
+    options: ["Aylana raqs — oziq manbai yaqinda; 8 shaklidagi raqs — uzoqda, yo'nalish va masofani bildiradi","Aylana raqs — xavf; 8 shaklidagi raqs — oziq","Aylana raqs — uzoqdagi manba; 8 shaklidagi raqs — yaqin manba","Ikkalasi ham faqat uya haroratini bildiradi"],
+    topic: "Zoologiya",
+    answer: 0,
+    explanation: "Aylana raqs yaqin oziq manbasini bildiradi. 8 shaklidagi raqsning yo'nalishi quyoshga nisbatan yo'nalishni, davomiyligi esa masofani ko'rsatadi."
+  },
+  {
+    question: "Chuchuk suvda yashovchi suyakli baliqlarda suv-tuz almashinuvi qanday kechadi?",
+    options: ["Dengiz suvini ichib, tuzni jabra orqali chiqaradi, siydigi kam va quyuq","Suv teri orqali chiqib ketadi, ular ko'p suv ichadi","Suv va tuz almashinuvi umuman bo'lmaydi","Suv teri va jabra orqali tanaga kiradi, ko'p suyultirilgan siydik chiqariladi, tuzlar jabra orqali faol so'riladi"],
+    topic: "Zoologiya",
+    answer: 3,
+    explanation: "Chuchuk suv baliq tanasiga nisbatan gipotonik, shuning uchun suv tanaga kiradi. Ortiqcha suv ko'p suyultirilgan siydik bilan chiqariladi, yo'qotilgan tuzlar esa jabra orqali tiklanadi."
+  },
+  {
+    question: "Donxo'r qushlarning mushakli oshqozoni ichida mayda toshlar bo'lishining ahamiyati nima?",
+    options: ["Ular kaltsiy bilan to'yintirish uchun yutiladi","Ular yordamida oziq mexanik maydalanadi, chunki qushlarda tishlar yo'q va qattiq don chaynalmaydi","Toshlar ovqat hazm qiluvchi fermentlar hosil qiladi","Toshlar tanani og'irlashtirib suvda suzishga yordam beradi"],
+    topic: "Zoologiya",
+    answer: 1,
+    explanation: "Mushakli oshqozon qisqarganda mayda toshlar donni ezib maydalaydi, bu tishlar vazifasini bajaradi."
+  },
+  {
+    question: "Qisqa kun o'simligi uzun tunda gullashi kerak. Agar uzun qorong'u davr o'rtasida qisqa vaqt yorug'lik bilan uzilsa, o'simlikda nima sodir bo'ladi?",
+    options: ["Gullash to'xtaydi, chunki gullash uzluksiz qorong'u davr uzunligiga bog'liq","Gullash tezlashadi","Gullashga ta'sir qilmaydi","O'simlik darrov nobud bo'ladi"],
+    topic: "Botanika",
+    answer: 0,
+    explanation: "Fotoperiodizmda hal qiluvchi omil — tunning uzluksiz davomiyligi. Qorong'u davr yorug'lik bilan uzilsa, qisqa kun o'simligi gullash signalini olmaydi."
+  },
+  {
+    question: "Qurg'oqchilikda barg og'izchalarining yopilishini ta'minlovchi o'simlik gormoni qaysi?",
+    options: ["Gibberellin","Sitokinin","Auksin","Abssiz kislota"],
+    topic: "Botanika",
+    answer: 3,
+    explanation: "Suv taqchilligida abssiz kislota to'planadi va to'siquvchi hujayralardan ionlar chiqishiga sabab bo'lib, og'izchalarni yopadi."
+  },
+  {
+    question: "Poyaning uchki kurtagi uzib tashlanganda yon kurtaklar o'sa boshlaydi. Buning sababi nima?",
+    options: ["Gibberellin miqdori keskin ortadi","Uchki kurtakdan hosil bo'ladigan auksin yon kurtaklar o'sishini to'sib turgan edi, u yo'qolgach to'siq olib tashlanadi","Etilen ishlab chiqarilishi to'xtaydi","Fotosintez tezligi pasayadi"],
+    topic: "Botanika",
+    answer: 1,
+    explanation: "Bu hodisa apikal (uchki) ustunlik deyiladi. Uchki kurtak auksini yon kurtaklar o'sishini susaytiradi."
+  },
+  {
+    question: "Bitta pishgan olma yonida saqlangan yashil mevalar tezroq pishadi. Buning sababi nima?",
+    options: ["Olma kislorod ajratadi","Olma suv bug'ini yutib, mevalarni quritadi","Pishgan meva gaz holidagi etilen ajratadi va u qo'shni mevalarning pishishini tezlashtiradi","Olma yorug'lik energiyasini chiqaradi"],
+    topic: "Botanika",
+    answer: 2,
+    explanation: "Etilen — gaz holidagi gormon, meva pishishini, barg to'kilishini tezlashtiradi."
+  },
+  {
+    question: "Fototropizmda (poyaning yorug'lik tomonga egilishi) auksin qanday ta'sir ko'rsatadi?",
+    options: ["Soya tomonda ko'proq to'planib, u yerdagi hujayralar o'sishini kuchaytiradi, poya yorug'lik tomonga egiladi","Yorug'lik tomonda to'planib hujayralarni cho'zadi, poya soyaga egiladi","Yorug'likda parchalanib ketgani sababli o'sish butunlay to'xtaydi","Ildizga o'tib, poya o'sishini to'xtatadi"],
+    topic: "Botanika",
+    answer: 0,
+    explanation: "Yorug'lik auksinning soya tomonga ko'chishiga sabab bo'ladi. Soya tomon tezroq cho'zilgani uchun poya yorug'lik tomonga egiladi."
+  },
+  {
+    question: "Azot yetishmasligining dastlabki belgisi qaysi javobda to'g'ri ko'rsatilgan?",
+    options: ["Eng yosh barglar sarg'ayadi, eski barglar yashil qoladi","Barglar to'q yashil bo'lib, o'sish tezlashadi","Eng pastki (eski) barglar sarg'ayadi, chunki azot yosh to'qimalarga qayta taqsimlanadi","Gullar soni keskin ko'payadi"],
+    topic: "Botanika",
+    answer: 2,
+    explanation: "Azot o'simlikda harakatchan element: yetishmasa eski barglardan yosh barglarga ko'chadi, shu sababli xloroz pastki barglardan boshlanadi."
+  },
+  {
+    question: "Ildiz endodermasidagi Kaspari belbog'ining asosiy vazifasi nima?",
+    options: ["Fotosintez mahsulotlarini ildizga tashish","Ildizning eniga o'sishini ta'minlash","Ildiz tukchalari hosil bo'lishini rag'batlantirish","Hujayra devorlari bo'ylab suv va tuzlarning markaziy silindrga bevosita o'tishini to'sib, tanlab o'tkazishni ta'minlash"],
+    topic: "Botanika",
+    answer: 3,
+    explanation: "Kaspari belbog'i suberin bilan to'yingan, suv va tuzlarni endoderma hujayralari protoplasti orqali o'tishga majbur qiladi, shu tariqa moddalar o'tishi nazorat qilinadi."
+  },
+  {
+    question: "Bir pallali o'simliklar poyasi tuzilishining qaysi xususiyati ularning eniga qalinlashmasligini izohlaydi?",
+    options: ["O'tkazuvchi bog'lamlari halqa bo'lib joylashgan va kambiy bor","O'tkazuvchi bog'lamlari tarqoq joylashgan va yopiq tipda, kambiyi yo'q","Poyasi yog'ochlashgan va yillik halqalari bor","Elaksimon naylari yo'q"],
+    topic: "Botanika",
+    answer: 1,
+    explanation: "Kambiy bo'lmasa ikkilamchi yog'och va lub hosil bo'lmaydi, shuning uchun bir pallalilar poyasi (bug'doy, makkajo'xori) eniga o'smaydi."
+  },
+  {
+    question: "Gul to'rtta kosacha bargi, xoch shaklida joylashgan to'rtta toj bargi, oltita changchi (ikkitasi kalta, to'rttasi uzun) va bitta ikki xonali ustki tuguncha urug'chidan iborat. Bu belgilar qaysi oilaga xos?",
+    options: ["Karamdoshlar (xochguldoshlar)","Ra'nodoshlar","Dukkakdoshlar","Ituzumdoshlar (pomidor, kartoshka)"],
+    topic: "Botanika",
+    answer: 0,
+    explanation: "Karamdoshlar gulining formulasi to'rt kosacha, to'rt toj barg, 2+4 changchi va ikki xonali ustki tuguncha, mevasi ko'sakcha yoki qo'zoq."
+  },
+  {
+    question: "Dukkakdosh o'simliklar ildizidagi tuganak bakteriyalar atmosfera azotini qaysi birikmaga aylantirib beradi?",
+    options: ["Nitrat kislotaga","Azotning kislorodli oksidlariga","Ammiak (ammoniy ioni) ga","Aminokislotalar va oqsillarga to'g'ridan-to'g'ri"],
+    topic: "Botanika",
+    answer: 2,
+    explanation: "Tuganak bakteriyalardagi nitrogenaza fermenti N₂ ni ammiakka qaytaradi, o'simlik uni aminokislotalar sintezi uchun ishlatadi."
+  },
+  {
+    question: "Mox o'simligining spora qutichasi joylashgan uzun poyachasi qaysi avlodga mansub va ploidligi qanday?",
+    options: ["Gametofit, gaploid (n)","Gametofit, diploid (2n)","Sporofit, gaploid (n)","Sporofit, diploid (2n)"],
+    topic: "Botanika",
+    answer: 3,
+    explanation: "Moxlarda yashil o'simlik gaploid gametofit, spora qutichali poyacha esa gametofitga bog'liq diploid sporofitdir."
+  },
+  {
+    question: "Paporotniksimonlarda meyoz qaysi jarayonda sodir bo'ladi?",
+    options: ["Gametalar hosil bo'lishida","Sporangiylarda sporalar hosil bo'lishida","Zigotaning bo'linishida","O'simtaning (gametofitning) o'sishida"],
+    topic: "Botanika",
+    answer: 1,
+    explanation: "Paporotniklarda sporangiylardagi diploid sporali hujayralar meyoz yo'li bilan bo'linib gaploid sporalar hosil qiladi."
+  },
+  {
+    question: "Qarag'ay urug'ining zaxira oziq to'qimasi (endosperm) qanday ploidlikka ega va u qaysi tuzilmaning davomi?",
+    options: ["Triploid (3n), qo'sh urug'lanish natijasi","Diploid (2n), nutsellus qoldig'i","Gaploid (n), urg'ochi gametofit","Poliploid (4n), zigotaning bo'linishi natijasi"],
+    topic: "Botanika",
+    answer: 2,
+    explanation: "Ochiq urug'lilarda endosperm — urug'lanishdan oldin hosil bo'lgan gaploid urg'ochi gametofit. Yopiq urug'lilarda esa endosperm qo'sh urug'lanish natijasida triploid bo'ladi."
+  },
+  {
+    question: "Yopiq urug'lilarning yetuk embrion xaltasida nechta yadro va nechta hujayra bo'ladi?",
+    options: ["8 yadro, 7 hujayra","8 yadro, 8 hujayra","7 yadro, 7 hujayra","4 yadro, 4 hujayra"],
+    topic: "Botanika",
+    answer: 0,
+    explanation: "Megaspora uch marta mitoz bo'linib 8 yadro hosil qiladi. Ikki qutbiy yadro markaziy hujayrada joylashadi, shuning uchun hujayralar 7 ta: tuxum hujayra, 2 sinergida, 3 antipod va markaziy hujayra."
+  },
+  {
+    question: "Quyidagi belgilardan qaysi biri shamol bilan changlanadigan o'simliklarga xos?",
+    options: ["Yirik yorqin gul qoplamasi va hidli nektar","Yopishqoq, og'ir chang donachalari","Changchilar soni kam, urug'chi tumshuqchasi silliq","Gul qoplamasi kichik yoki yo'q, changlar yengil va ko'p, urug'chi tumshuqchasi patsimon"],
+    topic: "Botanika",
+    answer: 3,
+    explanation: "Anemofil o'simliklarda gul qoplamasi sodda, changlar yengil va ko'p miqdorda hosil bo'ladi, patsimon tumshuqcha esa changni yaxshi tutadi."
+  },
+  {
+    question: "Quyidagi mevalardan qaysi biri soxta meva hisoblanadi?",
+    options: ["Gilos","Olma","Pomidor","Shaftoli"],
+    topic: "Botanika",
+    answer: 1,
+    explanation: "Olmada meva shakllanishida tuguncha bilan birga guldon ham ishtirok etadi, shuning uchun u soxta meva hisoblanadi."
+  },
+  {
+    question: "Loviya (ikki pallali o'simlik) urug'ida zaxira oziq moddalar qayerda to'planadi?",
+    options: ["Urug' pallalarida","Endospermda","Urug' po'stida","Murtak ildizchasida"],
+    topic: "Botanika",
+    answer: 0,
+    explanation: "Dukkakdoshlar urug'ida endosperm rivojlanish davomida sarflanib ketadi, zaxira moddalar pallalarga o'tadi. Bug'doyda esa endosperm saqlanadi."
+  },
+  {
+    question: "Yorug'lik to'yinish nuqtasiga yetgandan keyin, harorat optimal bo'lsa, fotosintez tezligini yana oshirishi mumkin bo'lgan omil qaysi?",
+    options: ["Yorug'lik intensivligini yanada oshirish","Haroratni 50°C ga ko'tarish","CO₂ konsentratsiyasini oshirish","Tuproq namligini keskin kamaytirish"],
+    topic: "Botanika",
+    answer: 2,
+    explanation: "Yorug'lik to'yinganda cheklovchi omil CO₂ bo'lib qoladi (Blekman qonuni). Yuqori harorat fermentlarni buzadi."
+  },
+  {
+    question: "Fotosintezning kompensatsiya nuqtasi nima?",
+    options: ["Fotosintez tezligi eng yuqori bo'lgan yorug'lik darajasi","Nafas olish to'xtagan yorug'lik darajasi","Barg og'izchalari to'liq yopilgan payt","Fotosintez bilan nafas olish tezliklari tenglashgan yorug'lik darajasi"],
+    topic: "Botanika",
+    answer: 3,
+    explanation: "Kompensatsiya nuqtasida CO₂ ning fotosintezda yutilishi nafas olishda ajralishiga teng bo'ladi, shuning uchun sof gaz almashinuvi nolga teng."
+  },
+  {
+    question: "Gutatsiya (barg chetlarida suv tomchilari ajralishi) qanday sharoitda kuzatiladi?",
+    options: ["Issiq quruq kunda transpiratsiya kuchli bo'lganda","Havo namligi yuqori, transpiratsiya sust va ildiz bosimi mavjud sharoitda (ko'pincha tong paytida)","Qish davrida, ildiz faolligi to'xtaganda","Faqat suvda o'sadigan o'simliklarda, quruq tuproqda emas"],
+    topic: "Botanika",
+    answer: 1,
+    explanation: "Transpiratsiya sust bo'lganda ildiz bosimi suvni gidatodlar orqali tomchi holida chiqaradi. Bu hodisa gutatsiya deyiladi."
+  },
+  {
+    question: "Sho'rlangan tuproqda o'simlik suv bilan yetarli ta'minlanmagan holda so'lishi mumkin. Buning sababi nima?",
+    options: ["Tuproqda kislorod ko'payib ketadi","Ildiz tukchalari bo'linib ketadi","Tuproq eritmasining osmotik bosimi hujayra shirasinikidan yuqori bo'lib qoladi va suv so'rilmaydi","Fotosintez tezlashib suv sarfi ortadi"],
+    topic: "Botanika",
+    answer: 2,
+    explanation: "Suv osmos yo'li bilan kam konsentratsiyali joydan ko'p konsentratsiyali joyga o'tadi. Tuproq eritmasi quyuq bo'lsa, suv ildizga kirmaydi yoki hatto chiqib ketadi."
+  },
+  {
+    question: "Daraxt tanasi kesimida yillik halqaning och rangli, keng naylardan iborat qismi qaysi yog'ochga mansub?",
+    options: ["Bahor (erta) yog'ochi","Yoz-kuz (kech) yog'ochi","Kambiy hujayralari","Lub qatlami"],
+    topic: "Botanika",
+    answer: 0,
+    explanation: "Bahorda kambiy keng naychali, yupqa devorli hujayralar hosil qiladi (och rang). Yoz-kuzda tor, qalin devorli hujayralar (to'q rang) hosil bo'ladi."
+  },
+  {
+    question: "Quyidagi juftliklardan qaysi birida ikkala organ ham o'zgargan (metamorfozlangan) yer osti poyasi hisoblanadi?",
+    options: ["Sabzi ildizmevasi va sholg'om","Georgin ildiz tuganagi va sabzi","Kartoshka tuganagi va georgin ildiz tuganagi","Kartoshka tuganagi va piyoz"],
+    topic: "Botanika",
+    answer: 3,
+    explanation: "Kartoshka tuganagi — qisqargan yer osti novdasi, piyoz — yer osti kurtagi (qisqargan poya va etli barglar). Sabzi, sholg'om va georgin tuganagi ildiz metamorfozi."
+  },
+  {
+    question: "Xlamidomonada va spirogira kabi yashil suvo'tlarda hayot siklida meyoz qachon sodir bo'ladi?",
+    options: ["Gametalar hosil bo'lishida","Zigota o'sib chiqishida (zigotik meyoz), shuning uchun vegetativ hujayralari gaploid","Vegetativ hujayralar bo'linishida","Meyoz bo'lmaydi, chunki ular faqat mitoz bilan ko'payadi"],
+    topic: "Botanika",
+    answer: 1,
+    explanation: "Bu suvo'tlarda faqat zigota diploid. Zigota meyoz bilan bo'linadi va gaploid hujayralar hosil qiladi."
+  },
+  {
+    question: "Bug'doy donining aslida urug' emas, meva ekanini qaysi belgi ko'rsatadi?",
+    options: ["Donda faqat murtak bo'lishi","Dondagi endospermning kraxmalga boyligi","Meva qobig'i va urug' po'sti birga qo'shilib ketgan (donak)","Donning ildizcha bilan chiqishi"],
+    topic: "Botanika",
+    answer: 2,
+    explanation: "Don — bir urug'li meva (donak): meva qobig'i urug' po'sti bilan qo'shilib o'sgan. Haqiqiy urug'da esa po'st mevadan ajralgan bo'ladi."
   }
 ];
