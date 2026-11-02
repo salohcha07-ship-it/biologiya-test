@@ -160,6 +160,20 @@ body.light-mode .biology-image-wrap { border-color:#d2bce9; }
   border-radius:14px;border:1px solid #40557c;
   background:#1b2b4b;color:#dce5ff;font-weight:700;
 }
+.exam-nav {
+  display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;
+  margin:-7px 0 18px;padding:11px;border:1px solid var(--border);
+  border-radius:14px;background:#0e192d;
+}
+.exam-nav button {
+  min-width:0;min-height:34px;border:1px solid #405477;border-radius:9px;
+  background:#1a2944;color:#dce5ff;font-size:12px;font-weight:800;
+}
+.exam-nav button.answered {background:#254b43;border-color:#4d9a7d;color:#d8ffed}
+.exam-nav button.current {outline:2px solid #a9baff;outline-offset:1px}
+.exam-nav button.unanswered {color:#ffdda0}
+.exam-mode-note {font-size:11px;color:#d5c6f0;margin:-8px 0 13px;line-height:1.45}
+@media(max-width:380px){.exam-nav{grid-template-columns:repeat(5,minmax(0,1fr))}}
 .quiz-top {
   display:flex;justify-content:space-between;
   align-items:center;gap:10px;
@@ -471,6 +485,26 @@ body.light-mode .cabinet-stat span,body.light-mode .cabinet-result small { color
 body.light-mode .cabinet-note { background:#efe5fa;color:#59416f; }
 body.light-mode .cabinet-empty { color:#59416f;border-color:#c8addf; }
 @media(max-width:390px) { .header-actions { gap:5px; }.cabinet-btn { width:39px;padding:0;font-size:0;min-height:40px; }.cabinet-btn i { margin:0;font-size:15px; } }
+/* ===== 8-BOSQICH: O‘QITUVCHI KABINETI ===== */
+.teacher-tools { margin-top:18px;border:1px solid #7654a0;border-radius:16px;background:#211632;overflow:hidden; }
+.teacher-tools summary { cursor:pointer;padding:14px;font-weight:850;color:#eadbff;list-style:none; }
+.teacher-tools summary::-webkit-details-marker { display:none; }
+.teacher-tools summary:after { content:'＋';float:right;color:#d8baff; }
+.teacher-tools[open] summary:after { content:'−'; }
+.teacher-inner { padding:0 13px 14px; }
+.teacher-field { display:block;width:100%;margin:8px 0;padding:11px 12px;border:1px solid #4f3874;border-radius:11px;background:#120c22;color:#f1e6ff;font:inherit;font-size:13px; }
+.teacher-field::placeholder { color:#a99abb; }
+.teacher-form-grid { display:grid;grid-template-columns:1fr 1fr;gap:7px; }
+.teacher-item { padding:11px 0;border-top:1px solid #49345f; }
+.teacher-item strong { display:block;font-size:12px;line-height:1.5;overflow-wrap:anywhere; }
+.teacher-item small { display:block;color:#b8a9ce;font-size:11px;margin-top:4px; }
+.teacher-actions { display:flex;gap:7px;margin-top:8px; }
+.teacher-actions button { min-height:34px;padding:0 10px;font-size:11px; }
+.teacher-note { padding:10px;border-radius:11px;background:#302047;color:#d8c9ed;font-size:11px;line-height:1.55;margin:10px 0; }
+body.light-mode .teacher-tools { background:#faf7ff;border-color:#ddcdec; }
+body.light-mode .teacher-tools summary { color:#59416f; }
+body.light-mode .teacher-field { background:#fff;color:#302340;border-color:#ddcdec; }
+body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
 
 </style>
 </head>
@@ -561,6 +595,20 @@ body.light-mode .cabinet-empty { color:#59416f;border-color:#c8addf; }
       <button class="primary-btn" onclick="startQuiz()">
         Testni boshlash <i class="fa-solid fa-arrow-right"></i>
       </button>
+      <button type="button" class="secondary-btn" onclick="startAdaptiveQuiz()" style="width:100%;margin-top:10px">
+        <i class="fa-solid fa-brain"></i> Aqlli testni boshlash
+      </button>
+      <p style="font-size:12px;line-height:1.5;color:#b8a9ce;margin:9px 2px 0">
+        Aqlli test xatolar daftari va mavzular bo‘yicha natijalaringizga qarab savollarni tanlaydi.
+      </p>
+      <div style="margin-top:16px;padding:14px;border:1px solid #6a5a8c;border-radius:16px;background:linear-gradient(135deg,#30244b,#1a2340)">
+        <div style="font-weight:850;margin-bottom:5px"><i class="fa-solid fa-graduation-cap" style="color:#d6bdff"></i> Milliy sertifikat imtihoni simulyatori</div>
+        <p style="font-size:12px;line-height:1.5;color:#c9c1df;margin:0 0 10px">50 tagacha savol · 90 daqiqa · javoblarni belgilash va qayta ko‘rib chiqish imkoniyati.</p>
+        <button type="button" class="secondary-btn" onclick="startExamSimulator()" style="width:100%;border-color:#8c75b8;background:#3a2d58;color:#f0e8ff">
+          <i class="fa-solid fa-file-signature"></i> Imtihon simulyatorini boshlash
+        </button>
+        <p style="font-size:10px;line-height:1.45;color:#b8a9ce;margin:8px 1px 0">Bu mashq rejimi; savollar bazasi va vaqt sozlamasi rasmiy imtihon reglamentini anglatmaydi.</p>
+      </div>
     </div>
     <p class="subheading" style="margin-top:15px">
       <i class="fa-solid fa-shield-halved"></i>
@@ -575,6 +623,7 @@ body.light-mode .cabinet-empty { color:#59416f;border-color:#c8addf; }
       <div class="timer"><i class="fa-regular fa-clock"></i><span id="timer">00:00</span></div>
     </div>
     <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+    <div id="examNav" class="exam-nav hidden" aria-label="Savollar bo‘yicha navigatsiya"></div>
 
     <h3 id="questionText" class="question-title">Savol yuklanmoqda...</h3>
     <div id="optionsContainer" class="options"></div>
@@ -656,19 +705,42 @@ body.light-mode .cabinet-empty { color:#59416f;border-color:#c8addf; }
         <label for="authEmail" class="subheading" style="display:block;text-align:left;margin:8px 0 5px">Email</label>
         <input id="authEmail" type="email" autocomplete="email" placeholder="Email manzilingiz" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
         <label for="authPassword" class="subheading" style="display:block;text-align:left;margin:10px 0 5px">Parol</label>
-        <input id="authPassword" type="password" autocomplete="current-password" placeholder="Kamida 6 ta belgi" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-          <button type="button" class="primary-btn" onclick="bioSignIn()">Kirish</button>
-          <button type="button" class="secondary-btn" onclick="bioSignUp()">Ro‘yxatdan o‘tish</button>
+        <input id="authPassword" type="password" autocomplete="current-password" minlength="6" placeholder="Kamida 6 ta belgi" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
+        <div id="authConfirmWrap" class="hidden">
+          <label for="authPasswordConfirm" class="subheading" style="display:block;text-align:left;margin:10px 0 5px">Parolni takrorlang</label>
+          <input id="authPasswordConfirm" type="password" autocomplete="new-password" minlength="6" placeholder="Parolni qayta kiriting" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
         </div>
-        <button type="button" class="secondary-btn" style="margin-top:8px" onclick="bioResetPassword()">Parolni unutdingizmi?</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <button id="authSignInBtn" type="button" class="primary-btn" onclick="bioSignIn()">Kirish</button>
+          <button id="authSignUpBtn" type="button" class="secondary-btn" onclick="setAuthMode('signup')">Ro‘yxatdan o‘tish</button>
+          <button id="authBackBtn" type="button" class="secondary-btn hidden" onclick="setAuthMode('login')">Kirishga qaytish</button>
+        </div>
+        <button id="authResetBtn" type="button" class="secondary-btn" style="margin-top:8px" onclick="bioResetPassword()">Parolni unutdingizmi?</button>
       </div>
       <div id="authSignedIn" class="hidden">
         <div id="authEmailLabel" style="font-weight:600;overflow-wrap:anywhere;margin-bottom:10px"></div>
+        <div id="authVerificationNote" class="subheading" style="text-align:left;margin:0 0 10px"></div>
+        <button id="authVerifyBtn" type="button" class="secondary-btn hidden" style="margin-bottom:10px" onclick="bioResendVerification()">Tasdiqlash xatini qayta yuborish</button>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button type="button" class="primary-btn" onclick="bioCloudSave()"><i class="fa-solid fa-cloud-arrow-up"></i> Bulutga saqlash</button>
           <button type="button" class="secondary-btn" onclick="bioCloudRestore()"><i class="fa-solid fa-cloud-arrow-down"></i> Bulutdan tiklash</button>
           <button type="button" class="secondary-btn" onclick="bioSignOut()">Chiqish</button>
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+          <div style="font-weight:750;margin-bottom:7px"><i class="fa-solid fa-people-group"></i> Sinf bilan ishlash</div>
+          <p class="subheading" style="text-align:left;margin:0 0 10px">O‘qituvchi sinf kodi yaratadi va savollarini ulashadi. O‘quvchi kodni kiritib savollarni oladi.</p>
+          <div style="display:grid;gap:8px">
+            <input id="bioClassroomTitle" type="text" maxlength="60" placeholder="Sinf nomi (masalan, 11-A biologiya)" style="width:100%;padding:11px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
+            <button type="button" class="primary-btn" onclick="bioCreateClassroom()"><i class="fa-solid fa-plus"></i> Sinf kodi yaratish</button>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <input id="bioClassroomCode" type="text" maxlength="8" placeholder="8 belgili sinf kodi" autocapitalize="characters" style="flex:1;min-width:150px;padding:11px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
+              <button type="button" class="secondary-btn" onclick="bioJoinClassroom()">Sinfga qo‘shilish</button>
+            </div>
+            <button type="button" class="secondary-btn" onclick="bioPublishClassroomQuestions()"><i class="fa-solid fa-cloud-arrow-up"></i> Savollarni sinfga yangilash</button>
+            <button type="button" class="secondary-btn" onclick="bioLoadClassResults()"><i class="fa-solid fa-chart-column"></i> Sinf natijalarini ko‘rish</button>
+            <div id="bioClassroomStatus" class="subheading" role="status" aria-live="polite" style="text-align:left;margin:0"></div>
+            <div id="bioClassroomResults" style="display:grid;gap:7px"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -732,6 +804,7 @@ try {
     firebase.initializeApp(firebaseConfig);
     db = firebase.firestore();
     auth = firebase.auth();
+    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(e=>console.warn("Auth persistence:",e));
   }
 } catch(e) {
   console.error("Firebase xatosi:",e);
@@ -741,7 +814,18 @@ try {
 const TEST_MODE = true;
 document.getElementById("testBanner").classList.toggle("hidden",!TEST_MODE);
 
-const biologyQuestionsDB =
+const TEACHER_QUESTIONS_KEY = "bio_teacher_questions_v1";
+function loadTeacherQuestions(){
+  try{
+    const list=JSON.parse(localStorage.getItem(TEACHER_QUESTIONS_KEY)||"[]");
+    if(!Array.isArray(list))return [];
+    return list.filter(q=>q&&typeof q.id==="string"&&typeof q.question==="string"&&q.question.trim()&&
+      Array.isArray(q.options)&&q.options.length>=2&&q.options.every(x=>typeof x==="string"&&x.trim())&&
+      Number.isInteger(q.answer)&&q.answer>=0&&q.answer<q.options.length)
+      .map(q=>({...q,topic:String(q.topic||"O‘qituvchi qo‘shgan savollar"),explanation:String(q.explanation||"")}));
+  }catch(e){console.warn("O‘qituvchi savollari o‘qilmadi:",e);return [];}
+}
+let biologyQuestionsDB =
   [].concat(
     (typeof questions !== "undefined" && Array.isArray(questions)) ? questions : [],
     (typeof rasmliSavollar !== "undefined" && Array.isArray(rasmliSavollar)) ? rasmliSavollar : []
@@ -750,6 +834,7 @@ const biologyQuestionsDB =
       Array.isArray(q.options) && q.options.length >= 2 &&
       Number.isInteger(q.answer) &&
       q.answer >= 0 && q.answer < q.options.length);
+biologyQuestionsDB = biologyQuestionsDB.concat(loadTeacherQuestions());
 
 let currentQuestions = [];
 let currentIndex = 0;
@@ -760,6 +845,10 @@ let selectedQuestionCount = 10;
 let userName = "";
 let userRegion = "";
 let isRetry = false;
+let isAdaptiveQuiz = false;
+let isExamMode = false;
+let examRemainingSeconds = 0;
+let examSubmittedByTimeout = false;
 let advanceTimer = null;
 
 function escapeHtml(str) {
@@ -877,12 +966,103 @@ function startQuiz() {
   saveBioProfile(userName,userRegion);
   const pool = selectedTopic === "ALL" ? biologyQuestionsDB : biologyQuestionsDB.filter(q => q.topic === selectedTopic);
   const count = Math.min(selectedQuestionCount,pool.length);
-  beginQuiz(shuffle(prepareQuestions(pool)).slice(0,count),false);
+  beginQuiz(shuffle(prepareQuestions(pool)).slice(0,count),false,false);
 }
 
-function beginQuiz(questionList,retry) {
+// Milliy sertifikatga tayyorgarlik uchun vaqtli mashq simulyatori.
+// Bu sozlama rasmiy imtihon reglamentini bildirmaydi.
+function startExamSimulator() {
+  const nameInput = document.getElementById("userNameInput").value.trim();
+  const regionInput = document.getElementById("regionSelect").value;
+  const nameError = document.getElementById("nameError");
+  const regionError = document.getElementById("regionError");
+  if(!biologyQuestionsDB.length) {
+    nameError.innerText = "Savollar yuklanmadi. questions.js faylini tekshiring.";
+    nameError.classList.remove("hidden");
+    return;
+  }
+  let valid = true;
+  nameError.innerText = "Ismingizni kiriting";
+  if(!nameInput) { nameError.classList.remove("hidden"); valid = false; }
+  else nameError.classList.add("hidden");
+  if(!regionInput) { regionError.classList.remove("hidden"); valid = false; }
+  else regionError.classList.add("hidden");
+  if(!valid) return;
+
+  const pool = prepareQuestions(shuffle(biologyQuestionsDB));
+  const chosen = pool.slice(0,Math.min(50,pool.length));
+  if(!chosen.length) return;
+  userName = nameInput;
+  userRegion = regionInput;
+  saveBioProfile(userName,userRegion);
+  if(chosen.length < 50) {
+    const proceed = window.confirm("Savollar bazasida hozircha "+chosen.length+" ta takrorlanmaydigan savol bor. Simulyator shu savollar bilan boshlanadi. Davom etamizmi?");
+    if(!proceed) return;
+  }
+  beginQuiz(chosen,false,false,true);
+}
+
+// Aqlli test: avval o‘zlashtirilmagan xatolar, so‘ng aniqligi past mavzular.
+function startAdaptiveQuiz() {
+  const nameField = document.getElementById("userNameInput");
+  const regionField = document.getElementById("regionSelect");
+  const nameInput = nameField.value.trim();
+  const regionInput = regionField.value;
+  const nameError = document.getElementById("nameError");
+  const regionError = document.getElementById("regionError");
+  if(biologyQuestionsDB.length === 0) {
+    nameError.innerText = "Savollar yuklanmadi. questions.js faylini tekshiring.";
+    nameError.classList.remove("hidden");
+    return;
+  }
+  let ok = true;
+  nameError.innerText = "Ismingizni kiriting";
+  if(!nameInput) { nameError.classList.remove("hidden"); ok = false; }
+  else nameError.classList.add("hidden");
+  if(!regionInput) { regionError.classList.remove("hidden"); ok = false; }
+  else regionError.classList.add("hidden");
+  if(!ok) return;
+
+  userName = nameInput;
+  userRegion = regionInput;
+  saveBioProfile(userName,userRegion);
+  let pool = selectedTopic === "ALL" ? biologyQuestionsDB.slice() : biologyQuestionsDB.filter(q => q.topic === selectedTopic);
+  const count = Math.min(selectedQuestionCount,pool.length);
+  const notebook = readErrorNotebook();
+  const errors = new Map(notebook.map(item => [String(item.question||"").trim(),item]));
+  let stats = {topics:{}};
+  try { stats = Object.assign(stats,JSON.parse(localStorage.getItem("bio_stats_v1")||"{}")||{}); } catch(e) {}
+  const topicStats = stats.topics || {};
+  const ranked = pool.map((q,index) => {
+    const item = errors.get(String(q.question||"").trim());
+    const topic = q.topic || "Boshqa";
+    const t = topicStats[topic];
+    const accuracy = t && Number(t[1]) > 0 ? Number(t[0])/Number(t[1]) : null;
+    const difficultyRaw = q.difficulty ?? q.level ?? q.daraja;
+    let difficulty = 0;
+    if(typeof difficultyRaw === "number") difficulty = Math.max(0,Math.min(5,difficultyRaw));
+    else if(typeof difficultyRaw === "string") {
+      const d = difficultyRaw.toLocaleLowerCase();
+      difficulty = /qiyin|murakkab|hard/.test(d) ? 5 : /o.rta|o‘rta|medium/.test(d) ? 3 : /oson|easy/.test(d) ? 1 : 0;
+    }
+    const errorPriority = item && !item.mastered ? 100 + Math.min(50,(Number(item.mistakes)||1)*10) : 0;
+    const weakTopicPriority = accuracy === null ? 0 : (1-accuracy)*45;
+    const difficultyPriority = difficulty*3;
+    return {q,score:errorPriority+weakTopicPriority+difficultyPriority+(Math.random()*8),index};
+  });
+  ranked.sort((a,b)=>b.score-a.score);
+  const chosen = ranked.slice(0,count).map(x=>x.q);
+  // Tanlangan savollarning tartibini biroz aralashtiramiz, lekin ustuvor savollar saqlanadi.
+  beginQuiz(prepareQuestions(chosen),false,true);
+}
+
+function beginQuiz(questionList,retry,adaptive=false,exam=false) {
   clearAdvance();
   isRetry = retry;
+  isAdaptiveQuiz = !!adaptive;
+  isExamMode = !!exam;
+  examRemainingSeconds = isExamMode ? 90*60 : 0;
+  examSubmittedByTimeout = false;
   currentQuestions = questionList;
   currentIndex = 0;
   selectedAnswers = new Array(currentQuestions.length).fill(null);
@@ -899,19 +1079,37 @@ function beginQuiz(questionList,retry) {
 
 function startTimer() {
   clearInterval(timerInterval);
-  document.getElementById("timer").innerText = "00:00";
+  const paint = value => {
+    const mins = String(Math.floor(value/60)).padStart(2,"0");
+    const secs = String(value%60).padStart(2,"0");
+    document.getElementById("timer").innerText = mins+":"+secs;
+  };
+  paint(isExamMode ? examRemainingSeconds : 0);
   timerInterval = setInterval(() => {
     secondsElapsed++;
-    const mins = String(Math.floor(secondsElapsed/60)).padStart(2,"0");
-    const secs = String(secondsElapsed%60).padStart(2,"0");
-    document.getElementById("timer").innerText = mins+":"+secs;
+    if(isExamMode) {
+      examRemainingSeconds = Math.max(0,examRemainingSeconds-1);
+      paint(examRemainingSeconds);
+      if(examRemainingSeconds===0) {
+        examSubmittedByTimeout = true;
+        finishQuiz();
+      }
+    } else {
+      paint(secondsElapsed);
+    }
   },1000);
 }
 
 function renderQuestion() {
   const q = currentQuestions[currentIndex];
   document.getElementById("questionProgress").innerText =
-    `Savol ${currentIndex+1} / ${currentQuestions.length}`;
+    (isExamMode ? "Imtihon · " : isAdaptiveQuiz ? "Aqlli test · " : "") + `Savol ${currentIndex+1} / ${currentQuestions.length}`;
+  const examNav = document.getElementById("examNav");
+  if(examNav) {
+    examNav.classList.toggle("hidden",!isExamMode);
+    if(isExamMode) renderExamNavigator();
+    else examNav.innerHTML="";
+  }
   document.getElementById("questionText").innerText = q.question;
   const oldImg = document.getElementById("qImage");
   if(oldImg) oldImg.remove();
@@ -948,7 +1146,29 @@ function renderQuestion() {
     ? 'Yakunlash <i class="fa-solid fa-flag-checkered"></i>'
     : 'Keyingisi <i class="fa-solid fa-arrow-right"></i>';
   nextBtn.classList.toggle("hidden",
-    !(isLast || (selectedAnswers[currentIndex]!==null && !advanceTimer)));
+    !(isExamMode || isLast || (selectedAnswers[currentIndex]!==null && !advanceTimer)));
+}
+
+function renderExamNavigator() {
+  const host = document.getElementById("examNav");
+  if(!host || !isExamMode) return;
+  host.innerHTML = "";
+  currentQuestions.forEach((q,index) => {
+    const btn = document.createElement("button");
+    const answered = selectedAnswers[index] !== null;
+    btn.type = "button";
+    btn.textContent = String(index+1);
+    btn.className = (answered ? "answered" : "unanswered") + (index===currentIndex ? " current" : "");
+    btn.setAttribute("aria-label","Savol "+(index+1)+(answered ? ", javob belgilangan" : ", javob belgilanmagan"));
+    btn.setAttribute("aria-current",index===currentIndex ? "step" : "false");
+    btn.onclick = () => {
+      clearAdvance();
+      currentIndex=index;
+      document.getElementById("answerError").classList.add("hidden");
+      renderQuestion();
+    };
+    host.appendChild(btn);
+  });
 }
 
 function clearAdvance() {
@@ -962,6 +1182,7 @@ function selectOption(idx) {
   if(advanceTimer) return;
   selectedAnswers[currentIndex] = idx;
   document.getElementById("answerError").classList.add("hidden");
+  if(isExamMode) { renderQuestion(); return; }
 
   if(currentIndex < currentQuestions.length-1) {
     advanceTimer = setTimeout(() => {
@@ -983,7 +1204,7 @@ function prevQuestion() {
 }
 
 function nextQuestion() {
-  if(selectedAnswers[currentIndex] === null) {
+  if(!isExamMode && selectedAnswers[currentIndex] === null) {
     document.getElementById("answerError").classList.remove("hidden");
     return;
   }
@@ -993,8 +1214,54 @@ function nextQuestion() {
     currentIndex++;
     renderQuestion();
   } else {
+    if(isExamMode) {
+      const unanswered=selectedAnswers.filter(answer=>answer===null).length;
+      const message=unanswered
+        ? unanswered+" ta savol javobsiz. Imtihonni yakunlaysizmi?"
+        : "Barcha savollarga javob berdingiz. Imtihonni yakunlaysizmi?";
+      if(!window.confirm(message)) return;
+    }
     finishQuiz();
   }
+}
+
+const ERROR_NOTEBOOK_KEY = "bio_error_notebook_v1";
+function readErrorNotebook() {
+  try {
+    const data = JSON.parse(localStorage.getItem(ERROR_NOTEBOOK_KEY) || "[]");
+    return Array.isArray(data) ? data : [];
+  } catch(e) { return []; }
+}
+function updateErrorNotebook() {
+  try {
+    const notebook = readErrorNotebook();
+    const byQuestion = new Map(notebook.map(item => [item.question, item]));
+    currentQuestions.forEach((q, idx) => {
+      const question = String(q.question || "").trim();
+      if(!question) return;
+      const picked = selectedAnswers[idx];
+      const existing = byQuestion.get(question);
+      if(picked !== q.answer) {
+        const item = existing || {question, topic:q.topic || "Boshqa", mistakes:0, mastered:false, createdAt:Date.now()};
+        item.topic = q.topic || item.topic || "Boshqa";
+        item.options = Array.isArray(q.options) ? q.options.map(x=>String(x)) : [];
+        item.correctAnswer = String(q.options[q.answer] ?? "");
+        item.userAnswer = picked === null ? "Belgilanmagan" : String(q.options[picked] ?? "");
+        item.explanation = String(q.explanation || "Izoh mavjud emas.");
+        item.mistakes = (Number(item.mistakes) || 0) + 1;
+        item.mastered = false;
+        item.lastAt = Date.now();
+        byQuestion.set(question,item);
+      } else if(existing) {
+        existing.mastered = true;
+        existing.lastCorrectAt = Date.now();
+        existing.userAnswer = String(q.options[picked] ?? "");
+        byQuestion.set(question,existing);
+      }
+    });
+    const updated = Array.from(byQuestion.values()).sort((a,b)=>(b.lastAt||b.createdAt||0)-(a.lastAt||a.createdAt||0)).slice(0,100);
+    localStorage.setItem(ERROR_NOTEBOOK_KEY,JSON.stringify(updated));
+  } catch(e) { console.warn("Xatolar daftarini saqlab bo‘lmadi:",e); }
 }
 
 function finishQuiz() {
@@ -1003,6 +1270,7 @@ function finishQuiz() {
   document.getElementById("quizView").classList.add("hidden");
   document.getElementById("resultView").classList.remove("hidden");
 
+  updateErrorNotebook();
   let correctCount = 0;
   const expContainer = document.getElementById("explanationsList");
   expContainer.innerHTML = "";
@@ -1046,10 +1314,12 @@ function finishQuiz() {
   const wrongCount = total-correctCount;
   const scorePct = Math.round(correctCount/total*100);
 
+  const unansweredCount=selectedAnswers.filter(answer=>answer===null).length;
   document.getElementById("resultTitle").innerText =
-    isRetry ? "Xatolar ustida ishlash":"Test natijasi";
-  document.getElementById("resultSummary").innerText =
-    `Siz ${total} ta savoldan ${correctCount} tasiga to‘g‘ri javob berdingiz!`;
+    isExamMode ? "Imtihon simulyatori natijasi" : isRetry ? "Xatolar ustida ishlash":"Test natijasi";
+  document.getElementById("resultSummary").innerText = isExamMode
+    ? `Siz ${total} ta savoldan ${correctCount} tasiga to‘g‘ri javob berdingiz. Javobsiz: ${unansweredCount} ta.${examSubmittedByTimeout ? " Vaqt tugagani uchun imtihon avtomatik yakunlandi." : ""}`
+    : `Siz ${total} ta savoldan ${correctCount} tasiga to‘g‘ri javob berdingiz!`;
   document.getElementById("scorePercent").innerText = scorePct+"%";
   renderAchievements(scorePct,correctCount,total);
 
@@ -1080,6 +1350,7 @@ function saveScore(name,region,score,correct,total,seconds,timeStr) {
   const entry = {
     name,region,score,correct,total,seconds,
     time:timeStr,date:new Date().toLocaleDateString(),
+    mode:isExamMode ? "exam" : "practice",
     ts:Date.now(),profileId:(getBioProfile()||{}).id||""
   };
 
@@ -1097,6 +1368,14 @@ function saveScore(name,region,score,correct,total,seconds,timeStr) {
     db.collection("results")
       .add({...entry,createdAt:firebase.firestore.FieldValue.serverTimestamp()})
       .catch(err => console.error("Natijani yuborib bo‘lmadi:",err));
+    const joinedCode=(()=>{try{return localStorage.getItem("bio_classroom_code_v1")||"";}catch(e){return "";}})();
+    const signedUser=auth&&auth.currentUser;
+    if(joinedCode&&signedUser){
+      db.collection("bio_classrooms").doc(joinedCode).collection("results")
+        .doc(signedUser.uid+"_"+entry.ts)
+        .set({uid:signedUser.uid,name:entry.name,region:entry.region,score:entry.score,correct:entry.correct,total:entry.total,mode:entry.mode,ts:entry.ts,createdAt:firebase.firestore.FieldValue.serverTimestamp()})
+        .catch(err=>console.error("Sinf natijasini yuborib bo‘lmadi:",err));
+    }
   }
 }
 
@@ -1236,6 +1515,8 @@ function restartQuiz() {
   clearAdvance();
   clearInterval(timerInterval);
   isRetry = false;
+  isExamMode = false;
+  examSubmittedByTimeout = false;
   document.getElementById("resultView").classList.add("hidden");
   document.getElementById("startView").classList.remove("hidden");
   window.scrollTo({top:0,behavior:"smooth"});
@@ -1376,7 +1657,7 @@ function restartQuiz() {
     const tot=currentQuestions.length, m=topicsOf();
     let corr=0,un=0;Object.values(m).forEach(v=>{corr+=v[0];un+=v[2];});
     const avg=(secondsElapsed/tot).toFixed(1);
-    box.append(el("div","g-h","Batafsil tahlil"));
+    box.append(el("div","g-h",isAdaptiveQuiz ? "Aqlli test — batafsil tahlil" : "Batafsil tahlil"));
     const st=el("div","a-stats");
     [[corr+"/"+tot,"to'g'ri"],[tot-corr-un,"xato"],[avg+" s","bir savolga"]].forEach(a=>{const d=el("div");d.append(el("b","",String(a[0])),el("small","",a[1]));st.append(d);});
     box.append(st);
@@ -1440,11 +1721,24 @@ function restartQuiz() {
   window.getBioProfile=readProfile;
   window.saveBioProfile=function(name,region){
     const old=readProfile()||{};
+    const cleanName=String(name||"").trim(), cleanRegion=String(region||"").trim();
     const id=old.id||(window.crypto&&crypto.randomUUID?crypto.randomUUID():"bio-"+Date.now()+"-"+Math.random().toString(36).slice(2,8));
-    const p={id,name:String(name||"").trim(),region:String(region||"").trim(),updatedAt:Date.now()};
+    // Eski versiyada profileId bo‘lmagan natijalarni profil ID bilan bog‘lab qo‘yamiz.
+    if(old.name&&old.region&&(old.name!==cleanName||old.region!==cleanRegion)){
+      try{
+        const scores=JSON.parse(localStorage.getItem("bio_leaderboard")||"[]");
+        if(Array.isArray(scores)){
+          let changed=false;
+          scores.forEach(x=>{if(!x.profileId&&normProfile(x.name)===normProfile(old.name)&&normProfile(x.region)===normProfile(old.region)){x.profileId=id;changed=true;}});
+          if(changed)localStorage.setItem("bio_leaderboard",JSON.stringify(scores));
+        }
+      }catch(e){console.warn("Eski natijalarni profilga bog‘lash amalga oshmadi:",e);}
+    }
+    const p={id,name:cleanName,region:cleanRegion,updatedAt:Date.now()};
     try{localStorage.setItem(PROFILE_KEY,JSON.stringify(p));}catch(e){console.error("Profilni saqlab bo'lmadi:",e);}
     return p;
   };
+  function normProfile(value){return String(value||"").trim().toLocaleLowerCase("uz");}
   const norm=s=>String(s||"").trim().toLocaleLowerCase("uz");
   const localScores=()=>{try{const a=JSON.parse(localStorage.getItem("bio_leaderboard")||"[]");return Array.isArray(a)?a:[];}catch(e){return [];}};
   let previousView="startView";
@@ -1456,11 +1750,140 @@ function restartQuiz() {
       (!x.profileId&&norm(x.name)===norm(p.name)&&norm(x.region)===norm(p.region))
     ).sort((a,b)=>(b.ts||0)-(a.ts||0));
   }
+  function renderErrorNotebook(host){
+    let entries=[];
+    try{const parsed=JSON.parse(localStorage.getItem("bio_error_notebook_v1")||"[]");entries=Array.isArray(parsed)?parsed:[];}catch(e){}
+    const title=document.createElement("div");
+    title.className="cabinet-section-title";
+    title.innerHTML='<i class="fa-solid fa-book-bookmark"></i> Xatolar daftari';
+    host.append(title);
+    const card=document.createElement("div");
+    card.className="cabinet-result";
+    card.style.cssText="display:block;padding:13px";
+    const pending=entries.filter(x=>!x.mastered);
+    const summary=document.createElement("div");
+    summary.className="cabinet-region";
+    summary.style.cssText="margin:0 0 10px;line-height:1.5";
+    summary.textContent=entries.length
+      ? "Jami "+entries.length+" ta saqlangan savol · "+pending.length+" tasi takrorlash uchun. Xato javob bergan savollaringiz izohi bilan shu yerda saqlanadi."
+      : "Hozircha xatolar yo‘q. Testda noto‘g‘ri yoki javobsiz qoldirilgan savollar shu yerda izohi bilan saqlanadi.";
+    card.append(summary);
+    if(entries.length){
+      const ordered=entries.slice().sort((a,b)=>Number(a.mastered)-Number(b.mastered)||(b.lastAt||0)-(a.lastAt||0));
+      ordered.slice(0,20).forEach((item,index)=>{
+        const block=document.createElement("div");
+        block.style.cssText="padding:11px 0;border-top:1px solid rgba(160,130,190,.22)";
+        const q=document.createElement("strong");
+        q.style.cssText="display:block;font-size:13px;line-height:1.5;overflow-wrap:anywhere";
+        q.textContent=(index+1)+". "+(item.question||"Savol matni mavjud emas");
+        const meta=document.createElement("small");
+        meta.className="cabinet-region";
+        meta.style.cssText="display:block;margin:5px 0 8px";
+        meta.textContent=(item.topic||"Boshqa")+" · xato urinish: "+(Number(item.mistakes)||1)+" marta"+(item.mastered?" · o‘zlashtirilgan":" · takrorlash kerak");
+        const wrong=document.createElement("div");wrong.style.cssText="font-size:12px;line-height:1.5;color:#fda4af;margin:4px 0";
+        wrong.textContent="Sizning javobingiz: "+(item.userAnswer||"Belgilanmagan");
+        const correct=document.createElement("div");correct.style.cssText="font-size:12px;line-height:1.5;color:#86efac;margin:4px 0";
+        correct.textContent="To‘g‘ri javob: "+(item.correctAnswer||"Mavjud emas");
+        const explanation=document.createElement("div");explanation.className="cabinet-region";explanation.style.cssText="font-size:12px;line-height:1.55;margin-top:7px";
+        explanation.textContent="Izoh: "+(item.explanation||"Izoh mavjud emas.");
+        block.append(q,meta,wrong,correct,explanation);
+        const action=document.createElement("button");action.type="button";action.className="secondary-btn";
+        action.style.cssText="min-height:34px;padding:0 10px;margin-top:8px;font-size:11px";
+        action.textContent=item.mastered?"Qayta takrorlashga belgilash":"O‘rgandim";
+        action.addEventListener("click",()=>{
+          const current=entries.find(x=>x.question===item.question);
+          if(!current)return;
+          current.mastered=!current.mastered;
+          try{localStorage.setItem("bio_error_notebook_v1",JSON.stringify(entries));render();}catch(e){alert("O‘zgarishni saqlab bo‘lmadi.");}
+        });
+        block.append(action);card.append(block);
+      });
+      if(entries.length>20){const more=document.createElement("div");more.className="cabinet-region";more.style.marginTop="8px";more.textContent="Ro‘yxatda yana "+(entries.length-20)+" ta savol bor. Daftarda eng so‘nggi 20 tasi ko‘rsatilmoqda.";card.append(more);}
+    }
+    host.append(card);
+  }
+
+  function renderTeacherTools(host){
+    const details=document.createElement("details");details.className="teacher-tools";
+    const summary=document.createElement("summary");summary.innerHTML='<i class="fa-solid fa-chalkboard-user"></i> O‘qituvchi kabineti';details.append(summary);
+    const inner=document.createElement("div");inner.className="teacher-inner";
+    const note=document.createElement("div");note.className="teacher-note";
+    note.textContent="Bu hozircha shu brauzerda ishlaydigan boshqaruv bo‘limi. Qo‘shilgan savollar va ko‘rinayotgan natijalar shu qurilma xotirasida saqlanadi. Ommaviy platformada o‘qituvchi huquqini server tomonda autentifikatsiya bilan himoyalash kerak.";
+    inner.append(note);
+    const custom=loadTeacherQuestions();
+    const scores=localScores().slice().sort((a,b)=>(b.ts||0)-(a.ts||0));
+    const stats=document.createElement("div");stats.className="a-stats";
+    [[custom.length,"Qo‘shilgan savol"],[scores.length,"Saqlangan natija"],[biologyQuestionsDB.length,"Jami savollar"]].forEach(v=>{
+      const box=document.createElement("div"),b=document.createElement("b"),sm=document.createElement("small");b.textContent=v[0];sm.textContent=v[1];box.append(b,sm);stats.append(box);
+    });inner.append(stats);
+
+    const formTitle=document.createElement("div");formTitle.className="cabinet-section-title";formTitle.textContent="Savol qo‘shish / tahrirlash";inner.append(formTitle);
+    const form=document.createElement("form");form.autocomplete="off";
+    const topic=document.createElement("input");topic.className="teacher-field";topic.placeholder="Mavzu (masalan: Genetika)";topic.maxLength=100;topic.required=true;
+    const question=document.createElement("textarea");question.className="teacher-field";question.placeholder="Savol matni";question.rows=3;question.maxLength=1500;question.required=true;
+    const optionsWrap=document.createElement("div");optionsWrap.className="teacher-form-grid";
+    const options=[];
+    for(let i=0;i<4;i++){const inp=document.createElement("input");inp.className="teacher-field";inp.placeholder=String.fromCharCode(65+i)+"-variant";inp.maxLength=500;inp.required=true;options.push(inp);optionsWrap.append(inp);}
+    const answerLabel=document.createElement("label");answerLabel.className="cabinet-region";answerLabel.textContent="To‘g‘ri javob";
+    const answer=document.createElement("select");answer.className="teacher-field";
+    ["A","B","C","D"].forEach((x,i)=>answer.add(new Option(x+" varianti",String(i))));
+    const explanation=document.createElement("textarea");explanation.className="teacher-field";explanation.placeholder="Javob izohi (ixtiyoriy)";explanation.rows=2;explanation.maxLength=1500;
+    const imageUrl=document.createElement("input");imageUrl.className="teacher-field";imageUrl.placeholder="Rasm URL manzili (ixtiyoriy)";imageUrl.type="url";imageUrl.maxLength=1000;
+    const save=document.createElement("button");save.type="submit";save.className="primary-btn";save.textContent="Savolni saqlash";
+    const cancel=document.createElement("button");cancel.type="button";cancel.className="secondary-btn";cancel.textContent="Tozalash";cancel.style.width="100%";
+    const status=document.createElement("div");status.className="cabinet-region";status.style.marginTop="8px";
+    let editingId="";
+    function resetForm(){editingId="";form.reset();save.textContent="Savolni saqlash";status.textContent="Yangi savol kiritishingiz mumkin.";}
+    cancel.addEventListener("click",resetForm);
+    form.append(topic,question,optionsWrap,answerLabel,answer,explanation,imageUrl,save,cancel,status);
+    form.addEventListener("submit",event=>{
+      event.preventDefault();
+      const opts=options.map(x=>x.value.trim());
+      if(!topic.value.trim()||!question.value.trim()||opts.some(x=>!x)){status.textContent="Mavzu, savol va barcha 4 variantni to‘ldiring.";return;}
+      if(imageUrl.value.trim()){
+        try{const u=new URL(imageUrl.value.trim());if(!["http:","https:"].includes(u.protocol))throw new Error();}
+        catch(e){status.textContent="Rasm uchun http yoki https manzilini kiriting.";return;}
+      }
+      const bank=loadTeacherQuestions();
+      const item={id:editingId||("teacher-"+Date.now()+"-"+Math.random().toString(36).slice(2,8)),topic:topic.value.trim(),question:question.value.trim(),options:opts,answer:Number(answer.value),explanation:explanation.value.trim()};
+      if(imageUrl.value.trim())item.image=imageUrl.value.trim();
+      const idx=bank.findIndex(x=>x.id===editingId);if(idx>=0)bank[idx]=item;else bank.push(item);
+      try{localStorage.setItem(TEACHER_QUESTIONS_KEY,JSON.stringify(bank));alert("Savol saqlandi. Mavzu ro‘yxatini yangilash uchun sahifa qayta yuklanadi.");location.reload();}
+      catch(e){status.textContent="Saqlab bo‘lmadi. Brauzer xotirasida joy yetarli emas.";}
+    });
+    inner.append(form);
+
+    const listTitle=document.createElement("div");listTitle.className="cabinet-section-title";listTitle.textContent="O‘qituvchi qo‘shgan savollar";inner.append(listTitle);
+    if(!custom.length){const empty=document.createElement("div");empty.className="cabinet-empty";empty.textContent="Hozircha qo‘shimcha savollar yo‘q. Yuqoridagi shakl orqali birinchi savolni kiriting.";inner.append(empty);}
+    custom.forEach(item=>{
+      const row=document.createElement("div");row.className="teacher-item";
+      const q=document.createElement("strong");q.textContent=item.question;
+      const meta=document.createElement("small");meta.textContent=(item.topic||"Boshqa")+" · "+item.options.length+" ta variant";
+      const actions=document.createElement("div");actions.className="teacher-actions";
+      const edit=document.createElement("button");edit.type="button";edit.className="secondary-btn";edit.textContent="Tahrirlash";
+      edit.addEventListener("click",()=>{editingId=item.id;topic.value=item.topic||"";question.value=item.question||"";options.forEach((x,i)=>x.value=item.options[i]||"");answer.value=String(item.answer);explanation.value=item.explanation||"";imageUrl.value=item.image||"";save.textContent="O‘zgarishni saqlash";status.textContent="Tanlangan savol tahrirlash uchun yuklandi.";form.scrollIntoView({behavior:"smooth",block:"center"});});
+      const del=document.createElement("button");del.type="button";del.className="secondary-btn";del.textContent="O‘chirish";
+      del.addEventListener("click",()=>{if(!confirm("Ushbu savolni o‘chirishni xohlaysizmi?"))return;const next=loadTeacherQuestions().filter(x=>x.id!==item.id);try{localStorage.setItem(TEACHER_QUESTIONS_KEY,JSON.stringify(next));location.reload();}catch(e){alert("Savolni o‘chirib bo‘lmadi.");}});
+      actions.append(edit,del);row.append(q,meta,actions);inner.append(row);
+    });
+
+    const resultsTitle=document.createElement("div");resultsTitle.className="cabinet-section-title";resultsTitle.textContent="O‘quvchilarning so‘nggi natijalari";inner.append(resultsTitle);
+    if(!scores.length){const empty=document.createElement("div");empty.className="cabinet-empty";empty.textContent="Hozircha ushbu brauzerda saqlangan natijalar yo‘q.";inner.append(empty);}
+    scores.slice(0,15).forEach((x,i)=>{
+      const row=document.createElement("div");row.className="teacher-item";
+      const name=document.createElement("strong");name.textContent=(i+1)+". "+(x.name||"Noma’lum o‘quvchi")+" — "+(Number(x.score)||0)+"%";
+      const meta=document.createElement("small");meta.textContent=(x.region||"Viloyat ko‘rsatilmagan")+" · "+(x.correct||0)+"/"+(x.total||0)+" to‘g‘ri · "+(x.date||"")+(x.mode==="exam"?" · Imtihon":" · Mashq");
+      row.append(name,meta);inner.append(row);
+    });
+    details.append(inner);host.append(details);
+  }
+
   function render(){
     const host=document.getElementById("cabinetContent");
     const p=readProfile();
     if(!p||!p.name||!p.region){
-      host.innerHTML='<div class="cabinet-empty"><i class="fa-solid fa-user-plus" style="font-size:25px;display:block;margin-bottom:9px"></i>Shaxsiy kabinetingizni yaratish uchun avval ism-familiyangiz va viloyatingizni kiriting.</div><button class="primary-btn" style="margin-top:13px" onclick="editCabinetProfile()">Profilni to‘ldirish</button>';
+      host.innerHTML='<div class="cabinet-empty"><i class="fa-solid fa-user-plus" style="font-size:25px;display:block;margin-bottom:9px"></i>Shaxsiy kabinet statistikasi uchun avval ism-familiyangiz va viloyatingizni kiriting.</div><button class="primary-btn" style="margin-top:13px" onclick="editCabinetProfile()">Profilni to‘ldirish</button>';
+      renderTeacherTools(host);
       return;
     }
     const scores=getProfileScores(p);
@@ -1481,14 +1904,206 @@ function restartQuiz() {
     [[tests,"Topshirilgan test"],[avg+"%","O‘rtacha natija"],[best+"%","Eng yaxshi natija"],[correct,"To‘g‘ri javoblar"]].forEach(a=>{
       const c=document.createElement("div");c.className="cabinet-stat";const b=document.createElement("b");b.textContent=a[0];const sp=document.createElement("span");sp.textContent=a[1];c.append(b,sp);grid.append(c);
     });host.append(grid);
+
+    // Test natijalari dinamikasi: so'nggi 7 test bo'yicha SVG grafik
+    const progressTitle=document.createElement("div");
+    progressTitle.className="cabinet-section-title";
+    progressTitle.style.marginTop="18px";
+    progressTitle.innerHTML='<i class="fa-solid fa-chart-line"></i> Natijalar dinamikasi';
+    host.append(progressTitle);
+    const progressCard=document.createElement("div");
+    progressCard.className="cabinet-result";
+    progressCard.style.cssText="display:block;padding:14px 12px";
+    const chronological=scores.slice(0,7).reverse();
+    if(chronological.length){
+      const chart=document.createElementNS("http://www.w3.org/2000/svg","svg");
+      chart.setAttribute("viewBox","0 0 320 154");
+      chart.setAttribute("role","img");
+      chart.setAttribute("aria-label","So'nggi testlar bo'yicha natijalar grafigi");
+      chart.style.cssText="display:block;width:100%;height:auto;overflow:visible";
+      const makeSvg=(tag,attrs)=>{
+        const node=document.createElementNS("http://www.w3.org/2000/svg",tag);
+        Object.entries(attrs).forEach(([k,v])=>node.setAttribute(k,String(v)));
+        return node;
+      };
+      [20,70,120].forEach((y,i)=>{
+        chart.appendChild(makeSvg("line",{x1:30,y1:y,x2:306,y2:y,stroke:"currentColor","stroke-opacity":".16","stroke-dasharray":i===1?"3 4":"2 3"}));
+        const label=makeSvg("text",{x:24,y:y+4,"text-anchor":"end","font-size":10,fill:"currentColor","fill-opacity":".7"});
+        label.textContent=[100,50,0][i]+"%";chart.appendChild(label);
+      });
+      const points=chronological.map((x,i)=>({
+        x:34+(chronological.length===1?138:i*(264/(chronological.length-1))),
+        y:120-Math.max(0,Math.min(100,Number(x.score)||0))
+      }));
+      if(points.length>1){
+        chart.appendChild(makeSvg("polyline",{
+          points:points.map(pt=>pt.x+","+pt.y).join(" "),
+          fill:"none",stroke:"#8b5cf6","stroke-width":3,
+          "stroke-linecap":"round","stroke-linejoin":"round"
+        }));
+      }
+      points.forEach((pt,i)=>{
+        chart.appendChild(makeSvg("circle",{cx:pt.x,cy:pt.y,r:4.5,fill:"#8b5cf6",stroke:"currentColor","stroke-width":1.5}));
+        const scoreLabel=makeSvg("text",{x:pt.x,y:Math.max(11,pt.y-9),"text-anchor":"middle","font-size":10,"font-weight":700,fill:"currentColor"});
+        scoreLabel.textContent=(Number(chronological[i].score)||0)+"%";chart.appendChild(scoreLabel);
+        const dateLabel=makeSvg("text",{x:pt.x,y:143,"text-anchor":"middle","font-size":9,fill:"currentColor","fill-opacity":".75"});
+        const date=chronological[i].date||"";
+        dateLabel.textContent=date.length>5?date.slice(0,5):date;
+        chart.appendChild(dateLabel);
+      });
+      progressCard.appendChild(chart);
+      const trend=document.createElement("div");
+      trend.className="cabinet-region";
+      trend.style.marginTop="8px";
+      if(chronological.length>1){
+        const delta=(Number(chronological[chronological.length-1].score)||0)-(Number(chronological[0].score)||0);
+        trend.textContent=delta>0?"Birinchi ko‘rsatilgan testdan beri natija "+delta+" foiz punktga oshgan.":
+          delta<0?"Birinchi ko‘rsatilgan testdan beri natija "+Math.abs(delta)+" foiz punktga pasaygan. Muntazam mashq qilishda davom eting.":
+          "So‘nggi testlarda natija bir xil darajada saqlangan.";
+      } else trend.textContent="Natijalar dinamikasini ko‘rish uchun yana test topshiring.";
+      progressCard.appendChild(trend);
+    }
+    host.appendChild(progressCard);
+
+    // Biologiya bilimlari tahlili: yig‘ilgan mavzu statistikasi asosida
+    let topicStats={};
+    try{
+      const savedStats=JSON.parse(localStorage.getItem("bio_stats_v1")||"{}");
+      if(savedStats&&savedStats.topics&&typeof savedStats.topics==="object") topicStats=savedStats.topics;
+    }catch(e){console.warn("Mavzu statistikasi o‘qilmadi:",e);}
+    const analyzedTopics=Object.entries(topicStats)
+      .filter(([name,v])=>Array.isArray(v)&&Number(v[1])>=3&&Number.isFinite(Number(v[0])))
+      .map(([name,v])=>({name,correct:Number(v[0]),total:Number(v[1]),rate:Math.round(Number(v[0])/Number(v[1])*100)}))
+      .sort((a,b)=>a.rate-b.rate);
+    const topicTitle=document.createElement("div");
+    topicTitle.className="cabinet-section-title";
+    topicTitle.style.marginTop="18px";
+    topicTitle.innerHTML='<i class="fa-solid fa-book-open-reader"></i> Biologiya bilimlari tahlili';
+    host.append(topicTitle);
+    const topicCard=document.createElement("div");
+    topicCard.className="cabinet-result";
+    topicCard.style.cssText="display:block;padding:14px 12px";
+    if(!analyzedTopics.length){
+      const emptyTopic=document.createElement("div");
+      emptyTopic.className="cabinet-region";
+      emptyTopic.textContent="Mavzular bo‘yicha aniq tahlil chiqarish uchun kamida 3 ta savol ishlangan test topshiring. Testlar ko‘paygani sari kuchli va ustida ishlash kerak bo‘lgan mavzular aniqlanadi.";
+      topicCard.append(emptyTopic);
+    }else{
+      const strongest=analyzedTopics.slice().sort((a,b)=>b.rate-a.rate)[0];
+      const needsWork=analyzedTopics[0];
+      const summary=document.createElement("div");
+      summary.style.cssText="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:13px";
+      [["Eng kuchli mavzu",strongest.name,strongest.rate+"%"],["Ko‘proq mashq kerak",needsWork.name,needsWork.rate+"%"]].forEach(item=>{
+        const box=document.createElement("div");box.style.cssText="padding:10px;border:1px solid #49345f;border-radius:11px;min-width:0";
+        const label=document.createElement("small");label.className="cabinet-region";label.textContent=item[0];
+        const name=document.createElement("strong");name.style.cssText="display:block;margin:5px 0;overflow-wrap:anywhere;font-size:13px";name.textContent=item[1];
+        const pct=document.createElement("b");pct.style.cssText="font-size:17px;color:#d8baff";pct.textContent=item[2];
+        box.append(label,name,pct);summary.append(box);
+      });
+      topicCard.append(summary);
+      const topicListTitle=document.createElement("div");topicListTitle.className="cabinet-region";topicListTitle.style.cssText="margin-bottom:8px;font-weight:750";topicListTitle.textContent="Mavzular kesimida natija";topicCard.append(topicListTitle);
+      analyzedTopics.slice().reverse().forEach(item=>{
+        const line=document.createElement("div");line.style.cssText="margin:9px 0";
+        const head=document.createElement("div");head.style.cssText="display:flex;justify-content:space-between;gap:8px;font-size:12px;margin-bottom:5px";
+        const nm=document.createElement("span");nm.textContent=item.name;
+        const val=document.createElement("b");val.textContent=item.rate+"% · "+item.correct+"/"+item.total;
+        head.append(nm,val);
+        const track=document.createElement("div");track.style.cssText="height:7px;border-radius:8px;background:#49345f;overflow:hidden";
+        const fill=document.createElement("div");fill.style.cssText="height:100%;width:"+item.rate+"%;border-radius:8px;background:"+(item.rate>=80?"#34d399":item.rate>=50?"#fbbf24":"#fb7185");
+        track.append(fill);line.append(head,track);topicCard.append(line);
+      });
+      const advice=document.createElement("div");advice.className="cabinet-region";advice.style.cssText="margin-top:12px;line-height:1.55";
+      advice.textContent=needsWork.rate<80?"Tavsiya: “"+needsWork.name+"” mavzusini qayta takrorlang, xato javoblar izohini o‘qing va shu mavzudan alohida test ishlang.":"Tavsiya: mavzular bo‘yicha natijangiz yaxshi. Bilimni mustahkamlash uchun aralash testlarni davom ettiring.";
+      topicCard.append(advice);
+    }
+    host.append(topicCard);
+
+    // 4-BOSQICH: SHAXSIY O‘QUV REJASI
+    const planTitle=document.createElement("div");
+    planTitle.className="cabinet-section-title";
+    planTitle.style.marginTop="18px";
+    planTitle.innerHTML='<i class="fa-solid fa-route"></i> Shaxsiy o‘quv rejangiz';
+    host.append(planTitle);
+    const planCard=document.createElement("div");
+    planCard.className="cabinet-result";
+    planCard.style.cssText="display:block;padding:14px 12px";
+    const planIntro=document.createElement("div");
+    planIntro.className="cabinet-region";
+    planIntro.style.cssText="line-height:1.55;margin-bottom:12px";
+    if(analyzedTopics.length){
+      planIntro.textContent="Quyidagi reja testlaringizdagi mavzu natijalariga qarab tuzildi. Har kuni 20–30 daqiqa ajrating va bajargan mavzularingizni qayta test bilan tekshiring.";
+    }else{
+      planIntro.textContent="Shaxsiy reja tuzish uchun avval mavzular bo‘yicha kamida 3 ta savol ishlangan test topshiring. Hozircha umumiy boshlang‘ich reja:";
+    }
+    planCard.append(planIntro);
+    const planItems=analyzedTopics.length
+      ? analyzedTopics.slice(0,3).map((item,i)=>({day:""+(i+1),topic:item.name,pct:item.rate,kind:i===0?"Avval mustahkamlang":"Keyingi navbatda takrorlang"}))
+      : [
+          {day:"1",topic:"Hujayra va uning tuzilishi",pct:null,kind:"Asosiy tushunchalarni takrorlang"},
+          {day:"2",topic:"O‘simliklar va hayvonlar",pct:null,kind:"Muhim belgilarni taqqoslang"},
+          {day:"3",topic:"Odam organizmi",pct:null,kind:"Organlar tizimini takrorlang"}
+        ];
+    planItems.forEach((item,i)=>{
+      const row=document.createElement("div");
+      row.style.cssText="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid rgba(160,130,190,.2)";
+      const day=document.createElement("div");
+      day.style.cssText="flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(139,92,246,.18);font-weight:800;color:#d8baff";
+      day.textContent=item.day;
+      const body=document.createElement("div");body.style.cssText="flex:1;min-width:0";
+      const name=document.createElement("strong");name.style.cssText="display:block;font-size:13px;overflow-wrap:anywhere";name.textContent=item.topic;
+      const detail=document.createElement("small");detail.className="cabinet-region";detail.style.cssText="display:block;margin-top:4px";
+      detail.textContent=item.kind+(item.pct===null?"":" · hozirgi natija: "+item.pct+"%");
+      body.append(name,detail);row.append(day,body);planCard.append(row);
+    });
+    const planNote=document.createElement("div");
+    planNote.className="cabinet-region";
+    planNote.style.cssText="margin-top:10px;line-height:1.5;font-size:12px";
+    planNote.textContent="Tartib: mavzuni o‘qing → asosiy atamalarni yozib chiqing → 10–15 ta savol ishlang → xatolarni izoh bilan tahlil qiling. Keyingi testda natijangizni solishtiring.";
+    planCard.append(planNote);
+    if(analyzedTopics.length){
+      const practice=document.createElement("button");
+      practice.type="button";practice.className="secondary-btn";
+      practice.style.cssText="width:100%;margin-top:12px";
+      practice.innerHTML='<i class="fa-solid fa-dumbbell"></i> Eng zaif mavzudan mashq qilish';
+      practice.addEventListener("click",()=>{
+        const weakest=analyzedTopics[0].name;
+        const selector=document.getElementById("topicSelect");
+        const start=document.getElementById("startView");
+        if(selector){selector.value=weakest;selector.dispatchEvent(new Event("change",{bubbles:true}));}
+        if(start)start.scrollIntoView({behavior:"smooth",block:"start"});
+      });
+      planCard.append(practice);
+    }
+    host.append(planCard);
+
+    renderErrorNotebook(host);
+    renderTeacherTools(host);
+
     const title=document.createElement("div");title.className="cabinet-section-title";title.innerHTML='<i class="fa-solid fa-clock-rotate-left"></i> So‘nggi test natijalari';host.append(title);
     if(!recent.length){const empty=document.createElement("div");empty.className="cabinet-empty";empty.textContent="Hozircha test natijalari yo‘q. Birinchi testingizni topshiring — natijalar shu yerda ko‘rinadi.";host.append(empty);}
     else{
       const list=document.createElement("div");list.style.cssText="display:grid;gap:8px";
-      recent.forEach((x,i)=>{const row=document.createElement("div");row.className="cabinet-result";
-        const left=document.createElement("div");left.style.minWidth="0";const strong=document.createElement("strong");strong.textContent=(i+1)+". "+(x.total||0)+" ta savolli test";const small=document.createElement("small");small.textContent=(x.date||"")+" · "+(x.correct||0)+"/"+(x.total||0)+" to‘g‘ri · "+(x.time||"");left.append(strong,small);
-        const score=document.createElement("b");score.textContent=(Number(x.score)||0)+"%";row.append(left,score);list.append(row);
-      });host.append(list);
+      const renderScoreRow=(x,i,hidden)=>{
+        const row=document.createElement("div");row.className="cabinet-result";
+        if(hidden)row.hidden=true;
+        const left=document.createElement("div");left.style.minWidth="0";
+        const strong=document.createElement("strong");strong.textContent=(i+1)+". "+(x.total||0)+" ta savolli test";
+        const small=document.createElement("small");small.textContent=(x.date||"")+" · "+(x.mode==="exam"?"Imtihon simulyatori":"Mashq testi")+" · "+(x.correct||0)+"/"+(x.total||0)+" to‘g‘ri · "+(x.time||"Vaqt qayd etilmagan");
+        left.append(strong,small);
+        const score=document.createElement("b");score.textContent=(Number(x.score)||0)+"%";
+        row.append(left,score);list.append(row);return row;
+      };
+      recent.forEach((x,i)=>renderScoreRow(x,i,false));
+      const extraRows=scores.slice(8).map((x,i)=>renderScoreRow(x,i+8,true));
+      host.append(list);
+      if(extraRows.length){
+        const more=document.createElement("button");more.type="button";more.className="secondary-btn";
+        more.style.cssText="width:100%;margin-top:10px";
+        let expanded=false;
+        const updateMore=()=>{expanded=!expanded;extraRows.forEach(row=>row.hidden=!expanded);more.innerHTML=expanded?'<i class="fa-solid fa-chevron-up"></i> Kamroq ko‘rsatish':'<i class="fa-solid fa-chevron-down"></i> Barcha natijalarni ko‘rish ('+scores.length+')';};
+        more.innerHTML='<i class="fa-solid fa-chevron-down"></i> Barcha natijalarni ko‘rish ('+scores.length+')';
+        more.addEventListener("click",updateMore);host.append(more);
+      }
     }
     const note=document.createElement("div");note.className="cabinet-note";note.innerHTML='<i class="fa-solid fa-circle-info"></i> Profil va natijalar odatda shu brauzerda saqlanadi. Akkauntga kirgach, ularni istalgan qurilmada ishlatish uchun bulutga saqlashingiz yoki bulutdan tiklashingiz mumkin.';host.append(note);
 
@@ -1530,7 +2145,39 @@ function restartQuiz() {
     host.append(backupActions);
   }
 
-  const BACKUP_KEYS=["bio_profile_v1","bio_leaderboard","bio_game_v1","bio_stats_v1","bio_theme"];
+  window.editCabinetProfile=function(){
+    const host=document.getElementById("cabinetContent");
+    if(!host)return;
+    const existing=document.getElementById("cabinetProfileEditor");
+    if(existing){existing.scrollIntoView({behavior:"smooth",block:"center"});return;}
+    const p=readProfile()||{};
+    const card=document.createElement("form");card.id="cabinetProfileEditor";card.className="cabinet-result";
+    card.style.cssText="display:block;padding:14px;margin:0 0 14px";
+    const title=document.createElement("div");title.className="cabinet-section-title";title.style.marginTop="0";title.textContent="Profil ma’lumotlarini tahrirlash";card.append(title);
+    const nameLabel=document.createElement("label");nameLabel.textContent="Ism va familiya";nameLabel.style.cssText="display:block;margin:8px 0 5px;font-size:12px";
+    const name=document.createElement("input");name.type="text";name.maxLength=60;name.required=true;name.value=p.name||"";name.placeholder="Ism va familiyangiz";name.style.cssText="width:100%;padding:11px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)";nameLabel.htmlFor="cabinetProfileName";name.id="cabinetProfileName";
+    const regionLabel=document.createElement("label");regionLabel.textContent="Viloyat";regionLabel.style.cssText="display:block;margin:11px 0 5px;font-size:12px";
+    const region=document.createElement("select");region.id="cabinetProfileRegion";region.required=true;region.innerHTML=document.getElementById("regionSelect").innerHTML;region.value=p.region||"";region.style.cssText="width:100%;padding:11px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)";
+    nameLabel.append(name);regionLabel.append(region);
+    const error=document.createElement("div");error.className="cabinet-region";error.style.cssText="color:#fb7185;margin-top:7px";error.setAttribute("role","alert");
+    const actions=document.createElement("div");actions.style.cssText="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px";
+    const save=document.createElement("button");save.type="submit";save.className="primary-btn";save.innerHTML='<i class="fa-solid fa-floppy-disk"></i> Saqlash';
+    const cancel=document.createElement("button");cancel.type="button";cancel.className="secondary-btn";cancel.textContent="Bekor qilish";cancel.onclick=()=>card.remove();
+    actions.append(save,cancel);card.append(nameLabel,regionLabel,error,actions);host.prepend(card);
+    card.addEventListener("submit",event=>{
+      event.preventDefault();
+      const n=name.value.trim(),r=region.value;
+      if(!n||!r){error.textContent="Ism-familiya va viloyatni to‘liq kiriting.";return;}
+      const updated=window.saveBioProfile(n,r);
+      userName=updated.name;userRegion=updated.region;
+      const mainName=document.getElementById("userNameInput"),mainRegion=document.getElementById("regionSelect");
+      if(mainName)mainName.value=updated.name;if(mainRegion)mainRegion.value=updated.region;
+      render();
+    });
+    name.focus();
+  };
+
+  const BACKUP_KEYS=["bio_profile_v1","bio_leaderboard","bio_game_v1","bio_stats_v1","bio_error_notebook_v1","bio_theme",TEACHER_QUESTIONS_KEY];
   window.exportCabinetBackup=function(){
     const data={format:"MILLIY_BIO_TEST_BACKUP",version:1,createdAt:new Date().toISOString(),data:{}};
     BACKUP_KEYS.forEach(key=>{
@@ -1578,6 +2225,8 @@ function restartQuiz() {
         if(incoming["bio_leaderboard"]!==undefined&&!Array.isArray(incoming["bio_leaderboard"]))throw new Error("Test natijalari ro‘yxati noto‘g‘ri.");
         if(incoming["bio_game_v1"]!==undefined&&(!incoming["bio_game_v1"]||typeof incoming["bio_game_v1"]!=="object"||Array.isArray(incoming["bio_game_v1"])))throw new Error("Yutuqlar ma’lumoti noto‘g‘ri.");
         if(incoming["bio_stats_v1"]!==undefined&&(!incoming["bio_stats_v1"]||typeof incoming["bio_stats_v1"]!=="object"||Array.isArray(incoming["bio_stats_v1"])))throw new Error("Statistika ma’lumoti noto‘g‘ri.");
+        if(incoming["bio_error_notebook_v1"]!==undefined&&!Array.isArray(incoming["bio_error_notebook_v1"]))throw new Error("Xatolar daftari ma’lumoti noto‘g‘ri.");
+        if(incoming[TEACHER_QUESTIONS_KEY]!==undefined&&(!Array.isArray(incoming[TEACHER_QUESTIONS_KEY])||incoming[TEACHER_QUESTIONS_KEY].some(q=>!q||typeof q.id!=="string"||typeof q.question!=="string"||!Array.isArray(q.options)||q.options.length<2||!Number.isInteger(q.answer)||q.answer<0||q.answer>=q.options.length)))throw new Error("O‘qituvchi savollari ma’lumoti noto‘g‘ri.");
         if(incoming["bio_theme"]!==undefined&&!["dark","light"].includes(incoming["bio_theme"]))throw new Error("Rang rejimi ma’lumoti noto‘g‘ri.");
         if(!confirm("Zaxira nusxasidagi ma’lumotlar ushbu brauzerdagi profil va natijalarni almashtiradi. Davom etasizmi?"))return;
 
@@ -1618,7 +2267,15 @@ function restartQuiz() {
       "auth/wrong-password":"Email yoki parol noto‘g‘ri.",
       "auth/invalid-credential":"Email yoki parol noto‘g‘ri.",
       "auth/too-many-requests":"Urinishlar ko‘payib ketdi. Birozdan keyin urinib ko‘ring.",
-      "auth/network-request-failed":"Internet aloqasini tekshiring."
+      "auth/network-request-failed":"Internet aloqasini tekshiring.",
+      "auth/operation-not-allowed":"Firebase Console’da Email/Password kirish usulini yoqing.",
+      "auth/invalid-api-key":"Firebase API kaliti noto‘g‘ri. Firebase sozlamalarini tekshiring.",
+      "auth/app-not-authorized":"Bu domen Firebase Authentication uchun ruxsat etilmagan.",
+      "auth/unauthorized-domain":"Sayt domenini Firebase Authentication → Settings → Authorized domains bo‘limiga qo‘shing.",
+      "auth/missing-email":"Email manzilini kiriting.",
+      "auth/invalid-password":"Parol kamida 6 ta belgidan iborat bo‘lishi kerak.",
+      "auth/email-change-needs-verification":"Emailni almashtirish uchun tasdiqlash talab qilinadi.",
+      "auth/quota-exceeded":"Firebase so‘rovlar limiti tugagan. Keyinroq urinib ko‘ring."
     };
     return codes[error&&error.code]||"Xatolik yuz berdi. Ma’lumotlarni tekshirib, qayta urinib ko‘ring.";
   }
@@ -1627,26 +2284,64 @@ function restartQuiz() {
     BACKUP_KEYS.forEach(key=>{const value=localStorage.getItem(key);if(value!==null)data[key]=value;});
     return data;
   }
+  let authMode="login";
+  window.setAuthMode=function(mode){
+    authMode=mode==="signup"?"signup":"login";
+    const signup=authMode==="signup";
+    document.getElementById("authConfirmWrap")?.classList.toggle("hidden",!signup);
+    document.getElementById("authSignInBtn")?.classList.toggle("hidden",signup);
+    const createBtn=document.getElementById("authSignUpBtn");
+    if(createBtn){createBtn.textContent=signup?"Akkaunt yaratish":"Ro‘yxatdan o‘tish";createBtn.classList.toggle("primary-btn",signup);createBtn.classList.toggle("secondary-btn",!signup);}
+    document.getElementById("authBackBtn")?.classList.toggle("hidden",!signup);
+    document.getElementById("authResetBtn")?.classList.toggle("hidden",signup);
+    const pass=document.getElementById("authPassword");
+    if(pass)pass.autocomplete=signup?"new-password":"current-password";
+    if(signup)document.getElementById("authPasswordConfirm")?.focus();
+  };
   window.bioSignUp=async function(){
-    if(!auth){authMessage("Firebase Authentication ulanmagan.",true);return;}
-    const email=document.getElementById("authEmail").value.trim();
-    const password=document.getElementById("authPassword").value;
-    if(!email||!password){authMessage("Email va parolni kiriting.",true);return;}
-    try{authMessage("Akkaunt yaratilmoqda...");await auth.createUserWithEmailAndPassword(email,password);authMessage("Akkaunt yaratildi. Endi ma’lumotlaringizni bulutga saqlashingiz mumkin.");}
-    catch(e){authMessage(authErrorMessage(e),true);}
+    if(!auth){authMessage("Firebase Authentication ulanmagan. Firebase SDK va sozlamalarini tekshiring.",true);return;}
+    const email=(document.getElementById("authEmail")?.value||"").trim().toLowerCase();
+    const password=document.getElementById("authPassword")?.value||"";
+    const confirmPassword=document.getElementById("authPasswordConfirm")?.value||"";
+    const emailInput=document.getElementById("authEmail");
+    if(!email){authMessage("Email manzilini kiriting.",true);emailInput?.focus();return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){authMessage("Email manzili to‘g‘ri formatda emas.",true);emailInput?.focus();return;}
+    if(password.length<6){authMessage("Parol kamida 6 ta belgidan iborat bo‘lishi kerak.",true);document.getElementById("authPassword")?.focus();return;}
+    if(password!==confirmPassword){authMessage("Parollar bir-biriga mos kelmadi. Qayta tekshiring.",true);document.getElementById("authPasswordConfirm")?.focus();return;}
+    try{
+      authMessage("Akkaunt yaratilmoqda...");
+      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+      const credential=await auth.createUserWithEmailAndPassword(email,password);
+      try{
+        await credential.user.sendEmailVerification();
+        authMessage("Akkaunt yaratildi. Emailingizga tasdiqlash xati yuborildi. Pochtangizni tekshiring.");
+      }catch(verifyError){
+        console.warn("Verification email yuborilmadi:",verifyError);
+        authMessage("Akkaunt yaratildi, lekin tasdiqlash xatini yuborib bo‘lmadi. Internet va Firebase email sozlamalarini tekshiring.",true);
+      }
+      setAuthMode("login");
+    }catch(e){console.error("Sign up error:",e);authMessage(authErrorMessage(e),true);}
+  };
+  window.bioResendVerification=async function(){
+    const user=auth&&auth.currentUser;
+    if(!user){authMessage("Avval akkauntga kiring.",true);return;}
+    if(user.emailVerified){authMessage("Email manzilingiz allaqachon tasdiqlangan.");return;}
+    try{await user.sendEmailVerification();authMessage("Tasdiqlash xati qayta yuborildi. Emailingizni tekshiring.");}
+    catch(e){console.error("Verification resend error:",e);authMessage(authErrorMessage(e),true);}
   };
   window.bioSignIn=async function(){
     if(!auth){authMessage("Firebase Authentication ulanmagan.",true);return;}
-    const email=document.getElementById("authEmail").value.trim();
-    const password=document.getElementById("authPassword").value;
+    const email=(document.getElementById("authEmail")?.value||"").trim().toLowerCase();
+    const password=document.getElementById("authPassword")?.value||"";
     if(!email||!password){authMessage("Email va parolni kiriting.",true);return;}
-    try{authMessage("Akkauntga kirilmoqda...");await auth.signInWithEmailAndPassword(email,password);authMessage("Tizimga muvaffaqiyatli kirdingiz.");}
+    try{authMessage("Akkauntga kirilmoqda...");await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);await auth.signInWithEmailAndPassword(email,password);authMessage("Tizimga muvaffaqiyatli kirdingiz.");}
     catch(e){authMessage(authErrorMessage(e),true);}
   };
   window.bioResetPassword=async function(){
     if(!auth){authMessage("Firebase Authentication ulanmagan.",true);return;}
-    const email=document.getElementById("authEmail").value.trim();
+    const email=(document.getElementById("authEmail")?.value||"").trim().toLowerCase();
     if(!email){authMessage("Avval email manzilingizni kiriting.",true);return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){authMessage("Email manzili to‘g‘ri formatda emas.",true);return;}
     try{await auth.sendPasswordResetEmail(email);authMessage("Parolni tiklash havolasi emailingizga yuborildi.");}
     catch(e){authMessage(authErrorMessage(e),true);}
   };
@@ -1684,14 +2379,101 @@ function restartQuiz() {
       setTimeout(()=>location.reload(),500);
     }catch(e){console.error("Cloud restore error:",e);authMessage("Bulutdan tiklab bo‘lmadi. Firestore xavfsizlik qoidalarini tekshiring.",true);}
   };
+  const BIO_CLASSROOM_KEY="bio_classroom_code_v1";
+  function classroomStatus(message,isError){
+    const el=document.getElementById("bioClassroomStatus");
+    if(el){el.textContent=message;el.style.color=isError?"#ff9b9b":"var(--muted)";}
+  }
+  function makeClassCode(){
+    const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let code="";
+    for(let i=0;i<8;i++)code+=chars[Math.floor(Math.random()*chars.length)];
+    return code;
+  }
+  function validClassQuestion(q){
+    return q&&typeof q.question==="string"&&q.question.trim()&&Array.isArray(q.options)&&q.options.length>=2&&
+      q.options.every(x=>typeof x==="string"&&x.trim())&&Number.isInteger(q.answer)&&q.answer>=0&&q.answer<q.options.length;
+  }
+  window.bioCreateClassroom=async function(){
+    const user=auth&&auth.currentUser;
+    if(!user||!db){classroomStatus("Avval akkauntga kiring va Firebase ulanishini tekshiring.",true);return;}
+    const title=(document.getElementById("bioClassroomTitle")?.value||"").trim().slice(0,60)||"Biologiya sinfi";
+    const bank=loadTeacherQuestions();
+    if(!bank.length){classroomStatus("Avval o‘qituvchi kabinetida kamida bitta savol yarating.",true);return;}
+    if(JSON.stringify(bank).length>650000){classroomStatus("Savollar bazasi juda katta. Sinfga kamroq savol joylang.",true);return;}
+    try{
+      let code="",ref=null;
+      for(let attempt=0;attempt<5;attempt++){
+        code=makeClassCode();ref=db.collection("bio_classrooms").doc(code);
+        const exists=await ref.get();if(!exists.exists)break;ref=null;
+      }
+      if(!ref)throw new Error("Sinf kodi yaratilmadi. Qayta urinib ko‘ring.");
+      await ref.set({title,ownerUid:user.uid,ownerEmail:user.email||"",questionBank:bank,createdAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+      localStorage.setItem(BIO_CLASSROOM_KEY,code);
+      const field=document.getElementById("bioClassroomCode");if(field)field.value=code;
+      classroomStatus("Sinf yaratildi. Kod: "+code+". Ushbu kodni o‘quvchilarga bering.");
+    }catch(e){console.error("Classroom create error:",e);classroomStatus("Sinf yaratilmadi. Firebase Firestore xavfsizlik qoidalarini tekshiring.",true);}
+  };
+  window.bioJoinClassroom=async function(){
+    const user=auth&&auth.currentUser;
+    if(!user||!db){classroomStatus("Sinfga qo‘shilish uchun avval akkauntga kiring.",true);return;}
+    const field=document.getElementById("bioClassroomCode");
+    const code=(field?.value||"").trim().toUpperCase();
+    if(!/^[A-HJ-NP-Z2-9]{8}$/.test(code)){classroomStatus("Sinf kodini 8 ta belgi bilan kiriting.",true);return;}
+    try{
+      classroomStatus("Sinf ma’lumotlari olinmoqda...");
+      const snap=await db.collection("bio_classrooms").doc(code).get();
+      if(!snap.exists){classroomStatus("Bunday sinf kodi topilmadi.",true);return;}
+      const data=snap.data()||{};const bank=Array.isArray(data.questionBank)?data.questionBank.filter(validClassQuestion):[];
+      if(!bank.length){classroomStatus("Bu sinfda hali ulashilgan savollar yo‘q.",true);return;}
+      await db.collection("bio_classrooms").doc(code).collection("members").doc(user.uid).set({uid:user.uid,joinedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+      const own=loadTeacherQuestions();const merged=own.slice();
+      bank.forEach((q,i)=>{const id=String(q.id||("shared-"+code+"-"+i));if(!merged.some(x=>x.id===id))merged.push({...q,id,sharedClassCode:code});});
+      localStorage.setItem(TEACHER_QUESTIONS_KEY,JSON.stringify(merged));
+      localStorage.setItem(BIO_CLASSROOM_KEY,code);
+      classroomStatus("‘"+(data.title||"Biologiya sinfi")+"’ sinfiga qo‘shildingiz. "+bank.length+" ta savol yuklandi. Sahifa yangilanadi.");
+      setTimeout(()=>location.reload(),900);
+    }catch(e){console.error("Classroom join error:",e);classroomStatus("Sinfga qo‘shilib bo‘lmadi. Firestore ruxsatlarini tekshiring.",true);}
+  };
+  window.bioPublishClassroomQuestions=async function(){
+    const user=auth&&auth.currentUser;const code=(localStorage.getItem(BIO_CLASSROOM_KEY)||document.getElementById("bioClassroomCode")?.value||"").trim().toUpperCase();
+    if(!user||!db){classroomStatus("Avval akkauntga kiring.",true);return;}
+    if(!/^[A-HJ-NP-Z2-9]{8}$/.test(code)){classroomStatus("Avval sinf yarating yoki sinf kodini kiriting.",true);return;}
+    const bank=loadTeacherQuestions();if(!bank.length){classroomStatus("Ulashish uchun savollar mavjud emas.",true);return;}
+    if(JSON.stringify(bank).length>650000){classroomStatus("Savollar bazasi juda katta.",true);return;}
+    try{
+      const ref=db.collection("bio_classrooms").doc(code),snap=await ref.get();
+      if(!snap.exists||snap.data().ownerUid!==user.uid){classroomStatus("Faqat sinfni yaratgan o‘qituvchi savollarni yangilashi mumkin.",true);return;}
+      await ref.update({questionBank:bank,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+      classroomStatus(bank.length+" ta savol sinfga yangilandi.");
+    }catch(e){console.error("Classroom publish error:",e);classroomStatus("Savollarni ulashib bo‘lmadi. Firestore qoidalarini tekshiring.",true);}
+  };
+  window.bioLoadClassResults=async function(){
+    const user=auth&&auth.currentUser;const code=(localStorage.getItem(BIO_CLASSROOM_KEY)||document.getElementById("bioClassroomCode")?.value||"").trim().toUpperCase();
+    const host=document.getElementById("bioClassroomResults");if(host)host.innerHTML="";
+    if(!user||!db){classroomStatus("Avval akkauntga kiring.",true);return;}
+    if(!/^[A-HJ-NP-Z2-9]{8}$/.test(code)){classroomStatus("Sinf kodini kiriting.",true);return;}
+    try{
+      const room=await db.collection("bio_classrooms").doc(code).get();
+      if(!room.exists||room.data().ownerUid!==user.uid){classroomStatus("Natijalarni faqat sinf egasi bo‘lgan o‘qituvchi ko‘ra oladi.",true);return;}
+      const snap=await db.collection("bio_classrooms").doc(code).collection("results").orderBy("ts","desc").limit(50).get();
+      if(!host)return;
+      if(snap.empty){host.textContent="Hozircha o‘quvchi natijalari yo‘q.";return;}
+      snap.forEach(doc=>{const x=doc.data()||{};const row=document.createElement("div");row.className="teacher-item";const name=document.createElement("strong");name.textContent=(x.name||"O‘quvchi")+" — "+(Number(x.score)||0)+"%";const meta=document.createElement("small");meta.textContent=(x.region||"")+" · "+(Number(x.correct)||0)+"/"+(Number(x.total)||0)+" · "+(x.mode==="exam"?"Imtihon":"Mashq");row.append(name,meta);host.append(row);});
+      classroomStatus("Sinfning so‘nggi "+snap.size+" ta natijasi yuklandi.");
+    }catch(e){console.error("Classroom results error:",e);classroomStatus("Natijalarni yuklab bo‘lmadi. Firestore qoidalarini tekshiring.",true);}
+  };
+
   if(auth){
     auth.onAuthStateChanged(user=>{
       const form=document.getElementById("authForm"),signed=document.getElementById("authSignedIn"),label=document.getElementById("authEmailLabel");
       if(form)form.classList.toggle("hidden",!!user);
       if(signed)signed.classList.toggle("hidden",!user);
       if(label&&user)label.textContent="Kirilgan akkaunt: "+(user.email||"email ko‘rsatilmagan");
-      if(user)authMessage("Akkauntga kirdingiz. Ma’lumotlarni bulutga saqlashingiz yoki boshqa qurilmadan tiklashingiz mumkin.");
-      else authMessage("Email va parol orqali kiring yoki yangi akkaunt yarating.");
+      const verifyNote=document.getElementById("authVerificationNote"),verifyBtn=document.getElementById("authVerifyBtn");
+      if(verifyNote)verifyNote.textContent=user?(user.emailVerified?"Email manzili tasdiqlangan.":"Email manzili hali tasdiqlanmagan. Pochtangizga yuborilgan havolani oching."):"";
+      if(verifyBtn)verifyBtn.classList.toggle("hidden",!user||user.emailVerified);
+      if(user)authMessage(user.emailVerified?"Akkauntga kirdingiz. Ma’lumotlarni bulutga saqlashingiz mumkin.":"Akkauntga kirdingiz. Xavfsizlik uchun emailingizni tasdiqlash tavsiya etiladi.");
+      else {authMessage("Email va parol orqali kiring yoki yangi akkaunt yarating.");setAuthMode("login");}
     });
   }else{
     authMessage("Firebase ulanmadi. Internet va Firebase sozlamalarini tekshiring.",true);
@@ -1709,16 +2491,7 @@ function restartQuiz() {
     document.getElementById(previousView||"startView").classList.remove("hidden");
     window.scrollTo({top:0,behavior:"smooth"});
   };
-  window.editCabinetProfile=function(){
-    if(previousView==="quizView") { alert("Avval testni yakunlang, keyin profilni tahrirlashingiz mumkin."); return; }
-    const p=readProfile();
-    document.getElementById("cabinetView").classList.add("hidden");
-    ["quizView","resultView","leaderboardView"].forEach(id=>document.getElementById(id).classList.add("hidden"));
-    document.getElementById("startView").classList.remove("hidden");
-    if(p){document.getElementById("userNameInput").value=p.name||"";document.getElementById("regionSelect").value=p.region||"";}
-    window.scrollTo({top:0,behavior:"smooth"});
-    setTimeout(()=>document.getElementById("userNameInput").focus(),100);
-  };
+
   // Oldingi profilni avtomatik tiklash.
   const p=readProfile();
   if(p&&p.name&&p.region){
