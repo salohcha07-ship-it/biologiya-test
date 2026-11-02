@@ -444,6 +444,33 @@ main { max-width:520px;padding:16px 14px calc(34px + env(safe-area-inset-bottom)
 .me-tag { display:inline-block;margin-left:6px;padding:1px 7px;border-radius:9px;background:#9565ed;color:#fff;font-size:10px;font-weight:800;vertical-align:middle; }
 body.light-mode .lb-tab { background:#f4effb;color:#302340;border-color:#ddcdec; }
 body.light-mode .lb-tab.active { background:linear-gradient(135deg,#c9a4ff,#8e5bea);color:#fff;border-color:#b58aef; }
+
+/* ===== MILLIY BIO TEST: SHAXSIY KABINET ===== */
+.cabinet-btn { min-height:43px;padding:0 12px;border:1px solid #7654a0;border-radius:13px;background:#302047;color:#f1e6ff;font-size:12px;font-weight:800;white-space:nowrap; }
+.cabinet-btn i { color:#d8baff;margin-right:5px; }
+.cabinet-hero { display:flex;align-items:center;gap:13px;margin-bottom:18px;padding:15px;border-radius:19px;background:linear-gradient(120deg,#3a2458,#211632);border:1px solid #7654a0; }
+.cabinet-avatar { width:54px;height:54px;flex:none;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#d8baff,#9565ed);color:#211332;font-size:23px; }
+.cabinet-name { font-size:17px;font-weight:900;overflow-wrap:anywhere; }
+.cabinet-region { margin-top:4px;color:#c5b2df;font-size:12px; }
+.cabinet-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0; }
+.cabinet-stat { padding:14px 10px;text-align:center;border:1px solid #4a3470;border-radius:16px;background:#171024; }
+.cabinet-stat b { display:block;color:#d8baff;font-size:23px;font-weight:900; }
+.cabinet-stat span { display:block;margin-top:4px;color:#b8a9ce;font-size:11px; }
+.cabinet-section-title { margin:19px 0 10px;font-size:14px;font-weight:850;color:#eadbff; }
+.cabinet-result { display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px;border:1px solid #49345f;border-radius:14px;background:#1a1230; }
+.cabinet-result strong { display:block;font-size:13px; }
+.cabinet-result small { display:block;margin-top:4px;color:#b8a9ce;font-size:11px; }
+.cabinet-result b { color:#d8baff;font-size:17px;white-space:nowrap; }
+.cabinet-empty { padding:16px;border:1px dashed #7654a0;border-radius:15px;color:#c5b2df;font-size:13px;line-height:1.6;text-align:center; }
+.cabinet-note { margin-top:14px;padding:11px;border-radius:13px;background:#302047;color:#d8c9ed;font-size:11px;line-height:1.6; }
+body.light-mode .cabinet-hero { background:linear-gradient(120deg,#efe2ff,#f8f3ff);border-color:#d2bce9; }
+body.light-mode .cabinet-region,body.light-mode .cabinet-section-title { color:#59416f; }
+body.light-mode .cabinet-stat,body.light-mode .cabinet-result { background:#faf7ff;border-color:#ddcdec; }
+body.light-mode .cabinet-stat span,body.light-mode .cabinet-result small { color:#766687; }
+body.light-mode .cabinet-note { background:#efe5fa;color:#59416f; }
+body.light-mode .cabinet-empty { color:#59416f;border-color:#c8addf; }
+@media(max-width:390px) { .header-actions { gap:5px; }.cabinet-btn { width:39px;padding:0;font-size:0;min-height:40px; }.cabinet-btn i { margin:0;font-size:15px; } }
+
 </style>
 </head>
 
@@ -463,6 +490,9 @@ body.light-mode .lb-tab.active { background:linear-gradient(135deg,#c9a4ff,#8e5b
       </button>
       <button class="leaderboard-btn" onclick="toggleLeaderboard()">
         <i class="fa-solid fa-trophy"></i> Reyting
+      </button>
+      <button class="cabinet-btn" onclick="openCabinet()" aria-label="Shaxsiy kabinetni ochish">
+        <i class="fa-solid fa-user-circle"></i> Kabinet
       </button>
     </div>
   </div>
@@ -610,6 +640,15 @@ body.light-mode .lb-tab.active { background:linear-gradient(135deg,#c9a4ff,#8e5b
     <div id="leaderboardList" style="display:grid;gap:10px">
       <p class="subheading">Reyting yuklanmoqda...</p>
     </div>
+  </section>
+
+  <!-- SHAXSIY KABINET -->
+  <section id="cabinetView" class="panel hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--border)">
+      <h2 class="heading" style="font-size:20px;text-align:left"><i class="fa-solid fa-user-circle"></i> Shaxsiy kabinet</h2>
+      <button onclick="closeCabinet()" class="secondary-btn" style="min-height:40px;padding:0 13px" aria-label="Kabinetni yopish"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="cabinetContent" style="padding-top:16px"></div>
   </section>
 </main>
 
@@ -809,6 +848,7 @@ function startQuiz() {
 
   userName = nameInput;
   userRegion = regionInput;
+  saveBioProfile(userName,userRegion);
   const pool = selectedTopic === "ALL" ? biologyQuestionsDB : biologyQuestionsDB.filter(q => q.topic === selectedTopic);
   const count = Math.min(selectedQuestionCount,pool.length);
   beginQuiz(shuffle(prepareQuestions(pool)).slice(0,count),false);
@@ -1014,7 +1054,7 @@ function saveScore(name,region,score,correct,total,seconds,timeStr) {
   const entry = {
     name,region,score,correct,total,seconds,
     time:timeStr,date:new Date().toLocaleDateString(),
-    ts:Date.now()
+    ts:Date.now(),profileId:(getBioProfile()||{}).id||""
   };
 
   const scores = getLocalScores();
@@ -1365,5 +1405,99 @@ function restartQuiz() {
   renderStats();
 })();
 </script>
+
+<script>
+// ===== 5-QADAM: SHAXSIY KABINET (ushbu qurilma/brauzerda) =====
+(function(){
+  const PROFILE_KEY="bio_profile_v1";
+  const readProfile=()=>{try{return JSON.parse(localStorage.getItem(PROFILE_KEY)||"null");}catch(e){return null;}};
+  window.getBioProfile=readProfile;
+  window.saveBioProfile=function(name,region){
+    const old=readProfile()||{};
+    const id=old.id||(window.crypto&&crypto.randomUUID?crypto.randomUUID():"bio-"+Date.now()+"-"+Math.random().toString(36).slice(2,8));
+    const p={id,name:String(name||"").trim(),region:String(region||"").trim(),updatedAt:Date.now()};
+    try{localStorage.setItem(PROFILE_KEY,JSON.stringify(p));}catch(e){console.error("Profilni saqlab bo'lmadi:",e);}
+    return p;
+  };
+  const norm=s=>String(s||"").trim().toLocaleLowerCase("uz");
+  const localScores=()=>{try{const a=JSON.parse(localStorage.getItem("bio_leaderboard")||"[]");return Array.isArray(a)?a:[];}catch(e){return [];}};
+  let previousView="startView";
+
+  function getProfileScores(p){
+    if(!p)return [];
+    return localScores().filter(x=>
+      (x.profileId&&p.id&&x.profileId===p.id)||
+      (!x.profileId&&norm(x.name)===norm(p.name)&&norm(x.region)===norm(p.region))
+    ).sort((a,b)=>(b.ts||0)-(a.ts||0));
+  }
+  function render(){
+    const host=document.getElementById("cabinetContent");
+    const p=readProfile();
+    if(!p||!p.name||!p.region){
+      host.innerHTML='<div class="cabinet-empty"><i class="fa-solid fa-user-plus" style="font-size:25px;display:block;margin-bottom:9px"></i>Shaxsiy kabinetingizni yaratish uchun avval ism-familiyangiz va viloyatingizni kiriting.</div><button class="primary-btn" style="margin-top:13px" onclick="editCabinetProfile()">Profilni to‘ldirish</button>';
+      return;
+    }
+    const scores=getProfileScores(p);
+    const tests=scores.length;
+    const avg=tests?Math.round(scores.reduce((n,x)=>n+(Number(x.score)||0),0)/tests):0;
+    const best=tests?Math.max(...scores.map(x=>Number(x.score)||0)):0;
+    const correct=scores.reduce((n,x)=>n+(Number(x.correct)||0),0);
+    const recent=scores.slice(0,8);
+    host.innerHTML='';
+    const hero=document.createElement("div");hero.className="cabinet-hero";
+    const avatar=document.createElement("div");avatar.className="cabinet-avatar";avatar.innerHTML='<i class="fa-solid fa-user-graduate"></i>';
+    const identity=document.createElement("div");identity.style.minWidth="0";
+    const nm=document.createElement("div");nm.className="cabinet-name";nm.textContent=p.name;
+    const rg=document.createElement("div");rg.className="cabinet-region";rg.innerHTML='<i class="fa-solid fa-location-dot"></i> '+escapeHtml(p.region);
+    identity.append(nm,rg);hero.append(avatar,identity);
+    const edit=document.createElement("button");edit.type="button";edit.className="secondary-btn";edit.style.cssText="min-height:40px;padding:0 11px;white-space:nowrap";edit.innerHTML='<i class="fa-solid fa-pen"></i> Tahrirlash';edit.onclick=editCabinetProfile;hero.append(edit);host.append(hero);
+    const grid=document.createElement("div");grid.className="cabinet-grid";
+    [[tests,"Topshirilgan test"],[avg+"%","O‘rtacha natija"],[best+"%","Eng yaxshi natija"],[correct,"To‘g‘ri javoblar"]].forEach(a=>{
+      const c=document.createElement("div");c.className="cabinet-stat";const b=document.createElement("b");b.textContent=a[0];const sp=document.createElement("span");sp.textContent=a[1];c.append(b,sp);grid.append(c);
+    });host.append(grid);
+    const title=document.createElement("div");title.className="cabinet-section-title";title.innerHTML='<i class="fa-solid fa-clock-rotate-left"></i> So‘nggi test natijalari';host.append(title);
+    if(!recent.length){const empty=document.createElement("div");empty.className="cabinet-empty";empty.textContent="Hozircha test natijalari yo‘q. Birinchi testingizni topshiring — natijalar shu yerda ko‘rinadi.";host.append(empty);}
+    else{
+      const list=document.createElement("div");list.style.cssText="display:grid;gap:8px";
+      recent.forEach((x,i)=>{const row=document.createElement("div");row.className="cabinet-result";
+        const left=document.createElement("div");left.style.minWidth="0";const strong=document.createElement("strong");strong.textContent=(i+1)+". "+(x.total||0)+" ta savolli test";const small=document.createElement("small");small.textContent=(x.date||"")+" · "+(x.correct||0)+"/"+(x.total||0)+" to‘g‘ri · "+(x.time||"");left.append(strong,small);
+        const score=document.createElement("b");score.textContent=(Number(x.score)||0)+"%";row.append(left,score);list.append(row);
+      });host.append(list);
+    }
+    const note=document.createElement("div");note.className="cabinet-note";note.innerHTML='<i class="fa-solid fa-circle-info"></i> Bu birinchi bosqichdagi kabinet: profil va natijalar faqat shu telefon/brauzerda saqlanadi. Boshqa qurilmadan kirish va haqiqiy login-parol uchun keyin Firebase Authentication sozlash kerak bo‘ladi.';host.append(note);
+  }
+  window.openCabinet=function(){
+    const ids=["startView","quizView","resultView","leaderboardView"];
+    previousView=ids.find(id=>!document.getElementById(id).classList.contains("hidden"))||"startView";
+    ids.forEach(id=>document.getElementById(id).classList.add("hidden"));
+    document.getElementById("cabinetView").classList.remove("hidden");
+    render();window.scrollTo({top:0,behavior:"smooth"});
+  };
+  window.closeCabinet=function(){
+    document.getElementById("cabinetView").classList.add("hidden");
+    document.getElementById(previousView||"startView").classList.remove("hidden");
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+  window.editCabinetProfile=function(){
+    if(previousView==="quizView") { alert("Avval testni yakunlang, keyin profilni tahrirlashingiz mumkin."); return; }
+    const p=readProfile();
+    document.getElementById("cabinetView").classList.add("hidden");
+    ["quizView","resultView","leaderboardView"].forEach(id=>document.getElementById(id).classList.add("hidden"));
+    document.getElementById("startView").classList.remove("hidden");
+    if(p){document.getElementById("userNameInput").value=p.name||"";document.getElementById("regionSelect").value=p.region||"";}
+    window.scrollTo({top:0,behavior:"smooth"});
+    setTimeout(()=>document.getElementById("userNameInput").focus(),100);
+  };
+  // Oldingi profilni avtomatik tiklash.
+  const p=readProfile();
+  if(p&&p.name&&p.region){
+    const name=document.getElementById("userNameInput"),region=document.getElementById("regionSelect");
+    if(name&&!name.value)name.value=p.name;
+    if(region&&!region.value)region.value=p.region;
+    userName=p.name;userRegion=p.region;
+  }
+})();
+</script>
+
 </body>
 </html>
