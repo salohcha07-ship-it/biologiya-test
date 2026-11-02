@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
 <style>
 :root {
@@ -648,6 +649,29 @@ body.light-mode .cabinet-empty { color:#59416f;border-color:#c8addf; }
       <h2 class="heading" style="font-size:20px;text-align:left"><i class="fa-solid fa-user-circle"></i> Shaxsiy kabinet</h2>
       <button onclick="closeCabinet()" class="secondary-btn" style="min-height:40px;padding:0 13px" aria-label="Kabinetni yopish"><i class="fa-solid fa-xmark"></i></button>
     </div>
+    <div id="cabinetAuth" style="padding:14px;margin-top:14px;border:1px solid var(--border);border-radius:14px;background:var(--panel2)">
+      <div style="font-weight:700;margin-bottom:8px"><i class="fa-solid fa-cloud"></i> Bulutli akkaunt</div>
+      <div id="authStatus" class="subheading" style="text-align:left;margin:0 0 10px">Akkaunt holati tekshirilmoqda...</div>
+      <div id="authForm">
+        <label for="authEmail" class="subheading" style="display:block;text-align:left;margin:8px 0 5px">Email</label>
+        <input id="authEmail" type="email" autocomplete="email" placeholder="Email manzilingiz" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
+        <label for="authPassword" class="subheading" style="display:block;text-align:left;margin:10px 0 5px">Parol</label>
+        <input id="authPassword" type="password" autocomplete="current-password" placeholder="Kamida 6 ta belgi" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <button type="button" class="primary-btn" onclick="bioSignIn()">Kirish</button>
+          <button type="button" class="secondary-btn" onclick="bioSignUp()">Ro‘yxatdan o‘tish</button>
+        </div>
+        <button type="button" class="secondary-btn" style="margin-top:8px" onclick="bioResetPassword()">Parolni unutdingizmi?</button>
+      </div>
+      <div id="authSignedIn" class="hidden">
+        <div id="authEmailLabel" style="font-weight:600;overflow-wrap:anywhere;margin-bottom:10px"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button type="button" class="primary-btn" onclick="bioCloudSave()"><i class="fa-solid fa-cloud-arrow-up"></i> Bulutga saqlash</button>
+          <button type="button" class="secondary-btn" onclick="bioCloudRestore()"><i class="fa-solid fa-cloud-arrow-down"></i> Bulutdan tiklash</button>
+          <button type="button" class="secondary-btn" onclick="bioSignOut()">Chiqish</button>
+        </div>
+      </div>
+    </div>
     <div id="cabinetContent" style="padding-top:16px"></div>
   </section>
 </main>
@@ -702,10 +726,12 @@ const firebaseConfig = {
 };
 
 let db = null;
+let auth = null;
 try {
   if (typeof firebase !== "undefined") {
     firebase.initializeApp(firebaseConfig);
     db = firebase.firestore();
+    auth = firebase.auth();
   }
 } catch(e) {
   console.error("Firebase xatosi:",e);
@@ -1464,8 +1490,213 @@ function restartQuiz() {
         const score=document.createElement("b");score.textContent=(Number(x.score)||0)+"%";row.append(left,score);list.append(row);
       });host.append(list);
     }
-    const note=document.createElement("div");note.className="cabinet-note";note.innerHTML='<i class="fa-solid fa-circle-info"></i> Bu birinchi bosqichdagi kabinet: profil va natijalar faqat shu telefon/brauzerda saqlanadi. Boshqa qurilmadan kirish va haqiqiy login-parol uchun keyin Firebase Authentication sozlash kerak bo‘ladi.';host.append(note);
+    const note=document.createElement("div");note.className="cabinet-note";note.innerHTML='<i class="fa-solid fa-circle-info"></i> Profil va natijalar odatda shu brauzerda saqlanadi. Akkauntga kirgach, ularni istalgan qurilmada ishlatish uchun bulutga saqlashingiz yoki bulutdan tiklashingiz mumkin.';host.append(note);
+
+    const backupTitle=document.createElement("div");
+    backupTitle.className="cabinet-section-title";
+    backupTitle.style.marginTop="18px";
+    backupTitle.innerHTML='<i class="fa-solid fa-shield-halved"></i> Ma’lumotlarni zaxiralash';
+    host.append(backupTitle);
+
+    const backupText=document.createElement("p");
+    backupText.className="cabinet-region";
+    backupText.style.margin="0 0 10px";
+    backupText.textContent="Profilingiz, test natijalaringiz, statistika va yutuqlaringizni JSON faylga saqlang. Faylni xavfsiz joyda saqlang va begonalarga yubormang.";
+    host.append(backupText);
+
+    const backupActions=document.createElement("div");
+    backupActions.style.cssText="display:flex;gap:9px;flex-wrap:wrap";
+    const exportBtn=document.createElement("button");
+    exportBtn.type="button";
+    exportBtn.className="primary-btn";
+    exportBtn.style.cssText="flex:1;min-width:145px";
+    exportBtn.innerHTML='<i class="fa-solid fa-download"></i> Zaxira nusxa olish';
+    exportBtn.onclick=exportCabinetBackup;
+
+    const importBtn=document.createElement("button");
+    importBtn.type="button";
+    importBtn.className="secondary-btn";
+    importBtn.style.cssText="flex:1;min-width:145px";
+    importBtn.innerHTML='<i class="fa-solid fa-upload"></i> Nusxani tiklash';
+    importBtn.onclick=()=>document.getElementById("cabinetBackupInput").click();
+
+    const fileInput=document.createElement("input");
+    fileInput.type="file";
+    fileInput.id="cabinetBackupInput";
+    fileInput.accept=".json,application/json";
+    fileInput.hidden=true;
+    fileInput.addEventListener("change",importCabinetBackup);
+    backupActions.append(exportBtn,importBtn,fileInput);
+    host.append(backupActions);
   }
+
+  const BACKUP_KEYS=["bio_profile_v1","bio_leaderboard","bio_game_v1","bio_stats_v1","bio_theme"];
+  window.exportCabinetBackup=function(){
+    const data={format:"MILLIY_BIO_TEST_BACKUP",version:1,createdAt:new Date().toISOString(),data:{}};
+    BACKUP_KEYS.forEach(key=>{
+      const value=localStorage.getItem(key);
+      if(value!==null)data.data[key]=value;
+    });
+    const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json;charset=utf-8"});
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement("a");
+    link.href=url;
+    link.download="milliy-bio-test-zaxira-"+new Date().toISOString().slice(0,10)+".json";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  window.importCabinetBackup=function(event){
+    const input=event.target;
+    const file=input.files&&input.files[0];
+    if(!file)return;
+    input.value="";
+    if(file.size>2*1024*1024){alert("Zaxira fayli juda katta. 2 MB dan kichik JSON fayl tanlang.");return;}
+    const reader=new FileReader();
+    reader.onload=()=>{
+      try{
+        const backup=JSON.parse(String(reader.result||""));
+        if(!backup||backup.format!=="MILLIY_BIO_TEST_BACKUP"||backup.version!==1||
+           !backup.data||typeof backup.data!=="object"||Array.isArray(backup.data)){
+          throw new Error("Bu MILLIY BIO TEST zaxira fayli emas.");
+        }
+        const incoming={};
+        BACKUP_KEYS.forEach(key=>{
+          if(Object.prototype.hasOwnProperty.call(backup.data,key)){
+            if(typeof backup.data[key]!=="string")throw new Error("Zaxira faylidagi ma’lumot formati noto‘g‘ri.");
+            incoming[key]=JSON.parse(backup.data[key]);
+          }
+        });
+        if(incoming["bio_profile_v1"]!==undefined){
+          const p=incoming["bio_profile_v1"];
+          if(!p||typeof p!=="object"||Array.isArray(p)||
+             (p.name!==undefined&&typeof p.name!=="string")||
+             (p.region!==undefined&&typeof p.region!=="string"))throw new Error("Profil ma’lumotlari noto‘g‘ri.");
+        }
+        if(incoming["bio_leaderboard"]!==undefined&&!Array.isArray(incoming["bio_leaderboard"]))throw new Error("Test natijalari ro‘yxati noto‘g‘ri.");
+        if(incoming["bio_game_v1"]!==undefined&&(!incoming["bio_game_v1"]||typeof incoming["bio_game_v1"]!=="object"||Array.isArray(incoming["bio_game_v1"])))throw new Error("Yutuqlar ma’lumoti noto‘g‘ri.");
+        if(incoming["bio_stats_v1"]!==undefined&&(!incoming["bio_stats_v1"]||typeof incoming["bio_stats_v1"]!=="object"||Array.isArray(incoming["bio_stats_v1"])))throw new Error("Statistika ma’lumoti noto‘g‘ri.");
+        if(incoming["bio_theme"]!==undefined&&!["dark","light"].includes(incoming["bio_theme"]))throw new Error("Rang rejimi ma’lumoti noto‘g‘ri.");
+        if(!confirm("Zaxira nusxasidagi ma’lumotlar ushbu brauzerdagi profil va natijalarni almashtiradi. Davom etasizmi?"))return;
+
+        const previous={};
+        BACKUP_KEYS.forEach(key=>previous[key]=localStorage.getItem(key));
+        try{
+          BACKUP_KEYS.forEach(key=>{
+            if(Object.prototype.hasOwnProperty.call(backup.data,key))localStorage.setItem(key,backup.data[key]);
+            else localStorage.removeItem(key);
+          });
+        }catch(saveError){
+          BACKUP_KEYS.forEach(key=>{
+            try{if(previous[key]===null)localStorage.removeItem(key);else localStorage.setItem(key,previous[key]);}catch(rollbackError){}
+          });
+          throw new Error("Brauzer xotirasiga yozib bo‘lmadi. Eski ma’lumotlar saqlab qolindi.");
+        }
+        alert("Zaxira nusxasi tiklandi. Sahifa yangilanadi.");
+        location.reload();
+      }catch(error){
+        alert("Zaxira faylini tiklab bo‘lmadi: "+(error&&error.message?error.message:"Faylni tekshiring."));
+      }
+    };
+    reader.onerror=()=>alert("Faylni o‘qib bo‘lmadi. Qayta urinib ko‘ring.");
+    reader.readAsText(file);
+  };
+
+  // Firebase Authentication va foydalanuvchiga tegishli bulutli zaxira.
+  function authMessage(message,isError){
+    const node=document.getElementById("authStatus");
+    if(node){node.textContent=message;node.style.color=isError?"#ff9b9b":"var(--muted)";}
+  }
+  function authErrorMessage(error){
+    const codes={
+      "auth/email-already-in-use":"Bu email bilan akkaunt allaqachon mavjud.",
+      "auth/invalid-email":"Email manzili noto‘g‘ri.",
+      "auth/weak-password":"Parol kamida 6 ta belgidan iborat bo‘lsin.",
+      "auth/user-not-found":"Bunday akkaunt topilmadi.",
+      "auth/wrong-password":"Email yoki parol noto‘g‘ri.",
+      "auth/invalid-credential":"Email yoki parol noto‘g‘ri.",
+      "auth/too-many-requests":"Urinishlar ko‘payib ketdi. Birozdan keyin urinib ko‘ring.",
+      "auth/network-request-failed":"Internet aloqasini tekshiring."
+    };
+    return codes[error&&error.code]||"Xatolik yuz berdi. Ma’lumotlarni tekshirib, qayta urinib ko‘ring.";
+  }
+  function currentBackupData(){
+    const data={};
+    BACKUP_KEYS.forEach(key=>{const value=localStorage.getItem(key);if(value!==null)data[key]=value;});
+    return data;
+  }
+  window.bioSignUp=async function(){
+    if(!auth){authMessage("Firebase Authentication ulanmagan.",true);return;}
+    const email=document.getElementById("authEmail").value.trim();
+    const password=document.getElementById("authPassword").value;
+    if(!email||!password){authMessage("Email va parolni kiriting.",true);return;}
+    try{authMessage("Akkaunt yaratilmoqda...");await auth.createUserWithEmailAndPassword(email,password);authMessage("Akkaunt yaratildi. Endi ma’lumotlaringizni bulutga saqlashingiz mumkin.");}
+    catch(e){authMessage(authErrorMessage(e),true);}
+  };
+  window.bioSignIn=async function(){
+    if(!auth){authMessage("Firebase Authentication ulanmagan.",true);return;}
+    const email=document.getElementById("authEmail").value.trim();
+    const password=document.getElementById("authPassword").value;
+    if(!email||!password){authMessage("Email va parolni kiriting.",true);return;}
+    try{authMessage("Akkauntga kirilmoqda...");await auth.signInWithEmailAndPassword(email,password);authMessage("Tizimga muvaffaqiyatli kirdingiz.");}
+    catch(e){authMessage(authErrorMessage(e),true);}
+  };
+  window.bioResetPassword=async function(){
+    if(!auth){authMessage("Firebase Authentication ulanmagan.",true);return;}
+    const email=document.getElementById("authEmail").value.trim();
+    if(!email){authMessage("Avval email manzilingizni kiriting.",true);return;}
+    try{await auth.sendPasswordResetEmail(email);authMessage("Parolni tiklash havolasi emailingizga yuborildi.");}
+    catch(e){authMessage(authErrorMessage(e),true);}
+  };
+  window.bioSignOut=async function(){try{if(auth)await auth.signOut();}catch(e){authMessage(authErrorMessage(e),true);}};
+  window.bioCloudSave=async function(){
+    const user=auth&&auth.currentUser;
+    if(!user||!db){authMessage("Avval akkauntga kiring.",true);return;}
+    try{
+      const data=currentBackupData();
+      const size=JSON.stringify(data).length;
+      if(size>850000){authMessage("Ma’lumotlar hajmi juda katta. Zaxira faylidan foydalaning.",true);return;}
+      await db.collection("users").doc(user.uid).set({email:user.email||"",data,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+      authMessage("Ma’lumotlar bulutga saqlandi. Boshqa qurilmada shu akkauntga kirib, ‘Bulutdan tiklash’ni bosing.");
+    }catch(e){console.error("Cloud save error:",e);authMessage("Bulutga saqlab bo‘lmadi. Firestore xavfsizlik qoidalarini tekshiring.",true);}
+  };
+  window.bioCloudRestore=async function(){
+    const user=auth&&auth.currentUser;
+    if(!user||!db){authMessage("Avval akkauntga kiring.",true);return;}
+    if(!confirm("Bulutdagi profil va natijalar ushbu brauzerdagi tegishli ma’lumotlarni almashtiradi. Davom etasizmi?"))return;
+    try{
+      const snap=await db.collection("users").doc(user.uid).get();
+      if(!snap.exists||!snap.data()||!snap.data().data){authMessage("Bu akkaunt uchun bulutda zaxira topilmadi.",true);return;}
+      const data=snap.data().data;
+      const previous={};BACKUP_KEYS.forEach(key=>previous[key]=localStorage.getItem(key));
+      try{
+        BACKUP_KEYS.forEach(key=>{
+          if(Object.prototype.hasOwnProperty.call(data,key)&&typeof data[key]==="string")localStorage.setItem(key,data[key]);
+          else localStorage.removeItem(key);
+        });
+      }catch(saveError){
+        BACKUP_KEYS.forEach(key=>{try{if(previous[key]===null)localStorage.removeItem(key);else localStorage.setItem(key,previous[key]);}catch(ignore){}});
+        throw saveError;
+      }
+      authMessage("Bulutdagi ma’lumotlar tiklandi. Sahifa yangilanadi.");
+      setTimeout(()=>location.reload(),500);
+    }catch(e){console.error("Cloud restore error:",e);authMessage("Bulutdan tiklab bo‘lmadi. Firestore xavfsizlik qoidalarini tekshiring.",true);}
+  };
+  if(auth){
+    auth.onAuthStateChanged(user=>{
+      const form=document.getElementById("authForm"),signed=document.getElementById("authSignedIn"),label=document.getElementById("authEmailLabel");
+      if(form)form.classList.toggle("hidden",!!user);
+      if(signed)signed.classList.toggle("hidden",!user);
+      if(label&&user)label.textContent="Kirilgan akkaunt: "+(user.email||"email ko‘rsatilmagan");
+      if(user)authMessage("Akkauntga kirdingiz. Ma’lumotlarni bulutga saqlashingiz yoki boshqa qurilmadan tiklashingiz mumkin.");
+      else authMessage("Email va parol orqali kiring yoki yangi akkaunt yarating.");
+    });
+  }else{
+    authMessage("Firebase ulanmadi. Internet va Firebase sozlamalarini tekshiring.",true);
+  }
+
   window.openCabinet=function(){
     const ids=["startView","quizView","resultView","leaderboardView"];
     previousView=ids.find(id=>!document.getElementById(id).classList.contains("hidden"))||"startView";
