@@ -1,17 +1,17 @@
 const questions = [
   {
-    question: "O'simliklarda barglarning ustki qismini qoplab turuvchi va suv bug'lanishidan saqlovchi yupqa shaffof qatlam qanday ataladi?",
-    options: ["Kutikula (mum qatlami)", "Kambiy", "Probka", "Ksilema"],
+    question: "Cho'l o'simligi bargi mo''tadil iqlim o'simligi bargidan epidermis tuzilishi bilan qanday farq qiladi?",
+    options: ["Kutikulasi qalin, og'izchalari chuqur botgan va tukchalar bilan o'ralgan, suv kam bug'lanadi", "Kutikulasi yupqa, og'izchalari barg yuzasida ochiq turadi, suv tez va ko'p bug'lanadi", "Kutikulasi umuman bo'lmaydi, suv epidermis hujayralari orqali to'g'ridan-to'g'ri so'riladi", "Og'izchalari soni ancha ko'p va hammasi yuzada, shu sababli gaz almashinuvi kuchayadi"],
     topic: "Botanika",
     answer: 0,
-    explanation: "Epidermis ustidan ajralib chiquvchi mumsimon modda — kutikula barglarni ortiqcha transpiratsiyadan himoya qiladi."
+    explanation: "Kserofitlarda suv yo'qotilishini kamaytiruvchi moslashuvlar rivojlangan: qalin kutikula va mum qatlami, chuqurga botgan og'izchalar, tukchalar. Mo''tadil iqlim o'simliklarida kutikula yupqaroq va og'izchalar yuzaga yaqin joylashadi."
   },
   {
-    question: "Baliqlardagi yon chiziq organining vazifasi nima?",
-    options: ["Kislorodni qonga o'tkazish", "Suv oqimi va bosim o'zgarishini sezish", "Tovush chiqarish", "Ozuqani hidlash"],
+    question: "Qorong'u suvda ham baliqlar to'dada bir-biriga urilmay suzadi. Bunda qaysi a'zo asosiy rol o'ynaydi va nimani sezadi?",
+    options: ["Ko'zlar: yorug'lik darajasini va atrofdagi jismlarning rangini aniqlaydi", "Yon chiziq: suv oqimi, tebranish va bosim o'zgarishlarini sezadi", "Suzgich pufagi: suvning chuqurligi va harorat o'zgarishini sezadi", "Ichki quloq: faqat havoga uzatilgan tovush to'lqinlarini sezadi"],
     topic: "Zoologiya",
     answer: 1,
-    explanation: "Yon chiziq kanalidagi sezuvchi hujayralar suv tebranishi va oqimini qabul qiladi, bu baliqqa to'dada yurishda va dushmandan qochishda yordam beradi."
+    explanation: "Yon chiziq a'zosi baliq tanasi yon tomonida joylashgan, suv oqimi, tebranishi va bosimi o'zgarishini seza oladi. Shu sababli baliqlar qorong'ida ham to'dadagi qo'shnilari harakatini bilib, to'qnashmay suzadi va yirtqich yoki to'siq yaqinlashganini payqaydi."
   },
   {
     question: "Bakteriyalar va boshqa prokariotlarda genetik axborot asosan qaysi tuzilmada joylashgan?",
@@ -63,11 +63,11 @@ const questions = [
     explanation: "Yod tiroksin sintezi uchun zarur. Yod yetishmasa tiroksin kamayadi, teskari aloqa bo'yicha gipofiz tireotrop gormon (TTG) ajratishni oshiradi. TTG bez hujayralarini ko'paytiradi, shu sababli bezning kattalashishi (endemik bo'qoq) kuzatiladi."
   },
   {
-    question: "O'simliklarda barglar va poyalarning qari qismlarini tashqi muhitdan himoya qiluvchi va qalin qoplamani hosil qiluvchi to'qima qanday nomlanadi?",
-    options: ["Epidermis", "Kambiy", "Ksilema", "Probka (periderm) va qobiq"],
+    question: "Yoz oxirida bir yillik novda yashil rangdan jigarrangga o'tadi. Bunda qaysi o'zgarish sodir bo'ladi?",
+    options: ["Epidermis hujayralari bo'linib, probka hosil qiladi va xloroplastlari butun yil saqlanib qoladi", "Kambiy faoliyati to'xtab, yog'ochlik bevosita tashqi muhit bilan to'qnashib qoladi va quriydi", "Epidermis qalinlashib, xlorofill parchalanishi natijasida novdaning rangi shunchaki o'zgaradi", "Probka kambiy periderma hosil qiladi, epidermis nobud bo'ladi, gaz almashinuvi dukchalarga o'tadi"],
     topic: "Botanika",
     answer: 3,
-    explanation: "O'simliklar ulg'aygach, epidermis o'rnini qalin va o'lik hujayralardan iborat probka (periderm) qoplovchi to'qimasi egallaydi."
+    explanation: "Novda yoshi o'tgan sari epidermis ostida probka kambiy (fellogen) hosil bo'ladi: u tashqariga probka (fellema), ichkariga fellodermani hosil qiladi. Bular birgalikda periderma bo'ladi. Probka hujayralari o'lik va suberinli, epidermis esa uziladi va nobud bo'ladi. Gaz almashinuvi dukchalar (lentitsellar) orqali davom etadi."
   },
   {
     question: "Odamda yurak-qon tomir tizimida qonning eng sekin harakatlanadigan va moddalar almashinuvi to'g'ridan-to'g'ri to'qimalar bilan sodir bo'ladigan qismi qaysi?",
@@ -140,18 +140,18 @@ const questions = [
     explanation: "Profaza I da gomologik xromosomalar konyugatsiyalanib, o'zaro uchastkalar almashadi."
   },
   {
-    question: "O'simliklarda ildizning tuproqqa kirib borishini ta'minlovchi va uni shikastlanishdan asrovchi qism qanday nomlanadi?",
-    options: ["Kambiy halqasi", "Ildiz tukchalari", "O'tkazuvchi zona", "Ildiz qalpog'i (chexlik)"],
+    question: "Ildiz uchidan yuqoriga qarab zonalar qaysi tartibda joylashgan?",
+    options: ["Bo'linish, so'rilish (tuklar), o'sish (cho'zilish), keyin o'tkazish zonasi", "So'rilish (tuklar), bo'linish, o'sish (cho'zilish), keyin o'tkazish zonasi", "O'sish (cho'zilish), bo'linish, so'rilish (tuklar), keyin o'tkazish zonasi", "Bo'linish, o'sish (cho'zilish), so'rilish (tuklar), keyin o'tkazish zonasi"],
     topic: "Botanika",
     answer: 3,
-    explanation: "Ildiz qalpog'i ildiz uchidagi nozik hujayralarni tuproq zarralari bilan to'qnashganda mexanik shikastlanishdan himoya qiladi."
+    explanation: "Ildiz uchida ildiz qalpog'i, undan yuqorida bo'linish zonasi (yosh hujayralar ko'payadi), keyin o'sish (cho'zilish) zonasi, so'ng so'rilish zonasi (ildiz tuklari suv va tuzlarni yutadi) va eng yuqorida o'tkazish zonasi joylashadi."
   },
   {
-    question: "Suvning ildizdan tanasi bo'ylab yuqoriga ko'tarilishida asosiy harakatlantiruvchi kuch nima?",
-    options: ["Barglarda hosil bo'ladigan ildiz bosimi", "Barglardagi transpiratsiya natijasida hosil bo'ladigan so'rish kuchi va suv molekulalari orasidagi kogeziya", "Quyosh nurining to'g'ridan-to'g'ri itaruvchi kuchi", "Yer tortishish kuchi"],
+    question: "Bargning pastki yuzasiga qo'yilgan quruq kobalt xlorid qog'ozi ustki yuzadagidan tezroq pushti rangga o'tdi. Bu nimani ko'rsatadi?",
+    options: ["Bargning ustki yuzasida kutikula yupqa, shu sababli suv bug'lanishi faqat pastdan to'xtaydi", "Pastki epidermisda og'izchalar ko'proq, shu sababli suv bug'lanishi asosan pastki yuzadan kechadi", "Bargning pastki yuzasida xloroplastlar ko'p, shu sababli u ko'proq suv hosil qiladi", "Pastki yuzada ildiz bosimi kuchliroq, shu sababli suv gutatsiya yo'li bilan chiqadi"],
     topic: "Botanika",
     answer: 1,
-    explanation: "Barglardan suv bug'langanda ksilemadagi suv ustuni uzluksiz tortiladi, kogeziya va adgeziya kuchlari uni uzilmasdan ushlab turadi."
+    explanation: "Kobalt xlorid qog'ozi nam bilan pushti rangga o'tadi. Pastki qog'oz tezroq rangini o'zgartirgani suv bug'ining pastki yuzadan ko'proq ajralishini ko'rsatadi: ko'pchilik o'simliklarda og'izchalar bargning pastki epidermisida ko'p joylashgan."
   },
   {
     question: "Buyrakka qon oqimi kamayganda renin ajraladi. Renin-angiotensin-aldosteron tizimi qon bosimiga qanday ta'sir qiladi?",
@@ -168,11 +168,11 @@ const questions = [
     explanation: "Spermatozoyidlar urug'donlarda hosil bo'lib, ularning ortig'ida yetiladi va harakatlanish xususiyatiga ega bo'ladi."
   },
   {
-    question: "Evolyutsiya nazariyasida atavizm deb nimaga aytiladi?",
-    options: ["Hozirgi kunda yo'qolib ketgan organlar", "Faqat o'simliklarga xos o'simtalar", "Organlarning o'z vazifasini yo'qotishi", "Uzoq ajdodlarida bo'lgan, ammo hozirgi avlodlarda tasodifan namoyon bo'ladigan belgilar"],
+    question: "Ot oyog'ida ba'zan qo'shimcha barmoqlar paydo bo'ladi. Bu hodisa qanday ataladi va nimani isbotlaydi?",
+    options: ["Rudiment: ota-onasida uchramagan yangi mutatsiya natijasida belgi paydo bo'lganini", "Modifikatsiya: muhit ta'sirida paydo bo'lib, nasldan-naslga o'tmaydigan belgini", "Konvergensiya: turli ajdodlarga ega turlar o'xshash sharoitga moslashganini", "Atavizm: ajdodlari ko'p barmoqli bo'lganini, ularning genlari saqlanganini"],
     topic: "Evolyutsiya",
     answer: 3,
-    explanation: "Atavizmlar (masalan, odamda ko'p emiziklilik yoki dumlilik) uzoq ajdodlarga xos belgilarning ayrim hollarda qayta yuzaga chiqishidir."
+    explanation: "Atavizm — uzoq ajdodlarga xos belgining ayrim individlarda qayta paydo bo'lishi. Otlarning ajdodlari ko'p barmoqli bo'lgan; qo'shimcha barmoqlar ularning shakllanishini belgilovchi genlar saqlanib qolganini ko'rsatadi. Rudiment esa barcha individlarda bor, lekin rivojlanmagan a'zo."
   },
   {
     question: "Odamda bosh miyaning qaysi qismi ichki organlar faoliyatini va vegetativ funksiyalarni boshqarishda eng asosiy markaz hisoblanadi?",
@@ -217,11 +217,11 @@ const questions = [
     explanation: "Oraliq miya uyqu va uyg'onish, ishtaha, harorat kabi ko'plab fiziologik jarayonlarni muvofiqlashtiradi."
   },
   {
-    question: "O'simliklarda barglar va poyalarning yuzasini qoplab turuvchi tirik hujayrali asosiy qoplovchi to'qima qanday ataladi?",
-    options: ["Kambiy", "Probka", "Ksilema", "Epidermis"],
+    question: "Qaysi o'simlik bargida og'izchalar ikkala epidermisda taxminan teng taqsimlanadi?",
+    options: ["Suzuvchi nilufar bargida, chunki bargning ikkala yuzasi bir xil sharoitda bo'ladi", "Butunlay suvga botgan elodeya bargida, chunki gaz almashinuvi shu orqali amalga oshadi", "Daraxtlarning odatdagi bargida, chunki pastki yuza ham yorug'likka qaragan bo'ladi", "Makkajo'xori kabi tik turuvchi bargda: ikkala yuza yorug'lik oladi va og'izchalar teng"],
     topic: "Botanika",
     answer: 3,
-    explanation: "Epidermis — barg va yosh novdalarni tashqi muhitdan o'rab turuvchi, gaz almashinuvi va transpiratsiyani tartibga soluvchi asosiy qoplovchi to'qima."
+    explanation: "Ko'pchilik daraxt va o'tlarning gorizontal barglarida og'izchalar asosan pastki epidermisda joylashadi. Tik turuvchi don o'simliklari (makkajo'xori, bug'doy) bargida ikkala yuza yorug'lik olgani uchun og'izchalar ikkala tomonda deyarli teng. Nilufarning suzuvchi bargida esa og'izchalar faqat ustki yuzada, botgan barglarda esa deyarli yo'q."
   },
   {
     question: "Turli kelib chiqishli organizmlarda o'xshash yashash sharoitiga moslashish tufayli o'xshash belgilar paydo bo'lishiga nima deyiladi?",
@@ -287,11 +287,11 @@ const questions = [
     explanation: "Biotsenoz + biotop = biogeosenoz (ekotizim) — moddalar aylanishi va energiya oqimi kuzatiladigan birlik."
   },
   {
-    question: "Marvarid asosan nimadan tashkil topgan?",
-    options: ["Xitin va kaltsiy fosfat", "Kremniy dioksidi va keratin", "Selluloza va kaltsiy oksalat", "Kaltsiy karbonat (aragonit) va konxiolin oqsili"],
+    question: "Mollyuska chig'anog'i qatlamlari tashqaridan ichkariga qaysi tartibda joylashgan?",
+    options: ["Sadaf (marvarid) qatlami, prizmatik ohakli qatlam, tashqi shox qatlam", "Prizmatik ohakli qatlam, tashqi shox qatlam, sadaf (marvarid) qatlami", "Tashqi shox qatlam, sadaf (marvarid) qatlami, prizmatik ohakli qatlam", "Tashqi shox qatlam, prizmatik ohakli qatlam, sadaf (marvarid) qatlami"],
     topic: "Zoologiya",
     answer: 3,
-    explanation: "Mantiya epiteliysi ajratadigan sedef (marvarid) kaltsiy karbonat kristallari va konxiolin oqsilidan iborat, u begona zarra atrofida qatlam-qatlam o'raladi."
+    explanation: "Chig'anoqning eng tashqi qatlami shox moddadan (periostrakum), o'rtadagi qatlam prizmatik kaltsiy karbonatdan (ohakli), eng ichkarisi sadaf (marvarid) qatlamidan iborat. Sadaf va marvarid mantiya epiteliysi ajratadigan kaltsiy karbonat va konxiolin oqsilidan hosil bo'ladi."
   },
   {
     question: "Odam organizmida limfa tugunlari qanday asosiy biologik vazifani bajaradi?",
@@ -399,11 +399,11 @@ const questions = [
     explanation: "Limfa tomirlarida yurak kabi nasos yo'q, shuning uchun limfa mushaklarning qisqarishi va tomir ichidagi bir tomonlama qopqoqlar yordamida harakatlanadi."
   },
   {
-    question: "O'simliklarda barglar va poyalarning qoplovchi to'qimasi shikastlanganda uning o'rnini qoplaydigan va qalinlashtiradigan ikkilamchi qoplovchi to'qima qaysi?",
-    options: ["Epidermis", "Kambiy", "Ksilema", "Probka (periderm)"],
+    question: "Probka kambiy (fellogen) faoliyati natijasida tashqariga va ichkariga qaysi to'qimalar hosil bo'ladi?",
+    options: ["Tashqariga — lub tolalari (floema), ichkariga — yog'ochlik (ksilema) naychalari", "Tashqariga — epidermis hujayralari, ichkariga — probka (fellema) qatlami hosil bo'ladi", "Tashqariga — felloderma (parenxima), ichkariga — probka (fellema) hujayralari", "Tashqariga — probka (fellema), ichkariga — felloderma (tirik parenxima hujayralari)"],
     topic: "Botanika",
     answer: 3,
-    explanation: "O'simliklar yo'g'onlashganda epidermis o'rnini probka (periderm) qoplovchi to'qimasi egallaydi."
+    explanation: "Probka kambiy (fellogen) tashqariga o'lik, suberin shimilgan probka (fellema), ichkariga esa tirik parenxima hujayralaridan iborat fellodermani hosil qiladi. Uchala qatlam birgalikda periderma deyiladi. Lub va yog'ochlikni hosil qiluvchi to'qima esa o'tkazuvchi kambiy."
   },
   {
     question: "Odamda bosh miyaning qaysi qismi muvozanatni saqlash va harakatlarni aniq muvofiqlashtirish uchun mas'ul?",
@@ -441,11 +441,11 @@ const questions = [
     explanation: "AB x 00 chatishtirishdan IAi (II guruh) va IBi (III guruh) genotiplar hosil bo'ladi; I va IV guruh bo'lishi mumkin emas."
   },
   {
-    question: "Tabiiy tanlanishning shakllari ichida populyatsiyada o'rtacha (ma'lum standartdagi) belgilarni saqlab qoladigan, chetga chiqqanlarni yo'q qiladigan tanlanish turi nima deyiladi?",
-    options: ["Harakatlantiruvchi tanlanish", "Dizruptiv (buzuvchi) tanlanish", "Stabilizatsiyalovchi (barqarorlashtiruvchi) tanlanish", "Sun'iy tanlanish"],
+    question: "Populyatsiyada belgi taqsimoti grafigi tanlanishdan keyin tor va balandroq bo'lib qoldi, o'rtacha qiymat esa o'zgarmadi. Bu qaysi tanlanish shakli?",
+    options: ["Yo'nalishli tanlanish: egri chiziqning cho'qqisi bir tomonga siljib ketadi", "Dizruptiv tanlanish: egri chiziq ikkita alohida cho'qqiga ajralib ketadi", "Stabilizatsiyalovchi tanlanish: chekka fenotiplar yo'qolib, o'rtacha qoladi", "Jinsiy tanlanish: egri chiziq faqat erkak jinsidagina o'zgarib qoladi"],
     topic: "Evolyutsiya",
     answer: 2,
-    explanation: "Stabilizatsiyalovchi tanlanish o'zgarmas muhit sharoitida o'rtacha optimal belgilarni saqlab qoladi va keskin o'zgargan variantlarni yo'q qiladi."
+    explanation: "Stabilizatsiyalovchi tanlanishda o'rtacha belgili individlar tirik qolib ko'payadi, chekka fenotiplar yo'qolib boradi. Shu sababli taqsimot egri chizig'i tor va baland bo'lib, o'rtacha qiymat o'zgarmaydi. Yo'nalishli tanlanishda cho'qqi siljiydi, dizruptivda ikkiga bo'linadi."
   },
   {
     question: "O'simliklarda barglarning tikan yoki mo'ylovga aylanishi evolyutsiyada qanday o'zgarish turi hisoblanadi?",
@@ -455,18 +455,18 @@ const questions = [
     explanation: "Metamorfoz — organlarning yashash sharoitiga moslashib, asosiy vazifasini o'zgartirishi (masalan, kaktus tikani — barg metamorfozi)."
   },
   {
-    question: "Evolyutsiya jarayonida turlar sonining ko'payishi va ularning turli xil yashash sharoitlariga moslashib tarqalishi biologiyada qanday ataladi?",
-    options: ["Degeneratsiya", "Retrogres", "Mutatsion turg'unlik", "Divergensiya (tarqalish) va biologik progress"],
+    question: "Galapagos orollaridagi in'ibilarning tumshug'i har xil shaklda. Bu xilma-xillik qaysi jarayon bilan izohlanadi?",
+    options: ["Orttirilgan belgilarning irsiylanishi: har bir avlod tumshug'ini mashq bilan o'zgartirgan", "Konvergensiya: turli ajdodlar bir xil oziqqa moslashib, shunday tumshuq hosil qilgan", "Jinsiy tanlanish: urg'ochilar eng katta va rangli tumshuqli erkaklarni tanlagani sababli", "Bitta ajdoddan turli oziq nishalariga moslashish orqali divergensiya (adaptiv radiatsiya)"],
     topic: "Evolyutsiya",
     answer: 3,
-    explanation: "Divergensiya — umumiy ajdoddan kelib chiqqan guruhlarning turli sharoitlarga moslashib boshqa-boshqa belgilarga ega bo'lishi va tarqalishidir."
+    explanation: "Galapagos in'ibilari bitta qit'a ajdodidan kelib chiqqan. Orollarda turli oziq (urug', hasharot, kaktus) mavjudligi tufayli tabiiy tanlanish turli tumshuq shakllarini saqlab, divergensiyaga (adaptiv radiatsiyaga) olib kelgan va yangi turlar hosil bo'lgan. Orttirilgan belgilar irsiylanmaydi; konvergensiyada esa turli ajdodlar o'xshash belgiga ega bo'ladi."
   },
   {
-    question: "O'simliklarda ildiz qismidan so'rilgan suv va mineral tuzlar poya bo'ylab qaysi to'qima orqali harakatlanadi?",
-    options: ["Floema (loks)", "Kambiy", "Ksilema (yog'ochlik)", "Epidermis"],
+    question: "Daraxt poyasidan po'stloqning halqasimon qismi (floema bilan) olib tashlandi. Daraxt bir muddat yashaydi, lekin keyin ildizlar nobud bo'ladi. Nima uchun?",
+    options: ["Ksilema kesilgani uchun suv ildizdan chiqib ketolmaydi va barglar darhol so'liydi", "Kambiy halqa ichida faoliyatini to'xtatib, yangi ildiz hujayralari hosil bo'lmay qoladi", "Floema kesilgani uchun organik moddalar ildizga tushmaydi va ildiz ochlikdan nobud bo'ladi", "Ildiz bosimi yo'qoladi, shu sababli minerallar yuqoriga ko'tarilmay qoladi va ildiz quriydi"],
     topic: "Botanika",
     answer: 2,
-    explanation: "Ksilema o'simlikning suv va minerallarni ildizdan barglarga o'tkazuvchi asosiy o'tkazuvchi naylar tizimidir."
+    explanation: "Floema barglarda hosil bo'lgan organik moddalarni ildizga tashiydi. Po'stloq halqasi olib tashlansa, ksilema saqlanadi: suv va minerallar yuqoriga ko'tarilib turadi, daraxt bir muddat yashaydi. Biroq organik moddalar ildizga tushmaydi, ildizlar ochlikdan nobud bo'ladi va keyin daraxt ham quriydi."
   },
   {
     question: "DNKning matritsa zanjiri 3'-TAC-GGC-ATT-5' ketma-ketligiga ega. Hosil bo'ladigan mRNK translyatsiyasida nechta aminokislotadan iborat peptid sintezlanadi?",
@@ -525,11 +525,11 @@ const questions = [
     explanation: "O'simliklarning ko'payish vazifasini bajaruvchi organlari generativ organlar (gul, meva, urug') deb ataladi."
   },
   {
-    question: "Evolyutsiya nazariyasida populyatsiya genofondining tasodifiy va keskin ravishda kamayib ketishi (masalan, tabiiy ofatlar tufayli) nima deb ataladi?",
-    options: ["Krossingover", "Genlar dreyfi va 'butilka gorlari' effekti", "Mutatsion bosim", "Epistaz"],
+    question: "Katta populyatsiyadan 5 ta individ yangi orolga o'tib, yangi populyatsiya hosil qildi. Bu populyatsiya genofondi haqida qaysi fikr to'g'ri?",
+    options: ["Genofond ona populyatsiya bilan aynan bir xil bo'ladi, chunki individlarning genlari o'zgarmaydi", "Genofond ona populyatsiyaning kichik tasodifiy namunasi, ayrim allellar kam yoki ko'p uchraydi", "Dastlab barcha allellar yo'qolib, faqat yangi mutatsiyalardan genofond hosil bo'ladi", "Genofondning boyishi kuzatiladi, chunki yangi muhit yangi allellar hosil qiladi"],
     topic: "Evolyutsiya",
     answer: 1,
-    explanation: "Populyatsiya soni keskin kamayib ketganda (butilka gori effekti) genofond xilma-xilligi qisqaradi va genlar dreyfi kuchayadi."
+    explanation: "Bu asoschi effekti (genlar dreyfining bir ko'rinishi): kichik guruh ona populyatsiya allellarining tasodifiy namunasini olib keladi. Shu sababli ba'zi allellar yo'qolishi yoki chastotasi keskin o'zgarishi mumkin. Genofond odatda kambag'allashadi, yangi allellar esa faqat mutatsiya yoki migratsiya bilan paydo bo'ladi."
   },
   {
     question: "O'simliklarda generativ organ hisoblangan gulning asosiy qismlari qaysilar?",
@@ -791,11 +791,11 @@ const questions = [
     explanation: "Epifiz va gipotalamus (oraliq miya qismlari) melatonin va boshqa moddalar orqali biologik ritmlar hamda uyquni boshqaradi."
   },
   {
-    question: "Quyidagi misollardan qaysi biri barqarorlashtiruvchi tanlanishga misol bo'ladi?",
-    options: ["Yirtqichlar qarshisida eng yirik individlarning tanlanishi", "Chaqaloqlarning o'rtacha vaznga (3-3,5 kg) yaqin bo'lganlari ko'proq tirik qolishi", "Antibiotikka chidamli bakteriyalarning ko'payishi", "Ikki chekka rangdagi kapalaklarning saqlanib qolishi"],
+    question: "Quyidagi misollardan qaysi biri dizruptiv (buzuvchi) tanlanishga misol bo'ladi?",
+    options: ["Chaqaloqlarning o'rtacha vaznli (3–3,5 kg) bo'lganda ko'proq tirik qolishi", "Orolda faqat kichik va yirik tumshuqli qushlar tirik qoladi, o'rtachalari oziqsiz qoladi", "Antibiotik ta'sirida chidamli bakteriyalarning ko'payib, sezgirlarining yo'qolishi", "Sanoat hududida qora kapalaklar soni ortib, och rangli kapalaklar soni kamayib ketishi"],
     topic: "Evolyutsiya",
     answer: 1,
-    explanation: "Barqarorlashtiruvchi tanlanish belgining o'rtacha qiymatini saqlaydi, ekstremal qiymatli individlar esa yo'q bo'ladi."
+    explanation: "Dizruptiv tanlanishda ikki chekka fenotip ustun bo'lib, o'rtacha fenotip yo'qoladi, natijada populyatsiya ikki guruhga ajralib, yangi turlar paydo bo'lishiga zamin yaratiladi. Chaqaloq vazni — stabilizatsiyalovchi; antibiotikka chidamlilik va qora kapalaklar (industrial melanizm) — yo'nalishli tanlanish misollari."
   },
   {
     question: "Genetika fanida Mendelning birinchi qonuni (Uniformlik qonuni) bo'yicha toza liniyadagi dominant va retsessiv ota-onalar chatishtirilganda F1 avlodda qanday natija chiqadi?",
@@ -868,11 +868,11 @@ const questions = [
     explanation: "DNK ikkilanishida (replikatsiyada) har bir eski zanjir asosida komplementarlik qoidasiga ko'ra yangi zanjir sintezlanadi."
   },
   {
-    question: "Dengiz yulduzining suv-tomir (ambulakral) sistemasi asosan qanday vazifani bajaradi?",
-    options: ["Qon aylanishini va qon bosimini boshqarish", "Faqat ayirish moddalarini chiqarish", "Naycha oyoqlar yordamida harakatlanish va o'ljani ushlab turish", "Ovqatni mexanik maydalash"],
+    question: "Dengiz yulduzining lichinkasi ikki tomonlama, kattasi esa radial simmetriyali. Bu nimani ko'rsatadi?",
+    options: ["Radial simmetriya birlamchi, ikki tomonlama simmetriya esa keyinroq, ikkilamchi paydo bo'lgan", "Lichinka va katta hayvon bir xil simmetriyali, farq faqat o'lchamda va oziqlanishda", "Ajdodlari ikki tomonlama simmetriyali bo'lgan, radial simmetriya ikkilamchi paydo bo'lgan", "Radial simmetriya hayvon yirtqichligi tufayli embrionda paydo bo'ladi, lichinkada emas"],
     topic: "Zoologiya",
     answer: 2,
-    explanation: "Suv-tomir sistemasidagi suv bosimi ostida naycha oyoqlar cho'zilib, so'rg'ichlari yordamida substratga yopishadi va ikki pallali mollyuska chig'anog'ini ochishga ham yordam beradi."
+    explanation: "Ekinodermlar lichinkasi ikki tomonlama simmetriyali, kattalari esa radial (besh nurli). Bu ularning ikki tomonlama simmetriyali ajdoddan kelib chiqqanini va radial simmetriya ikkilamchi, sust yashash tarziga moslashish natijasida paydo bo'lganini ko'rsatadi."
   },
   {
     question: "O'simliklarda ildizning eniga o'sishi va yillik halqalarning hosil bo'lishi qaysi to'qimaning faoliyati bilan bog'liq?",
@@ -889,11 +889,11 @@ const questions = [
     explanation: "Ter bezlari orqali suv va ortiqcha tuzlar chiqarilib, tana harorati doimiy bir maromda ushlab turiladi."
   },
   {
-    question: "Yomg'ir chuvalchangining qon aylanish sistemasi qanday tuzilgan?",
-    options: ["Ochiq; qon tana bo'shlig'iga to'kiladi", "Yopiq; ikki kamerali haqiqiy yurak bor", "Qon aylanish sistemasi yo'q, gazlar faqat diffuziya bilan tashiladi", "Yopiq; qon tomirlari orasidagi halqasimon tomirlar yurak vazifasini bajaradi"],
+    question: "Kuchli yomg'irdan keyin yomg'ir chuvalchanglari yer yuziga chiqadi. Buning asosiy sababi nima?",
+    options: ["Yomg'ir suvi chuvalchanglarni oziq bilan ta'minlab, ularni yer yuziga chaqirib chiqaradi", "Yomg'ir tuproqdagi yirtqichlarni ko'paytirib, chuvalchanglarni yuzaga chiqishga majbur qiladi", "Yomg'ir tuproq haroratini oshirib, chuvalchanglarni ko'payish uchun yuzaga chiqaradi", "Suv bilan to'lgan tuproqda kislorod kamayadi, teri orqali nafas olish qiyinlashadi"],
     topic: "Zoologiya",
     answer: 3,
-    explanation: "Halqalilarda qon tomirlar orqali oqadi (yopiq sistema). Yomg'ir chuvalchangida ma'lum segmentlardagi halqasimon tomirlar qisqarib qonni haydaydi."
+    explanation: "Yomg'ir chuvalchangi terisi orqali nafas oladi. Kuchli yomg'irdan keyin tuproq g'ovaklari suv bilan to'lib, erigan kislorod kamayadi va teri orqali gaz almashinuvi qiyinlashadi. Hayvonlar bo'g'ilib qolmaslik uchun yer yuziga chiqadi; tuproq yuzasida ular qushlar uchun oson o'lja bo'lib qoladi."
   },
   {
     question: "Bezgak plazmodiysining asosiy va oraliq xo'jayinlari qaysi javobda to'g'ri ko'rsatilgan?",
@@ -931,11 +931,11 @@ const questions = [
     explanation: "O'rta miya ko'z qorachig'ining yorug'likka javobini, ko'rish va eshitishning yo'naltiruvchi reflekslarini ta'minlaydi."
   },
   {
-    question: "O'simliklarda barglar orqali ortiqcha suvning bug'lanishi qanday ataladi?",
-    options: ["Fotosintez", "Transpiratsiya", "Glikoliz", "Osmos"],
+    question: "Quyidagi sharoitlardan qaysi birida bargdan suv bug'lanishi (transpiratsiya) eng jadal kechadi?",
+    options: ["Salqin, nam va tinch havoda, tuproq namligi yetarli bo'lganda", "Issiq, quruq va shamolli havoda, tuproqda suv yetarli bo'lganda", "Issiq, quruq havoda, tuproq suvsiz bo'lib, og'izchalar yopilganda", "Sovuq, shamolli kechada, og'izchalar tunda to'liq yopilganda"],
     topic: "Botanika",
     answer: 1,
-    explanation: "Transpiratsiya — o'simlik barglaridagi og'izchalar orqali suvning bug'lanish jarayoni bo'lib, u sovish va suvni yuqoriga tortishda yordam beradi."
+    explanation: "Transpiratsiya haroratning ortishi, havo namligining kamayishi va shamol bilan kuchayadi, chunki barg ichidagi nam bug' tezroq chiqib ketadi. Tuproqda suv yetarli bo'lishi og'izchalar ochiq turishini ta'minlaydi. Tuproq quriganda yoki tunda og'izchalar yopilib, transpiratsiya kamayadi."
   },
   {
     question: "Oshqozonda pepsin faqat kislotali muhitda ishlaydi. Ovqat bo'tqasi o'n ikki barmoqli ichakka o'tgach, oqsillar hazmi qanday davom etadi?",
@@ -952,18 +952,18 @@ const questions = [
     explanation: "Denitrifikatsiyalovchi bakteriyalar kislorod yetishmaganda nitratlarni N2 gacha qaytaradi."
   },
   {
-    question: "O'simliklarda ildiz bosimi va transpiratsiya natijasida suv va moddalarning yuqoriga harakatlanishida qaysi fizika-kimyoviy hodisalar muhim rol o'ynaydi?",
-    options: ["Kapillyarlik (sirt tarangligi) va osmos", "Faqat elektr toki", "Magnit maydoni", "Mexanik bosim"],
+    question: "Floema orqali organik moddalar (shakar) qanday harakatlanadi?",
+    options: ["Manbadan (barg) iste'molchi (ildiz, meva) tomon bosim farqi bilan, yuqoriga ham, pastga ham", "Faqat pastga, og'irlik kuchi ta'sirida, tomirlardagi shakar konsentratsiyasiga bog'liq bo'lmay", "Faqat yuqoriga, transpiratsiya hosil qilgan so'ruvchi kuch ta'sirida, ksilema kabi", "Ikki yo'nalishda tasodifiy diffuziya yo'li bilan, hujayralararo bo'shliqlar orqali o'tadi"],
     topic: "Botanika",
     answer: 0,
-    explanation: "Suv ksilemaning ingichka naychalarida kapillyarlik hodisasi va yuqoridan so'ruvchi kuch ta'sirida yuqoriga ko'tariladi."
+    explanation: "Floemada organik moddalar bosim oqimi mexanizmi bilan harakatlanadi: manbada (fotosintez qiluvchi barg) shakar tomir naychalariga o'tib osmotik bosimni oshiradi, iste'molchi (ildiz, meva, yosh barglar) tomonda esa shakar ishlatiladi va bosim pasayadi. Shu bosim farqi oqimni manbadan iste'molchiga yo'naltiradi, shuning uchun harakat yuqoriga ham, pastga ham bo'lishi mumkin. Ksilemada esa suv faqat pastdan yuqoriga ko'tariladi."
   },
   {
-    question: "Tuxum qo'yib ko'payadigan sutemizuvchilar (ornitorink, exidna) qaysi guruhga kiradi?",
-    options: ["Yo'ldoshlilar", "Xaltalilar", "Hasharotxo'rlar", "Kloakalilar (birinchi hayvonlar)"],
+    question: "Ornitorinx tuxum qo'ysa ham, sutemizuvchilar sinfiga kiritiladi. Qaysi belgilar buni asoslaydi?",
+    options: ["Tuxum qo'yishi va dumining yassi bo'lishi, shu sababli u suvda yaxshi suzadi", "Tumshug'ining shox qoplamli bo'lishi va oyoqlaridagi suzgich pardalar", "Kloakasining borligi va ichki urug'lanish yo'li bilan ko'payishi", "Tanasi jun bilan qoplangan, issiqqonli va bolalarini sut bilan boqadi"],
     topic: "Zoologiya",
     answer: 3,
-    explanation: "Kloakalilar tuxum qo'yadi, bolalarini sut bilan boqadi; ularda kloaka bor."
+    explanation: "Ornitorinx tuxum qo'ysa-da, sutemizuvchilarning asosiy belgilari unda bor: tanasi jun bilan qoplangan, issiqqonli, ona sut bezlari ajratgan sut bilan bolalarini boqadi, o'rta quloqda uchta suyakcha va ko'krak-qorin to'sig'i (diafragma) mavjud. Tuxum qo'yish va kloaka ularning qadimgi (sudralib yuruvchilarga o'xshash) belgilari."
   },
   {
     question: "Odam organizmida me'da osti bezining endokrin qismi bo'lgan Langerhans orolchalarining alfa-hujayralari qaysi gormonni ishlab chiqaradi?",
@@ -1022,11 +1022,11 @@ const questions = [
     explanation: "I (O) qon guruhi eritrotsitlarida aglutinogenlar bo'lmagani uchun uni istalgan boshqa guruhdagi bemorlarga quyish mumkin (konservativ yondashuvda)."
   },
   {
-    question: "Qushlardagi havo xaltachalarining asosiy fiziologik ahamiyati nima?",
-    options: ["O'pkadan nafas olishda ham, chiqarishda ham bir yo'nalishda uzluksiz havo oqimini ta'minlash", "Gaz almashinuvi aynan havo xaltachalarining devorida bo'ladi", "Faqat ovoz hosil qilish uchun xizmat qiladi", "Faqat tana haroratini oshirish uchun xizmat qiladi"],
+    question: "Qush o'pkasida gaz almashinuvi sutemizuvchi o'pkasiga nisbatan samaraliroq. Buning asosiy sababi nima?",
+    options: ["Havo o'pkadan bir yo'nalishda uzluksiz o'tadi, har ikkala nafas fazasida ham yangi havo keladi", "O'pkada alveolalar soni juda ko'p bo'lib, havo ularda uzoq vaqt to'xtab turadi", "Havo xaltachalarida ham gaz almashinuvi kechib, qon u yerda kislorodga to'yinadi", "Qushlarning qoni tarkibida gemoglobin yo'q, kislorod plazmada erigan holda tashiladi"],
     topic: "Zoologiya",
     answer: 0,
-    explanation: "Xaltachalar havoni zaxira qilib, o'pka ichidagi nay-kapillyarlardan havoning uzluksiz o'tishini ta'minlaydi (qo'sh nafas olish); gaz almashinuvi o'pkada bo'ladi."
+    explanation: "Qushlar o'pkasi nay (parabronx) tizimidan iborat; havo xaltachalari o'pkadan havoni bir yo'nalishda uzluksiz oqizadi. Shu sababli nafas olishda ham, chiqarishda ham o'pka yangi havo oladi. Xaltachalarda gaz almashinuvi bo'lmaydi, ular faqat havo ombori vazifasini bajaradi."
   },
   {
     question: "Yosh tuzilishi bo'yicha ekspansiv (keng asosli) piramida populyatsiya haqida nimani ko'rsatadi?",
@@ -1155,18 +1155,18 @@ const questions = [
     explanation: "Yorug'lik fazasida hosil bo'lgan ATP va NADPH Kalvin siklida CO2 ni uglevodgacha qaytarish uchun ishlatiladi."
   },
   {
-    question: "O'simliklarda suv va mineral moddalarni ildizdan poya va barglarga o'tkazuvchi naysimon tuzilmalar qanday nomlanadi?",
-    options: ["Floema (loks)", "Kambiy", "Parenxima", "Ksilema (yog'ochlik)"],
+    question: "Daraxt kesimida yillik halqalarning kengligi nimani ko'rsatadi?",
+    options: ["Keng halqa — qurg'oqchil va sovuq yilni, ingichka halqa esa nam va issiq yilni", "Halqa kengligi daraxt yoshiga bog'liq: yosh daraxtda ingichka, qari daraxtda keng bo'ladi", "Halqa kengligi doim bir xil, faqat rangi yoz va qish fasllarini ko'rsatadi", "Keng halqa — nam, issiq va qulay yilni; ingichka halqa — qurg'oqchil yoki noqulay yilni"],
     topic: "Botanika",
     answer: 3,
-    explanation: "Ksilema o'simlikning suv va unda erigan mineral moddalarni pastdan yuqoriga harakatlantiruvchi o'tkazuvchi to'qima tizimidir."
+    explanation: "Yillik halqa kambiy faoliyati natijasida hosil bo'ladi. Qulay yilda (yetarli namlik va issiqlik) kambiy ko'p yog'ochlik hosil qiladi va halqa keng bo'ladi, qurg'oqchil yoki sovuq yilda esa halqa ingichka bo'ladi. Shu sababli halqalar o'tmish iqlimini aniqlashda (dendroxronologiya) ishlatiladi."
   },
   {
-    question: "Evolyutsiya nazariyasida turlarning kelib chiqishi va ularning o'zgarishini tushuntiruvchi ilk ilmiy ta'limotni kim yaratgan?",
-    options: ["Charlz Darvin", "Gregor Mendel", "Jan Batist Lamark", "Lui Paster"],
+    question: "Jirafa bo'yining uzayishini Lamark va Darvin qanday izohlaydi?",
+    options: ["Ikkalasi ham uzun bo'yli individlar tabiiy tanlanishda ustunlik qiladi deb izohlaydi", "Lamark tabiiy tanlanishni, Darvin esa orttirilgan belgilarning irsiylanishini ilgari suradi", "Lamark — orttirilgan belgi irsiylanadi; Darvin — uzun bo'yli variantlar tanlanishda ustun keladi", "Lamark ham, Darvin ham bo'y uzayishini faqat muhit ta'siri natijasi deb hisoblaydi"],
     topic: "Evolyutsiya",
     answer: 2,
-    explanation: "J.B. Lamark o'zining evolyutsion nazariyasida organizmlarning tashqi muhit ta'sirida o'zgarishi va irsiylanishini birinchi bo'lib ilgari surgan."
+    explanation: "Lamark fikricha, jirafa daraxt barglariga yetishga harakat qilib bo'ynini cho'zgan va bu orttirilgan belgi naslga o'tgan. Darvin esa populyatsiyada bo'yi har xil jirafalar bo'lgan, oziq tanqisligida uzun bo'ynilari ko'proq tirik qolib ko'paygan, shu tariqa belgi tabiiy tanlanish bilan mustahkamlangan, deb hisoblaydi."
   },
   {
     question: "Quyidagilardan qaysi biri ikkilamchi suktsessiyaga misol bo'ladi?",
@@ -1204,11 +1204,11 @@ const questions = [
     explanation: "Bakterial infeksiyada neytrofillar eng birinchi o'choqqa o'tadi va bakteriyalarni fagotsitoz qiladi, shu sababli ularning soni keskin oshadi. Limfotsitlar immun javobni, eozinofillar parazit va allergiyani, bazofillar gistamin ajralishini ta'minlaydi."
   },
   {
-    question: "Evolyutsiya nazariyasida populyatsiyalar o'rtasida genlar oqimini ta'minlovchi va yangi genetik xilma-xillikni olib keluvchi omil nima?",
-    options: ["Faqat mitoz", "Faqat tasodifiy ofat", "Migratsiya (individlarning ko'chishi va qo'shilishi)", "Mutatsiyaning to'xtashi"],
+    question: "Hardi–Vaynberg qonuniga ko'ra, qaysi shartlarda populyatsiyada allel chastotalari avlodlar davomida o'zgarmaydi?",
+    options: ["Populyatsiya kichik, tanlanish kuchli, juftlashish faqat qarindoshlar o'rtasida bo'lsa", "Mutatsiyalar tez-tez yuz bersa va boshqa populyatsiyalardan migratsiya doimiy davom etsa", "Populyatsiya katta; tanlanish, mutatsiya va migratsiya yo'q; juftlashish tasodifiy", "Dominant allellar ko'p bo'lib, retsessiv allellar populyatsiyada mutlaqo uchramasa"],
     topic: "Evolyutsiya",
     answer: 2,
-    explanation: "Migratsiya natijasida bir populyatsiyadan boshqasiga individlar o'tib, genlar almashinuvini (genlar oqimini) yuzaga keltiradi."
+    explanation: "Hardi–Vaynberg muvozanati faqat ideal populyatsiyada saqlanadi: son katta (dreyf yo'q), tanlanish, mutatsiya va migratsiya yo'q, juftlashish tasodifiy. Bu shartlardan birining buzilishi allel chastotalarini o'zgartiradi, ya'ni evolyutsiya jarayoni kechadi."
   },
   {
     question: "Quyidagi hasharotlardan qaysi biri to'liq o'zgarish bilan rivojlanadi?",
@@ -1302,11 +1302,11 @@ const questions = [
     explanation: "Tabiiy tanlanish mutatsiyalar natijasida hosil bo'lgan irsiy xilma-xillikni tanlab olib, muhitga moslashishni yuzaga keltiradi."
   },
   {
-    question: "Qushlarda 'ikki karra nafas olish' nimani anglatadi?",
-    options: ["Qushlar nafas olishda ikki marta og'iz ochadi", "Nafas olish faqat havo xaltachalari orqali o'tadi", "Qushlar ham o'pka, ham jabra orqali nafas oladi", "Nafas olishda ham, nafas chiqarishda ham o'pkada gaz almashinuvi davom etadi"],
+    question: "Qushlarda ikki karra nafas olishda, bir porsiya havo qaysi yo'l bilan o'tadi?",
+    options: ["Nafas olishda to'g'ridan-to'g'ri o'pkaga, chiqarishda esa hammasi tashqariga chiqadi", "Nafas olishda old xaltachalarga, chiqarishda orqa xaltachalarga, o'pkaga umuman kirmaydi", "Nafas olishda o'pkaga, chiqarishda orqa xaltachalarga, yana o'pkadan o'tib tashqariga", "Orqa xaltachalarga, undan o'pkaga, so'ng old xaltachalarga va nafas chiqarishda tashqariga"],
     topic: "Zoologiya",
     answer: 3,
-    explanation: "Havo xaltachalari tufayli havo o'pka orqali ikki marta o'tadi, shu sababli nafas olishda ham, nafas chiqarishda ham kislorod qonga o'tadi."
+    explanation: "Birinchi nafas olishda havo orqa havo xaltachalariga o'tadi. Nafas chiqarishda u o'pkaga (gaz almashinuvi shu yerda) yuboriladi. Ikkinchi nafas olishda o'pkadagi havo old xaltachalarga o'tadi, ikkinchi nafas chiqarishda tashqariga chiqariladi. Shu sababli bir porsiya havo ikki nafas siklida o'pkadan bir marta bir yo'nalishda o'tadi."
   },
   {
     question: "Genetika fanida xromosomalarning tuzilishi buzilishi (masalan, bo'lakcha uzilishi, teskari aylanishi yoki almashinuvi) bilan bog'liq mutatsiyalar qanday ataladi?",
@@ -1624,11 +1624,11 @@ const questions = [
     explanation: "Sistolaning boshida qorinchalar bosimi bo'lmacha bosimidan oshib, atrioventrikulyar qopqoqlarni yopadi, lekin aorta va o'pka arteriyasidagi bosimdan hali past bo'ladi, shu sababli yarim oysimon qopqoqlar ham yopiq turadi. Bu izovolyumetrik qisqarish fazasi: qon chiqmaydi, bosim ortadi. Bosim yetarli bo'lgach yarim oysimon qopqoqlar ochiladi."
   },
   {
-    question: "Evolyutsiya nazariyasida rudiment organlar deb nimaga aytiladi?",
-    options: ["Yangi paydo bo'lgan mukammal organlarga", "Ajdodlarida yaxshi rivojlangan, lekin hozirgi kunda o'z ahamiyatini yo'qotib, qoldiq holatda qolgan organlarga", "Vazifasi butunlay boshqa turga o'tgan organlarga", "Faqat o'simliklarga xos bo'lgan o'simtalarga"],
+    question: "Kit va delfinlarda tanasi ichida orqa oyoqlarning kichik suyak qoldig'i saqlanib qolgan. Bu qanday dalil va nimani ko'rsatadi?",
+    options: ["Atavizm: barcha individlarda uchramaydigan, lekin ajdodlarda bo'lgan belgini ko'rsatadi", "Rudiment: ajdodlari quruqlik hayvonlari bo'lgani va oyoqlar vazifasini yo'qotganini", "Analogik a'zo: vazifasi o'xshash, lekin kelib chiqishi har xil bo'lgan a'zoni ko'rsatadi", "Gomologik a'zo: tuzilishi bir xil, vazifasi bir xil bo'lgan a'zolarni ko'rsatadi"],
     topic: "Evolyutsiya",
     answer: 1,
-    explanation: "Rudimentlar (masalan, odamda ko'richakning chuvalchangsimon o'simtasi yoki quloq suprasi mushaklari) ajdodlarda muhim bo'lgan, ammo hozirda ahamiyati kamaygan organlardir."
+    explanation: "Kitlar va delfinlarda orqa oyoq suyaklari rudiment: ular rivojlanmay qolgan, vazifasini yo'qotgan a'zo. Ularning mavjudligi kitsimonlarning quruqlikda yashagan, orqa oyoqli ajdodlardan kelib chiqqanini ko'rsatadi. Atavizm esa barcha individlarda emas, ba'zilarida uzoq ajdod belgisining qayta paydo bo'lishi."
   },
   {
     question: "Hujayraning energetik almashinuvida kislorodli (aerob) bosqich natijasida 1 molekula glyukozadan nechta ATF hosil bo'ladi?",
@@ -1862,11 +1862,11 @@ const questions = [
     explanation: "Bir teshiklilar (ornitorinx, exidna) tuxum qo'yadi va ularning ichak, siydik va jinsiy yo'llari bitta kloakaga ochiladi; sut bezlari, jun va issiq qonlilik esa sutemizuvchilarga xos."
   },
   {
-    question: "Evolyutsiya nazariyasida tirik tabiatning tarixiy taraqqiyoti davomida sodir bo'ladigan umumiy murakkablashuv va taraqqiyot qanday ataladi?",
-    options: ["Biologik regress", "Biologik progress", "Degeneratsiya", "Atavizm"],
+    question: "Biologik progress mezonlari qaysi javobda to'g'ri va to'liq keltirilgan?",
+    options: ["Tuzilishning murakkablashishi, tanlanishning kuchayishi va o'lim darajasining oshishi", "Individlar sonining ortishi, areal kengayishi va kenja taksonlar sonining ko'payishi", "Individlar sonining kamayishi, areal torayishi va turlar xilma-xilligining pasayishi", "Faqat tuzilish soddalashuvi va yashash joyining kengayishi bilan bir vaqtda sodir bo'ladi"],
     topic: "Evolyutsiya",
     answer: 1,
-    explanation: "Biologik progress turning qulashi emas, aksincha sonining ortishi, areolining kengayishi va progressiv rivojlanishidir."
+    explanation: "A.N. Severtsov bo'yicha biologik progress mezonlari: individlar sonining ortishi, areal (tarqalish maydoni) kengayishi va kenja taksonlar (tur, kenja tur) sonining ko'payishi. Biologik regressda bu ko'rsatkichlar pasayadi. Morfofiziologik progress (aromorfoz) esa tuzilish murakkablashishi bilan bog'liq, lekin u biologik progressning zaruriy mezoni emas."
   },
   {
     question: "Birlamchi suktsessiya qaerda boshlanadi?",
@@ -2443,11 +2443,11 @@ const questions = [
     explanation: "Kesuvchi tishlar yemirilgani sari o'sib turadi. Qoziq tishlar bo'lmagani uchun kesuvchi va oziq tishlar orasida tishsiz oraliq (diastema) hosil bo'ladi."
   },
   {
-    question: "Yirtqich sutemizuvchilarning 'yirtqich tishi' deb nomlangan tishlari qaysilar?",
-    options: ["Yuqori va pastki jag'dagi qoziq tishlar","Yuqori va pastki jag'dagi birinchi kesuvchi tishlar","Yuqori jag'ning oxirgi kichik oziq tishi va pastki jag'ning birinchi katta oziq tishi","Yuqori va pastki jag'ning oxirgi katta oziq tishlari"],
+    question: "Qoramol (kavsh qaytaruvchi o'txo'r) tishlari yirtqich mushuk tishlaridan qanday farq qiladi?",
+    options: ["Qoramolda yirtqich tishlar yaxshi rivojlangan, oziq tishlari esa o'tkir va uchli", "Qoramolda kesuvchi tishlar yo'q, qoziq tishlari esa uzun va o'tkir bo'ladi", "Qoramolda yuqori kesuvchi va qoziq tishlari yo'q, oziq tishlari yassi, maydalash uchun", "Qoramolda barcha tishlar bir xil shaklda bo'lib, tish tizimi gomodont hisoblanadi"],
     topic: "Zoologiya",
     answer: 2,
-    explanation: "Qoziq tishlar o'ljani ushlab turadi, yirtqich tishlar esa qaychisimon ishlab go'shtni kesadi."
+    explanation: "Qoramolda yuqori jag'da kesuvchi tishlar o'rnida shoxsimon plastinka bo'ladi, qoziq tishlari rivojlanmagan, oziq tishlari esa keng yassi (o'simlik tolasini maydalash uchun). Yirtqichlarda o'tkir qoziq va yirtqich tishlar bo'lib, go'shtni yirtish va kesishga moslashgan. Sutemizuvchilar tishlari tabaqalashgan (geterodont)."
   },
   {
     question: "Qush embrioni yopiq tuxum ichida rivojlanadi. Uning ayirish mahsuloti sifatida mochevina emas, siydik kislotasi hosil bo'lishining ahamiyati nimada?",
@@ -2471,11 +2471,11 @@ const questions = [
     explanation: "Amnion embrionni suyuq muhitda saqlaydi, allantois ayirish mahsulotlarini yig'adi va gaz almashinuvida qatnashadi. Shuning uchun sudralib yuruvchilar suvdan mustaqil ko'payadi."
   },
   {
-    question: "Qaysi hayvonlar guruhida asab tizimi halqumusti asab halqasi va qorin tomonda joylashgan zanjirsimon asab tugunlaridan iborat?",
-    options: ["Ichakbo'shliqlilar va g'ovaklilar","Xordalilar va ignatanlilar","Halqali chuvalchanglar va bo'g'imoyoqlilar","Yassi va yumaloq chuvalchanglar"],
+    question: "Quyidagi hayvonlardan qaysi birida asab tizimi tarqoq (diffuz) to'r shaklida joylashgan?",
+    options: ["Planariya: bosh gangliyasi va ikki uzun asab tanasidan iborat narvonsimon tizim", "Yomg'ir chuvalchangi: halqumusti halqasi va qorin tomonidagi asab zanjiri", "Gidra: tanasi bo'ylab tarqalgan asab hujayralari to'ri (diffuz asab tizimi)", "Salyangoz: bir necha juft gangliyalar va ular orasidagi asab tolalari"],
     topic: "Zoologiya",
     answer: 2,
-    explanation: "Halqali chuvalchanglar va bo'g'imoyoqlilarda qorin asab zanjiri bo'ladi. Xordalilarda asab tizimi naychasimon va orqa tomonda joylashgan, ichakbo'shliqlilarda esa tarqoq (to'rsimon) tuzilgan."
+    explanation: "Ichakbo'shliqlilarda (gidra, meduza) asab hujayralari tanasi bo'ylab to'r hosil qiladi (diffuz tizim). Yassi chuvalchanglarda bosh gangliya va uzun asab tanalari (narvonsimon), halqalilarda halqumusti halqasi va qorin zanjiri, mollyuskalarda esa gangliyalar tizimi bo'ladi."
   },
   {
     question: "Cho'chqa solityori (Taenia solium) bilan zararlanishning ikki shakli — teniaz va sistitserkoz — qanday farq qiladi?",
