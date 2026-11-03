@@ -56,11 +56,11 @@ const questions = [
     explanation: "Yurak siklida bo'lmachalar qisqarishi 0.1 s, qorinchalar qisqarishi 0.3 s, umumiy tanaffus (pauza) esa 0.4 soniyani tashkil qiladi."
   },
   {
-    question: "Odamda qalqonsimon bez tomonidan ishlab chiqariladigan va organizmda asosiy moddalar almashinuvini (energiya almashinuvini) boshqaruvchi yod saqlovchi gormon qaysi?",
-    options: ["Tiroksin (va triyodtironin)", "Insulin", "Adrenalin", "Paratgormon"],
+    question: "Yod yetishmaydigan hududda yashovchi odamlarda qalqonsimon bez kattalashadi (bo'qoq). Buni qaysi mexanizm to'g'ri izohlaydi?",
+    options: ["Tiroksin kamayadi, gipofiz TTG ajratishni oshiradi va bez hujayralari ko'payib kattalashadi", "Tiroksin ko'payadi, gipofiz TTG ni kamaytiradi va bez hujayralari ko'payib ketadi", "Insulin yetishmaydi, qonda glyukoza to'planib, bez hujayralarini shishirib yuboradi", "Adrenalin ko'payib, bezning qon tomirlarini toraytiradi va to'qimani shishiradi"],
     topic: "Odam anatomiyasi",
     answer: 0,
-    explanation: "Tiroksin gormoni tarkibida yod bo'lib, u barcha to'qimalarda moddalar almashinuvi tezligini va energiya hosil bo'lishini boshqaradi."
+    explanation: "Yod tiroksin sintezi uchun zarur. Yod yetishmasa tiroksin kamayadi, teskari aloqa bo'yicha gipofiz tireotrop gormon (TTG) ajratishni oshiradi. TTG bez hujayralarini ko'paytiradi, shu sababli bezning kattalashishi (endemik bo'qoq) kuzatiladi."
   },
   {
     question: "O'simliklarda barglar va poyalarning qari qismlarini tashqi muhitdan himoya qiluvchi va qalin qoplamani hosil qiluvchi to'qima qanday nomlanadi?",
@@ -112,11 +112,11 @@ const questions = [
     explanation: "Har bir DNK zanjiri azotli asos, dezoksiriboza va fosfat guruhidan iborat nukleotid monomerlarining birikishidan hosil bo'ladi."
   },
   {
-    question: "Kalvin siklida CO2 ni biriktiruvchi ferment va dastlabki barqaror mahsulot qaysi javobda to'g'ri ko'rsatilgan?",
-    options: ["ATP-sintaza; glyukoza", "Katalaza; kraxmal", "RuBisKO fermenti; 3-fosfoglitserat kislota", "Gekzokinaza; PVK"],
+    question: "Kalvin sikli ishlashi uchun yorug'lik fazasidan stromaga qaysi moddalar kelib tushadi?",
+    options: ["ATF va O₂, chunki sikl kislorod yordamida energiya ajratib oladi", "NADH va CO₂, chunki sikl glikolizning davomi sifatida kechadi", "ATF va NADPH, ular CO₂ ni uglevodga qaytarish uchun sarflanadi", "Faqat suv va fotonlar, chunki Kalvin sikli yorug'likka bevosita bog'liq"],
     topic: "Sitologiya",
     answer: 2,
-    explanation: "RuBisKO CO2 ni ribuloza-1,5-bifosfatga biriktiradi va beqaror 6 uglerodli birikma darhol ikkita 3-fosfoglitserat molekulasiga bo'linadi."
+    explanation: "Yorug'lik fazasida (tilakoidlarda) hosil bo'lgan ATF va NADPH stromaga o'tib, Kalvin siklida CO₂ dan uglevod (G3F) sintezida energiya va qaytaruvchi vodorod manbai bo'lib sarflanadi. Sikl bevosita yorug'lik talab qilmaydi, lekin yorug'lik fazasi mahsulotlariga bog'liq."
   },
   {
     question: "Oziq zanjiri: o't → quyon → tulki → burgut. Lindeman qoidasiga (10%) ko'ra burgut biomassasi 5 kg bo'lsa, shu zanjirni ta'minlash uchun kamida qancha o't biomassasi kerak?",
@@ -154,11 +154,11 @@ const questions = [
     explanation: "Barglardan suv bug'langanda ksilemadagi suv ustuni uzluksiz tortiladi, kogeziya va adgeziya kuchlari uni uzilmasdan ushlab turadi."
   },
   {
-    question: "Odam organizmida qon bosimining pasayib ketishiga qarshi javoban qaysi gormon yoki moddalar tizimi faollashadi?",
-    options: ["Faqat insulin", "Faqat tiroksin", "Renin-angiotensin-aldosteron tizimi va adrenalin", "Faqat safro suyuqligi"],
+    question: "Buyrakka qon oqimi kamayganda renin ajraladi. Renin-angiotensin-aldosteron tizimi qon bosimiga qanday ta'sir qiladi?",
+    options: ["Aldosteron natriyni siydik bilan chiqarib, qon hajmini kamaytiradi va bosim pasayadi", "Angiotensin II qon tomirlarini kengaytiradi, qarshilik kamayadi va bosim pasayadi", "Angiotensin II tomirlarni toraytiradi, aldosteron Na⁺ va suvni ushlaydi, bosim ko'tariladi", "Renin qonda glyukoza miqdorini kamaytiradi va shu orqali bosimni barqarorlashtiradi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "Qon bosimi tushganda buyrak renin ajratib, qon tomirlarini toraytiruvchi va bosimni ko'taruvchi angiotensin-aldosteron tizimini faollashtiradi."
+    explanation: "Buyrakka qon kamayganda renin ajraladi, u angiotensinogenni angiotensin I ga, so'ng angiotensin II ga aylantiradi. Angiotensin II tomirlarni toraytiradi va buyrak usti bezidan aldosteron ajralishini oshiradi. Aldosteron Na⁺ va suvning qayta so'rilishini kuchaytiradi, qon hajmi ortadi va bosim ko'tariladi."
   },
   {
     question: "Odam organizmida erkak jinsiy hujayralari — spermatozoyidlar yetilib chiqadigan va harakatchanligini ta'minlaydigan asosiy organ qanday ataladi?",
@@ -189,11 +189,11 @@ const questions = [
     explanation: "Testosteron asosan urug'donlarning Leydig hujayralari tomonidan ishlab chiqariladi va ikkilamchi jinsiy belgilarni boshqaradi."
   },
   {
-    question: "Odam organizmida qon shakarining (glyukoza) miqdori normadan oshib ketganda uni kamaytirish uchun qaysi organ va gormon faollashadi?",
-    options: ["Jigar va adrenalin", "Buyrak va vasopressin", "Oshqozon osti bezi va insulin gormoni", "Qalqonsimon bez va tiroksin"],
+    question: "Odam uzoq och qolganda qonda glyukoza miqdori kamayadi. Qaysi javob organizmning javobini to'g'ri ifodalaydi?",
+    options: ["Insulin ajralishi ortib, jigarda glyukoza glikogenga aylanishi kuchayadi", "Adrenalin va insulin birgalikda glyukozaning hujayralarga o'tishini tezlashtiradi", "Glyukagon ajralib, jigarda glikogen parchalanadi va glyukoza qonga chiqariladi", "Qalqonsimon bez tiroksin ajratib, glyukozani yog'ga aylantirib saqlaydi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "Qondagi glyukoza ko'payganda oshqozon osti bezining beta-hujayralari insulin ajratib, ortiqcha qandni to'qimalarga va jigarga glikogen shaklida zaxiraga oldiradi."
+    explanation: "Glyukoza kamayganda oshqozon osti bezining alfa hujayralaridan glyukagon ajraladi. U jigarda glikogenning glyukozagacha parchalanishini kuchaytiradi, glyukoza qonga chiqadi va uning miqdori ko'tariladi. Insulin esa aksincha, glyukozani kamaytiradi."
   },
   {
     question: "O'simliklarda suv bug'lanishini (transpiratsiyani) kamaytiruvchi moslanishlarga qaysilar kiradi?",
@@ -231,11 +231,11 @@ const questions = [
     explanation: "Masalan, akula (baliq) va delfin (sutemizuvchi) tana shakli suvda tez suzishga moslashgani uchun o'xshash; bu konvergensiyaga misol."
   },
   {
-    question: "Odamda buyraklar faoliyatining neyrogumoral boshqaruvida suvning qonga qayta so'rilishini (reabsorbsiyasini) kuchaytiruvchi gormon qaysi?",
-    options: ["Insulin", "Adrenalin", "Somatotropin", "Vasopressin (antidiuretik gormon - ADG)"],
+    question: "Gipofiz orqa bo'lagi shikastlangan bemor kuniga 15 litrgacha suyultirilgan siydik ajratmoqda. Buning sababi nima?",
+    options: ["Insulin yetishmaydi, glyukoza siydik bilan chiqib, o'zi bilan suvni olib ketadi", "Aldosteron ko'payib, natriy siydik bilan chiqib ketadi va suv ham ergashadi", "Buyrak usti bezi adrenalin ajratmaydi, shu sababli siydik hosil bo'lishi kuchayadi", "Vasopressin (ADG) yetishmaydi, yig'uvchi naychalarda suvning qayta so'rilishi kamayadi"],
     topic: "Odam anatomiyasi",
     answer: 3,
-    explanation: "Gipofizning orqa bo'lagidan ajraladigan vasopressin (ADG) buyrak naychalarida suvning qayta so'rilishini kuchaytirib, siydik miqdorini kamaytiradi."
+    explanation: "Vasopressin (ADG) gipofiz orqa bo'lagidan ajraladi va yig'uvchi naychalarda suvning qayta so'rilishini kuchaytiradi. U yetishmasa, suv qayta so'rilmay, ko'p miqdorda suyultirilgan siydik ajraladi (qandsiz diabet). Insulin yetishmasligida esa siydikda glyukoza bo'ladi."
   },
   {
     question: "Yalang'och qoyatosh yuzasida birlamchi sukkessiyani qaysi organizmlar boshlab beradi?",
@@ -371,11 +371,11 @@ const questions = [
     explanation: "Kichik qon aylanish doirasi o'ng qorinchadan chiqib, o'pka kapilyarlarida kislorodga boyib, chap bo'lmachaga kelib tugaydi."
   },
   {
-    question: "Odamda qon guruhlari sistemasida IV (AB) qon guruhiga ega bo'lgan shaxslarning zardobida qanday aglyutininlar mavjud?",
-    options: ["Faqat alfa", "Faqat beta", "Aglyutininlar umuman yo'q", "Ham alfa, ham beta"],
+    question: "II (A) qon guruhli bemorga, Rh bir xil bo'lganda, qaysi guruhdagi qon xavfsiz quyiladi?",
+    options: ["Faqat II guruh, chunki boshqa guruhlar albatta aglyutinatsiya beradi", "II va IV guruhlar, chunki IV guruh zardobida aglyutininlar bo'lmaydi", "I va II guruhlar, chunki I guruh eritrotsitlarida aglyutinogenlar yo'q", "III va IV guruhlar, chunki ular eritrotsitlarida B aglyutinogeni bo'ladi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "IV qon guruhida eritrotsitlarda A va B aglyutinogenlar bo'lib, zardobda aglyutininlar (alfa va beta) bo'lmaydi."
+    explanation: "II guruh bemorning zardobida β aglyutinini bor. I guruh eritrotsitlarida aglyutinogenlar yo'q, shuning uchun aglyutinatsiyaga uchramaydi; II guruh eritrotsitlarida A bor, β bilan reaksiyaga kirishmaydi. Demak I va II guruh quyilishi mumkin. IV guruh eritrotsitlarida B bor va β bilan aglyutinatsiya beradi."
   },
   {
     question: "Genetika fanida digibrid chatishtirishda (ikkita belgi bo'yicha) F2 avlodda fenotip bo'yicha ajralish nisbati qanday bo'ladi (Mendelning 3-qonuni)?",
@@ -595,11 +595,11 @@ const questions = [
     explanation: "Allel genlar gomolog xromosomalarning bir xil uchastkalarida joylashib, bitta belgining turli ko'rinishlarini ifodalaydi."
   },
   {
-    question: "Odamda yurak ishining avtomatikligi (tashqi nerv ta'sirisiz ham o'z-o'zidan qisqarishi) qaysi tuzilma tomonidan ta'minlanadi?",
-    options: ["Uzunchoq miya markazlari", "Qon tomir devoridagi retseptorlar", "Sinus-bo'lmacha tugunidagi o'tkazuvchi tizim maxsus muskul hujayralari", "Miyacha"],
+    question: "Sinus-bo'lmacha tuguni shikastlanganda yurak butunlay to'xtamaydi, lekin ritm sekinlashadi. Buni qanday izohlash mumkin?",
+    options: ["Yurak mushagi nerv impulslarisiz ham doimiy tonusda bo'lib, qisqarishni boshlaydi", "Bo'lmachalar qisqarmay qoladi, qorinchalar esa faqat qon bosimi ta'sirida harakatlanadi", "Atrioventrikulyar tugun va Purkinye tolalari ritm beradi, lekin ancha past chastotada", "Simpatik nerv markazlari ritmni doimiy ushlab turadi va chastotasini o'zlari belgilaydi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "Yurakning o'tkazuvchi tizimi (sinus-bo'lmacha tuguni) o'zida elektr impulsini hosil qilish xususiyatiga ega bo'lib, yurakning ritmik avtomatik qisqarishini ta'minlaydi."
+    explanation: "Sinus-bo'lmacha tuguni birinchi darajali kardiostimulyator (taxminan 60–80 urish/min). U ishdan chiqsa, ritmni atrioventrikulyar tugun (taxminan 40–50) va Purkinye tolalari (20–40 atrofida) o'z zimmasiga oladi, shu sababli yurak to'xtamaydi, lekin sekin uradi."
   },
   {
     question: "Odamda limfa sistemasining eng yirik tomiri qayerga quyiladi?",
@@ -847,11 +847,11 @@ const questions = [
     explanation: "Urug' tinch holatdan faol rivojlanishga o'tishi uchun suv (gidratatsiya), kislorod (nafas olish uchun) va maqbul harorat zarur."
   },
   {
-    question: "Odamda xotira, ta'lim olish va axborotni saqlash jarayonlari bosh miyaning qaysi qismi bilan bevosita bog'liq?",
-    options: ["Faqat uzunchoq miya", "Faqat miyacha", "Katta yarim sharlar po'stlog'i va limfik tizim", "Orqa miya"],
+    question: "Ikki tomonlama gippokamp shikastlangan bemor yangi voqealarni eslab qola olmaydi, lekin yoshlik xotiralari saqlangan. Bu nimani ko'rsatadi?",
+    options: ["Gippokamp uzoq muddatli xotiralarni doimiy saqlaydigan joy hisoblanadi", "Eski xotiralar faqat gippokampda, yangilari esa orqa miyada shakllanadi", "Gippokamp qisqa muddatli xotirani uzoq muddatliga o'tkazishda qatnashadi", "Xotira faqat miyacha bilan bog'liq, u yangi axborotni qabul qilmaydi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "Katta yarim sharlar po'stlog'i va limbik tizim xotirani shakllantirish, o'rganish va tajribalarni saqlashda markaziy rol o'ynaydi."
+    explanation: "Gippokamp (limfik tizim) yangi axborotni qisqa muddatli xotiradan uzoq muddatli xotiraga o'tkazish (konsolidatsiya) uchun zarur. Shikastlanganda yangi eslab qolish buziladi, ilgari shakllangan uzoq muddatli xotiralar esa asosan po'stloqda saqlanadi va yo'qolmaydi."
   },
   {
     question: "O'simliklarda barg og'izchalari orqali kislorod va karbonat angidrid almashinuvi qaysi jarayon orqali amalga oshiriladi?",
@@ -910,11 +910,11 @@ const questions = [
     explanation: "Qon ivish jarayonining oxirgi bosqichida trombin fermenti ta'sirida eriydigan fibrinogen erimaydigan fibrin tolasiga aylanib laxta hosil qiladi."
   },
   {
-    question: "Odamda qonning shakqli elementlaridan biri bo'lgan trombotsitlarning asosiy vazifasi nimadan iborat?",
-    options: ["Kislorod tashish", "Immunitetni ta'minlash", "Qon ivish jarayonida (gemostazda) qatnashish", "Oqsil sintez qilish"],
+    question: "Gemofiliyada qon ivishi uzoq cho'ziladi, trombotsitlar soni esa normal. Buning sababi nima?",
+    options: ["Trombotsitlar shikastlangan joyga umuman yopishmaydi va tomir devori yopilmaydi", "Eritrotsitlar yetishmaydi, shu sababli qon yetarli quyuqlashmaydi va ivimaydi", "Ivish omillaridan biri (VIII yoki IX) yetishmaydi, shu sababli fibrin sekin hosil bo'ladi", "Leykotsitlar soni haddan ortiq ko'p, ular hosil bo'lgan fibrinni parchalab yuboradi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "Trombotsitlar (qon plastinkalari) qon tomir shikastlanganda uning yuzasiga yopishib, laxta hosil qilish va qon ketishini to'xtatishda boshlang'ich rolni o'ynaydi."
+    explanation: "Gemofiliya — ivish omillari (VIII yoki IX) yetishmasligi bilan bog'liq irsiy kasallik (X-xromosomaga birikkan retsessiv). Trombotsitlar soni normal bo'lsa-da, fibrin hosil bo'lish zanjiri buzilgani uchun ivish sust kechadi va qon uzoq oqadi."
   },
   {
     question: "Odamda o'pkaning funksional birligi bo'lib, gazlar almashinuvi yuz beradigan eng kichik pufakchalar qanday ataladi?",
@@ -938,11 +938,11 @@ const questions = [
     explanation: "Transpiratsiya — o'simlik barglaridagi og'izchalar orqali suvning bug'lanish jarayoni bo'lib, u sovish va suvni yuqoriga tortishda yordam beradi."
   },
   {
-    question: "Odamda ovqat hazm qilish sistemasida oqsillarni parchalovchi asosiy fermentlar qayerlarda ishlab chiqariladi?",
-    options: ["Faqat og'iz bo'shlig'ida", "Faqat yo'g'on ichakda", "Oshqozon, oshqozon osti bezi va ingichka ichak", "Jigarning o'zida"],
+    question: "Oshqozonda pepsin faqat kislotali muhitda ishlaydi. Ovqat bo'tqasi o'n ikki barmoqli ichakka o'tgach, oqsillar hazmi qanday davom etadi?",
+    options: ["Pepsin ishqoriy muhitda ham ishlashda davom etib, oqsillarni aminokislotalargacha parchalaydi", "Hazm to'xtaydi, chunki oqsillar faqat oshqozonda parchalanadi va keyin so'riladi", "Oshqozon osti bezi shirasi muhitni neytrallab, tripsin va ximotripsin oqsillarni parchalaydi", "O't pufagi o't kislotalari oqsillarni to'g'ridan-to'g'ri aminokislotalargacha parchalaydi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "Oshqozonda pepsin, oshqozon osti bezida tripsin va ingichka ichakda peptidazalar oqsillarni bosqichma-bosqich parchalaydi."
+    explanation: "Pepsin kislotali muhitda ishlaydi. O'n ikki barmoqli ichakda oshqozon osti bezi shirasidagi bikarbonatlar xlorid kislotani neytrallaydi, muhit ishqoriy bo'ladi. Shu muhitda tripsin va ximotripsin (hamda ichak peptidazalari) oqsillarni davom ettirib parchalaydi. O't kislotalari esa yog'larni emulsiyalaydi, oqsillarni emas."
   },
   {
     question: "Qaysi jarayon tuproqdagi azotni atmosferaga molekulyar azot (N2) holida qaytaradi?",
@@ -1057,11 +1057,11 @@ const questions = [
     explanation: "Gumoral boshqaruv tizimi endokrin bezlar ishlab chiqargan gormonlarni qon va limfa orqali to'qima hamda organlarga yetkazib beradi."
   },
   {
-    question: "Apoptozning nekrozdan asosiy farqi nima?",
-    options: ["Apoptoz faqat jarohatdan keyin boshlanadi", "Apoptozda hujayra yorilib, ichidagi moddalari to'qimaga to'kiladi", "Apoptoz genetik dasturlangan, yallig'lanishsiz kechuvchi hujayra o'limi", "Apoptoz faqat prokariotlarda kuzatiladi"],
+    question: "Itbaliq dumining yo'qolishi va embrionda barmoqlar orasidagi to'qima yo'qolishi qaysi jarayonga misol va uning xususiyati nima?",
+    options: ["Nekroz: hujayralar shishib yoriladi va atrofdagi to'qimada yallig'lanish rivojlanadi", "Fagotsitoz: hujayralar bir-birini yutib, ularning o'rnida yangi hujayralar paydo bo'ladi", "Apoptoz: hujayralar genetik dastur bo'yicha nobud bo'ladi, yallig'lanish kuzatilmaydi", "Mutatsiya: DNK o'zgarishi tufayli hujayralar nazoratsiz bo'linadi, o'sma paydo bo'ladi"],
     topic: "Sitologiya",
     answer: 2,
-    explanation: "Apoptozda hujayra tartibli ravishda qisqarib, apoptoz tanachalariga bo'linadi va makrofaglar tomonidan yutiladi; embrional rivojlanish va to'qimalarni yangilashda muhim."
+    explanation: "Itbaliq dumining so'rilishi va barmoqlar orasidagi pardaning yo'qolishi apoptoz (dasturlangan hujayra o'limi) misollari. Apoptozda hujayralar genetik dastur asosida kichrayib bo'laklarga bo'linadi, ularni fagotsitlar yutadi va yallig'lanish bo'lmaydi. Nekrozda esa hujayra shikastlanib yoriladi va yallig'lanish rivojlanadi."
   },
   {
     question: "Malpigi naylari ayirish organi vazifasini bajaradigan hayvonlar qaysi javobda to'g'ri ko'rsatilgan?",
@@ -1085,11 +1085,11 @@ const questions = [
     explanation: "T-limfotsitlar suyak ko'migida hosil bo'lsa-da, timus (ayrisimon bez) orqali o'tib maxsus immun vazifasiga ega bo'lib yetiladi."
   },
   {
-    question: "Odamda markaziy asab tizimining refleks yoyi qaysi ketma-ketlikda tuzilgan?",
-    options: ["Ishchi organ -> Retseptor -> Miyaga", "Harakatlantiruvchi neyron -> Retseptor -> Markaz", "Faqat orqa miya -> Musqul", "Retseptor -> Sezuvchi neyronga -> Markaziy nerv tizimi -> Harakatlantiruvchi neyronga -> Ishchi organ"],
+    question: "Tizza refleksi yoyida nechta neyron ishtirok etadi?",
+    options: ["Uchta: sezuvchi, oraliq va harakatlantiruvchi neyronlar", "To'rtta: sezuvchi, ikkita oraliq va harakatlantiruvchi neyronlar", "Bitta: faqat harakatlantiruvchi neyron bevosita mushakni qo'zg'atadi", "Ikkita: sezuvchi va harakatlantiruvchi neyronlar (oraliq neyron yo'q)"],
     topic: "Odam anatomiyasi",
     answer: 3,
-    explanation: "Refleks yoyi beshta asosiy qismdan iborat bo'lib, qo'zg'alish retseptordan boshlanib ishchi organda yakunlanadi."
+    explanation: "Tizza refleksi — monosinaptik refleks: sezuvchi neyron orqa miyada to'g'ridan-to'g'ri harakatlantiruvchi neyronga o'tadi, oraliq neyron bo'lmaydi. Ko'pchilik boshqa reflekslar (masalan, og'riqdan qo'lni tortib olish) kamida bitta oraliq neyronni o'z ichiga oladi."
   },
   {
     question: "Xordalilar tipiga xos belgilar qaysi qatorda to'g'ri keltirilgan?",
@@ -1197,11 +1197,11 @@ const questions = [
     explanation: "S-fazada DNK ikki marta ortgani uchun G2 va metafazada har bir xromosoma ikkita xromatidadan iborat: 46 xromosoma, 92 xromatida, 4c DNK."
   },
   {
-    question: "Odam qonidagi leykotsitlarning asosiy vazifasi nimadan iborat?",
-    options: ["Organizmga kirgan yot jismlar va mikroblarga qarshi kurashish (himoya)", "Kislorod tashish", "Qon ivishini ta'minlash", "Ozuqa moddalarni to'qimalarga yetkazish"],
+    question: "Bakterial yallig'lanishning dastlabki soatlarida qonda qaysi leykotsitlar soni eng ko'p oshadi va ular qanday vazifa bajaradi?",
+    options: ["Neytrofillar: yallig'lanish o'chog'iga o'tib, bakteriyalarni fagotsitoz yo'li bilan yutadi", "Limfotsitlar: yallig'lanish o'chog'ida bakteriyalarni to'g'ridan-to'g'ri hazm qiladi", "Eozinofillar: bakteriyalarni birinchi bo'lib yutib, so'ng antitanalar sintezlaydi", "Bazofillar: gistamin ajratib, antitanalar hosil qilishda asosiy rol o'ynaydi"],
     topic: "Odam anatomiyasi",
     answer: 0,
-    explanation: "Leykotsitlar (oq qon tanachalari) fagotsitoz va antitelolar hosil qilish orqali organizmni infeksiyalardan himoya qiladi."
+    explanation: "Bakterial infeksiyada neytrofillar eng birinchi o'choqqa o'tadi va bakteriyalarni fagotsitoz qiladi, shu sababli ularning soni keskin oshadi. Limfotsitlar immun javobni, eozinofillar parazit va allergiyani, bazofillar gistamin ajralishini ta'minlaydi."
   },
   {
     question: "Evolyutsiya nazariyasida populyatsiyalar o'rtasida genlar oqimini ta'minlovchi va yangi genetik xilma-xillikni olib keluvchi omil nima?",
@@ -1225,11 +1225,11 @@ const questions = [
     explanation: "Tabiiy tanlanish eng muvaffaqiyatli mutatsiyaga ega individlarni tanlab olib, ularning keyingi avlodga o'tishini ta'minlaydi."
   },
   {
-    question: "Krebs sikli (trikarbon kislotalar sikli) hujayraning qaysi qismida kechadi?",
-    options: ["Sitoplazmada", "Yadroda", "Mitoxondriya matriksida", "Golji apparatida"],
+    question: "Aerob nafasda CO₂ qaysi bosqichlarda ajralib chiqadi?",
+    options: ["Faqat glikolizda, sitoplazmada glyukoza ikkita piruvatgacha parchalanganda", "Faqat oksidlanish zanjirida (elektron tashish), mitoxondriya kristalarida", "Piruvatning atsetil-KoA ga aylanishida va Krebs siklida (mitoxondriya matriksi)", "Glikolizda va oksidlanish zanjirida, ya'ni ATF hosil bo'lgan hamma bosqichlarda"],
     topic: "Sitologiya",
     answer: 2,
-    explanation: "Krebs sikli mitoxondriya matriksida o'tadi, oxirgi bosqich — oksidlovchi fosforlanish — kristalarda."
+    explanation: "Glikolizda (sitoplazma) CO₂ ajralmaydi. CO₂ piruvat atsetil-KoA ga aylanganda va Krebs siklida (mitoxondriya matriksi) dekarboksillanish natijasida ajraladi. Oksidlanish zanjirida esa kislorod qabul qilinib suv hosil bo'ladi."
   },
   {
     question: "Elton ekologik piramidalarining qaysi turi hech qachon teskari bo'lmaydi?",
@@ -1351,11 +1351,11 @@ const questions = [
     explanation: "C4-yo'lida CO2 qin hujayralarida konsentratsiyalanadi, bu fotonafas olish yo'qotishlarini kamaytiradi va og'izchalar qisman yopiq bo'lganda ham samaradorlikni saqlaydi."
   },
   {
-    question: "Odam organizmida buyrak usti bezining qobiq qismi gormonlaridan biri bo'lgan aldosteronning asosiy vazifasi nima?",
-    options: ["Qon shakarini keskin oshirish", "Qonda natriy ionlarini ushlab qolish va kaliy chiqarilishini boshqarish", "Yurak urish tezligini kamaytirish", "Suyaklarda kaltsiy to'plash"],
+    question: "Buyrak usti bezi po'stlog'i faoliyati pasayganda (Addison kasalligi) qon plazmasida qanday o'zgarishlar kuzatiladi?",
+    options: ["Natriy miqdori ortadi, kaliy kamayadi va qon bosimi ko'tariladi", "Natriy miqdori kamayadi, kaliy ortadi va qon bosimi pasayadi", "Natriy va kaliy o'zgarmaydi, faqat glyukoza miqdori keskin ortadi", "Kaltsiy miqdori keskin ortadi, qon ivishi tezlashadi va bosim ko'tariladi"],
     topic: "Odam anatomiyasi",
     answer: 1,
-    explanation: "Aldosteron mineralokortikoid bo'lib, organizmda tuz va suv muvozanatini (natriyning qayta so'rilishini) tartibga soladi."
+    explanation: "Po'stloq gormoni aldosteron buyrakda Na⁺ qayta so'rilishi va K⁺ chiqarilishini kuchaytiradi. Uning yetishmasligida Na⁺ siydik bilan yo'qoladi (plazmada kamayadi), K⁺ esa ushlanib qolib ortadi; suv ham yo'qolib, qon hajmi va bosim pasayadi, darmonsizlik paydo bo'ladi."
   },
   {
     question: "Genetika fanida nuklein kislotalar (DNK va RNK) tarkibiga kiruvchi purin asoslari qaysilar?",
@@ -1421,11 +1421,11 @@ const questions = [
     explanation: "Tabiatda organizmlar bitta emas, bir nechta oziq turlari bilan oziqlangani uchun oddiy zanjirlar o'zaro kesishib oziq to'rini hosil qiladi."
   },
   {
-    question: "Odamda qon guruhlari qaysi tizim bo'yicha eng keng tarqalgan holda tasniflanadi?",
-    options: ["MN tizimi", "X va Y tizimi", "ABO tizimi va Rezus faktor", "Faqat glyukoza tizimi"],
+    question: "Rh-manfiy ona Rh-musbat homilaga ikkinchi marta homilador bo'lganda xavf nima uchun ortadi?",
+    options: ["Ikkinchi homilada homila Rh-musbat geni faollashib, uning eritrotsitlari qalinlashib qoladi", "Onaning Rh-manfiy eritrotsitlari homilaga o'tib, uning qon guruhini Rh-manfiyga o'zgartiradi", "Onada avval hosil bo'lgan Rh antitanalar platsentadan o'tib, homila eritrotsitlarini parchalaydi", "Otaning Rh-musbat gametalari ona organizmida to'planib, nasl genotipini o'zgartirib yuboradi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "K. Landshteyner kashf etgan ABO tizimi va Rezus (Rh) faktor odam qon quyish amaliyotida eng muhim tasnif hisoblanadi."
+    explanation: "Birinchi homiladagi tug'ruq paytida homila Rh-musbat eritrotsitlari onaning qoniga o'tishi mumkin, ona immun tizimi Rh antigeniga qarshi antitanalar va xotira hujayralari hosil qiladi. Ikkinchi Rh-musbat homilada bu antitanalar platsentadan o'tib homila eritrotsitlarini parchalaydi (gemolitik kasallik)."
   },
   {
     question: "Turning ekologik nishasi nima?",
@@ -1484,11 +1484,11 @@ const questions = [
     explanation: "Libix qonuniga ko'ra, hosildorlikni eng kam miqdorda bo'lgan zarur omil belgilaydi, boshqa omillar mo'l bo'lsa ham."
   },
   {
-    question: "Hujayra energetik almashinuvining kislorodli (aerob) bosqichi natijasida 1 molekula glyukozadan jami nechta molekula ATF sintezlanadi?",
-    options: ["2 ta ATF", "4 ta ATF", "0 ta ATF", "36 yoki 38 ta ATF"],
+    question: "Kislorod yetishmaganda (sut kislotali bijg'ish) 1 molekula glyukozadan sof necha ATF hosil bo'ladi va nega energiya shuncha kam?",
+    options: ["36 ATF, chunki kislorodsiz sharoitda ham mitoxondriya to'liq ishlaydi", "4 ATF, chunki glikolizda boshlang'ich ikki molekula ATF sarflanmaydi", "38 ATF, chunki sut kislotasi sitoplazmada to'liq oksidlanib ketadi", "2 ATF, chunki glyukoza to'liq oksidlanmaydi va NADH zanjirda ishlatilmaydi"],
     topic: "Sitologiya",
     answer: 3,
-    explanation: "Glikoliz va mitoxondriyadagi to'liq (aerob) parchalanish natijasida jami 36-38 molekula ATF energiyasi hosil bo'ladi."
+    explanation: "Glikolizda 1 glyukozadan 4 ATF hosil bo'ladi, 2 ATF sarflanadi, sof foyda 2 ATF. Kislorod yo'q bo'lsa NADH oksidlanish zanjirida ishlatilmaydi, sut kislotasi esa parchalanmaydi, shu sababli aerob nafasdagi 36–38 ATF ga nisbatan energiya juda kam bo'ladi."
   },
   {
     question: "O'simliklarda ikki marta urug'lanish jarayonini kashf etgan buyuk rus olimi kim?",
@@ -1617,11 +1617,11 @@ const questions = [
     explanation: "Bu faol transport bo'lib, bitta ATP sarflanadi va membranada ion gradienti hamda potensiallar farqini hosil qiladi."
   },
   {
-    question: "Odamda yurak qorinchalarining qisqarishi (sistolasi) paytida qaysi yurak qopqoqlari ochilib, qon tomirlarga haydaladi?",
-    options: ["Yarim oysimon qopqoqlar (aorta va o'pka arteriyasi og'zidagi)", "Tabaqali (mitral va uch tabaqali) qopqoqlar", "Faqat bo'lmacha qopqoqlari", "Hech qaysi qopqoq ochilmaydi"],
+    question: "Yurak qorinchalari sistolasining boshlang'ich (izovolyumetrik) fazasida qopqoqlar qanday holatda bo'ladi?",
+    options: ["Barcha qopqoqlar yopiq, qorincha bosimi ortib boradi, qon hali chiqmaydi", "Atrioventrikulyar qopqoqlar ochiq va yarim oysimon qopqoqlar yopiq, qorinchalar to'lib boradi", "Atrioventrikulyar qopqoqlar yopiq, yarim oysimon qopqoqlar ochiq, qon aortaga chiqadi", "Ikkala turdagi qopqoqlar ochiq, qon bo'lmacha va aortaga bir vaqtda o'tadi"],
     topic: "Odam anatomiyasi",
     answer: 0,
-    explanation: "Qorinchalar qisqarganda tabaqali qopqoqlar yopilib bo'lmachalarga qon qaytishini to'xtatadi, yarim oysimon qopqoqlar ochilib esa qon aorta va o'pka arteriyasiga o'tadi."
+    explanation: "Sistolaning boshida qorinchalar bosimi bo'lmacha bosimidan oshib, atrioventrikulyar qopqoqlarni yopadi, lekin aorta va o'pka arteriyasidagi bosimdan hali past bo'ladi, shu sababli yarim oysimon qopqoqlar ham yopiq turadi. Bu izovolyumetrik qisqarish fazasi: qon chiqmaydi, bosim ortadi. Bosim yetarli bo'lgach yarim oysimon qopqoqlar ochiladi."
   },
   {
     question: "Evolyutsiya nazariyasida rudiment organlar deb nimaga aytiladi?",
@@ -1680,11 +1680,11 @@ const questions = [
     explanation: "AaBb organizm 4 xil gameta beradi (AB, Ab, aB, ab), aabb esa faqat bitta (ab) gameta beradi. Chatishtirganda 1/4 qism (25%) aabb chiqadi."
   },
   {
-    question: "Hujayra devori bor o'simlik hujayrasi gipotonik eritmaga tushganda nima sodir bo'ladi?",
-    options: ["Suv hujayradan chiqib, plazmoliz boshlanadi", "Suv hujayraga kiradi, turgor bosimi ortadi, lekin hujayra devori yorilishga yo'l qo'ymaydi", "Hujayra devori eriydi va hujayra yoriladi", "Hech qanday suv harakati bo'lmaydi"],
+    question: "Eritrotsit va o'simlik hujayrasi bir xil gipotonik eritmaga tushganda qanday farq kuzatiladi?",
+    options: ["Ikkalasi ham yorilib ketadi, chunki ikkalasiga suv kirishi cheklanmaydi va to'xtamaydi", "Eritrotsit shishib yoriladi, o'simlik hujayrasi devori tufayli yorilmay, turgor ortadi", "Ikkalasi ham suv yo'qotib plazmolizga uchraydi va hajmi sezilarli kichrayadi", "Eritrotsit turgori ortib mustahkamlanadi, o'simlik hujayrasi esa shishib yoriladi"],
     topic: "Sitologiya",
     answer: 1,
-    explanation: "Gipotonik muhitda osmos tufayli suv hujayra ichiga kiradi; mustahkam hujayra devori hujayrani turgor holatida ushlab turadi, hayvon hujayrasi esa yorilib ketishi mumkin."
+    explanation: "Gipotonik eritmada suv hujayraga kiradi. Eritrotsitda hujayra devori yo'q, shuning uchun u shishib yoriladi (gemoliz). O'simlik hujayrasida mustahkam devor bor: suv kirishi turgor bosimini oshiradi, devor qarshiligi muvozanatga yetgach suv kirishi to'xtaydi va hujayra yorilmaydi."
   },
   {
     question: "O'simliklarda barglarning tuzilishida fotosintez jarayoni eng jadal kechadigan va ko'p miqdorda xloroplast saqlovchi asosiy to'qima qismi qaysi?",
@@ -1785,11 +1785,11 @@ const questions = [
     explanation: "Buyrak usti bezining miya qismi adrenalin va noradrenalin ishlab chiqarib, organizmni stress va xavf-xatar holatlariga tezkor tayyorlaydi."
   },
   {
-    question: "Odam organizmida oqsillar hazm bo'lishi ingichka ichakda qaysi fermentlar yordamida yakuniga yetkaziladi?",
-    options: ["Amilaza va maltaza", "Lipaza", "Tripsin va ximotripsin (peptidazalar)", "Pepsin va xlorid kislota"],
+    question: "Jigardan o't yo'li to'silib, o't o'n ikki barmoqli ichakka tushmay qolsa, qaysi jarayonlar buziladi?",
+    options: ["Oqsillarning oshqozonda pepsin ta'sirida parchalanishi to'xtab qoladi", "Uglevodlarning og'iz bo'shlig'ida so'lak amilazasi bilan parchalanishi to'xtaydi", "Yog'larning emulsiyalanishi va yog'da eruvchi vitaminlarning so'rilishi buziladi", "Suvning yo'g'on ichakda qayta so'rilishi to'xtaydi va najas juda quyuqlashadi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "Oshqozon osti bezi ajratadigan tripsin va ingichka ichak devori fermentlari oqsillarni oxirgi aminokislotalargacha parchalaydi."
+    explanation: "O't kislotalari yog'larni mayda tomchilarga ajratadi (emulsiyalaydi) va lipaza ta'sirini kuchaytiradi. O't tushmasa, yog'lar yomon hazm bo'ladi va yog'da eruvchi vitaminlar (A, D, E, K) yomon so'riladi; najas yog'li va rangsiz bo'ladi. Oqsil va uglevodlar hazmi bevosita o'tga bog'liq emas."
   },
   {
     question: "Fotosintezning yorug'lik fazasida ajralib chiqadigan kislorod qaysi moddadan hosil bo'ladi?",
@@ -2016,11 +2016,11 @@ const questions = [
     explanation: "Jinsiy ko'payish jarayonida xromosomalarning erkin tarqalishi va krossingover kombinativ o'zgaruvchanlikni keltirib chiqaradi."
   },
   {
-    question: "Hujayraning bo'linishga tayyorgarlik ko'radigan interfaza davri qaysi bosqichlardan iborat?",
-    options: ["Profaza, metafaza, anafaza", "G1 (presintetik), S (sintetik) va G2 (postsintetik) davrlari", "Faqat mitotik davr", "Meyoz I va Meyoz II"],
+    question: "Diploid hujayra G1 davrida 2c DNK saqlaydi. G2 davrida va mitoz oxirida hosil bo'lgan qiz hujayrada DNK miqdori qanday bo'ladi?",
+    options: ["G2 da 2c, qiz hujayrada 1c, chunki replikatsiya mitozda sodir bo'ladi", "G2 da 4c, qiz hujayrada 2c, chunki DNK S davrida ikkilanib, mitozda bo'linadi", "G2 da 4c, qiz hujayrada 4c, chunki bo'linishda DNK miqdori o'zgarmaydi", "G2 da 2c, qiz hujayrada 2c, chunki DNK faqat meyoz oldidan ikkilanadi"],
     topic: "Sitologiya",
     answer: 1,
-    explanation: "Interfaza uchta ketma-ket bosqichdan iborat bo'lib, sintetik (S) davrda DNK ikkilanishi sodir bo'ladi."
+    explanation: "S davrida DNK replikatsiyasi sodir bo'lib, DNK miqdori 2c dan 4c ga ortadi, G2 da 4c saqlanadi. Mitozda xromatidlar ikkita qiz hujayraga teng taqsimlanadi, har birida DNK miqdori yana 2c bo'ladi."
   },
   {
     question: "O'simliklarda ildiz bosimi va transpiratsiya o'rtasidagi farq nimada?",
