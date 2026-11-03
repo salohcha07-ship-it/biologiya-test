@@ -507,9 +507,9 @@ body.light-mode .teacher-field { background:#fff;color:#302340;border-color:#ddc
 body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
 
 .quiz-actions #homeBtn{min-width:0;padding:0 14px;flex:none}
-/* Kirish oynasi ochiq: eski akkauntlar kira oladi.
-   Yangi ro'yxatdan o'tish va o'qituvchi kabineti hozircha yopiq. */
-.teacher-tools{display:none !important}
+/* Hozircha yashirilgan bo'limlar: ro'yxatdan o'tish (bulut/sinf) va o'qituvchi kabineti.
+   Qaytarish uchun quyidagi qatorni o'chiring. */
+#cabinetAuth,.teacher-tools{display:none !important}
 </style>
 </head>
 
@@ -650,7 +650,6 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
     <div class="result-icon"><i class="fa-solid fa-chart-column"></i></div>
     <h2 id="resultTitle" class="heading">Test natijasi</h2>
     <p id="resultSummary" class="result-summary text-center"></p>
-    <p id="resultSyncStatus" class="subheading" role="status" aria-live="polite" style="margin:8px 0 0;font-size:11px"></p>
 
     <div class="score-box">
       <div class="score-cell">
@@ -662,6 +661,8 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
         <span id="timeTaken" class="big">04:12</span>
       </div>
     </div>
+
+    <p id="weightedScore" class="subheading hidden" style="font-size:13px;line-height:1.5;margin:4px 0 14px;text-align:center" role="note"></p>
 
     <section class="achievement-panel" id="achievementPanel">
       <div class="achievement-heading"><i class="fa-solid fa-medal"></i> Sizning yutuqlaringiz</div>
@@ -676,6 +677,7 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
     <button id="retryWrongBtn" onclick="retryWrongAnswers()" class="secondary-btn hidden" style="width:100%;margin-bottom:10px">
       <i class="fa-solid fa-rotate"></i> Xatolarni takrorlash
     </button>
+    <p id="saveStatus" class="subheading" style="font-size:13px;line-height:1.5;margin:10px 0" role="status"></p>
     <button onclick="restartQuiz()" class="primary-btn">
       <i class="fa-solid fa-rotate-right"></i> Qayta topshirish
     </button>
@@ -699,6 +701,7 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
       <button id="lbTabAll" class="lb-tab" onclick="setLeaderboardTab('all')"><i class="fa-solid fa-crown"></i>Umumiy</button>
     </div>
     <p id="leaderboardNote" class="subheading" style="text-align:left;margin:12px 0"></p>
+    <button type="button" class="secondary-btn" style="min-height:38px;padding:0 14px;margin:0 0 12px" onclick="loadLeaderboard()"><i class="fa-solid fa-rotate"></i> Yangilash</button>
     <div id="leaderboardList" style="display:grid;gap:10px">
       <p class="subheading">Reyting yuklanmoqda...</p>
     </div>
@@ -718,8 +721,14 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
         <input id="authEmail" type="email" autocomplete="email" placeholder="Email manzilingiz" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
         <label for="authPassword" class="subheading" style="display:block;text-align:left;margin:10px 0 5px">Parol</label>
         <input id="authPassword" type="password" autocomplete="current-password" minlength="6" placeholder="Kamida 6 ta belgi" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
+        <div id="authConfirmWrap" class="hidden">
+          <label for="authPasswordConfirm" class="subheading" style="display:block;text-align:left;margin:10px 0 5px">Parolni takrorlang</label>
+          <input id="authPasswordConfirm" type="password" autocomplete="new-password" minlength="6" placeholder="Parolni qayta kiriting" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
+        </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
           <button id="authSignInBtn" type="button" class="primary-btn" onclick="bioSignIn()">Kirish</button>
+          <button id="authSignUpBtn" type="button" class="secondary-btn" onclick="setAuthMode('signup')">Ro‘yxatdan o‘tish</button>
+          <button id="authBackBtn" type="button" class="secondary-btn hidden" onclick="setAuthMode('login')">Kirishga qaytish</button>
         </div>
         <button id="authResetBtn" type="button" class="secondary-btn" style="margin-top:8px" onclick="bioResetPassword()">Parolni unutdingizmi?</button>
       </div>
@@ -817,6 +826,19 @@ try {
   db = null;
 }
 
+// Foydalanuvchi ro'yxatdan o'tmasa ham, reytingga yozish uchun avtomatik anonim kirish (Firebase Anonymous)
+let authReady = Promise.resolve();
+if(auth) {
+  authReady = Promise.race([
+    new Promise(res => { const un = auth.onAuthStateChanged(() => { un(); res(); }); }),
+    new Promise(res => setTimeout(res, 4000))
+  ]).then(() => {
+    if(!auth.currentUser) {
+      return auth.signInAnonymously().catch(e => console.warn("Anonim kirish ishlamadi:", e && e.code));
+    }
+  });
+}
+
 const TEST_MODE = true;
 document.getElementById("testBanner").classList.toggle("hidden",!TEST_MODE);
 
@@ -885,6 +907,17 @@ function shuffle(arr) {
 
 
 // Variantlarni aralashtirish (to'g'ri javob joyi har safar o'zgaradi) va takroriy savollarni chiqarmaslik
+function difficultyWeight(q) {
+  const raw = q.difficulty ?? q.level ?? q.daraja;
+  let d = 0;
+  if(typeof raw === "number") d = raw;
+  else if(typeof raw === "string") {
+    const t = raw.toLocaleLowerCase();
+    d = /qiyin|murakkab|hard/.test(t) ? 5 : /o.rta|o‘rta|medium/.test(t) ? 3 : 0;
+  }
+  return d >= 4 ? 2 : d >= 3 ? 1.5 : 1;
+}
+
 function prepareQuestions(list) {
   const seen = new Set();
   return list.filter(q => {
@@ -1340,6 +1373,22 @@ function finishQuiz() {
     ? `Siz ${total} ta savoldan ${correctCount} tasiga to‘g‘ri javob berdingiz. Javobsiz: ${unansweredCount} ta.${examSubmittedByTimeout ? " Vaqt tugagani uchun imtihon avtomatik yakunlandi." : ""}`
     : `Siz ${total} ta savoldan ${correctCount} tasiga to‘g‘ri javob berdingiz!`;
   document.getElementById("scorePercent").innerText = scorePct+"%";
+  const wEl = document.getElementById("weightedScore");
+  if(wEl) {
+    let wTotal = 0, wGot = 0, hasWeighted = false;
+    currentQuestions.forEach((q,i) => {
+      const w = difficultyWeight(q);
+      if(w > 1) hasWeighted = true;
+      wTotal += w;
+      if(selectedAnswers[i] === q.answer) wGot += w;
+    });
+    if(hasWeighted && !isRetry) {
+      wEl.textContent = "Qiyinlik hisobga olingan ball: " + Math.round(wGot/wTotal*100) + "% (taxminiy). Murakkab savollar 2 barobar, o‘rtacha savollar 1,5 barobar ball beradi. Reytingda oddiy foiz hisoblanadi.";
+      wEl.classList.remove("hidden");
+    } else {
+      wEl.classList.add("hidden");
+    }
+  }
   renderAchievements(scorePct,correctCount,total);
 
   const mins = String(Math.floor(secondsElapsed/60)).padStart(2,"0");
@@ -1348,7 +1397,7 @@ function finishQuiz() {
   document.getElementById("timeTaken").innerText = timeStr;
   document.getElementById("retryWrongBtn").classList.toggle("hidden",wrongCount===0);
 
-  if(!isRetry) saveScore(userName,userRegion,scorePct,correctCount,total,secondsElapsed,timeStr);
+  if(!isRetry) saveScore(userName,userRegion,scorePct,correctCount,total,secondsElapsed,timeStr); else setSaveStatus("");
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
@@ -1365,95 +1414,64 @@ function getLocalScores() {
   }
 }
 
+let lastSavePromise = null;
+function setSaveStatus(text, kind) {
+  const el = document.getElementById("saveStatus");
+  if(!el) return;
+  el.textContent = text || "";
+  el.style.color = kind === "ok" ? "#7ee2a8" : (kind === "err" ? "#ffb4a2" : "#c9c1df");
+}
+function showSaveStatus(promise) {
+  setSaveStatus("Natija umumiy reytingga yuborilmoqda...");
+  promise.then(r => {
+    if(r && r.ok) setSaveStatus("✓ Natijangiz umumiy reytingga yuborildi.", "ok");
+    else setSaveStatus("⚠ Natija umumiy reytingga yuborilmadi" + (r && r.code ? " (" + r.code + ")" : "") + ". U faqat shu telefonda saqlandi. Internetni tekshirib, testni qayta topshirib ko‘ring.", "err");
+  });
+}
+
 function saveScore(name,region,score,correct,total,seconds,timeStr) {
   const entry = {
-    name:String(name||"").trim().slice(0,60),
-    region:String(region||""),
-    score:Number(score)||0,
-    correct:Number(correct)||0,
-    total:Number(total)||0,
-    seconds:Number(seconds)||0,
-    time:String(timeStr||""),
-    date:new Date().toLocaleDateString(),
+    name,region,score,correct,total,seconds,
+    time:timeStr,date:new Date().toLocaleDateString(),
     mode:isExamMode ? "exam" : "practice",
-    ts:Date.now(),
-    profileId:String((getBioProfile()||{}).id||"")
+    ts:Date.now(),profileId:(getBioProfile()||{}).id||""
   };
 
-  // Avval qurilmaga yozamiz: internet/Firebase ishlamasa ham natija yo‘qolmaydi.
   const scores = getLocalScores();
   scores.push(entry);
-  scores.sort((a,b) => (Number(b.score)||0)-(Number(a.score)||0) || (Number(a.seconds)||0)-(Number(b.seconds)||0));
+  scores.sort((a,b) => b.score-a.score);
+
   try {
     localStorage.setItem("bio_leaderboard",JSON.stringify(scores.slice(0,100)));
   } catch(e) {
-    console.error("Mahalliy natijani saqlab bo‘lmadi:",e);
+    console.error(e);
   }
 
-  const syncStatus=document.getElementById("resultSyncStatus");
-  const setSyncStatus=(message,isError=false)=>{
-    if(syncStatus){syncStatus.textContent=message;syncStatus.style.color=isError?"#ff9b9b":"var(--muted)";}
-  };
-
-  if(!db || !auth || typeof firebase === "undefined") {
-    setSyncStatus("Natija ushbu qurilmada saqlandi, ammo Firebase SDK ulanmagan. Internet va Firebase sozlamalarini tekshiring.",true);
-    return;
-  }
-
-  // Ochiq platforma: login/ro‘yxatdan o‘tish talab qilinmaydi.
-  // Avval Firebase Auth holati tiklanishini kutamiz, shunda mavjud akkauntni
-  // tasodifan anonim sessiya bilan almashtirib yubormaymiz.
-  setSyncStatus("Firebase’ga anonim ulanish tayyorlanmoqda...");
-  (async()=>{
-    try{
-      let firebaseUser = await new Promise((resolve,reject)=>{
-        let unsubscribe = null;
-        unsubscribe = auth.onAuthStateChanged(
-          user=>{if(unsubscribe)unsubscribe();resolve(user||null);},
-          error=>{if(unsubscribe)unsubscribe();reject(error);}
-        );
-      });
-
-      if(!firebaseUser){
-        const credential=await auth.signInAnonymously();
-        firebaseUser=(credential&&credential.user)||auth.currentUser;
+  if(db) {
+    lastSavePromise = (async () => {
+      try {
+        await authReady;
+        const data = {...entry,createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+        const u = auth && auth.currentUser;
+        if(u) data.uid = u.uid;
+        await db.collection("results").add(data);
+        return {ok:true};
+      } catch(err) {
+        console.error("Natijani yuborib bo‘lmadi:",err);
+        return {ok:false,code:(err && err.code) || "xato"};
       }
-      if(!firebaseUser || !firebaseUser.uid) throw new Error("Firebase foydalanuvchi sessiyasi yaratilmadi.");
-
-      const payload={
-        ...entry,
-        uid:firebaseUser.uid,
-        authType:firebaseUser.isAnonymous?"anonymous":"account",
-        createdAt:firebase.firestore.FieldValue.serverTimestamp()
-      };
-
-      const docRef=await db.collection("results").add(payload);
-      console.info("Test natijasi Firebase’ga saqlandi:",docRef.id);
-      setSyncStatus("Natija qurilmada va Firebase bazasida saqlandi.");
-    }catch(err){
-      console.error("Natijani Firebase’ga yuborib bo‘lmadi:",err);
-      const code=String(err&&err.code||"");
-      const detail=code?" ("+code+")":"";
-      if(code==="auth/operation-not-allowed"){
-        setSyncStatus("Firebase Anonymous sign-in o‘chiq. Authentication → Sign-in method → Anonymous sozlamasini tekshiring."+detail,true);
-      }else if(code==="permission-denied"||code==="firestore/permission-denied"){
-        setSyncStatus("Firebase’ga ulanish bor, ammo Firestore yozish qoidasi rad etdi. results Rules va yuborilayotgan maydonlarni tekshirish kerak."+detail,true);
-      }else if(code==="auth/unauthorized-domain"){
-        setSyncStatus("Sayt domeni Firebase Authentication → Settings → Authorized domains ro‘yxatida yo‘q."+detail,true);
-      }else{
-        setSyncStatus("Natija qurilmada saqlandi, ammo Firebase’ga yuborilmadi"+detail+". Batafsil xatolik brauzer konsolida.",true);
-      }
+    })();
+    showSaveStatus(lastSavePromise);
+    const joinedCode=(()=>{try{return localStorage.getItem("bio_classroom_code_v1")||"";}catch(e){return "";}})();
+    const signedUser=auth&&auth.currentUser;
+    if(joinedCode&&signedUser){
+      db.collection("bio_classrooms").doc(joinedCode).collection("results")
+        .doc(signedUser.uid+"_"+entry.ts)
+        .set({uid:signedUser.uid,name:entry.name,region:entry.region,score:entry.score,correct:entry.correct,total:entry.total,mode:entry.mode,ts:entry.ts,createdAt:firebase.firestore.FieldValue.serverTimestamp()})
+        .catch(err=>console.error("Sinf natijasini yuborib bo‘lmadi:",err));
     }
-  })();
-
-  // Sinf natijasi umumiy natijadan alohida yoziladi; xatolik umumiy natijani bekor qilmaydi.
-  const joinedCode=(()=>{try{return localStorage.getItem("bio_classroom_code_v1")||"";}catch(e){return "";}})();
-  const signedUser=auth&&auth.currentUser;
-  if(joinedCode&&signedUser&&!signedUser.isAnonymous){
-    db.collection("bio_classrooms").doc(joinedCode).collection("results")
-      .doc(signedUser.uid+"_"+entry.ts)
-      .set({uid:signedUser.uid,name:entry.name,region:entry.region,score:entry.score,correct:entry.correct,total:entry.total,mode:entry.mode,ts:entry.ts,createdAt:firebase.firestore.FieldValue.serverTimestamp()})
-      .catch(err=>console.error("Sinf natijasini Firebase’ga yuborib bo‘lmadi:",err));
+  } else {
+    setSaveStatus("Internet yoki Firebase ulanmagan: natija faqat shu telefonda saqlandi.", "err");
   }
 }
 
@@ -1539,53 +1557,55 @@ function setLeaderboardTab(mode) {
   loadLeaderboard();
 }
 
-async function loadLeaderboard() {
+async function loadLeaderboard(silent) {
   const weekly = leaderboardMode === "week";
   document.getElementById("lbTabWeek").classList.toggle("active",weekly);
   document.getElementById("lbTabAll").classList.toggle("active",!weekly);
 
   const list = document.getElementById("leaderboardList");
   const note = document.getElementById("leaderboardNote");
-  list.innerHTML = '<p class="subheading">Reyting yuklanmoqda...</p>';
-  note.innerText = "";
+  if(!silent) {
+    list.innerHTML = '<p class="subheading">Reyting yuklanmoqda...</p>';
+    note.innerText = "";
+  }
 
   const weekStart = getWeekStart();
-  const local = getLocalScores().filter(it => {
-    if(!weekly) return true;
-    const stamp=Number(it.ts)||0;
-    return stamp>=weekStart.getTime();
-  });
-  let remote = [];
-  let remoteLoaded = false;
+  let items = null;
+  let loadErrCode = "";
 
   if(db) {
     try {
-      // Har ikkala yorliq uchun mavjud hujjatlarni olib, haftalik chegarani bir xil
-      // timestamp maydoni (ts) asosida brauzerda tekshiramiz.
-      const snap = await db.collection("results").orderBy("ts","desc").limit(1000).get();
-      remote = snap.docs.map(d => d.data()).filter(it => {
-        if(!weekly) return true;
-        let stamp=Number(it.ts)||0;
-        if(!stamp && it.createdAt && typeof it.createdAt.toMillis==="function") stamp=it.createdAt.toMillis();
-        return stamp>=weekStart.getTime();
-      });
-      remoteLoaded = true;
+      if(lastSavePromise) await Promise.race([lastSavePromise,new Promise(r => setTimeout(r,5000))]);
+      await Promise.race([authReady,new Promise(r => setTimeout(r,3000))]);
+      let snap;
+      if(weekly) {
+        snap = await db.collection("results")
+          .where("createdAt",">=",firebase.firestore.Timestamp.fromDate(weekStart))
+          .limit(500).get();
+      } else {
+        snap = await db.collection("results")
+          .orderBy("score","desc").limit(300).get();
+      }
+      items = snap.docs.map(d => d.data());
+      note.innerText = weekly
+        ? "Shu haftadagi natijalar (dushanbadan yakshanbagacha). Hafta tugashiga " + weekDaysLeft() + " kun qoldi."
+        : "Barcha o‘quvchilarning eng yaxshi natijalari";
+      note.innerText += " · yangilandi " + new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
     } catch(e) {
-      console.error("Firebase reytingini yuklab bo‘lmadi:",e);
+      console.error("Reytingni yuklab bo‘lmadi:",e);
+      loadErrCode = (e && e.code) || "";
     }
   }
 
-  // Firebase natijalari va shu qurilmadagi eski natijalar birga ko‘rsatiladi.
-  // renderLeaderboard takroriy ism/viloyatlarni eng yaxshi natija bo‘yicha birlashtiradi.
-  const items = remote.concat(local);
-  if(remoteLoaded) {
-    note.innerText = weekly
-      ? "Haftalik reyting: Firebase va ushbu qurilmadagi natijalar. Hafta dushanbadan hisoblanadi."
-      : "Umumiy reyting: Firebase va ushbu qurilmadagi saqlangan natijalar.";
-  } else {
+  if(!items) {
+    if(silent) return;
+    items = getLocalScores();
+    if(weekly) {
+      items = items.filter(it => (it.ts||0) >= weekStart.getTime());
+    }
     note.innerText = db
-      ? "Firebase reytingi yuklanmadi. Hozircha ushbu qurilmadagi saqlangan natijalar ko‘rsatilmoqda."
-      : "Faqat ushbu qurilmadagi saqlangan natijalar ko‘rsatilmoqda.";
+      ? "Umumiy reyting yuklanmadi" + (loadErrCode ? " (" + loadErrCode + ")" : "") + ". Shu telefondagi natijalar ko‘rsatilmoqda."
+      : "Faqat shu telefondagi natijalar.";
   }
   renderLeaderboard(items);
 }
@@ -2368,11 +2388,43 @@ function restartQuiz() {
     BACKUP_KEYS.forEach(key=>{const value=localStorage.getItem(key);if(value!==null)data[key]=value;});
     return data;
   }
-  // Ro‘yxatdan o‘tish funksiyasi va interfeysi olib tashlangan. Faqat mavjud akkauntga kirish.
-  window.setAuthMode=function(){
+  let authMode="login";
+  window.setAuthMode=function(mode){
+    authMode=mode==="signup"?"signup":"login";
+    const signup=authMode==="signup";
+    document.getElementById("authConfirmWrap")?.classList.toggle("hidden",!signup);
+    document.getElementById("authSignInBtn")?.classList.toggle("hidden",signup);
+    const createBtn=document.getElementById("authSignUpBtn");
+    if(createBtn){createBtn.textContent=signup?"Akkaunt yaratish":"Ro‘yxatdan o‘tish";createBtn.classList.toggle("primary-btn",signup);createBtn.classList.toggle("secondary-btn",!signup);}
+    document.getElementById("authBackBtn")?.classList.toggle("hidden",!signup);
+    document.getElementById("authResetBtn")?.classList.toggle("hidden",signup);
     const pass=document.getElementById("authPassword");
-    if(pass)pass.autocomplete="current-password";
-    document.getElementById("authResetBtn")?.classList.remove("hidden");
+    if(pass)pass.autocomplete=signup?"new-password":"current-password";
+    if(signup)document.getElementById("authPasswordConfirm")?.focus();
+  };
+  window.bioSignUp=async function(){
+    if(!auth){authMessage("Firebase Authentication ulanmagan. Firebase SDK va sozlamalarini tekshiring.",true);return;}
+    const email=(document.getElementById("authEmail")?.value||"").trim().toLowerCase();
+    const password=document.getElementById("authPassword")?.value||"";
+    const confirmPassword=document.getElementById("authPasswordConfirm")?.value||"";
+    const emailInput=document.getElementById("authEmail");
+    if(!email){authMessage("Email manzilini kiriting.",true);emailInput?.focus();return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){authMessage("Email manzili to‘g‘ri formatda emas.",true);emailInput?.focus();return;}
+    if(password.length<6){authMessage("Parol kamida 6 ta belgidan iborat bo‘lishi kerak.",true);document.getElementById("authPassword")?.focus();return;}
+    if(password!==confirmPassword){authMessage("Parollar bir-biriga mos kelmadi. Qayta tekshiring.",true);document.getElementById("authPasswordConfirm")?.focus();return;}
+    try{
+      authMessage("Akkaunt yaratilmoqda...");
+      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+      const credential=await auth.createUserWithEmailAndPassword(email,password);
+      try{
+        await credential.user.sendEmailVerification();
+        authMessage("Akkaunt yaratildi. Emailingizga tasdiqlash xati yuborildi. Pochtangizni tekshiring.");
+      }catch(verifyError){
+        console.warn("Verification email yuborilmadi:",verifyError);
+        authMessage("Akkaunt yaratildi, lekin tasdiqlash xatini yuborib bo‘lmadi. Internet va Firebase email sozlamalarini tekshiring.",true);
+      }
+      setAuthMode("login");
+    }catch(e){console.error("Sign up error:",e);authMessage(authErrorMessage(e),true);}
   };
   window.bioResendVerification=async function(){
     const user=auth&&auth.currentUser;
@@ -2515,21 +2567,17 @@ function restartQuiz() {
     }catch(e){console.error("Classroom results error:",e);classroomStatus("Natijalarni yuklab bo‘lmadi. Firestore qoidalarini tekshiring.",true);}
   };
 
-  // Kabinet ochilganda login shakli ko‘rinadi, signup holatiga o‘tmaydi.
-  window.setAuthMode("login");
   if(auth){
     auth.onAuthStateChanged(user=>{
-      const isAccountUser=!!user&&!user.isAnonymous;
       const form=document.getElementById("authForm"),signed=document.getElementById("authSignedIn"),label=document.getElementById("authEmailLabel");
-      // Anonim sessiya kabinetdagi email-login interfeysini yashirmaydi.
-      if(form)form.classList.toggle("hidden",isAccountUser);
-      if(signed)signed.classList.toggle("hidden",!isAccountUser);
-      if(label&&isAccountUser)label.textContent="Kirilgan akkaunt: "+(user.email||"email ko‘rsatilmagan");
+      if(form)form.classList.toggle("hidden",!!user);
+      if(signed)signed.classList.toggle("hidden",!user);
+      if(label&&user)label.textContent="Kirilgan akkaunt: "+(user.email||"email ko‘rsatilmagan");
       const verifyNote=document.getElementById("authVerificationNote"),verifyBtn=document.getElementById("authVerifyBtn");
-      if(verifyNote)verifyNote.textContent=isAccountUser?(user.emailVerified?"Email manzili tasdiqlangan.":"Email manzili hali tasdiqlanmagan. Pochtangizga yuborilgan havolani oching."):"";
-      if(verifyBtn)verifyBtn.classList.toggle("hidden",!isAccountUser||user.emailVerified);
-      if(isAccountUser)authMessage(user.emailVerified?"Akkauntga kirdingiz. Ma’lumotlarni bulutga saqlashingiz mumkin.":"Akkauntga kirdingiz. Xavfsizlik uchun emailingizni tasdiqlash tavsiya etiladi.");
-      else {authMessage("Test ishlash uchun akkauntga kirish shart emas. Natijalar anonim tarzda saqlanadi.");setAuthMode("login");}
+      if(verifyNote)verifyNote.textContent=user?(user.emailVerified?"Email manzili tasdiqlangan.":"Email manzili hali tasdiqlanmagan. Pochtangizga yuborilgan havolani oching."):"";
+      if(verifyBtn)verifyBtn.classList.toggle("hidden",!user||user.emailVerified);
+      if(user)authMessage(user.emailVerified?"Akkauntga kirdingiz. Ma’lumotlarni bulutga saqlashingiz mumkin.":"Akkauntga kirdingiz. Xavfsizlik uchun emailingizni tasdiqlash tavsiya etiladi.");
+      else {authMessage("Email va parol orqali kiring yoki yangi akkaunt yarating.");setAuthMode("login");}
     });
   }else{
     authMessage("Firebase ulanmadi. Internet va Firebase sozlamalarini tekshiring.",true);
@@ -2639,5 +2687,12 @@ function restartQuiz() {
 })();
 </script>
 
+<script>
+// Reyting ochiq turganda har 30 soniyada jimgina yangilanadi
+setInterval(function(){
+  const v=document.getElementById("leaderboardView");
+  if(v && !v.classList.contains("hidden") && !document.hidden) loadLeaderboard(true);
+},30000);
+</script>
 </body>
 </html>
