@@ -506,6 +506,10 @@ body.light-mode .teacher-tools summary { color:#59416f; }
 body.light-mode .teacher-field { background:#fff;color:#302340;border-color:#ddcdec; }
 body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
 
+.quiz-actions #homeBtn{min-width:0;padding:0 14px;flex:none}
+/* Hozircha yashirilgan bo'limlar: ro'yxatdan o'tish (bulut/sinf) va o'qituvchi kabineti.
+   Qaytarish uchun quyidagi qatorni o'chiring. */
+#cabinetAuth,.teacher-tools{display:none !important}
 </style>
 </head>
 
@@ -535,7 +539,7 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
 
 <div id="testBanner" class="banner">
   <i class="fa-solid fa-flask"></i>
-  Platforma sinov rejimida ishlamoqda.
+  Platforma beta (sinov) rejimida ishlamoqda. Xato topsangiz, 
   <a href="https://t.me/Asomiddin0721" target="_blank" rel="noopener noreferrer">@Asomiddin0721</a>
   ga yozing.
 </div>
@@ -546,7 +550,7 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
     <div class="hero-icon"><i class="fa-solid fa-dna"></i></div>
     <div class="biology-caption"><i class="fa-solid fa-leaf"></i> BIOLOGY • KNOWLEDGE • FUTURE</div>
     <div class="biology-image-wrap">
-      <img class="biology-image" src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1000&q=85" alt="Biologiya laboratoriyasida mikroskop va ilmiy tadqiqot" loading="lazy">
+      <img class="biology-image" src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1000&q=85" alt="Biologiya laboratoriyasida mikroskop va ilmiy tadqiqot" loading="lazy" onerror="this.parentNode.style.display='none'">
       <div class="biology-image-shade"></div>
       <span class="biology-image-label"><i class="fa-solid fa-microscope"></i> MILLIY BIO TEST</span>
     </div>
@@ -557,6 +561,7 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
       <label for="userNameInput"><i class="fa-solid fa-user"></i> Ism va familiyangiz</label>
       <input type="text" id="userNameInput" maxlength="60" placeholder="Masalan: Ali Valiyev">
       <p id="nameError" class="error hidden">Ismingizni kiriting</p>
+      <p style="font-size:12px;line-height:1.5;color:#b8a9ce;margin:7px 2px 0">Ismingiz va viloyatingiz umumiy reytingda ko‘rinadi. Xohlasangiz, taxallus kiritishingiz mumkin.</p>
     </div>
 
     <div class="field">
@@ -607,7 +612,7 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
         <button type="button" class="secondary-btn" onclick="startExamSimulator()" style="width:100%;border-color:#8c75b8;background:#3a2d58;color:#f0e8ff">
           <i class="fa-solid fa-file-signature"></i> Imtihon simulyatorini boshlash
         </button>
-        <p style="font-size:10px;line-height:1.45;color:#b8a9ce;margin:8px 1px 0">Bu mashq rejimi; savollar bazasi va vaqt sozlamasi rasmiy imtihon reglamentini anglatmaydi.</p>
+        <p style="font-size:12px;line-height:1.5;color:#c9c1df;margin:8px 1px 0">Bu mashq rejimi; savollar bazasi va vaqt sozlamasi rasmiy imtihon reglamentini anglatmaydi.</p>
       </div>
     </div>
     <p class="subheading" style="margin-top:15px">
@@ -630,6 +635,9 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
     <p id="answerError" class="error hidden">Davom etish uchun javobni belgilang</p>
 
     <div class="quiz-actions">
+      <button id="homeBtn" type="button" class="secondary-btn" onclick="goHome()" aria-label="Testdan chiqib bosh sahifaga qaytish">
+        <i class="fa-solid fa-house"></i> Chiqish
+      </button>
       <button id="prevBtn" class="secondary-btn" onclick="prevQuestion()">
         <i class="fa-solid fa-arrow-left"></i> Orqaga
       </button>
@@ -670,6 +678,9 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
     <button onclick="restartQuiz()" class="primary-btn">
       <i class="fa-solid fa-rotate-right"></i> Qayta topshirish
     </button>
+    <button type="button" onclick="goHome()" class="secondary-btn" style="width:100%;margin-top:10px">
+      <i class="fa-solid fa-house"></i> Bosh sahifaga qaytish
+    </button>
   </section>
 
   <!-- REYTING -->
@@ -678,8 +689,8 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
       <h2 style="font-size:19px;font-weight:850">
         <i class="fa-solid fa-trophy" style="color:#ffd66e"></i> Jonli reyting
       </h2>
-      <button onclick="closeLeaderboard()" class="secondary-btn" style="min-height:40px;padding:0 13px">
-        <i class="fa-solid fa-xmark"></i>
+      <button onclick="closeLeaderboard()" class="secondary-btn" style="min-height:40px;padding:0 13px" aria-label="Orqaga qaytish">
+        <i class="fa-solid fa-arrow-left"></i> Orqaga
       </button>
     </div>
     <div class="lb-tabs">
@@ -696,7 +707,7 @@ body.light-mode .teacher-note { background:#efe5fa;color:#59416f; }
   <section id="cabinetView" class="panel hidden">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--border)">
       <h2 class="heading" style="font-size:20px;text-align:left"><i class="fa-solid fa-user-circle"></i> Shaxsiy kabinet</h2>
-      <button onclick="closeCabinet()" class="secondary-btn" style="min-height:40px;padding:0 13px" aria-label="Kabinetni yopish"><i class="fa-solid fa-xmark"></i></button>
+      <button onclick="closeCabinet()" class="secondary-btn" style="min-height:40px;padding:0 13px" aria-label="Orqaga qaytish"><i class="fa-solid fa-arrow-left"></i> Orqaga</button>
     </div>
     <div id="cabinetAuth" style="padding:14px;margin-top:14px;border:1px solid var(--border);border-radius:14px;background:var(--panel2)">
       <div style="font-weight:700;margin-bottom:8px"><i class="fa-solid fa-cloud"></i> Bulutli akkaunt</div>
@@ -835,6 +846,14 @@ let biologyQuestionsDB =
       Number.isInteger(q.answer) &&
       q.answer >= 0 && q.answer < q.options.length);
 biologyQuestionsDB = biologyQuestionsDB.concat(loadTeacherQuestions());
+(function normalizeTopics(){
+  const map = {
+    "Hujayra":"Sitologiya","Molekulyar biologiya":"Genetika","Gulli o'simliklar":"Botanika",
+    "Yurak":"Odam anatomiyasi","Ayirish a'zolari":"Odam anatomiyasi","Sezgi a'zolari":"Odam anatomiyasi",
+    "Nerv sistemasi":"Odam anatomiyasi","Hazm qilish":"Odam anatomiyasi","Nafas olish":"Odam anatomiyasi"
+  };
+  biologyQuestionsDB.forEach(q => { if(q.image && map[q.topic]) q.topic = map[q.topic]; });
+})();
 
 let currentQuestions = [];
 let currentIndex = 0;
@@ -861,7 +880,12 @@ function escapeHtml(str) {
 }
 
 function shuffle(arr) {
-  return [...arr].sort(() => Math.random() - 0.5);
+  const a = [...arr];
+  for(let i = a.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
 }
 
 
@@ -1442,13 +1466,13 @@ async function toggleLeaderboard() {
   const lb = document.getElementById("leaderboardView");
 
   if(lb.classList.contains("hidden")) {
-    const visible = ["startView","quizView","resultView"].find(id =>
+    const visible = ["startView","quizView","resultView","cabinetView"].find(id =>
       !document.getElementById(id).classList.contains("hidden")
     );
     viewBeforeLeaderboard = visible || "startView";
   }
 
-  ["startView","quizView","resultView"].forEach(id =>
+  ["startView","quizView","resultView","cabinetView"].forEach(id =>
     document.getElementById(id).classList.add("hidden")
   );
   lb.classList.remove("hidden");
@@ -2105,7 +2129,7 @@ function restartQuiz() {
         more.addEventListener("click",updateMore);host.append(more);
       }
     }
-    const note=document.createElement("div");note.className="cabinet-note";note.innerHTML='<i class="fa-solid fa-circle-info"></i> Profil va natijalar odatda shu brauzerda saqlanadi. Akkauntga kirgach, ularni istalgan qurilmada ishlatish uchun bulutga saqlashingiz yoki bulutdan tiklashingiz mumkin.';host.append(note);
+    const note=document.createElement("div");note.className="cabinet-note";note.innerHTML='<i class="fa-solid fa-circle-info"></i> Profil va natijalar odatda shu brauzerda saqlanadi. Boshqa qurilmaga o‘tish uchun pastdagi zaxira nusxadan foydalaning.';host.append(note);
 
     const backupTitle=document.createElement("div");
     backupTitle.className="cabinet-section-title";
@@ -2500,6 +2524,86 @@ function restartQuiz() {
     if(region&&!region.value)region.value=p.region;
     userName=p.name;userRegion=p.region;
   }
+})();
+</script>
+
+<script>
+// ===== ORQAGA QAYTISH: telefon/brauzer "Orqaga" tugmasi va "Bosh sahifa" =====
+(function(){
+  const VIEWS=["startView","quizView","resultView","leaderboardView","cabinetView"];
+  const $=id=>document.getElementById(id);
+  const current=()=>VIEWS.find(id=>$(id)&&!$(id).classList.contains("hidden"))||"startView";
+  const st=()=>(history.state&&history.state.v)||"startView";
+  const push=v=>{try{history.pushState({v:v},"");}catch(e){}};
+  const replace=v=>{try{history.replaceState({v:v},"");}catch(e){}};
+  const LEAVE_MSG="Testdan chiqasizmi? Joriy test natijasi saqlanmaydi.";
+  let quizActive=false, hasResult=false, skipConfirm=false;
+  replace("startView");
+
+  function show(id){
+    VIEWS.forEach(v=>$(v).classList.add("hidden"));
+    $(id).classList.remove("hidden");
+    window.scrollTo({top:0});
+  }
+  function stopQuiz(){ clearAdvance(); clearInterval(timerInterval); quizActive=false; }
+  function toStart(){ stopQuiz(); restartQuiz(); show("startView"); }
+
+  const oBegin=window.beginQuiz;
+  window.beginQuiz=function(list,retry){
+    oBegin.apply(this,arguments);
+    quizActive=true;
+    if(retry && st()==="resultView") replace("quizView"); else push("quizView");
+  };
+  const oFinish=window.finishQuiz;
+  window.finishQuiz=function(){
+    const wasQuiz=st()==="quizView";
+    oFinish.apply(this,arguments);
+    quizActive=false; hasResult=true;
+    ["quizView","leaderboardView","cabinetView"].forEach(id=>$(id).classList.add("hidden"));
+    $("resultView").classList.remove("hidden");
+    replace("resultView");
+  };
+  const oRestart=window.restartQuiz;
+  window.restartQuiz=function(){
+    oRestart.apply(this,arguments);
+    quizActive=false;
+    if(st()!=="startView") replace("startView");
+  };
+  const oLb=window.toggleLeaderboard;
+  window.toggleLeaderboard=function(){
+    if(current()!=="leaderboardView") push("leaderboardView");
+    return oLb.apply(this,arguments);
+  };
+  const oCab=window.openCabinet;
+  window.openCabinet=function(){
+    if(current()!=="cabinetView") push("cabinetView");
+    return oCab.apply(this,arguments);
+  };
+  const oCloseLb=window.closeLeaderboard, oCloseCab=window.closeCabinet;
+  window.closeLeaderboard=function(){ if(st()==="leaderboardView") history.back(); else oCloseLb(); };
+  window.closeCabinet=function(){ if(st()==="cabinetView") history.back(); else oCloseCab(); };
+
+  window.addEventListener("popstate",function(e){
+    let target=(e.state&&e.state.v)||"startView";
+    const from=current();
+    if(target===from) return;
+    if(from==="quizView" && quizActive && target!=="quizView" && !skipConfirm){
+      if(!window.confirm(LEAVE_MSG)){ push("quizView"); return; }
+    }
+    skipConfirm=false;
+    if(target==="quizView" && !quizActive) target="startView";
+    if(target==="resultView" && !hasResult) target="startView";
+    if(target==="startView") toStart(); else show(target);
+  });
+
+  window.goHome=function(){
+    if(current()==="quizView" && quizActive && !window.confirm(LEAVE_MSG)) return;
+    if(st()==="quizView"||st()==="resultView"){
+      skipConfirm=true;
+      history.back();
+      setTimeout(function(){ skipConfirm=false; if(current()!=="startView"){ toStart(); replace("startView"); } },350);
+    } else { toStart(); replace("startView"); }
+  };
 })();
 </script>
 
