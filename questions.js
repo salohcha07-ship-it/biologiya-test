@@ -259,13 +259,6 @@ const questions = [
     explanation: "O'rta miya ko'z qorachig'i kattalashishi yoki kichrayishini hamda yutinish kabi avtomatik harakat reflekslarini tartibga soladi."
   },
   {
-    question: "Genetika fanida nuklein kislotalardan biri bo'lgan DNK molekulasining monomeri nima deb ataladi?",
-    options: ["Aminokislota", "Nukleotid", "Monosaxarid", "Glikogen"],
-    topic: "Genetika",
-    answer: 1,
-    explanation: "DNK zanjiri azotli asos, dezoksiriboza va fosfat guruhidan iborat millionlab nukleotid monomerlarining birikishidan hosil bo'ladi."
-  },
-  {
     question: "Tasmasimon chuvalchanglarda (masalan, qoramol solityorida) quyidagi organ sistemalaridan qaysi biri butunlay yo'qolgan?",
     options: ["Hazm qilish sistemasi", "Jinsiy sistema", "Nerv sistemasi", "Ayirish sistemasi (protonefridiylar)"],
     topic: "Zoologiya",
@@ -372,7 +365,7 @@ const questions = [
   },
   {
     question: "Odamda qon aylanishining kichik doirasi qayerdan boshlanib qayerda tugaydi?",
-    options: ["Chap qorincha — Chap bo'lmacha", "O'ng qorincha — Chap bo'lmacha", "Chap qorincha — O'ng bo'lmacha", "O'ng qorincha — O me bo'lmacha"],
+    options: ["Chap qorincha — Chap bo'lmacha", "O'ng qorincha — Chap bo'lmacha", "Chap qorincha — O'ng bo'lmacha", "O'ng qorincha — O'ng bo'lmacha"],
     topic: "Odam anatomiyasi",
     answer: 1,
     explanation: "Kichik qon aylanish doirasi o'ng qorinchadan chiqib, o'pka kapilyarlarida kislorodga boyib, chap bo'lmachaga kelib tugaydi."
@@ -411,13 +404,6 @@ const questions = [
     topic: "Botanika",
     answer: 3,
     explanation: "O'simliklar yo'g'onlashganda epidermis o'rnini probka (periderm) qoplovchi to'qimasi egallaydi."
-  },
-  {
-    question: "Evolyutsiya nazariyasida populyatsiyada genlar chastotasining mutlaqo tasodifiy omillar ta'sirida o'zgarishi qanday ataladi?",
-    options: ["Tabiiy tanlanish", "Krossingover", "Genlar dreyfi", "Transkripsiya"],
-    topic: "Evolyutsiya",
-    answer: 2,
-    explanation: "Genlar dreyfi tasodifiy omillar natijasida allellar chastotasining avloddan-avlodga keskin tebranishidir."
   },
   {
     question: "Odamda bosh miyaning qaysi qismi muvozanatni saqlash va harakatlarni aniq muvofiqlashtirish uchun mas'ul?",
@@ -1288,13 +1274,6 @@ const questions = [
     explanation: "Adrenalin va vazopressin qon tomirlarini toraytirib, arterial qon bosimining ko'tarilishini ta'minlaydi."
   },
   {
-    question: "O'simliklarda urug'ning unib chiqishi uchun zarur bo'lgan asosiy uchta tashqi omil qaysilar?",
-    options: ["Suv, kislorod va qulay harorat", "Faqat quyosh nuri va azot", "Faqat quruqlik va muzlash", "Faqat karbonat angidrid"],
-    topic: "Botanika",
-    answer: 0,
-    explanation: "Urug' tinch holatdan o'sishga o'tishi uchun suv, nafas olish uchun kislorod va ma'lum darajadagi harorat kerak bo'ladi."
-  },
-  {
     question: "Evtrofikatsiyada suv havzasidagi kislorod miqdori nima uchun keskin kamayadi?",
     options: ["Suv o'tlari kislorodni ko'p ajratib, uni suvdan chiqarib yuboradi", "Suvga ko'p kislorod kirib, uni zaharlaydi", "Ommaviy halok bo'lgan suv o'tlarini parchalovchi aerob bakteriyalar kislorodni ko'p sarflaydi", "Baliqlar soni ortib, faqat ularning nafasi kislorodni tugatadi"],
     topic: "Ekologiya",
@@ -1303,7 +1282,7 @@ const questions = [
   },
   {
     question: "O'simliklarda barglarning pastki qismida ko'proq joylashgan va gaz almashinuvini ta'minlovchi og'izchalar qaysi to'qimaga tegishli?",
-    options: ["O'tkazuvchi to'qima", "Qoplovchi to me (epidermisning hosilasi)", "Asosiy to'qima (parenxima)", "Mexanik to'qima"],
+    options: ["O'tkazuvchi to'qima", "Qoplovchi to'qima (epidermisning hosilasi)", "Asosiy to'qima (parenxima)", "Mexanik to'qima"],
     topic: "Botanika",
     answer: 1,
     explanation: "Og'izchalar qoplovchi to'qima bo'lgan epidermisning maxsus juft hujayralari bo'lib, transpiratsiya va gaz almashinuvini boshqaradi."
@@ -1421,13 +1400,6 @@ const questions = [
     explanation: "Limfa tugunlari biologik filtr vazifasini bajarib, limfa oqimi bilan kelgan yot zarrachalar va mikroblarni ushlab qoladi hamda limfotsitlar ishlab chiqarib immunitetni ta'minlaydi."
   },
   {
-    question: "O'simliklarda vegetativ ko'payish turlaridan biri bo'lib, o'simlik novdasini tuproqqa ko'mib ildiz ottrish usuli nima deb ataladi?",
-    options: ["Qalamcha qilish", "Payvand qilish", "Urug' ekish", "Parishin qilish"],
-    topic: "Botanika",
-    answer: 3,
-    explanation: "Parishin qilish usulida novda ona o'simlikdan ajratilmagan holda tuproqqa egib ko'miladi va ildiz otgach kesib olinadi."
-  },
-  {
     question: "Evolyutsiya jarayonida kelib chiqishi turlicha bo'lgan, lekin tashqi ko'rinishi va bajaradigan vazifasi o'xshash bo'lgan organlar qanday ataladi?",
     options: ["Homolog organlar", "Analog organlar", "Rudimentlar", "Atavizmlar"],
     topic: "Evolyutsiya",
@@ -1453,7 +1425,7 @@ const questions = [
     options: ["MN tizimi", "X va Y tizimi", "ABO tizimi va Rezus faktor", "Faqat glyukoza tizimi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "K. Landshteyner kashf etgan ABO tizimi va Rezus (Rh) faktor odam qon quyish amaliyotida eng muhim tasnif ҳisoblanadi."
+    explanation: "K. Landshteyner kashf etgan ABO tizimi va Rezus (Rh) faktor odam qon quyish amaliyotida eng muhim tasnif hisoblanadi."
   },
   {
     question: "Turning ekologik nishasi nima?",
@@ -1855,13 +1827,6 @@ const questions = [
     explanation: "Ichki quloqdagi Korti organi eshitishni, vestibulyar apparat (yarim doira kanallari) esa tana muvozanatini ta'minlaydi."
   },
   {
-    question: "Genetika fanida digibrid chatishtirishda F2 avlodda fenotip bo'yicha hosil bo'ladigan klassik ajralish nisbati qanday?",
-    options: ["3:1", "1:2:1", "1:1", "9:3:3:1"],
-    topic: "Genetika",
-    answer: 3,
-    explanation: "Mendelning uchinchi qonuniga ko'ra, ikki juft belgi bo'yicha geterozigotalar chatishtirilganda fenotip bo'yicha 9:3:3:1 nisbat kuzatiladi."
-  },
-  {
     question: "Populyatsiya soni muhit sig'imiga (K) yetganda quyidagilardan qaysi biri yuz beradi?",
     options: ["Tug'ilish va o'lim tenglashib, son nisbatan barqarorlashadi", "Tug'ilish o'limdan ancha ko'payadi", "Populyatsiya zudlik bilan butunlay yo'qoladi", "Individlar soni eksponensial o'sishda davom etadi"],
     topic: "Ekologiya",
@@ -2009,7 +1974,7 @@ const questions = [
     explanation: "A va alfa yoki B va beta birga uchrashsa aglyutinatsiya (cho'kma hosil bo'lib yopishish) yuz beradi."
   },
   {
-    question: "O'simliklarda vegetativ ko'payish turlaridan biri bo'lib, ona o'simlikdan ajratilmagan holda tuproqqa ko'mib ildiz ottrish usuli nima deb ataladi?",
+    question: "O'simliklarda vegetativ ko'payish turlaridan biri bo'lib, ona o'simlikdan ajratilmagan holda tuproqqa ko'mib ildiz otdirish usuli nima deb ataladi?",
     options: ["Qalamcha qilish", "Parishin (g'ujum) qilish", "Payvand qilish", "Urug' ekish"],
     topic: "Botanika",
     answer: 1,
@@ -2150,56 +2115,56 @@ const questions = [
   },
   {
     question: "Sintetik evolyutsiya nazariyasiga ko'ra elementar birlik, elementar material va elementar hodisa qaysi javobda to'g'ri ko'rsatilgan?",
-    options: ["Individ; kombinativ o'zgaruvchanlik; tur hosil bo'lishi","Tur; modifikatsion o'zgaruvchanlik; tabiiy tanlanish","Biotsenoz; mutatsiya; gen oqimi","Populyatsiya; mutatsion va kombinativ o'zgaruvchanlik; populyatsiya genofondining yo'nalishli o'zgarishi"],
+    options: ["Individ; kombinativ o'zgaruvchanlik; individning fenotipik o'zgarishi va nasl qoldirishi", "Tur; modifikatsion o'zgaruvchanlik; tur ichidagi individlarning tabiiy tanlanishi", "Biotsenoz; mutatsion o'zgaruvchanlik; populyatsiyalar o'rtasidagi gen almashinuvi", "Populyatsiya; mutatsion va kombinativ o'zgaruvchanlik; genofondning yo'nalishli o'zgarishi"],
     topic: "Evolyutsiya",
     answer: 3,
     explanation: "Evolyutsiya populyatsiyada kechadi (elementar birlik), uning materiali mutatsion va kombinativ o'zgaruvchanlik, elementar hodisa esa populyatsiya genofondining barqaror o'zgarishi."
   },
   {
     question: "Ot va eshak chatishtirilganda hosil bo'ladigan xachir naslsiz bo'ladi. Bu qaysi reproduktiv izolyatsiya shakliga misol?",
-    options: ["Prezigotik: etologik izolyatsiya","Prezigotik: mexanik izolyatsiya","Postzigotik: duragaylarning steril bo'lishi","Geografik izolyatsiya"],
+    options: ["Prezigotik: etologik izolyatsiya (xulq-atvor farqi)", "Prezigotik: mexanik izolyatsiya (jinsiy a'zolar mos kelmasligi)", "Postzigotik: duragaylarning steril bo'lishi", "Geografik izolyatsiya (areallarning ajralib qolishi)"],
     topic: "Evolyutsiya",
     answer: 2,
     explanation: "Chatishish va urug'lanish sodir bo'ladi, zigota rivojlanadi, lekin duragay (xachir) steril. Bu zigotadan keyingi (postzigotik) izolyatsiya shakli."
   },
   {
     question: "G.D. Karpechenko turp (2n=18) va karam (2n=18) ni chatishtirdi. F₁ duragaylari 18 xromosomali va steril bo'ldi, xromosomalar soni ikki marta oshirilgach (36) unumdor bo'ldi. Sterillik sababi va unumdorlik tiklanishi izohi qaysi javobda to'g'ri?",
-    options: ["Xromosomalar soni toq, shuning uchun mitoz kechmaydi; ikkilanganda son juft bo'ladi","F₁ da gomologik xromosomalar yo'q, meyozda konyugatsiya buziladi; ikkilanganda har bir xromosoma o'z juftini topadi","F₁ da genlar dominantlik qilmaydi; ikkilanganda dominantlik tiklanadi","Duragay gametalari o'lik bo'ladi; ikkilanganda mutatsiyalar yo'qoladi"],
+    options: ["F₁ da xromosomalar soni juda ko'p bo'lgani uchun hujayra bo'linmaydi; ikkilanganda son me'yoriga tushadi", "F₁ da gomologik xromosomalar yo'q, meyozda konyugatsiya buziladi; ikkilanganda har biri o'z juftini topadi", "F₁ da genlar dominantlik qilmaydi, shu sababli belgilar namoyon bo'lmaydi; ikkilanganda dominantlik tiklanadi", "Duragay gametalari hayotchan bo'lmaydi, chunki mutatsiyalar to'plangan; ikkilanganda mutatsiyalar yo'qoladi"],
     topic: "Evolyutsiya",
     answer: 1,
     explanation: "F₁ da 9 turp va 9 karam xromosomasi bor, ular o'zaro gomologik emas, meyozda juftlashmaydi. Poliploidiyadan keyin har bir xromosoma gomologik juft topadi va unumdor gametalar hosil bo'ladi."
   },
   {
     question: "Ot evolyutsiyasi filogenetik qatorida (eogippusdan hozirgi otgacha) oldingi oyoq barmoqlari soni qanday o'zgargan?",
-    options: ["To'rt barmoqdan uch barmoqqa, so'ng bitta barmoqqa kamaygan, oyoq uzaygan","Bir barmoqdan uch barmoqqa ko'paygan","Besh barmoqdan ikki barmoqqa kamaygan","O'zgarmagan, faqat gavdasi kattalashgan"],
+    options: ["To'rt barmoqdan uch barmoqqa, so'ng bitta barmoqqa kamaygan, oyoq uzaygan", "Bir barmoqdan uch barmoqqa ko'payib, oyoqlari qisqargan va gavdasi kichiklashgan", "Besh barmoqdan ikki barmoqqa kamaygan, oyoqlari esa deyarli o'zgarmagan", "O'zgarmagan, faqat gavdasi kattalashgan va tishlari murakkablashgan"],
     topic: "Evolyutsiya",
     answer: 0,
     explanation: "V.O. Kovalevskiy tadqiqotlariga ko'ra ot ajdodlarida barmoqlar soni kamayib, III barmoq asosiy tayanchga aylangan, oyoq uzaygan, tishlar murakkablashgan."
   },
   {
     question: "Quruqlikka chiqqan dastlabki umurtqalilar (stegosefallar) qaysi guruhdan va qaysi geologik davrda kelib chiqqan?",
-    options: ["Tog'ay baliqlardan, Silur davrida","Nurli suzgichli baliqlardan, Perm davrida","Sudralib yuruvchilardan, Karbon davrida","Lobsimon suzgichli (kross-pterigiy) baliqlardan, Devon davrida"],
+    options: ["Tog'ay skeletli baliqlardan, Silur davrida", "Nurli suzgichli baliqlardan, Perm davrining oxirida", "Qadimgi sudralib yuruvchilardan, Karbon davrida", "Lobsimon suzgichli baliqlardan, Devon davrida"],
     topic: "Evolyutsiya",
     answer: 3,
     explanation: "Devon davrida lobsimon suzgichli baliqlardan ilk suvda-quruqlikda yashovchilar (stegosefallar) kelib chiqqan."
   },
   {
     question: "Neandertallar haqidagi qaysi fikr zamonaviy antropologiya ma'lumotlariga ko'proq mos keladi?",
-    options: ["Ular Homo sapiensning to'g'ridan-to'g'ri va yagona ajdodi","Ular Homo sapiens bilan hech qachon bir vaqtda yashamagan","Ular Homo sapiensning ajdodi emas, evolyutsiyaning yon shoxi bo'lib, u bilan bir davrda yonma-yon yashagan","Ular Australopitekning eng qadimgi vakillari"],
+    options: ["Ular Homo sapiensning to'g'ridan-to'g'ri va yagona ajdodi bo'lgan, keyin butunlay unga aylangan", "Ular Homo sapiens bilan hech qachon bir vaqtda yashamagan, Yevropaga undan keyin kelgan", "Ular Homo sapiensning ajdodi emas, yon shoxi bo'lib, u bilan bir davrda yashagan", "Ular Australopitekning eng qadimgi vakillari bo'lib, Afrikadan chiqmagan"],
     topic: "Evolyutsiya",
     answer: 2,
     explanation: "Neandertallar (paleoantroplar) Yevropa va G'arbiy Osiyoda yashagan, Kroman'on odami (neoantrop) bilan bir davrda uchragan. Ular hozirgi odamning to'g'ridan-to'g'ri ajdodi emas, yon shox hisoblanadi."
   },
   {
     question: "S.S. Chetverikov tabiiy populyatsiyalarni 'mutatsiyalar shimgichi' deb atagan. Bunga sabab nima?",
-    options: ["Mutatsiyalar tanlanish ta'sirida tezda yo'qoladi","Retsessiv mutatsiyalar geterozigota holatda fenotipda namoyon bo'lmay, tanlanishdan chetda saqlanib to'planadi","Mutatsiyalar faqat gametalarda paydo bo'ladi","Populyatsiyada faqat dominant mutatsiyalar saqlanadi"],
+    options: ["Mutatsiyalar tanlanish ta'sirida tezda yo'qolib, populyatsiya o'zgaruvchanligi kamayadi", "Retsessiv mutatsiyalar geterozigotada yashirin holda to'planib, tanlanishdan chetda qoladi", "Mutatsiyalar faqat jinsiy hujayralarda paydo bo'ladi va barcha avlodlarga o'tadi", "Populyatsiyada faqat dominant mutatsiyalar saqlanadi, retsessivlari yo'qolib ketadi"],
     topic: "Evolyutsiya",
     answer: 1,
     explanation: "Retsessiv allellar geterozigotalarda yashirin holda saqlanadi, shu sababli populyatsiya yashirin o'zgaruvchanlik zaxirasiga ega bo'ladi."
   },
   {
     question: "Bezgak keng tarqalgan hududlarda o'roqsimon hujayrali anemiya allelining (HbS) chastotasi yuqori bo'ladi. Buning eng to'g'ri izohi qaysi?",
-    options: ["Geterozigotalar (HbA/HbS) bezgakka chidamli va moslashuvchanligi yuqori; tanlanish ikkala allelni saqlab turadi","HbS allel bezgak plazmodiysi ta'sirida paydo bo'ladi","HbS gomozigotalar bezgakdan to'liq himoyalangan","Bu allel faqat genetik drift tufayli ko'paygan, tanlanishga aloqasi yo'q"],
+    options: ["Geterozigotalar (HbA/HbS) bezgakka chidamli; tanlanish ikkala allelni saqlab turadi", "HbS allel bezgak plazmodiysi ta'sirida paydo bo'lib, populyatsiyaga tarqaladi", "HbS gomozigotalar bezgakdan to'liq himoyalangan, shu sababli allel ko'payadi", "Bu allel faqat genetik drift tufayli ko'paygan, tanlanishning unga aloqasi yo'q"],
     topic: "Evolyutsiya",
     answer: 0,
     explanation: "Geterozigotalar ustunligi (balanslovchi tanlanish): HbA/HbS bezgakda omon qolish ehtimoli yuqori, HbS/HbS esa noqulay, shu sababli populyatsiyada ikkala allel saqlanadi."
@@ -2220,7 +2185,7 @@ const questions = [
   },
   {
     question: "Tovus erkagining uzun va yorqin dumi yirtqichlarga qulay nishon bo'lsa-da, populyatsiyada saqlanib qolgan. Buni qaysi tushuncha eng yaxshi izohlaydi?",
-    options: ["Barqarorlashtiruvchi tanlanish","Jinsiy tanlanish (urg'ochilar tanlovi)","Genetik drift","Orttirilgan belgilarning irsiylanishi"],
+    options: ["Barqarorlashtiruvchi tanlanish (o'rtacha belgini saqlash)", "Jinsiy tanlanish (urg'ochilar tanlovi)", "Genetik drift (tasodifiy allel chastotasi o'zgarishi)", "Orttirilgan belgilarning irsiylanishi (Lamark ta'limoti)"],
     topic: "Evolyutsiya",
     answer: 1,
     explanation: "Jinsiy tanlanishda belgi omon qolishga emas, juftlashish va nasl qoldirish muvaffaqiyatiga ta'sir qiladi. Urg'ochilar yorqin erkaklarni afzal ko'rgani uchun belgi saqlanadi."
@@ -2234,7 +2199,7 @@ const questions = [
   },
   {
     question: "Quyidagi xususiyatlardan qaysi biri mitoxondriya va xloroplastlarning endosimbiotik kelib chiqishiga zid (uni qo'llab-quvvatlamaydi)?",
-    options: ["Halqasimon DNK mavjudligi","70S ribosomalarning mavjudligi","Ikkiga bo'linish yo'li bilan ko'payishi","DNKsining yadro DNKsi kabi gistonlar bilan o'ralgan va oqsil sintezi 80S ribosomalarda kechishi"],
+    options: ["Halqasimon yalang'och DNK mavjudligi va ikki membranali qobiq", "70S ribosomalarning mavjudligi (bakteriyalarnikiga o'xshash)", "Ikkiga bo'linib ko'payishi va o'z DNKsiga egaligi", "DNKsi gistonlar bilan o'ralgan, oqsil sintezi 80S ribosomalarda"],
     topic: "Evolyutsiya",
     answer: 3,
     explanation: "Bu organoidlarda prokariotlarga o'xshash halqasimon yalang'och DNK, 70S ribosomalar va ikkiga bo'linish bor, bu endosimbioz dalillari. Histonli DNK va 80S ribosoma esa eukariot yadro xususiyati."
@@ -2262,14 +2227,14 @@ const questions = [
   },
   {
     question: "Latimeriya va ginkgo kabi turlar geologik o'tmishdagi guruhlarning xususiyatlarini saqlab qolgan holda hozirgacha yashab kelmoqda. Ular qanday ataladi?",
-    options: ["Atavizmlar","Rudimentlar","Invaziv turlar","Tirik fossillar (relikt shakllar)"],
+    options: ["Atavizmlar (ajdodlar belgisining qayta paydo bo'lishi)", "Rudimentlar (rivojlanmay qolgan a'zolar)", "Invaziv turlar (yangi hududga kirib ketgan turlar)", "Tirik fossillar (relikt shakllar)"],
     topic: "Evolyutsiya",
     answer: 3,
     explanation: "Qadimgi guruhlarning belgilarini saqlagan, hozirgi kunda kam sonli turlar bilan vakil bo'lgan organizmlar relikt (tirik fossil) shakllar deyiladi."
   },
   {
     question: "Darvin ta'limotiga ko'ra yashash uchun kurashning eng shiddatli shakli qaysi?",
-    options: ["Turlararo kurash","Noqulay abiotik sharoitlar bilan kurash","Ichkituriy kurash (bir tur individlari o'rtasidagi)","Yirtqich va o'lja o'rtasidagi kurash"],
+    options: ["Turlararo kurash (turli tur individlari o'rtasida)", "Noqulay abiotik sharoitlar bilan kurash (sovuq, qurg'oqchilik)", "Ichkituriy kurash (bir tur individlari o'rtasida)", "Yirtqich va o'lja o'rtasidagi kurash (trofik munosabat)"],
     topic: "Evolyutsiya",
     answer: 2,
     explanation: "Bir tur individlarining ehtiyojlari (oziq, makon, juft) bir xil bo'lgani uchun ular o'rtasidagi raqobat eng kuchli bo'ladi."
@@ -2325,14 +2290,14 @@ const questions = [
   },
   {
     question: "Quyidagi gen mutatsiyalaridan qaysi biri oqsil tuzilishiga eng kam ta'sir ko'rsatishi mumkin?",
-    options: ["Kodondagi uchinchi nukleotid almashinuvi natijasida o'sha aminokislotani kodlovchi sinonim kodon hosil bo'lishi","Genning boshida bitta nukleotid qo'shilishi","Aminokislota kodonining stop-kodonga aylanishi","Genning o'rtasida ikkita nukleotid yo'qolishi"],
+    options: ["Kodondagi uchinchi nukleotidning almashinuvi va sinonim kodon hosil bo'lishi", "Genning boshlang'ich qismiga bitta nukleotid qo'shilishi (kadr siljishi)", "Aminokislotani kodlovchi kodonning stop-kodonga aylanishi (nonsens mutatsiya)", "Genning o'rtasidagi ikkita nukleotidning yo'qolishi, natijada kadr siljishi"],
     topic: "Sitologiya",
     answer: 0,
     explanation: "Genetik kod degeneratsiyalangan: ko'pincha uchinchi nukleotid almashinuvi bir xil aminokislotani beradi (jim mutatsiya). Kadr siljishi va nonsens mutatsiyalar oqsilni keskin o'zgartiradi."
   },
   {
     question: "Laktoza yo'qligida E. coli lak-operoni 'o'chiq' bo'ladi. Muhitga laktoza qo'shilganda nima sodir bo'ladi?",
-    options: ["Laktoza RNK-polimerazaga bog'lanib promotorni yopadi","Laktoza (allolaktoza) repressor oqsilga bog'lanib uni operatordan ajratadi va strukturaviy genlar transkripsiyalanadi","Laktoza operatorga bevosita bog'lanib transkripsiyani to'xtatadi","Laktoza gen-regulyatorni mutatsiyaga uchratadi"],
+    options: ["Laktoza RNK-polimerazaga bog'lanib, promotorni yopadi va transkripsiya to'xtaydi", "Allolaktoza repressorni inaktivlaydi, operator bo'shab, genlar transkripsiyalanadi", "Laktoza operatorga bevosita bog'lanib, strukturaviy genlar transkripsiyasini to'xtatadi", "Laktoza gen-regulyatorni mutatsiyaga uchratadi, repressor sintezi to'xtaydi"],
     topic: "Sitologiya",
     answer: 1,
     explanation: "Repressor operatorga bog'lanib transkripsiyani to'sib turadi. Induktor (laktoza) repressorni inaktivlaydi, RNK-polimeraza operon genlarini o'qiy boshlaydi."
@@ -2360,14 +2325,14 @@ const questions = [
   },
   {
     question: "Kemosintez haqidagi qaysi fikr to'g'ri?",
-    options: ["Kemosintezlovchi bakteriyalar CO₂ dan organik modda hosil qilishda yorug'lik energiyasidan foydalanadi","Nitrifikatsiyalovchi bakteriyalar ammiak yoki nitritni oksidlab ajralgan energiya hisobiga CO₂ dan organik modda sintezlaydi","Kemosintez faqat eukariotlarga xos","Kemosintezda suv fotolizlanib kislorod ajraladi"],
+    options: ["Kemosintezlovchi bakteriyalar CO₂ dan organik modda hosil qilishda yorug'lik energiyasidan foydalanadi", "Nitrifikatsiyalovchi bakteriyalar ammiakni oksidlab, shu energiya bilan organik modda sintezlaydi", "Kemosintez faqat eukariotlarga xos bo'lib, mitoxondriyalarda kechadi", "Kemosintezda suv fotolizlanib kislorod ajraladi va organik modda hosil bo'ladi"],
     topic: "Sitologiya",
     answer: 1,
     explanation: "Kemosintezda energiya anorganik moddalar (NH₃, H₂S, Fe²⁺ va b.) oksidlanishidan olinadi. Bu jarayon yorug'likka va suv fotolliziga bog'liq emas, faqat prokariotlarda uchraydi."
   },
   {
     question: "OIV (retrovirus) hujayraga kirgach irsiy axborot oqimi qanday kechadi?",
-    options: ["DNK → RNK → oqsil","RNK → oqsil, DNK hosil bo'lmaydi","Oqsil → RNK → DNK","RNK → DNK (teskari transkriptaza) → RNK → oqsil"],
+    options: ["DNK → RNK → oqsil (transkripsiya va translyatsiya)", "RNK → oqsil, DNK hosil bo'lmaydi (to'g'ridan-to'g'ri translyatsiya)", "Oqsil → RNK → DNK (teskari translyatsiya)", "RNK → DNK (teskari transkriptaza) → RNK → oqsil"],
     topic: "Sitologiya",
     answer: 3,
     explanation: "Retroviruslarda teskari transkriptaza virus RNKsi asosida DNK sintezlaydi. Bu DNK xo'jayin genomiga kiradi va undan yana RNK hamda oqsillar hosil bo'ladi."
@@ -2395,7 +2360,7 @@ const questions = [
   },
   {
     question: "Lizosomalarning gidrolitik fermentlari hujayrada qaysi ketma-ketlikda hosil bo'ladi va qadoqlanadi?",
-    options: ["Silliq EPT da sintezlanadi, yadroda qadoqlanadi","Mitoxondriyada sintezlanadi, lizosomaga o'tadi","Donador EPT ribosomalarida sintezlanadi, Golji kompleksida qadoqlanadi, lizosoma pufakchalari ajraladi","Erkin ribosomalarda sintezlanadi, peroksisomaga o'tadi"],
+    options: ["Silliq EPT da sintezlanadi, yadroda qadoqlanib, lizosoma pufakchalari ajraladi", "Mitoxondriyada sintezlanadi, Golji kompleksini chetlab o'tib lizosomaga o'tadi", "Donador EPT ribosomalarida sintezlanadi, Golji kompleksida qadoqlanib, pufakchaga o'raladi", "Erkin ribosomalarda sintezlanadi, sitoplazmada qadoqlanib peroksisomaga o'tadi"],
     topic: "Sitologiya",
     answer: 2,
     explanation: "Membrana bilan o'ralgan organoidlarga mo'ljallangan oqsillar donador EPT dagi ribosomalarda sintezlanadi, Golji kompleksida o'zgartirilib, lizosoma pufakchalariga o'raladi."
@@ -2409,7 +2374,7 @@ const questions = [
   },
   {
     question: "Kolxitsin moddasi mitozda nima uchun hujayralarni metafazada to'xtatib qo'yadi?",
-    options: ["DNK replikatsiyasini to'xtatadi","Urchuq iplari (mikronaychalar) hosil bo'lishini buzadi","Sentromerani bo'ladi","Yadro qobig'ining erishini oldini oladi"],
+    options: ["DNK replikatsiyasini to'xtatib, S-davrda hujayrani ushlab qoladi", "Urchuq iplari (mikronaychalar) hosil bo'lishini buzadi", "Sentromerani parchalab, xromatidlar ajralishiga to'sqinlik qiladi", "Yadro qobig'ining erishiga yo'l qo'ymay, profazada to'xtatadi"],
     topic: "Sitologiya",
     answer: 1,
     explanation: "Kolxitsin tubulin polimerizatsiyasini to'sadi, urchuq ipi shakllanmaydi, xromosomalar qutblarga tortilmaydi. Shu sababli poliploid hujayralar olishda ishlatiladi."
@@ -2423,14 +2388,14 @@ const questions = [
   },
   {
     question: "Xromatinning asosiy tuzilma birligi — nukleosoma qanday tuzilgan?",
-    options: ["Faqat oqsil bilan bog'lanmagan DNK bo'lagi","Histon bo'lmagan 4 ta oqsil molekulasiga o'ralgan RNK","8 ta histon oqsili molekulasidan iborat o'zak va uni o'rab turgan DNK bo'lagi","Ikki xromatid birlashgan joy"],
+    options: ["Oqsil bilan bog'lanmagan yalang'och DNK bo'lagi, yadro matriksida joylashgan", "Histon bo'lmagan to'rtta oqsil molekulasiga o'ralgan RNK zanjiri", "8 ta histon oqsilidan iborat o'zak va uni o'rab turgan DNK bo'lagi", "Ikki xromatid sentromera sohasida birlashgan joy"],
     topic: "Sitologiya",
     answer: 2,
     explanation: "Nukleosomada DNK ipi sakkizta histon oqsili (oktamer) atrofiga o'raladi. Nukleosomalar zanjirsimon joylashib xromatinni hosil qiladi."
   },
   {
     question: "Hujayrada DNK jiddiy shikastlanganda p53 oqsili qanday vazifani bajaradi?",
-    options: ["Hujayra siklini to'xtatib, tuzatish imkonini beradi; tuzatib bo'lmasa apoptozni ishga tushiradi","Hujayra bo'linishini tezlashtiradi","DNK replikatsiyasini ikki baravar oshiradi","Telomerazani faollashtirib hujayrani o'lmas qiladi"],
+    options: ["Hujayra siklini to'xtatadi; tuzatib bo'lmasa, apoptozni ishga tushiradi", "Hujayra bo'linishini tezlashtirib, shikastlangan DNKni nusxalab ko'paytiradi", "DNK replikatsiyasini ikki baravar oshirib, shikastni o'rnini to'ldiradi", "Telomerazani faollashtirib, hujayrani cheksiz bo'linadigan qiladi"],
     topic: "Sitologiya",
     answer: 0,
     explanation: "p53 'genom qo'riqchisi': shikastlanishda siklni to'xtatadi, DNK tiklanishini ishga soladi, tuzatib bo'lmasa hujayrani apoptozga yo'naltiradi. Uning yo'qolishi o'sma rivojlanishiga olib kelishi mumkin."
@@ -2451,7 +2416,7 @@ const questions = [
   },
   {
     question: "Jigar qurti (Fasciola hepatica) hayot siklida oraliq xo'jayin va yangi xo'jayinni yuqtiruvchi invazion bosqich qaysi javobda to'g'ri ko'rsatilgan?",
-    options: ["Planariya; sista","Qoramol; finna","Kichik hovuz salyangozi; adoleskariya","Anofeles chivini; sporozoit"],
+    options: ["Planariya; plerotserkoid", "Qoramol; finna (sistitserk)", "Kichik hovuz salyangozi; adoleskariya", "Anofeles chivini; sporozoit (invazion shakl)"],
     topic: "Zoologiya",
     answer: 2,
     explanation: "Miratsidiy kichik hovuz salyangoziga kirib, sporosista, redi va serkariya bosqichlaridan o'tadi. Serkariya o'simlikka yopishib adoleskariyaga (sistaga) aylanadi va o'txo'r hayvon yoki odam yutganda yuqadi."
@@ -2465,7 +2430,7 @@ const questions = [
   },
   {
     question: "Daryo qisqichbaqasi (qisqichbaqasimonlar sinfi) o'rgimchaksimonlardan qaysi belgisi bilan farq qiladi?",
-    options: ["Boshko'krak bo'limining yo'qligi","O'pka xaltachalari va traxeya bilan nafas olishi","Mo'ylovlarining bo'lmasligi","Ikki juft mo'ylovi (antenna) bo'lishi va jabra bilan nafas olishi"],
+    options: ["Boshko'krak bo'limining yo'qligi va tanasi tuban bo'laklarga bo'linishi", "O'pka xaltachalari va traxeya orqali nafas olishi", "Mo'ylovlarining bo'lmasligi va to'rt juft yurish oyog'i", "Ikki juft mo'ylovi va jabra orqali nafas olishi"],
     topic: "Zoologiya",
     answer: 3,
     explanation: "Qisqichbaqasimonlarda ikki juft mo'ylov va jabra nafasi xos. O'rgimchaksimonlarda mo'ylov yo'q, nafas o'pka xaltachalari yoki traxeya orqali kechadi."
@@ -2485,11 +2450,11 @@ const questions = [
     explanation: "Qoziq tishlar o'ljani ushlab turadi, yirtqich tishlar esa qaychisimon ishlab go'shtni kesadi."
   },
   {
-    question: "Qushlarda siydik pufagining bo'lmasligi va ayirish mahsuloti sifatida siydik kislotasi ajralishining biologik ahamiyati nima?",
-    options: ["Suvni tejash va tana massasini kamaytirish (uchishga moslashuv)","Tanadagi tuzlar miqdorini oshirish","Qonning kislorod tashish xususiyatini kuchaytirish","Qanotlarning issiqlik rejimini tartibga solish"],
+    question: "Qush embrioni yopiq tuxum ichida rivojlanadi. Uning ayirish mahsuloti sifatida mochevina emas, siydik kislotasi hosil bo'lishining ahamiyati nimada?",
+    options: ["Siydik kislotasi erimaydi, kristallar holida allantoisda to'planadi va embrionni zaharlamaydi", "Siydik kislotasi suvda yaxshi eriydi, shu sababli u qobiq orqali tashqariga chiqib ketadi", "Mochevina sintezi juda ko'p kislorod talab qiladi, qobiq esa uni umuman o'tkazmaydi", "Embrionda buyrak bo'lmaydi, shu sababli azotli moddalar hosil bo'lmaydi va to'planmaydi"],
     topic: "Zoologiya",
     answer: 0,
-    explanation: "Siydik kislotasi kam suv bilan quyuq holda chiqariladi, siydik pufagi yo'qligi esa tana massasini yengillashtiradi. Ikkalasi uchishga moslashuvdir."
+    explanation: "Yopiq tuxumda suv chegaralangan va chiqindi tashqariga chiqib keta olmaydi. Eruvchan mochevina to'planib embrionni zaharlardi, erimaydigan siydik kislotasi esa allantois xaltasida kristall holda zararsiz saqlanadi. Shu xususiyat qushlar va sudralib yuruvchilarda saqlanib qolgan va tana suvini tejaydi."
   },
   {
     question: "Ilon tilini tez-tez chiqarib kiritishining asosiy sababi nima?",
@@ -2513,11 +2478,11 @@ const questions = [
     explanation: "Halqali chuvalchanglar va bo'g'imoyoqlilarda qorin asab zanjiri bo'ladi. Xordalilarda asab tizimi naychasimon va orqa tomonda joylashgan, ichakbo'shliqlilarda esa tarqoq (to'rsimon) tuzilgan."
   },
   {
-    question: "Odam qanday holatda cho'chqa solityori (Taenia solium) ning oraliq xo'jayiniga aylanadi?",
-    options: ["Parazit tuxumlarini yutganda: onkosfera qon orqali to'qimalarga o'tib, finnaga aylanadi (sistitserkoz)","Pishmagan finnali go'sht yeganda","Faqat onasining qornida homila davrida","Chivin chaqqanda"],
+    question: "Cho'chqa solityori (Taenia solium) bilan zararlanishning ikki shakli — teniaz va sistitserkoz — qanday farq qiladi?",
+    options: ["Teniaz — odam asosiy xo'jayin (finnali go'sht); sistitserkoz — odam oraliq xo'jayin (tuxum yutilganda)", "Teniaz — odam oraliq xo'jayin (tuxum yutilganda); sistitserkoz — odam asosiy xo'jayin (finnali go'sht)", "Ikkalasida ham odam asosiy xo'jayin; farq faqat parazit tuxumining ichakda yetilish muddatida", "Ikkalasida ham odam oraliq xo'jayin; farq faqat finnaning jigar yoki o'pkada joylashishida"],
     topic: "Zoologiya",
     answer: 0,
-    explanation: "Finnali go'shtni yeyish solityorning voyaga yetgan shakli ichakda rivojlanishiga olib keladi. Tuxumlarni yutish esa finna to'qimalarda rivojlanishiga, ya'ni sistitserkozga sabab bo'ladi."
+    explanation: "Taenia solium finnasi (sistitserk) cho'chqa go'shtida bo'ladi. Odam uni yeganda ichakda voyaga yetgan chuvalchang rivojlanadi (teniaz), odam asosiy xo'jayin hisoblanadi. Odam parazit tuxumlarini yutsa, onkosferalar qon bilan to'qimalarga (mushak, miya, ko'z) o'tib finna hosil qiladi. Bu sistitserkoz bo'lib, odam oraliq xo'jayin vazifasini bajaradi."
   },
   {
     question: "Teri leyshmanioziga (pend yarasi) sabab bo'luvchi leyshmaniyalarni odamga qaysi hasharot tashiydi?",
@@ -2527,11 +2492,11 @@ const questions = [
     explanation: "Leyshmaniyalar mayda qon so'ruvchi moskitlar orqali yuqadi. Anofeles bezgak plazmodiysini, se-se pashshasi tripanosomani tashiydi."
   },
   {
-    question: "Infuzoriya-tufelkada konyugatsiya jarayonining natijasi qanday?",
-    options: ["Individlar soni ikki baravar ko'payadi","Makronukleus ikkiga bo'linib ko'payish sodir bo'ladi","Ikkala individ qo'shilib bitta hujayra hosil qiladi","Individlar mikronukleus materiali bilan almashadi, genetik jihatdan yangilanadi, soni ko'paymaydi"],
+    question: "Infuzoriya-tufelkada konyugatsiya natijasida individlar soni va genetik material qanday o'zgaradi?",
+    options: ["Individlar soni 2 dan 4 ga ko'payadi, har biri o'z genetik materialini saqlab qoladi", "Ikki individ qo'shilib bitta hujayra hosil qiladi, genetik material ikki baravar ortadi", "Individlar soni o'zgarmaydi, mikronukleuslar almashmaydi, faqat makronukleus yangilanib turadi", "Soni o'zgarmaydi; mikronukleus materiali almashinib, yangi genetik kombinatsiyalar hosil bo'ladi"],
     topic: "Zoologiya",
     answer: 3,
-    explanation: "Konyugatsiya jinsiy jarayon: irsiy material almashinadi, lekin individlar soni ko'paymaydi. Tufelka odatda ikkiga bo'linib ko'payadi."
+    explanation: "Konyugatsiya ko'payish emas, jinsiy jarayon: ikki infuzoriya yaqinlashadi, mikronukleuslari meyoz bilan bo'linadi, ko'chuvchi yadrolar almashiladi va o'z yadrosi bilan qo'shiladi. Individlar ajralgach ularning soni 2 ligicha qoladi, lekin genetik jihatdan yangilangan bo'ladi."
   },
   {
     question: "Evglena hayvonlar va o'simliklar o'rtasidagi o'tish shakli deb hisoblanadi. Buning sababi nima?",
@@ -2562,11 +2527,11 @@ const questions = [
     explanation: "Sariqlik zaxirasi ko'p bo'lgani uchun embrion tuxum ichida uzoq rivojlanadi va jo'ja tuxumdan yetuk holda chiqadi."
   },
   {
-    question: "Xaltali sutemizuvchilar (kenguru) bolalari juda kam rivojlangan holda tug'ilib, ona xaltasida rivojlanishini davom ettiradi. Buning sababi nima?",
-    options: ["Ular tuxum qo'yadi","Ularda sut bezlari bo'lmaydi","Yo'ldosh (plasenta) bo'lmaydi yoki juda sodda bo'ladi, embrion ona organizmidan uzoq oziqlana olmaydi","Homiladorlik davri juda uzoq davom etadi"],
+    question: "Ornitorinx, kenguru va quyon haqidagi qaysi javob ularning ko'payish usulini to'g'ri ko'rsatadi?",
+    options: ["Ornitorinx — tirik tug'adi; kenguru — tuxum qo'yadi; quyon — bolasi xaltada rivojlanadi", "Ornitorinx — bolasi xaltada rivojlanadi; kenguru — tuxum qo'yadi; quyon — tirik tug'adi", "Ornitorinx — tuxum qo'yadi; kenguru — bolasi xaltada o'sadi; quyon — yo'ldoshli tug'adi", "Ornitorinx — tuxum qo'yadi; kenguru — tuxum qo'yadi; quyon — bolasi xaltada rivojlanadi"],
     topic: "Zoologiya",
     answer: 2,
-    explanation: "Yo'ldosh yo'qligi yoki sodda ekanligi sababli bola erta tug'iladi va xaltada sut bilan oziqlanib rivojlanadi."
+    explanation: "Ornitorinx tuxum qo'yuvchi sutemizuvchi (birinchi hayvonlar). Kenguru xaltali: bola juda erta tug'iladi va xaltada rivojlanadi, yo'ldosh sodda yoki yo'q. Quyon yo'ldoshli sutemizuvchi, homila ona organizmida yo'ldosh orqali oziqlanadi."
   },
   {
     question: "Ikki pallali mollyuskalarda (midiya, marvarid chig'anog'i) bosh va radulaning reduksiyalanishi (yo'qolishi) nima bilan bog'liq?",
@@ -2597,11 +2562,11 @@ const questions = [
     explanation: "Girudin trombinni inaktivlaydi va qon ivishini to'sadi. Shu sababli zuluk so'rayotganda qon suyuq holda qoladi."
   },
   {
-    question: "Hasharotlarda yuvenil (yoshlik) gormoni yuqori konsentratsiyada bo'lganda tullash natijasida nima sodir bo'ladi?",
-    options: ["Lichinka tez pupaga aylanadi","Lichinka keyingi yoshdagi lichinkaga o'tadi, metamorfoz sodir bo'lmaydi","Imago bevosita tuxum qo'yadi","Lichinka nobud bo'ladi"],
+    question: "Ipak qurti lichinkasining oxirgi yoshida yuvenil gormon ishlab chiqaruvchi bezlari olib tashlandi. Keyingi tullashda nima kuzatiladi?",
+    options: ["Lichinka yana bir yoshdagi lichinkaga aylanadi va metamorfoz kechiktiriladi", "Lichinka muddatidan oldin g'umbakka aylanib, mayda g'umbak va imago hosil qiladi", "Tullash to'xtaydi, chunki ekdizon ishlab chiqarilmaydi, lichinka esa nobud bo'ladi", "G'umbak bosqichi tushib qoladi va lichinka to'g'ridan-to'g'ri imagoga aylanadi"],
     topic: "Zoologiya",
     answer: 1,
-    explanation: "Ekdizon tullashni boshlaydi, yuvenil gormon esa lichinka belgilarini saqlaydi. Uning miqdori kamayganda pupa va imagoga o'tiladi."
+    explanation: "Yuvenil gormon lichinka belgilarini saqlaydi, tullashni esa ekdizon boshqaradi. Yuvenil gormon yo'qolsa, ekdizon ta'sirida metamorfoz muddatidan oldin boshlanadi: lichinka erta g'umbakka o'tadi va mayda g'umbak hosil bo'ladi. Aksincha, yuvenil gormon ko'p bo'lsa, lichinka faqat keyingi yoshdagi lichinkaga tullaydi."
   },
   {
     question: "K. Frish tadqiqotlariga ko'ra asalarilarning aylana raqsi va 8 shaklidagi raqsi qanday axborot beradi?",
@@ -2611,11 +2576,11 @@ const questions = [
     explanation: "Aylana raqs yaqin oziq manbasini bildiradi. 8 shaklidagi raqsning yo'nalishi quyoshga nisbatan yo'nalishni, davomiyligi esa masofani ko'rsatadi."
   },
   {
-    question: "Chuchuk suvda yashovchi suyakli baliqlarda suv-tuz almashinuvi qanday kechadi?",
-    options: ["Dengiz suvini ichib, tuzni jabra orqali chiqaradi, siydigi kam va quyuq","Suv teri orqali chiqib ketadi, ular ko'p suv ichadi","Suv va tuz almashinuvi umuman bo'lmaydi","Suv teri va jabra orqali tanaga kiradi, ko'p suyultirilgan siydik chiqariladi, tuzlar jabra orqali faol so'riladi"],
+    question: "Dengiz suyakli baliqlari chuchuk suv baliqlaridan suv-tuz almashinuvi bo'yicha qanday farq qiladi?",
+    options: ["Suv ichmaydi, ko'p suyultirilgan siydik chiqaradi va tuzni jabra orqali yutadi", "Tuz osmos yo'li bilan jabradan o'zi chiqib ketadi, shu sababli suv ichishi shart emas", "Suv teri orqali tanaga kiradi, buyrak esa uni to'liq ushlab qoladi, siydik chiqmaydi", "Ko'p suv ichadi, ortiqcha tuzni jabra hujayralari orqali faol chiqaradi, siydigi kam"],
     topic: "Zoologiya",
     answer: 3,
-    explanation: "Chuchuk suv baliq tanasiga nisbatan gipotonik, shuning uchun suv tanaga kiradi. Ortiqcha suv ko'p suyultirilgan siydik bilan chiqariladi, yo'qotilgan tuzlar esa jabra orqali tiklanadi."
+    explanation: "Dengiz suvi baliq tanasiga nisbatan tuzliroq (gipertonik), shuning uchun suv tanadan chiqib ketadi. Baliq yo'qotilgan suvni ichib to'ldiradi, ortiqcha tuzni jabradagi xlorid hujayralari faol chiqaradi, siydigi kam va quyuq bo'ladi. Chuchuk suv baliqlarida teskarisi: suv kiradi, ko'p suyultirilgan siydik chiqadi."
   },
   {
     question: "Donxo'r qushlarning mushakli oshqozoni ichida mayda toshlar bo'lishining ahamiyati nima?",
@@ -2639,11 +2604,11 @@ const questions = [
     explanation: "Suv taqchilligida abssiz kislota to'planadi va to'siquvchi hujayralardan ionlar chiqishiga sabab bo'lib, og'izchalarni yopadi."
   },
   {
-    question: "Poyaning uchki kurtagi uzib tashlanganda yon kurtaklar o'sa boshlaydi. Buning sababi nima?",
-    options: ["Gibberellin miqdori keskin ortadi","Uchki kurtakdan hosil bo'ladigan auksin yon kurtaklar o'sishini to'sib turgan edi, u yo'qolgach to'siq olib tashlanadi","Etilen ishlab chiqarilishi to'xtaydi","Fotosintez tezligi pasayadi"],
+    question: "Poya uchki kurtagi kesib tashlandi va kesim joyiga auksinli pasta surtildi. Yon kurtaklar o'sishi qanday bo'ladi va nima uchun?",
+    options: ["Yon kurtaklar tez o'sadi, chunki auksin hujayra bo'linishini kuchaytiradi", "Yon kurtaklar o'sishi susayib qoladi, chunki auksin ularning o'sishini to'sadi", "Yon kurtaklar nobud bo'ladi, chunki yuqori auksin kambiy hujayralarini o'ldiradi", "Yon kurtaklar o'sishiga ta'sir qilmaydi, chunki auksin faqat ildizda ishlaydi"],
     topic: "Botanika",
     answer: 1,
-    explanation: "Bu hodisa apikal (uchki) ustunlik deyiladi. Uchki kurtak auksini yon kurtaklar o'sishini susaytiradi."
+    explanation: "Apikal dominantlik: uchki kurtakdan pastga oqadigan auksin yon kurtaklar o'sishini to'sadi. Uchki kurtak kesilsa, auksin manbai yo'qoladi va yon kurtaklar o'sa boshlaydi. Kesim joyiga sun'iy auksin surtilsa, to'siq saqlanib qoladi."
   },
   {
     question: "Bitta pishgan olma yonida saqlangan yashil mevalar tezroq pishadi. Buning sababi nima?",
@@ -2660,18 +2625,18 @@ const questions = [
     explanation: "Yorug'lik auksinning soya tomonga ko'chishiga sabab bo'ladi. Soya tomon tezroq cho'zilgani uchun poya yorug'lik tomonga egiladi."
   },
   {
-    question: "Azot yetishmasligining dastlabki belgisi qaysi javobda to'g'ri ko'rsatilgan?",
-    options: ["Eng yosh barglar sarg'ayadi, eski barglar yashil qoladi","Barglar to'q yashil bo'lib, o'sish tezlashadi","Eng pastki (eski) barglar sarg'ayadi, chunki azot yosh to'qimalarga qayta taqsimlanadi","Gullar soni keskin ko'payadi"],
+    question: "O'simlikning eng yosh barglarida tomirlar yashil qolib, tomirlar orasi sarg'ayib ketgan. Qaysi element yetishmasligi eng ehtimol?",
+    options: ["Azot: u kam harakatchan, shu sababli yosh barglar birinchi zarar ko'radi", "Kaliy: u harakatchan bo'lgani uchun eski barglarning cheti kuyadi", "Temir: u kam harakatchan, eski barglardan yosh barglarga ko'chmaydi", "Magniy: u harakatchan, shu sababli yosh barglar birinchi sarg'ayadi"],
     topic: "Botanika",
     answer: 2,
-    explanation: "Azot o'simlikda harakatchan element: yetishmasa eski barglardan yosh barglarga ko'chadi, shu sababli xloroz pastki barglardan boshlanadi."
+    explanation: "Temir o'simlikda kam harakatchan: eski to'qimalardan yosh barglarga ko'chmaydi, shuning uchun yetishmasligi yosh barglarda tomirlar orasi xlorozi bilan namoyon bo'ladi. Azot, kaliy va magniy harakatchan, ular yetishmaganda eski barglar birinchi zarar ko'radi."
   },
   {
-    question: "Ildiz endodermasidagi Kaspari belbog'ining asosiy vazifasi nima?",
-    options: ["Fotosintez mahsulotlarini ildizga tashish","Ildizning eniga o'sishini ta'minlash","Ildiz tukchalari hosil bo'lishini rag'batlantirish","Hujayra devorlari bo'ylab suv va tuzlarning markaziy silindrga bevosita o'tishini to'sib, tanlab o'tkazishni ta'minlash"],
+    question: "Ildizda suv epidermisdan ksilemaga qanday yo'llar bilan o'tadi va apoplast yo'li qayerda to'xtatiladi?",
+    options: ["Faqat simplast yo'li bilan; apoplast yo'li ekzoderma hujayralarida to'xtatiladi", "Apoplast va simplast yo'llari bilan; apoplast yo'li perisiklda to'xtatiladi", "Faqat apoplast yo'li bilan; simplast yo'li endoderma hujayralarida to'xtatiladi", "Apoplast va simplast yo'llari bilan; apoplast Kaspari belbog'ida to'xtaydi (endoderma)"],
     topic: "Botanika",
     answer: 3,
-    explanation: "Kaspari belbog'i suberin bilan to'yingan, suv va tuzlarni endoderma hujayralari protoplasti orqali o'tishga majbur qiladi, shu tariqa moddalar o'tishi nazorat qilinadi."
+    explanation: "Suv ildizda apoplast (hujayra devorlari bo'ylab), simplast (plazmodesmalar orqali) va transmembran yo'llar bilan o'tadi. Endodermadagi Kaspari belbog'i (suberin) apoplast yo'lini to'sadi, suv va tuzlar endoderma hujayra membranasidan o'tishga majbur bo'ladi. Bu tanlab o'tkazishni ta'minlaydi."
   },
   {
     question: "Bir pallali o'simliklar poyasi tuzilishining qaysi xususiyati ularning eniga qalinlashmasligini izohlaydi?",
@@ -2758,18 +2723,18 @@ const questions = [
     explanation: "Kompensatsiya nuqtasida CO₂ ning fotosintezda yutilishi nafas olishda ajralishiga teng bo'ladi, shuning uchun sof gaz almashinuvi nolga teng."
   },
   {
-    question: "Gutatsiya (barg chetlarida suv tomchilari ajralishi) qanday sharoitda kuzatiladi?",
-    options: ["Issiq quruq kunda transpiratsiya kuchli bo'lganda","Havo namligi yuqori, transpiratsiya sust va ildiz bosimi mavjud sharoitda (ko'pincha tong paytida)","Qish davrida, ildiz faolligi to'xtaganda","Faqat suvda o'sadigan o'simliklarda, quruq tuproqda emas"],
+    question: "Qaysi hodisa faqat ildiz bosimi bilan izohlanadi va transpiratsiya sust bo'lganda ham kuzatiladi?",
+    options: ["Barg og'izchalari orqali suv bug'lanishi (transpiratsiya)", "Gutatsiya va kesilgan poyadan sharbat oqishi (o'simlik 'yig'lashi')", "Hujayralarning plazmolizga uchrashi va turgorning yo'qolishi", "Suvning barg so'rish kuchi ta'sirida ksilema bo'ylab ko'tarilishi"],
     topic: "Botanika",
     answer: 1,
-    explanation: "Transpiratsiya sust bo'lganda ildiz bosimi suvni gidatodlar orqali tomchi holida chiqaradi. Bu hodisa gutatsiya deyiladi."
+    explanation: "Ildiz bosimi — ildizdagi osmotik bosim ta'sirida suvning ksilemaga itarilishi. Namlik yuqori, transpiratsiya sust bo'lganda bu bosim gutatsiyaga (barg chetidagi gidatodlardan tomchi chiqishi) va kesilgan poyadan sharbat oqishiga olib keladi. Transpiratsiya va barg so'rish kuchi ildiz bosimiga bog'liq emas."
   },
   {
-    question: "Sho'rlangan tuproqda o'simlik suv bilan yetarli ta'minlanmagan holda so'lishi mumkin. Buning sababi nima?",
-    options: ["Tuproqda kislorod ko'payib ketadi","Ildiz tukchalari bo'linib ketadi","Tuproq eritmasining osmotik bosimi hujayra shirasinikidan yuqori bo'lib qoladi va suv so'rilmaydi","Fotosintez tezlashib suv sarfi ortadi"],
+    question: "Hujayra shirasining osmotik bosimi 1,2 MPa, tuproq eritmasiniki 1,5 MPa. Suv qaysi yo'nalishda harakatlanadi va nima kuzatiladi?",
+    options: ["Tuproqdan hujayraga, chunki bosimi past eritma suvni o'ziga tortadi; hujayra turgori ortadi", "Harakat bo'lmaydi, chunki bosimlar farqi 1 MPa dan kichik, o'simlik normal o'sadi", "Hujayradan tuproqqa; hujayra suv yo'qotib, plazmoliz va o'simlik so'lishi boshlanadi", "Tuproqdan hujayraga, chunki 1,5 MPa bosim suvni itarib kiritadi; o'sish tezlashadi"],
     topic: "Botanika",
     answer: 2,
-    explanation: "Suv osmos yo'li bilan kam konsentratsiyali joydan ko'p konsentratsiyali joyga o'tadi. Tuproq eritmasi quyuq bo'lsa, suv ildizga kirmaydi yoki hatto chiqib ketadi."
+    explanation: "Suv osmotik bosimi yuqori (suv potensiali past) eritma tomon harakatlanadi. Tuproq eritmasining osmotik bosimi (1,5 MPa) hujayra shirasinikidan (1,2 MPa) yuqori, shuning uchun suv hujayradan tuproqqa chiqadi: turgor yo'qoladi, plazmoliz va so'lish kuzatiladi. Sho'rlangan tuproqda ildiz suvni so'ra olmaydi."
   },
   {
     question: "Daraxt tanasi kesimida yillik halqaning och rangli, keng naylardan iborat qismi qaysi yog'ochga mansub?",
@@ -2793,11 +2758,11 @@ const questions = [
     explanation: "Bu suvo'tlarda faqat zigota diploid. Zigota meyoz bilan bo'linadi va gaploid hujayralar hosil qiladi."
   },
   {
-    question: "Bug'doy donining aslida urug' emas, meva ekanini qaysi belgi ko'rsatadi?",
-    options: ["Donda faqat murtak bo'lishi","Dondagi endospermning kraxmalga boyligi","Meva qobig'i va urug' po'sti birga qo'shilib ketgan (donak)","Donning ildizcha bilan chiqishi"],
+    question: "Quyidagi mevalardan qaysi biri bir urug'li quruq meva bo'lib, meva qobig'i urug' po'sti bilan qo'shilib ketgan?",
+    options: ["Yong'oq: qattiq yog'ochlashgan meva qobig'i urug'dan osongina ajraladi", "Dukkak: ko'p urug'li bo'lib, pishganda ikki tavaqasi bilan ochiladi", "Don (bug'doy): meva qobig'i va urug' po'sti birga qo'shilib ketgan", "Shaftoli: urug'ini yog'ochlashgan danak va etli meva qobig'i o'rab turadi"],
     topic: "Botanika",
     answer: 2,
-    explanation: "Don — bir urug'li meva (donak): meva qobig'i urug' po'sti bilan qo'shilib o'sgan. Haqiqiy urug'da esa po'st mevadan ajralgan bo'ladi."
+    explanation: "Don — bir urug'li quruq meva: meva qobig'i urug' po'sti bilan o'sib qo'shilib ketgan. Shu sababli bug'doy doni urug'ga o'xshasa-da, aslida meva hisoblanadi. Yong'oqda meva qobig'i urug'dan ajraladi, dukkak ko'p urug'li, shaftoli esa etli danakli meva."
   },
   {
     question: "Otasi III qon guruhli (IᴮI⁰), onasi II qon guruhli (IᴬI⁰) oilada farzandning I qon guruhli (I⁰I⁰) bo'lish ehtimoli qancha?",
@@ -2822,7 +2787,7 @@ const questions = [
   },
   {
     question: "Sariq tukli sichqonlar o'zaro chatishtirilganda nasl 2 sariq : 1 kulrang nisbatda ajraladi. Buni qanday izohlash mumkin?",
-    options: ["Sariq rang geni retsessiv va gomozigota holatda hayotchan","Sariq rang polimer genlar ta'sirida hosil bo'ladi","Sariq rang geni jinsga birikkan","Sariq rang geni dominant, lekin gomozigota holatda letal (embrion nobud bo'ladi)"],
+    options: ["Sariq rang geni retsessiv, gomozigota holatda ham hayotchan bo'ladi", "Sariq rang bir necha polimer genlarning o'zaro ta'siridan hosil bo'ladi", "Sariq rang geni jinsga birikkan bo'lib, X-xromosomada joylashgan", "Sariq rang geni dominant, lekin gomozigotada letal (embrion nobud bo'ladi)"],
     topic: "Genetika",
     answer: 3,
     explanation: "Yy × Yy → 1 YY (nobud) : 2 Yy (sariq) : 1 yy (kulrang), shuning uchun tirik nasl nisbati 2:1."
@@ -2843,7 +2808,7 @@ const questions = [
   },
   {
     question: "Tovuqlarda jins ZZ (erkak), ZW (urg'ochi). Retsessiv gomozigota erkak (ZᵃZᵃ) dominant belgili urg'ochi (ZᴬW) bilan chatishtirildi. F₁ da belgi qanday namoyon bo'ladi?",
-    options: ["Hamma nasl dominant belgili","Erkaklar retsessiv, urg'ochilar dominant belgili","Erkaklar dominant belgili, urg'ochilar retsessiv belgili","Har ikki jinsda 1:1 ajralish"],
+    options: ["Hamma nasl dominant belgili bo'ladi (belgi ajralmaydi)", "Erkaklar retsessiv, urg'ochilar dominant belgili bo'ladi", "Erkaklar dominant, urg'ochilar retsessiv belgili", "Har ikki jinsda ham belgi 1:1 nisbatda ajraladi"],
     topic: "Genetika",
     answer: 2,
     explanation: "ZᵃZᵃ × ZᴬW → ZᴬZᵃ (erkak, dominant) va ZᵃW (urg'ochi, retsessiv). Ota Z-xromosomasi qizlariga o'tadi."
@@ -2864,14 +2829,14 @@ const questions = [
   },
   {
     question: "Triploid (3n) tarvuz yoki banan mevalarining urug'siz bo'lishiga sabab nima?",
-    options: ["Gullari changlanmaydi","Hosil bo'lgan zigotalar doim nobud bo'ladi","Meyozda gomologik xromosomalar juftlasha olmaydi va tekis taqsimlanmaydi, unumdor gametalar hosil bo'lmaydi","Ular faqat jinssiz ko'payadi"],
+    options: ["Gullari changlanmaydi, shu sababli urug' tugilmaydi", "Hosil bo'lgan zigotalar doim nobud bo'ladi, urug' shakllanmaydi", "Meyozda xromosomalar juftlashmaydi, unumdor gametalar hosil bo'lmaydi", "Ular faqat jinssiz yo'l bilan ko'payishga moslashgan"],
     topic: "Genetika",
     answer: 2,
     explanation: "Toq (uchta) gomologik xromosoma meyozda to'g'ri juftlashmaydi, gametalarda xromosomalar to'plami buziladi va ular hayotchan bo'lmaydi."
   },
   {
     question: "Geterozis (duragay kuchi) F₁ avlodda yuqori bo'lib, keyingi avlodlarda susayib boradi. Buning asosiy sababi nima?",
-    options: ["Geterozigotalik kamayib, zararli retsessiv allellar gomozigota holatda namoyon bo'ladi","Mutatsiyalar tezligi oshadi","Gametalar soni kamayadi","Xromosomalar soni ikki marta kamayadi"],
+    options: ["Geterozigotalik kamayib, zararli retsessiv allellar gomozigotada namoyon bo'ladi", "Mutatsiyalar tezligi keyingi avlodlarda keskin oshib, belgilar yomonlashadi", "Gametalar soni kamayib, urug'lanish ehtimoli va hosildorlik pasayadi", "Xromosomalar soni har bir avlodda ikki barobar kamayib, genom qisqaradi"],
     topic: "Genetika",
     answer: 0,
     explanation: "F₁ da ko'pgina genlar geterozigota, zararli retsessiv allellar yashirin. Keyingi avlodlarda gomozigotalar ko'payadi va ustunlik pasayadi."
@@ -2885,21 +2850,21 @@ const questions = [
   },
   {
     question: "Rekombinant DNK olishda restriktaza fermenti qanday vazifani bajaradi?",
-    options: ["DNK bo'laklarini bir-biriga tikadi","DNKdagi aniq nukleotid ketma-ketlikni tanib, shu joydan kesadi","DNKni yangi nusxalarga ko'paytiradi","RNKdan DNK sintezlaydi"],
+    options: ["DNK bo'laklarini bir-biriga tikib, yangi molekula hosil qiladi", "DNKdagi aniq nukleotid ketma-ketlikni tanib, shu joydan kesadi", "DNKni yangi nusxalarga ko'paytiradi, praymerlardan foydalanib", "RNK asosida teskari transkripsiya yo'li bilan DNK sintezlaydi"],
     topic: "Genetika",
     answer: 1,
     explanation: "Restriktazalar ma'lum ketma-ketlikni (restriksiya joyi) taniydi va DNKni kesadi. Bo'laklarni DNK-ligaza biriktiradi."
   },
   {
     question: "Odam insulin genini bakteriyaga ko'chirishda genni odam DNKsidan emas, mRNK asosida teskari transkriptaza yordamida sintezlangan nusxa (kDNK) sifatida olish qulay. Buning sababi nima?",
-    options: ["kDNKda intronlar yo'q, bakteriya esa intronlarni qirqib ola olmaydi","kDNK uzunroq va barqarorroq","Bakteriyalar faqat RNK genomini taniydi","kDNK bakteriya xromosomasiga o'zi birikadi"],
+    options: ["kDNKda intronlar yo'q, bakteriya esa intronlarni qirqib ola olmaydi", "kDNK uzunroq va barqarorroq bo'lgani uchun bakteriyada yaxshi saqlanadi", "Bakteriyalar faqat RNK genomini taniydi, DNKni o'qiy olmaydi", "kDNK bakteriya xromosomasiga o'zi birikadi va o'zi ifodalanadi"],
     topic: "Genetika",
     answer: 0,
     explanation: "Eukariot genida intronlar bor, bakteriyalarda splaysing mexanizmi yo'q. Yetuk mRNK asosida olingan kDNK faqat ekzonlardan iborat."
   },
   {
     question: "PCR (polimeraza zanjir reaksiyasi) da Taq-polimeraza ishlatilishining sababi nima?",
-    options: ["U faqat RNK asosida sintez qiladi","U praymersiz ishlay oladi","U yuqori haroratga (DNK denaturatsiyasi sharoitiga) chidamli","U DNKni parchalaydi"],
+    options: ["U faqat RNK asosida sintez qiladi, shuning uchun DNK kerak emas", "U praymersiz ishlay oladi, shu sababli reaksiya tez kechadi", "U yuqori haroratga (DNK denaturatsiyasi sharoitiga) chidamli", "U DNKni parchalab, kerakli bo'lakni ajratib beradi"],
     topic: "Genetika",
     answer: 2,
     explanation: "PCRda har siklda DNK ~95°C da denaturatsiyalanadi. Termofil bakteriyadan olingan Taq-polimeraza bunda parchalanmaydi."
@@ -2913,7 +2878,7 @@ const questions = [
   },
   {
     question: "DNK metillanishi (sitozin asosiga metil guruh qo'shilishi) gen faoliyatiga qanday ta'sir qiladi?",
-    options: ["Nukleotid ketma-ketligini o'zgartiradi (mutatsiya)","Transkripsiyani kuchaytiradi va nukleotid tartibini o'zgartiradi","DNK replikatsiyasini butunlay to'xtatadi","Nukleotid ketma-ketligini o'zgartirmasdan genning transkripsiyasini ko'pincha susaytiradi"],
+    options: ["Nukleotid ketma-ketligini o'zgartiradi (nuqtaviy mutatsiya hosil qiladi)", "Transkripsiyani kuchaytirib, nukleotid tartibini ham o'zgartiradi", "DNK replikatsiyasini butunlay to'xtatib, hujayrani nobud qiladi", "Ketma-ketlikni o'zgartirmay, genning transkripsiyasini ko'pincha susaytiradi"],
     topic: "Genetika",
     answer: 3,
     explanation: "DNK metillanishi epigenetik o'zgarish: ketma-ketlik o'zgarmaydi, lekin gen ifodasi susayishi mumkin va bu holat hujayra bo'linishida ham saqlanadi."
@@ -2927,35 +2892,35 @@ const questions = [
   },
   {
     question: "Reaksiya normasi tushunchasi nimani bildiradi?",
-    options: ["Belgining nasldan-naslga o'tmaydigan o'zgarishini","Mutatsiya natijasida paydo bo'lgan yangi belgini","Genotip belgilaydigan, belgi muhit ta'sirida o'zgarishi mumkin bo'lgan chegarani","Belgining faqat muhitga bog'liqligini"],
+    options: ["Belgining nasldan-naslga o'tmaydigan modifikatsion o'zgarishini", "Mutatsiya natijasida paydo bo'lgan yangi belgining namoyon bo'lishini", "Genotip belgilagan, belgi muhitga qarab o'zgarishi mumkin bo'lgan chegarani", "Belgining faqat muhit sharoitiga bog'liq bo'lishini, genotipga emas"],
     topic: "Genetika",
     answer: 2,
     explanation: "Genotip belgi o'zgarishining chegarasini belgilaydi. Masalan, sigir sut mahsuldorligi oziqlantirishga qarab o'zgaradi, lekin ma'lum yuqori chegaradan oshmaydi."
   },
   {
     question: "Egizaklar usuli yordamida nimani aniqlash mumkin?",
-    options: ["Xromosomalar sonini","Belgi rivojlanishida irsiyat va muhit ta'sirining ulushini (monozigot va dizigot egizaklar o'xshashligini taqqoslab)","Gen mutatsiyalari tezligini","Genlarning xromosomadagi joylashuvini"],
+    options: ["Xromosomalar soni va tuzilishidagi o'zgarishlarni, hujayralar kariotipini o'rganib", "Belgida irsiyat va muhit ulushini (monozigot va dizigot egizaklarni solishtirib)", "Gen mutatsiyalari tezligini va ularning populyatsiyada tarqalish tezligini", "Genlarning xromosomadagi joylashuvini va ular orasidagi masofani"],
     topic: "Genetika",
     answer: 1,
     explanation: "Monozigot egizaklar genotipi bir xil. Ularning belgilardagi farqi muhit ta'sirini, dizigot egizaklar bilan taqqoslash esa irsiyat hissasini ko'rsatadi."
   },
   {
     question: "Rodoslovda ikki sog'lom ota-onadan kasal bola tug'ilgan. Bu belgi qanday irsiylangan?",
-    options: ["Dominant, autosomada","Dominant, Y-xromosomaga birikkan","Mitoxondrial, ona orqali","Retsessiv, ota-onalar tashuvchi (geterozigota)"],
+    options: ["Dominant, autosomada joylashgan gen orqali irsiylangan", "Dominant, Y-xromosomaga birikkan, otadan o'g'ilga o'tadi", "Mitoxondrial, faqat ona orqali o'tadi", "Retsessiv, ikkala ota-ona yashirin tashuvchi (geterozigota)"],
     topic: "Genetika",
     answer: 3,
     explanation: "Belgi ota-onada namoyon bo'lmay, bolada paydo bo'lgan, demak retsessiv. Ota-onalar yashirin tashuvchi."
   },
   {
     question: "Dominant belgili organizm genotipi (AA yoki Aa) ni aniqlash uchun tahlil qiluvchi chatishtirish qanday o'tkaziladi?",
-    options: ["U Aa genotipli individ bilan chatishtiriladi","U AA genotipli individ bilan chatishtiriladi","U retsessiv gomozigota (aa) bilan chatishtiriladi; nasl bir xil bo'lsa AA, 1:1 ajralsa Aa","U o'zi bilan chatishtiriladi"],
+    options: ["U geterozigota (Aa) bilan chatishtiriladi va naslda 3:1 ajralish kuzatiladi", "U dominant gomozigota (AA) bilan chatishtiriladi; naslning hammasi bir xil bo'ladi", "U retsessiv aa bilan chatishtiriladi: bir xil nasl — AA, 1:1 — Aa", "U o'zi bilan chatishtiriladi (o'z-o'zidan changlanish orqali)"],
     topic: "Genetika",
     answer: 2,
     explanation: "aa individ faqat a gametalar beradi, shuning uchun nasl fenotipi tekshirilayotgan organizm gametalarini ko'rsatadi."
   },
   {
     question: "Mendelning ikkinchi qonuni (belgilar ajralishi) ning sitologik asosi qaysi?",
-    options: ["Meyoz I anafazasida gomologik xromosomalarning ajralishi","Mitozda xromatidlarning ajralishi","Profazada xromosomalarning spirallashishi","Meyoz II da sentromeralarning bo'linishi"],
+    options: ["Meyoz I anafazasida gomologik xromosomalarning ajralishi", "Mitozning anafazasida xromatidlarning qutblarga ajralishi", "Profazada xromosomalarning spirallashishi va yadrochaning erishi", "Meyoz II da sentromeralarning bo'linib, xromatidlar ajralishi"],
     topic: "Genetika",
     answer: 0,
     explanation: "Meyoz I da gomologik xromosomalar qutblarga ajraladi, shu sababli allellar turli gametalarga tushadi."
@@ -2976,7 +2941,7 @@ const questions = [
   },
   {
     question: "Shelford tolerantlik qonuniga ko'ra organizmning yashashini nima cheklashi mumkin?",
-    options: ["Faqat minimumda bo'lgan omil","Faqat maksimumdan ortiq bo'lgan omil","Omilning ham yetishmasligi, ham ortiqligi (tolerantlik chegarasi)","Faqat biotik omillar"],
+    options: ["Faqat minimumda bo'lgan omil (Libix qonuni bo'yicha)", "Faqat maksimumdan ortiq bo'lgan omil (zaharlovchi ta'sir)", "Omilning ham yetishmasligi, ham ortiqligi (tolerantlik chegarasi)", "Faqat biotik omillar (raqobat va yirtqichlik)"],
     topic: "Ekologiya",
     answer: 2,
     explanation: "Har bir omil uchun minimum, optimum va maksimum bor. Omilning yetishmasligi ham, ortiqligi ham organizmga salbiy ta'sir qiladi."
@@ -2997,63 +2962,63 @@ const questions = [
   },
   {
     question: "Mikorizada zamburug' bilan o'simlik o'rtasidagi o'zaro foydali munosabat qanday ifodalanadi?",
-    options: ["O'simlik zamburug'ga suv va mineral tuzlar beradi, zamburug' o'simlikdan karbonsuvlar oladi","Zamburug' o'simlikka suv va mineral moddalarni (ayniqsa fosfor) so'rishda yordam beradi, o'simlik unga organik moddalar beradi","Zamburug' o'simlik to'qimalarini parchalab oziqlanadi","Ikkalasi bir-biriga hech qanday ta'sir qilmaydi"],
+    options: ["O'simlik zamburug'ga suv va mineral tuzlar beradi, zamburug' undan karbonsuvlar oladi", "Zamburug' suv va mineral tuzlarni so'rishda yordam beradi, o'simlik organik moddalar beradi", "Zamburug' o'simlik to'qimalarini parchalab, shu hisobiga oziqlanadi va o'simlikni zaiflashtiradi", "Ikkalasi bir-biriga hech qanday ta'sir ko'rsatmay, faqat yonma-yon yashaydi va raqobatlashmaydi"],
     topic: "Ekologiya",
     answer: 1,
     explanation: "Zamburug' gifalari tuproqdan suv va tuzlarni samarali so'radi, o'simlik esa fotosintez mahsulotlarini zamburug'ga beradi. Bu mutualizm."
   },
   {
     question: "Yirtqich–o'lja tizimida (Lotka–Volterra modeli) sonlar tebranishi qanday kechadi?",
-    options: ["Yirtqichlar soni avval ko'payadi, so'ng o'lja ko'payadi","Ikkalasi bir vaqtda o'zgaradi","O'lja soni ortadi, bir oz kechikib yirtqichlar soni oshadi; keyin o'lja kamayadi, yirtqichlar ham kamayadi","Sonlar doimiy qoladi"],
+    options: ["Yirtqichlar soni avval ko'payadi, shundan so'ng o'lja soni ham ko'payadi", "Ikkalasining soni bir vaqtda va bir xil tezlikda o'zgaradi, kechikish bo'lmaydi", "O'lja ko'payadi, kechikib yirtqichlar ko'payadi; so'ng o'lja, keyin yirtqichlar kamayadi", "Sonlar doimiy qoladi, tebranish kuzatilmaydi va muvozanat saqlanadi"],
     topic: "Ekologiya",
     answer: 2,
     explanation: "O'lja ko'payishi yirtqichga oziq bo'ladi, yirtqichlar ko'payib o'ljani kamaytiradi. Oziq kamayishi yirtqichlarning kamayishiga olib keladi va davr takrorlanadi."
   },
   {
     question: "Klimaks jamoasiga yetgan ekotizimda sof birlamchi mahsuldorlik qanday bo'ladi?",
-    options: ["Nolga yaqin, chunki fotosintez va nafas olish tezliklari deyarli teng","Maksimal, chunki biomassa tez ortadi","Manfiy, chunki biomassa kamayadi","Faqat bahorda nolga teng"],
+    options: ["Nolga yaqin, chunki fotosintez va nafas olish deyarli teng", "Maksimal darajada, chunki biomassa yil sayin tez ortib boradi", "Manfiy, chunki nafasga sarf fotosintezdan doim ko'p bo'ladi", "Faqat bahorda nolga teng, boshqa fasllarda maksimal"],
     topic: "Ekologiya",
     answer: 0,
     explanation: "Klimaksda biomassa barqaror, yalpi fotosintez nafasga sarflanadigan miqdorga yaqin bo'ladi, shuning uchun sof mahsuldorlik nolga yaqin."
   },
   {
     question: "Allen qoidasiga ko'ra issiqqonli hayvonlar sovuq iqlimda qanday moslashadi?",
-    options: ["Quloq, dum va oyoqlari uzunroq bo'ladi","Tanadan chiqib turgan qismlar (quloq, dum, oyoq) qisqaroq bo'ladi, issiqlik yo'qotilishi kamayadi","Tana yuzasi nisbatan kattalashadi","Teri osti yog'i yo'qoladi"],
+    options: ["Quloq, dum va oyoqlari uzunroq bo'ladi, issiqlik yaxshiroq tarqaladi", "Quloq, dum va oyoqlari qisqaroq bo'ladi, issiqlik kamroq yo'qotiladi", "Tana yuzasining hajmga nisbati kattalashadi, issiqlik ko'proq ajraladi", "Teri osti yog'i qatlami yo'qolib, jun qoplami butunlay yupqalashadi"],
     topic: "Ekologiya",
     answer: 1,
     explanation: "Chiqib turgan a'zolar issiqlikni ko'p yo'qotadi. Shuning uchun arktik tulkining quloqlari cho'l tulkisinikidan kichik."
   },
   {
     question: "Markaziy Osiyo cho'llarida efemer o'simliklar hayot siklini qanday o'tkazadi?",
-    options: ["Butun yoz davomida o'sib, issiqda gullaydi","Qish davomida o'sadi, bahorda urug'laydi","Chuqur ildizlari bilan yer osti suvlaridan foydalanib yil bo'yi yashil turadi","Bahorgi namlik davrida tez rivojlanib urug' beradi, quruq va issiq mavsumni urug' holida o'tkazadi"],
+    options: ["Butun yoz davomida o'sib, eng issiq oylarda gullab, kuzda urug' beradi", "Qish davomida o'sadi, bahorda urug'laydi, yozda barglari yashil qoladi", "Chuqur ildizlari bilan yer osti suvidan foydalanib, yil bo'yi yashil turadi", "Bahor namligida tez o'sib urug' beradi; yozni urug' holida o'tkazadi"],
     topic: "Ekologiya",
     answer: 3,
     explanation: "Efemerlar bahor yog'inlari bilan qisqa muddatda o'sadi, gullaydi va urug' beradi, yoz issig'ini urug' holida o'tkazadi."
   },
   {
     question: "Cho'l o'simligi saksovulning moslashuvlari qaysi javobda to'g'ri ko'rsatilgan?",
-    options: ["Keng barglari va sayoz ildiz tizimi","Qalin kutikulali yirik barglar, yaltiroq poya","Barglari reduksiyalangan, fotosintez yashil novdalarda boradi, ildizi chuqur kirib boradi","Faqat bahorda o'sadigan bir yillik o't"],
+    options: ["Keng barglari va sayoz ildiz tizimi bor, suv bug'latishi kuchli", "Qalin kutikulali yirik barglar va yaltiroq poya, ildizi sayoz", "Barglari reduksiyalangan, fotosintez yashil novdalarda, ildizi chuqur", "Faqat bahorda o'sadigan va yozda quriydigan bir yillik o't"],
     topic: "Ekologiya",
     answer: 2,
     explanation: "Barglarning reduksiyasi transpiratsiyani kamaytiradi, yashil novdalar fotosintez qiladi, chuqur ildiz yer osti suvini oladi."
   },
   {
     question: "Tundra o'simliklari asosan past bo'yli bo'lishining sababi nima?",
-    options: ["Abadiy muzloq tufayli ildizlar chuqur kirolmasligi, kuchli shamol va qisqa vegetatsiya davri","Tuproqda mineral tuzlar haddan tashqari ko'pligi","Yil davomida issiq va quruq iqlim","Yorug'likning juda ko'pligi"],
+    options: ["Abadiy muzloq, kuchli shamol va qisqa vegetatsiya davri", "Tuproqda mineral tuzlar haddan tashqari ko'p, ildiz kuyib qolishi", "Yil davomida issiq va quruq iqlim, suv yetishmasligi", "Yorug'likning haddan tashqari ko'pligi va doimiy issiqlik"],
     topic: "Ekologiya",
     answer: 0,
     explanation: "Muzlagan qatlam ildizning chuqurlashishini to'sadi. Shamol va qisqa yoz baland o'sishga imkon bermaydi."
   },
   {
     question: "A jamoada 100 individ 2 turga mansub (50 va 50), B jamoada 100 individ 10 turga mansub (har biridan 10 tadan). Qaysi javob to'g'ri?",
-    options: ["A jamoada tur xilma-xilligi yuqori, chunki individlar ko'p","B jamoada tur xilma-xilligi yuqori: turlar soni ko'p va individlar tekis taqsimlangan","Ikkala jamoada xilma-xillik teng","Xilma-xillikni individlar soni belgilaydi, turlar soni ahamiyatsiz"],
+    options: ["A jamoada xilma-xillik yuqori, chunki ikki tur ham juda ko'p individga ega", "B jamoada xilma-xillik yuqori: turlar ko'p, individlar tekis taqsimlangan", "Ikkala jamoada xilma-xillik teng, chunki individlar soni bir xil", "Xilma-xillikni individlar soni belgilaydi, turlar soni ahamiyatsiz"],
     topic: "Ekologiya",
     answer: 1,
     explanation: "Tur xilma-xilligi turlar soniga va ularning individlar bo'yicha tekis taqsimlanishiga bog'liq. Individlar umumiy soni ikkala jamoada bir xil."
   },
   {
     question: "Tirik qolish egri chizig'ining III tipi (yosh organizmlar orasida o'lim juda yuqori) qaysi organizmlarga xos?",
-    options: ["Odam va yirik sutemizuvchilar","Barcha qushlar","Gidra va boshqa ichakbo'shliqlilar","Juda ko'p tuxum yoki urug' beradigan organizmlar (ko'pchilik baliqlar, dengiz umurtqasizlari, daraxtlar)"],
+    options: ["Odam va yirik sutemizuvchilar kabi nasliga uzoq g'amxo'rlik qiladigan turlar", "Barcha qushlar, chunki ular tuxum qo'yadi va nasliga uzoq qaraydi", "Gidra va boshqa ichakbo'shliqlilar, o'lim yoshga bog'liq bo'lmagan turlar", "Ko'p tuxum yoki urug' beradigan turlar (baliqlar, dengiz umurtqasizlari, daraxtlar)"],
     topic: "Ekologiya",
     answer: 3,
     explanation: "Bunday turlar ko'p nasl qoldiradi, lekin yoshlikda ko'plari nobud bo'ladi, omon qolganlar uzoq yashaydi. Odam va yirik sutemizuvchilarda I tip kuzatiladi."
@@ -3067,17 +3032,17 @@ const questions = [
   },
   {
     question: "Fundamental nisha va realizatsiyalangan nisha o'rtasidagi farq nimada?",
-    options: ["Realizatsiyalangan nisha raqobat va boshqa biotik ta'sirlar tufayli fundamentaldan odatda torroq bo'ladi","Fundamental nisha doim realizatsiyalangandan torroq","Ikkalasi bir xil","Fundamental nisha faqat yirtqichlarga xos"],
+    options: ["Realizatsiyalangan nisha raqobat ta'sirida odatda fundamentaldan torroq bo'ladi", "Fundamental nisha har doim realizatsiyalangandan torroq, chunki raqobat uni kengaytiradi", "Ikkalasi bir xil, ular faqat turli olimlar tomonidan turlicha nomlangan", "Fundamental nisha faqat yirtqichlarga, realizatsiyalangani esa o'txo'rlarga xos"],
     topic: "Ekologiya",
     answer: 0,
     explanation: "Fundamental nisha turning imkoniyat doirasi, realizatsiyalangan nisha esa raqobatchilar va yirtqichlar ta'sirida haqiqatda egallaydigan doirasi."
   },
   {
-    question: "Yangi hududga olib kirilgan (introduksiya qilingan) tur ba'zan juda tez ko'payib ketadi. Buning asosiy sababi nima?",
-    options: ["U doimo yangi turga evolyutsiyalanadi","U yangi hududda fotosintez qila boshlaydi","U mahalliy turlar bilan chatishib yuqori duragay kuchi beradi","Tabiiy dushmanlari (yirtqich, parazit) va raqobatchilari kam yoki yo'q bo'ladi"],
+    question: "Yangi hududga tushgan turning populyatsiyasi dastlab J-shaklida o'sib, keyin barqarorlashadi. Barqarorlashuvning asosiy sababi nima?",
+    options: ["Biotik potensial pasayib, tug'ilish tezligi nolga tushadi", "Mutatsiyalar tezligi kamayib, populyatsiya genofondi o'zgarmay qoladi", "O'lim tezligi doimiy bo'lib, tug'ilish tezligi doim undan ortiq saqlanadi", "Muhit sig'imiga yaqinlashganda oziq, makon va parazitlar qarshiligi kuchayadi"],
     topic: "Ekologiya",
     answer: 3,
-    explanation: "Yangi muhitda sonni cheklovchi tabiiy dushmanlar bo'lmasa, tur eksponensial ko'payishi va mahalliy turlarni siqib chiqarishi mumkin."
+    explanation: "Dastlab resurslar mo'l, biotik potensial amalga oshib populyatsiya eksponensial (J-shakl) o'sadi. Son muhit sig'imiga yaqinlashganda oziq va makon yetishmaydi, kasallik va raqobat kuchayadi: tug'ilish kamayadi, o'lim ortadi va o'sish S-shaklli (logistik) egri chiziq bo'yicha barqarorlashadi."
   },
   {
     question: "Orol dengizi sathining keskin pasayishining asosiy sababi nima?",
@@ -3087,11 +3052,11 @@ const questions = [
     explanation: "Dengizga quyiladigan suv miqdori bug'lanishdan kam bo'lib qolgan. Natijada sho'rlanish ortgan, tub ochilib, tuz-chang ko'chishi kuchaygan."
   },
   {
-    question: "V.I. Vernadskiy ta'limotiga ko'ra tirik moddaning konsentratsion funksiyasi nimani bildiradi?",
-    options: ["Atmosfera gazlari tarkibini tartibga solish","Organik moddalarni mineral moddalarga aylantirish","Organizmlarning ma'lum kimyoviy elementlarni o'z tanasida to'plashi (masalan, dengiz o'tlarida yod)","Quyosh energiyasini kimyoviy energiyaga aylantirish"],
+    question: "Quyidagi misollardan qaysi biri Vernadskiy ta'limotidagi tirik moddaning konsentratsion funksiyasiga mos keladi?",
+    options: ["Nitrifikatsiyalovchi bakteriyalar ammiakni nitritga aylantirib, energiya olishi", "Fotosintez natijasida atmosferaga erkin kislorod ajralib chiqishi va to'planishi", "Diatom suvo'tlari kremniyni tanasida to'plab, diatomit qatlamlarini hosil qilishi", "Bakteriya va zamburug'lar o'lgan organik moddalarni mineral moddalargacha parchalashi"],
     topic: "Ekologiya",
     answer: 2,
-    explanation: "Konsentratsion funksiya — tirik organizmlarning atrof-muhitdan tarqoq elementlarni yig'ib, tanasida to'plashi."
+    explanation: "Konsentratsion funksiya — organizmlarning muhitdagi kimyoviy elementlarni tanasida to'plashi. Diatomlar kremniyni skeletida to'plab, o'lgach diatomit qatlamlarini hosil qiladi. Nitrifikatsiya oksidlanish-qaytarilish, kislorod ajralishi gaz funksiyasiga, organik moddalarni parchalash esa destruktiv funksiyaga misol bo'ladi."
   },
   {
     question: "Yong'oq daraxti ostida ko'pgina o'simliklarning yaxshi o'smasligi qanday hodisa bilan izohlanadi?",
@@ -3115,11 +3080,11 @@ const questions = [
     explanation: "Sof birlamchi mahsuldorlik = yalpi mahsuldorlik − nafasga sarf = 12 000 − 4 800 = 7 200 kJ."
   },
   {
-    question: "Bergman qoidasiga ko'ra bir turga mansub issiqqonli hayvonlarning sovuqroq iqlimda yashovchi populyatsiyalari qanday bo'ladi?",
-    options: ["Kichikroq tana o'lchamli","Tana o'lchami o'zgarmaydi","Yiriqroq tana o'lchamli, chunki tana hajmiga nisbatan sirt kichrayadi va issiqlik kam yo'qoladi","Faqat dumi uzun bo'ladi"],
+    question: "Geometrik o'xshash ikki hayvondan birining chiziqli o'lchami ikkinchisinikidan 2 marta katta. Sirtning hajmga nisbati va issiqlik yo'qotilishi haqida qaysi javob to'g'ri?",
+    options: ["Kattasida sirt/hajm nisbati 2 marta katta, shu sababli u sovuqda ko'proq issiqlik yo'qotadi", "Ikkalasida sirt/hajm nisbati bir xil, issiqlik yo'qotilishi faqat junga bog'liq bo'ladi", "Kattasida sirt/hajm nisbati 2 marta kichik, shu sababli u issiqlikni nisbatan kam yo'qotadi", "Kattasida sirt/hajm nisbati 4 marta kichik, chunki hajm uzunlikning kvadratiga proporsional"],
     topic: "Ekologiya",
     answer: 2,
-    explanation: "Tana kattalashganda sirt hajmga nisbatan sekin ortadi, issiqlik yo'qotilishi nisbatan kamayadi. Shuning uchun shimoliy populyatsiyalar yiriqroq."
+    explanation: "Sirt uzunlikning kvadratiga (L²), hajm esa kubiga (L³) proporsional, shuning uchun sirt/hajm nisbati 1/L ga teng. Chiziqli o'lchami 2 marta katta hayvonda nisbat 2 marta kichik, ya'ni issiqlik nisbatan kam yo'qotiladi. Bergman qoidasi shunga asoslangan: sovuq iqlimdagi issiqqonli populyatsiyalar yiriqroq bo'ladi."
   },
   {
     question: "Issiqxona effektining mohiyati nimada?",
@@ -3136,11 +3101,11 @@ const questions = [
     explanation: "Lishayniklar suv va moddalarni butun yuzasi bilan so'radi, SO₂ ga sezgir. Havo ifloslanganda ular yo'qoladi."
   },
   {
-    question: "O'rmon biotsenozidagi yarusli tuzilishning (tabaqalanish) ekologik ahamiyati nima?",
-    options: ["Mahsuldorlikni kamaytiradi","Faqat o'simliklarni himoya qiladi","Yorug'lik va makondan samarali foydalanish va turlar o'rtasida raqobatni kamaytirish","Tuproq eroziyasini oshiradi"],
+    question: "Bitta daraxtda yashovchi bir necha tur qushlar oziqni turli balandliklarda va daraxtning turli qismlarida topadi. Bu hodisa qaysi ekologik tushunchani aks ettiradi?",
+    options: ["Raqobatdan chiqarib yuborish: bir tur boshqasini siqib chiqaradi va uning o'rnini egallaydi", "Allelopatiya: bir tur kimyoviy moddalar bilan boshqasi o'sishiga to'sqinlik qiladi", "Nishalarning ajralishi: resurslarning bo'linishi turlararo raqobatni kamaytiradi", "Simbioz: turlar bir-biriga to'g'ridan-to'g'ri foyda keltiradi va birga yashaydi"],
     topic: "Ekologiya",
     answer: 2,
-    explanation: "Daraxt, buta va o't yaruslari yorug'likni turlicha egallaydi. Shu sababli turli turlar bir joyda birgalikda yashay oladi."
+    explanation: "Yaqin turlar bir xil resursdan foydalansa, raqobat kuchayadi (Gauze qoidasi). Barqaror birga yashash uchun turlar nishalarini ajratadi: oziqni turli balandlik va joylarda topadi. Resurslarning bunday bo'linishi turlararo raqobatni kamaytiradi va yarusli tuzilishning ekologik ahamiyatini ko'rsatadi."
   },
   {
     question: "Zararkunandalarga qarshi biologik usulga qaysi misol to'g'ri?",
