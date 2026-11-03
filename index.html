@@ -1367,10 +1367,17 @@ function getLocalScores() {
 
 function saveScore(name,region,score,correct,total,seconds,timeStr) {
   const entry = {
-    name,region,score,correct,total,seconds,
-    time:timeStr,date:new Date().toLocaleDateString(),
+    name:String(name||"").trim().slice(0,60),
+    region:String(region||""),
+    score:Number(score)||0,
+    correct:Number(correct)||0,
+    total:Number(total)||0,
+    seconds:Number(seconds)||0,
+    time:String(timeStr||""),
+    date:new Date().toLocaleDateString(),
     mode:isExamMode ? "exam" : "practice",
-    ts:Date.now(),profileId:(getBioProfile()||{}).id||""
+    ts:Date.now(),
+    profileId:String((getBioProfile()||{}).id||"")
   };
 
   // Avval qurilmaga yozamiz: internet/Firebase ishlamasa ham natija yo‘qolmaydi.
@@ -1388,24 +1395,61 @@ function saveScore(name,region,score,correct,total,seconds,timeStr) {
     if(syncStatus){syncStatus.textContent=message;syncStatus.style.color=isError?"#ff9b9b":"var(--muted)";}
   };
 
-  if(!db || typeof firebase === "undefined") {
-    setSyncStatus("Natija ushbu qurilmada saqlandi. Firebase hozir ulanmagan.",true);
+  if(!db || !auth || typeof firebase === "undefined") {
+    setSyncStatus("Natija ushbu qurilmada saqlandi, ammo Firebase SDK ulanmagan. Internet va Firebase sozlamalarini tekshiring.",true);
     return;
   }
 
-  setSyncStatus("Natija Firebase’ga yuborilmoqda...");
-  db.collection("results")
-    .add({...entry,createdAt:firebase.firestore.FieldValue.serverTimestamp()})
-    .then(()=>setSyncStatus("Natija qurilmada va Firebase bazasida saqlandi."))
-    .catch(err=>{
-      console.error("Natijani Firebase’ga yuborib bo‘lmadi:",err);
-      setSyncStatus("Natija qurilmada saqlandi, ammo Firebase’ga yuborilmadi. Internet yoki Firestore ruxsatlarini tekshiring.",true);
-    });
+  // Ochiq platforma: login/ro‘yxatdan o‘tish talab qilinmaydi.
+  // Avval Firebase Auth holati tiklanishini kutamiz, shunda mavjud akkauntni
+  // tasodifan anonim sessiya bilan almashtirib yubormaymiz.
+  setSyncStatus("Firebase’ga anonim ulanish tayyorlanmoqda...");
+  (async()=>{
+    try{
+      let firebaseUser = await new Promise((resolve,reject)=>{
+        let unsubscribe = null;
+        unsubscribe = auth.onAuthStateChanged(
+          user=>{if(unsubscribe)unsubscribe();resolve(user||null);},
+          error=>{if(unsubscribe)unsubscribe();reject(error);}
+        );
+      });
 
-  // Sinf natijasi umumiy natijadan alohida yoziladi; xatolik umumiy natija yuborilishini bekor qilmaydi.
+      if(!firebaseUser){
+        const credential=await auth.signInAnonymously();
+        firebaseUser=(credential&&credential.user)||auth.currentUser;
+      }
+      if(!firebaseUser || !firebaseUser.uid) throw new Error("Firebase foydalanuvchi sessiyasi yaratilmadi.");
+
+      const payload={
+        ...entry,
+        uid:firebaseUser.uid,
+        authType:firebaseUser.isAnonymous?"anonymous":"account",
+        createdAt:firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      const docRef=await db.collection("results").add(payload);
+      console.info("Test natijasi Firebase’ga saqlandi:",docRef.id);
+      setSyncStatus("Natija qurilmada va Firebase bazasida saqlandi.");
+    }catch(err){
+      console.error("Natijani Firebase’ga yuborib bo‘lmadi:",err);
+      const code=String(err&&err.code||"");
+      const detail=code?" ("+code+")":"";
+      if(code==="auth/operation-not-allowed"){
+        setSyncStatus("Firebase Anonymous sign-in o‘chiq. Authentication → Sign-in method → Anonymous sozlamasini tekshiring."+detail,true);
+      }else if(code==="permission-denied"||code==="firestore/permission-denied"){
+        setSyncStatus("Firebase’ga ulanish bor, ammo Firestore yozish qoidasi rad etdi. results Rules va yuborilayotgan maydonlarni tekshirish kerak."+detail,true);
+      }else if(code==="auth/unauthorized-domain"){
+        setSyncStatus("Sayt domeni Firebase Authentication → Settings → Authorized domains ro‘yxatida yo‘q."+detail,true);
+      }else{
+        setSyncStatus("Natija qurilmada saqlandi, ammo Firebase’ga yuborilmadi"+detail+". Batafsil xatolik brauzer konsolida.",true);
+      }
+    }
+  })();
+
+  // Sinf natijasi umumiy natijadan alohida yoziladi; xatolik umumiy natijani bekor qilmaydi.
   const joinedCode=(()=>{try{return localStorage.getItem("bio_classroom_code_v1")||"";}catch(e){return "";}})();
   const signedUser=auth&&auth.currentUser;
-  if(joinedCode&&signedUser){
+  if(joinedCode&&signedUser&&!signedUser.isAnonymous){
     db.collection("bio_classrooms").doc(joinedCode).collection("results")
       .doc(signedUser.uid+"_"+entry.ts)
       .set({uid:signedUser.uid,name:entry.name,region:entry.region,score:entry.score,correct:entry.correct,total:entry.total,mode:entry.mode,ts:entry.ts,createdAt:firebase.firestore.FieldValue.serverTimestamp()})
@@ -2475,15 +2519,17 @@ function restartQuiz() {
   window.setAuthMode("login");
   if(auth){
     auth.onAuthStateChanged(user=>{
+      const isAccountUser=!!user&&!user.isAnonymous;
       const form=document.getElementById("authForm"),signed=document.getElementById("authSignedIn"),label=document.getElementById("authEmailLabel");
-      if(form)form.classList.toggle("hidden",!!user);
-      if(signed)signed.classList.toggle("hidden",!user);
-      if(label&&user)label.textContent="Kirilgan akkaunt: "+(user.email||"email ko‘rsatilmagan");
+      // Anonim sessiya kabinetdagi email-login interfeysini yashirmaydi.
+      if(form)form.classList.toggle("hidden",isAccountUser);
+      if(signed)signed.classList.toggle("hidden",!isAccountUser);
+      if(label&&isAccountUser)label.textContent="Kirilgan akkaunt: "+(user.email||"email ko‘rsatilmagan");
       const verifyNote=document.getElementById("authVerificationNote"),verifyBtn=document.getElementById("authVerifyBtn");
-      if(verifyNote)verifyNote.textContent=user?(user.emailVerified?"Email manzili tasdiqlangan.":"Email manzili hali tasdiqlanmagan. Pochtangizga yuborilgan havolani oching."):"";
-      if(verifyBtn)verifyBtn.classList.toggle("hidden",!user||user.emailVerified);
-      if(user)authMessage(user.emailVerified?"Akkauntga kirdingiz. Ma’lumotlarni bulutga saqlashingiz mumkin.":"Akkauntga kirdingiz. Xavfsizlik uchun emailingizni tasdiqlash tavsiya etiladi.");
-      else {authMessage("Mavjud akkauntingiz emaili va paroli orqali kiring.");setAuthMode("login");}
+      if(verifyNote)verifyNote.textContent=isAccountUser?(user.emailVerified?"Email manzili tasdiqlangan.":"Email manzili hali tasdiqlanmagan. Pochtangizga yuborilgan havolani oching."):"";
+      if(verifyBtn)verifyBtn.classList.toggle("hidden",!isAccountUser||user.emailVerified);
+      if(isAccountUser)authMessage(user.emailVerified?"Akkauntga kirdingiz. Ma’lumotlarni bulutga saqlashingiz mumkin.":"Akkauntga kirdingiz. Xavfsizlik uchun emailingizni tasdiqlash tavsiya etiladi.");
+      else {authMessage("Test ishlash uchun akkauntga kirish shart emas. Natijalar anonim tarzda saqlanadi.");setAuthMode("login");}
     });
   }else{
     authMessage("Firebase ulanmadi. Internet va Firebase sozlamalarini tekshiring.",true);
