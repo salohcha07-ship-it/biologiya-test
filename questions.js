@@ -191,11 +191,12 @@ const questions = [
     explanation: "Uzunchoq miya va oraliq miya hayotiy muhim vegetativ reflekslarni (nafas, qon aylanish, hazm qilish) boshqaradi."
   },
   {
-    question: "Odam organizmida erkak jinsiy gormoni bo'lgan testosteron asosan qayerda ishlab chiqariladi?",
-    options: ["Urug'donlarda (testikullarda)", "Prostata bezida", "Gipofizda", "Buyrak usti bezida"],
+    question: "Bitta birlamchi spermatotsitdan (2n) meyoz natijasida nechta gaploid spermatozoid hosil bo'ladi?",
+    options: ["4 ta, ular genetik jihatdan bir-biridan farq qiladi", "2 ta, ular genetik jihatdan bir xil bo'ladi", "1 ta, qolganlari qutb tanachalariga aylanadi", "8 ta, chunki meyozdan keyin yana mitoz sodir bo'ladi"],
     topic: "Odam anatomiyasi",
     answer: 0,
-    explanation: "Testosteron asosan urug'donlarning Leydig hujayralari tomonidan ishlab chiqariladi va ikkilamchi jinsiy belgilarni boshqaradi."
+    explanation: "Spermatogenezda bitta birlamchi spermatotsit meyoz I da ikkita, meyoz II da to'rtta gaploid spermatidaga bo'linadi, ular spermatozoidga aylanadi. Oogenezdan farqli, to'rttasi ham to'liq rivojlanadi va krossingover tufayli genetik jihatdan farq qiladi.",
+    difficulty: "o'rta"
   },
   {
     question: "Odam uzoq och qolganda qonda glyukoza miqdori kamayadi. Qaysi javob organizmning javobini to'g'ri ifodalaydi?",
@@ -206,18 +207,20 @@ const questions = [
     difficulty: "qiyin"
   },
   {
-    question: "O'simliklarda suv bug'lanishini (transpiratsiyani) kamaytiruvchi moslanishlarga qaysilar kiradi?",
-    options: ["Barglarning tikan yoki mum qoplami bilan qoplanishi", "Barg yuzasining haddan tashqari kengayishi", "Og'izchalarning doim ochiq turishi", "Ildizning yo'qligi"],
+    question: "Amerika kaktuslari va Afrika sutlag'i (Euphorbia) tashqi ko'rinishda juda o'xshash, lekin turli oilalarga kiradi. Bu qanday hodisa?",
+    options: ["Konvergensiya: turli ajdodlar o'xshash cho'l sharoitiga moslashgan", "Divergensiya: bitta ajdoddan turli sharoitlarda ajralib chiqqan", "Atavizm: ajdodlarga xos belgi ikkalasida ham qayta paydo bo'lgan", "Gomologiya: ularning a'zolari kelib chiqishi bir xil bo'lgani uchun o'xshash"],
     topic: "Evolyutsiya",
     answer: 0,
-    explanation: "Qurg'oqchlik sharoitida o'simliklar barglarini tikanga aylantiradi yoki qalin mum qoplami hosil qilib suvni tejashga moslashadi."
+    explanation: "Turli ajdodlardan kelib chiqqan organizmlar o'xshash muhitga moslashganda tashqi o'xshashlik (sersuv poya, tikanlar) hosil bo'ladi: bu konvergensiya. Bunday o'xshash a'zolar analogik a'zolar deyiladi va qarindoshlikni emas, bir xil tanlanish bosimini ko'rsatadi.",
+    difficulty: "o'rta"
   },
   {
-    question: "Suyakli baliqlar jabrasida suv va qon qarama-qarshi yo'nalishda oqadi. Bu qarama-qarshi oqim tizimining ahamiyati nima?",
-    options: ["Suvning jabradan o'tish tezligi oshadi", "Jabra bo'ylab doimiy konsentratsiya gradienti saqlanib, kislorod ko'proq o'zlashtiriladi", "Qon bosimi pasayib, yurak yengil ishlaydi", "Karbonat angidrid umuman ajralmaydi"],
+    question: "Baliq jabrasida suv va qon bir yo'nalishda (parallel) oqsa, qonning kislorod bilan to'yinishi qanday o'zgargan bo'lardi?",
+    options: ["Samaradorlik oshardi, chunki gradient doim juda katta bo'lardi", "Qon kislorodi suv bilan tenglashib, taxminan 50% atrofida to'yinardi", "Qon umuman kislorod olmasdi, chunki oqimlar bir-birini to'sardi", "Qon suvga nisbatan ko'proq kislorod olardi, to'yinish 100% bo'lardi"],
     topic: "Zoologiya",
     answer: 1,
-    explanation: "Qarama-qarshi oqimda qon bo'ylab suvdagi kislorod miqdori doim qondagidan yuqori bo'lib turadi, shuning uchun 80% gacha kislorod o'zlashtiriladi."
+    explanation: "Qarama-qarshi oqimda gradient jabra bo'ylab doim saqlanadi va qon kislorodning 80% dan ko'pini oladi. Parallel oqimda qon va suvdagi kislorod tez tenglashadi va qonning to'yinishi taxminan 50% dan oshmasdi. Shuning uchun suvda kam kislorod bo'lsa ham baliqlar samarali nafas oladi.",
+    difficulty: "qiyin"
   },
   {
     question: "Odamda bosh miyaning qaysi qismida tana harorati, uyg'onish va uxlash sikllarini boshqaruvchi markazlar joylashgan?",
@@ -278,11 +281,12 @@ const questions = [
     explanation: "Parazit hayot kechirish tufayli ichak yo'qolgan: ozuqa xo'jayin ichagidan tana yuzasi orqali so'riladi, jinsiy sistema esa juda kuchli rivojlangan."
   },
   {
-    question: "Molekulyar biologiyada mRNKdagi stop-kodonlarga (UAA, UAG, UGA) to'g'ri keluvchi tRNK antikodonlari mavjud emasligi nimani anglatadi?",
-    options: ["Oqsil sintezi davom etaveradi", "Aminokislota zanjiri ikkiga bo'linib ketadi", "Translyatsiya jarayoni shu yerda yakunlanadi (tugallanadi)", "DNK parchalanib ketadi"],
+    question: "Antikodoni 3'-UAC-5' bo'lgan tRNK mRNKdagi qaysi kodonni taniydi va qaysi aminokislotani olib keladi?",
+    options: ["UAC kodonini taniydi va tirozin olib keladi", "CAU kodonini taniydi va gistidin olib keladi", "AUG kodonini taniydi va metionin olib keladi", "AUC kodonini taniydi va izoleysin olib keladi"],
     topic: "Genetika",
     answer: 2,
-    explanation: "Stop-kodonlar aminokislotani kodlamaydi, balki translyatsiya jarayonini yakunlab, tayyor oqsil zanjirining ribosomadan ajralishini ta'minlaydi."
+    explanation: "Antikodon kodon bilan komplementar va antiparallel juftlashadi. 3'-UAC-5' antikodon 5'-AUG-3' kodonini taniydi. AUG — start-kodon va metionin aminokislotasini kodlaydi.",
+    difficulty: "qiyin"
   },
   {
     question: "Odam organizmida suv va tuz almashinuvini boshqaruvchi hamda buyrak naychalarida suvning qayta so'rilishini kuchaytiruvchi gormon qaysi?",
@@ -321,11 +325,12 @@ const questions = [
     explanation: "Ozuqa zanjiri doimo yashil o'simliklardan (produtsentlardan) boshlanib, o'txo'r va yirtqich hayvonlar orqali parchalovchilarga (redutsentlarga) borib taqaladi."
   },
   {
-    question: "Odam organizmida qon shakarini boshqaruvchi ikkita asosiy gormon ishlab chiqaruvchi bez qaysi?",
-    options: ["Buyrak usti bezi", "Oshqozon osti bezi (insulin va glyukagon)", "Gipofiz", "Qalqonsimon bez"],
+    question: "Oshqozon osti bezi ham tashqi, ham ichki sekretsiya bezi hisoblanadi. Bu qaysi javobda to'g'ri tushuntirilgan?",
+    options: ["Hamma moddalarini faqat qonga ajratadi, shu sababli u aralash bez emas", "Shirasini ichak yo'liga chiqaradi, insulin va glyukagonni esa to'g'ridan-to'g'ri qonga", "Hamma moddalarini faqat chiqaruv yo'liga ajratadi va qonga hech narsa chiqarmaydi", "Ichki sekretsiya hujayralari yo'q, glyukoza boshqaruvini faqat jigar bajaradi"],
     topic: "Odam anatomiyasi",
     answer: 1,
-    explanation: "Oshqozon osti bezi insulin va glyukagon gormonlarini ishlab chiqarib, qonda glyukoza miqdorini doimiy me'yorda saqlaydi."
+    explanation: "Oshqozon osti bezining asosiy qismi hazm shirasini (tripsin, lipaza, amilaza) chiqaruv yo'li orqali o'n ikki barmoqli ichakka ajratadi (tashqi sekretsiya). Langergans orolchalari esa insulin va glyukagonni to'g'ridan-to'g'ri qonga chiqaradi (ichki sekretsiya).",
+    difficulty: "o'rta"
   },
   {
     question: "Gidraning himoya va hujum vazifasini bajaruvchi hujayralari qaysilar?",
@@ -392,11 +397,12 @@ const questions = [
     difficulty: "qiyin"
   },
   {
-    question: "Genetika fanida digibrid chatishtirishda (ikkita belgi bo'yicha) F2 avlodda fenotip bo'yicha ajralish nisbati qanday bo'ladi (Mendelning 3-qonuni)?",
-    options: ["9:3:3:1", "3:1", "1:2:1", "1:1"],
+    question: "AaBb × AaBb chatishtirishda (genlar mustaqil irsiylanadi) F2 avlodda ikkala belgi bo'yicha retsessiv (aabb) fenotipli organizmlar ulushi qancha?",
+    options: ["1/16 (6,25%)", "1/4 (25%)", "3/16 (18,75%)", "1/8 (12,5%)"],
     topic: "Genetika",
     answer: 0,
-    explanation: "Mendelning uchinchi qonuniga ko'ra, ikki juft muqobil belgilar bo'yicha geterozigota organizmlar chatishtirilganda F2 da 9:3:3:1 nisbatda fenotipik ajralish yuz beradi."
+    explanation: "Retsessiv belgi bo'yicha aa ehtimoli 1/4, bb ehtimoli ham 1/4. Genlar mustaqil bo'lgani uchun ehtimollar ko'paytiriladi: 1/4 × 1/4 = 1/16. 9:3:3:1 nisbatda aabb shu '1' qismidir.",
+    difficulty: "qiyin"
   },
   {
     question: "Biogeosenozda ozuqa zanjirining ikkinchi pog'onasini (birinchi tartibli konsumentlarni) odatda qanday organizmlar tashkil etadi?",
@@ -464,11 +470,12 @@ const questions = [
     difficulty: "qiyin"
   },
   {
-    question: "O'simliklarda barglarning tikan yoki mo'ylovga aylanishi evolyutsiyada qanday o'zgarish turi hisoblanadi?",
-    options: ["Rudimentlar", "Organlarning metamorfozi (vazifasiga ko'ra o'zgarishi)", "Atavizmlar", "Sun'iy mutatsiya"],
+    question: "Quyidagi juftliklardan qaysi biri gomologik a'zolarga misol bo'ladi?",
+    options: ["Kapalak qanoti va qush qanoti, ikkalasi ham uchish uchun xizmat qiladi", "Ko'rshapalak qanoti va odam qo'li, ikkalasida ham bir xil suyaklar rejasi bor", "Delfin suzgichi va baliq suzgichi, ikkalasi ham suzish uchun xizmat qiladi", "Chivin va qush ko'zlari, ikkalasi ham ko'rish vazifasini bajaradi"],
     topic: "Evolyutsiya",
     answer: 1,
-    explanation: "Metamorfoz — organlarning yashash sharoitiga moslashib, asosiy vazifasini o'zgartirishi (masalan, kaktus tikani — barg metamorfozi)."
+    explanation: "Gomologik a'zolar kelib chiqishi bir xil, tuzilish rejasi o'xshash, vazifasi esa turlicha bo'lishi mumkin: ko'rshapalak qanoti va odam qo'li bir xil suyaklar (yelka, tirsak, bilak, panja) ketma-ketligiga ega. Kapalak va qush qanotlari kabi vazifasi o'xshash, kelib chiqishi har xil a'zolar analogik hisoblanadi.",
+    difficulty: "o'rta"
   },
   {
     question: "Galapagos orollaridagi in'ibilarning tumshug'i har xil shaklda. Bu xilma-xillik qaysi jarayon bilan izohlanadi?",
@@ -501,11 +508,12 @@ const questions = [
     explanation: "Kartoshka tuganaklari, piyozboshlar va ildizpoyalar o'simliklarning vegetativ yo'l bilan tez ko'payishini ta'minlaydi."
   },
   {
-    question: "Genetika fanida turli belgilarga ega ota-onalarni chatishtirganda F1 avlodda faqat bitta dominant belgining yuzaga chiqishi qanday ataladi?",
-    options: ["Ajralish qonuni", "Uniformlik (bir xillik) qonuni — Mendelning 1-qonuni", "Kodominantlik", "Epistaz"],
+    question: "AaBb genotipli o'simlik retsessiv aabb bilan chatishtirildi (genlar mustaqil). Naslda fenotip nisbati qanday bo'ladi?",
+    options: ["9:3:3:1, to'rt xil fenotip turli ulushda", "1:1:1:1, to'rt xil fenotip teng ulushda", "3:1, ikki xil fenotip faqat bitta belgi bo'yicha", "1:2:1, uch xil fenotip oraliq belgi bilan"],
     topic: "Genetika",
     answer: 1,
-    explanation: "Mendelning birinchi qonuniga ko'ra, toza liniyadagi ota-onalarni chatishtirganda birinchi avlod bir xil (uniform) bo'lib chiqadi."
+    explanation: "Tahlil qiluvchi chatishtirishda retsessiv aabb faqat ab gameta beradi. AaBb to'rt xil gameta (AB, Ab, aB, ab) teng ulushda hosil qiladi, shuning uchun nasl fenotipi 1:1:1:1 nisbatda bo'ladi.",
+    difficulty: "qiyin"
   },
   {
     question: "Qaysi organoidlarda 70S tipdagi ribosomalar mavjud?",
@@ -522,11 +530,12 @@ const questions = [
     explanation: "Nonallel genlarning o'zaro ta'siriga komplementarlik, epistaz va polimeriya turlari kiradi."
   },
   {
-    question: "Genetika masalalarida ota-ona organizmlarning genotipi Aa va aa bo'lsa, ularning avlodida fenotip bo'yicha ajralish nisbati qanday bo'ladi (to'liq dominantlikda)?",
-    options: ["3:1", "1:1 (50% dominant, 50% retsessiv)", "9:3:3:1", "1:2:1"],
+    question: "Geterozigota organizm AB/ab genotipli (genlar bir xromosomada, qo'shni joylashgan). Krossingover bo'lmaganda qanday gametalar hosil bo'ladi?",
+    options: ["AB, Ab, aB va ab, to'rt xil gameta teng ulushda", "AB va ab, ikki xil gameta teng ulushda", "Ab va aB, rekombinant gametalar teng ulushda", "Faqat AB, chunki dominant genlar birga o'tadi"],
     topic: "Genetika",
     answer: 1,
-    explanation: "Analiz qiluvchi chatishtirishga o'xshash bu holatda (Aa x aa) naslda 50% dominant va 50% retsessiv belgili individlar (1:1) hosil bo'ladi."
+    explanation: "Birikkan genlar bir xromosomada joylashgan va krossingover bo'lmaganda birga irsiylanadi, shu sababli faqat ota-ona kombinatsiyalaridagi AB va ab gametalar teng ulushda hosil bo'ladi. Ab va aB gametalar krossingover natijasida paydo bo'ladi (rekombinantlar).",
+    difficulty: "qiyin"
   },
   {
     question: "Hujayraning energetik almashinuvida kislorodsiz (glyukoliz) bosqichi hujayraning qaysi qismida yuz beradi?",
@@ -678,18 +687,20 @@ const questions = [
     explanation: "Ikkilamchi og'izlilarda embrionning birlamchi og'zi anal teshikka aylanadi, og'iz esa keyin hosil bo'ladi."
   },
   {
-    question: "Odamda bosh miyaning qaysi qismi haroratni boshqarish, moddalar almashinuvini, ochlik, to'yinganlik va chanqoqlik markazlarini o'z ichiga oladi?",
-    options: ["Miyacha", "Uzunchoq miya", "Oraliq miya (gipotalamus)", "Peshona bo'lagi"],
+    question: "Epifiz (pineal) bezi qaysi gormonni ajratadi va u nimani boshqaradi?",
+    options: ["Tiroksin; moddalar almashinuvi tezligini boshqaradi", "Adrenalin; stress paytida yurak urishini tezlashtiradi", "Melatonin; uyqu va uyg'onish (sirkad) ritmini boshqaradi", "Insulin; qondagi glyukoza miqdorini kamaytiradi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "Gipotalamus (oraliq miya tarkibida) vegetativ asab tizimining oliy markazi bo'lib, tana harorati, suv-tuz va moddalar almashinuvini nazorat qiladi."
+    explanation: "Epifiz (oraliq miyaning bir qismi) qorong'uda melatonin ajratadi. Bu gormon uyqu va uyg'onish sikli (sirkad ritm) hamda mavsumiy ritmlarni boshqaradi. Yorug'likda melatonin ajralishi kamayadi.",
+    difficulty: "o'rta"
   },
   {
-    question: "Exinokokk (Echinococcus granulosus) ning asosiy (oxirgi) xo'jayini qaysi hayvon?",
-    options: ["Qo'y", "Odam", "Cho'chqa", "It va boshqa itsimonlar"],
+    question: "Exinokokk (Echinococcus granulosus) bilan odam qanday zararlanadi va odam parazit hayot siklida qanday rol o'ynaydi?",
+    options: ["Zararlangan go'shtni yeganda; odam asosiy xo'jayin, ichakda yetuk chuvalchang rivojlanadi", "Chivin chaqqanda; odam oraliq xo'jayin, qonda parazit ko'payadi", "Ifloslangan suv bilan lichinkalar yutilganda; odam asosiy xo'jayin hisoblanadi", "It najasidagi tuxumlar yutilganda; odam oraliq xo'jayin, jigar va o'pkada pufak hosil bo'ladi"],
     topic: "Zoologiya",
     answer: 3,
-    explanation: "Voyaga yetgan parazit itning ichagida yashaydi. Qo'y va odam oraliq xo'jayin bo'lib, ularning jigar va o'pkasida pufaksimon (exinokokk) bosqichi rivojlanadi."
+    explanation: "Asosiy xo'jayin — it va boshqa itsimonlar (ichagida yetuk chuvalchang yashaydi). Tuxumlar najas bilan chiqadi va tasodifan odam yutsa, onkosferalar qon bilan jigar, o'pkaga o'tib, pufak (finna) hosil qiladi. Odam oraliq xo'jayin bo'lib, bu exinokokkoz kasalligiga olib keladi.",
+    difficulty: "qiyin"
   },
   {
     question: "Molekulyar biologiyada mRNK molekulasidagi irsiy axborotni oqsil ketma-ketligiga tarjima qilish jarayoni qanday nomlanadi?",
@@ -720,11 +731,12 @@ const questions = [
     explanation: "Meyoz I dan keyin xromosomalar soni ikki baravar kamayadi (n=4), lekin har bir xromosoma hali ikki xromatidali: 4 xromosoma, 8 xromatida."
   },
   {
-    question: "Hayvon hujayrasi plazmatik membranasida xolesterin qanday vazifani bajaradi?",
-    options: ["Oqsil sintezini amalga oshiradi", "Membrana suyuqligini (harakatchanligini) tartibga solib, uni barqarorlashtiradi", "Ionlarni faol tashiydi", "Membrananing qutbli boshchalarini hosil qiladi"],
+    question: "Hayvon hujayrasi membranasidagi xolesterin haroratga qarab membrana xossalariga qanday ta'sir qiladi?",
+    options: ["Yuqori haroratda membranani yanada suyuqlashtiradi, past haroratda zichlashtiradi", "Yuqori haroratda suyuqlikni kamaytiradi, past haroratda qotib qolishdan saqlaydi", "Harorat o'zgarsa ham membrana xossalariga umuman ta'sir ko'rsatmaydi", "Faqat membranadan moddalar o'tishini to'liq to'xtatib, uni qattiq qiladi"],
     topic: "Sitologiya",
     answer: 1,
-    explanation: "Xolesterin fosfolipidlar orasida joylashib, past haroratda membrananing qotishiga, yuqori haroratda haddan tashqari suyuqlanishiga to'sqinlik qiladi."
+    explanation: "Xolesterin fosfolipid dumlari orasida joylashib, membrana suyuqligini boshqaradi: yuqori haroratda dumlar harakatini cheklab membranani qattiqroq qiladi, past haroratda fosfolipidlar zich joylashishi va qotib qolishiga to'sqinlik qiladi. Shu sababli membrana xossalari barqaror saqlanadi.",
+    difficulty: "o'rta"
   },
   {
     question: "Odamda bosh miyaning qaysi qismi ko'rish va eshitish reflekslarining birlamchi markazlari hamda mushaklar tonusini boshqarishda qatnashadi?",
@@ -804,11 +816,12 @@ const questions = [
     explanation: "K-strateglar (fil, odam, kit) barqaror muhitda yashab, kam nasl qoldiradi va unga ko'p e'tibor beradi; r-strateglar esa (hasharot, bakteriya) ko'p va tez ko'payadi."
   },
   {
-    question: "Odamda bosh miyaning qaysi qismi uyqu va uyg'onish siklini, shuningdek asosiy biologik ritmlarni boshqaradi?",
-    options: ["Oraliq miya (gipotalamus va epifiz)", "Miyacha", "Uzunchoq miya", "Peshona bo'lagi"],
+    question: "Gipotalamus gipofizni qanday boshqaradi va bu nima uchun muhim?",
+    options: ["Neyrogormonlar orqali gipofiz ishini boshqaradi, asab va gormonal tizimni bog'laydi", "Gipofiz gipotalamusga buyruq beradi, shuning uchun gipotalamus mustaqil ishlay olmaydi", "Ular o'zaro bog'lanmagan, gipotalamus faqat yurak urishi va nafasni boshqaradi", "Gipotalamus faqat orqa miya nervlari bilan, qon orqali emas, gipofizga ta'sir qiladi"],
     topic: "Odam anatomiyasi",
     answer: 0,
-    explanation: "Epifiz va gipotalamus (oraliq miya qismlari) melatonin va boshqa moddalar orqali biologik ritmlar hamda uyquni boshqaradi."
+    explanation: "Gipotalamus neyrosekretor hujayralari liberinlar va statinlar ajratib gipofiz old bo'lagi faoliyatini boshqaradi, orqa bo'lagida esa vasopressin va oksitotsin yig'iladi. Shu bilan asab tizimi endokrin tizimni boshqaradi.",
+    difficulty: "qiyin"
   },
   {
     question: "Quyidagi misollardan qaysi biri dizruptiv (buzuvchi) tanlanishga misol bo'ladi?",
@@ -819,11 +832,12 @@ const questions = [
     difficulty: "qiyin"
   },
   {
-    question: "Genetika fanida Mendelning birinchi qonuni (Uniformlik qonuni) bo'yicha toza liniyadagi dominant va retsessiv ota-onalar chatishtirilganda F1 avlodda qanday natija chiqadi?",
-    options: ["Barcha nasl bir xil (dominant belgiga ega) bo'ladi", "Faqat retsessiv belgilar chiqadi", "50% dominant, 50% retsessiv bo'ladi", "Barcha belgilar yo'qolib ketadi"],
+    question: "Ikkalasi ham kasal bo'lgan ota-onadan sog'lom bola tug'ildi. Kasallik qanday irsiylanadi va ota-onalar genotipi qanday?",
+    options: ["Dominant; ikkala ota-ona geterozigota (Aa), sog'lom bola esa aa", "Retsessiv; ikkala ota-ona gomozigota (aa), sog'lom bola esa Aa", "Dominant; ikkala ota-ona gomozigota (AA), sog'lom bola esa Aa", "X-birikkan retsessiv; ona geterozigota, ota esa sog'lom hisoblanadi"],
     topic: "Genetika",
     answer: 0,
-    explanation: "Mendelning birinchi qonuniga muvofiq, geterozigota holatdagi birinchi avlod (F1) tashqi ko'rinishidan bir xil (uniform) bo'lib chiqadi."
+    explanation: "Kasal ota-onadan sog'lom bola tug'ilishi kasallik dominant ekanini ko'rsatadi: ota-onalar Aa, bola esa aa (sog'lom). Agar kasallik retsessiv bo'lsa, ikkala ota-ona aa bo'lib, barcha bolalar kasal bo'lardi.",
+    difficulty: "qiyin"
   },
   {
     question: "Hasharotlarning qon aylanish sistemasi ochiq bo'lishiga qaramay, gemolimfa nafas gazlarini tashishda deyarli ishtirok etmaydi. Buning sababi nima?",
@@ -883,11 +897,12 @@ const questions = [
     explanation: "Gazlar kontsentratsiyalar farqiga ko'ra og'izcha teshikchalari orqali tashqi muhitdan hujayra oralig'iga diffuziya yo'li bilan o'tadi."
   },
   {
-    question: "Molekulyar biologiyada replikatsiya jarayoni DNK molekulasida qanday prinsip asosida amalga oshiriladi?",
-    options: ["Komplementarlik prinsipi (A-T, G-S)", "Faqat tasodifiy birikish", "Triplet kodlash", "Translyatsiya prinsipi"],
+    question: "DNK replikatsiyasida bir zanjir uzluksiz, ikkinchisi esa Okazaki bo'laklari bilan sintezlanadi. Buning sababi nima?",
+    options: ["DNK-polimeraza zanjirni faqat 5'→3' yo'nalishda uzaytiradi, zanjirlar esa antiparallel", "Ikki zanjir turli fermentlar bilan sintezlanadi, ularning tezligi bir xil bo'lmaydi", "Bir zanjir DNKdan, ikkinchisi RNKdan nusxa olinadi, shu sababli bo'laklanadi", "Okazaki bo'laklari faqat xatolarni tuzatish uchun maxsus qo'shimcha hosil qilinadi"],
     topic: "Genetika",
     answer: 0,
-    explanation: "DNK ikkilanishida (replikatsiyada) har bir eski zanjir asosida komplementarlik qoidasiga ko'ra yangi zanjir sintezlanadi."
+    explanation: "DNK-polimeraza yangi zanjirni faqat 5'→3' yo'nalishda quradi, DNK zanjirlari esa antiparallel. Replikatsiya vilkasi ochilishiga mos zanjir (yetakchi) uzluksiz, qarama-qarshi zanjir (orqada qoluvchi) esa qisqa Okazaki bo'laklari bilan sintezlanadi va ligaza bilan tikiladi.",
+    difficulty: "qiyin"
   },
   {
     question: "Dengiz yulduzining lichinkasi ikki tomonlama, kattasi esa radial simmetriyali. Bu nimani ko'rsatadi?",
@@ -1102,18 +1117,20 @@ const questions = [
     explanation: "Malpigi naylari ichak bilan gemolimfa orasida joylashgan bo'lib, siydik kislotasini ichakka chiqaradi; ular quruqlikda yashovchi bo'g'imoyoqlilarga xos."
   },
   {
-    question: "Odamda bosh miyaning qaysi qismida shartli reflekslar va tafakkur, nutq, ong faoliyatini boshqaruvchi oliy markazlar joylashgan?",
-    options: ["Katta yarim sharlar po'stlog'i (korteks)", "Uzunchoq miya", "Miyacha", "Ko'prik"],
+    question: "Chap yarim sharning chakka bo'lagidagi nutqni tushunish markazi (Vernike) shikastlansa, bemorda qanday buzilish kuzatiladi?",
+    options: ["Nutq ravon, lekin ma'nosiz; boshqalar nutqini tushunish buziladi", "So'zlash qobiliyati yo'qoladi, ammo boshqalar nutqini yaxshi tushunadi", "Ko'rish butunlay yo'qoladi, chunki markaz ko'rish zonasida joylashgan", "Eshitish butunlay yo'qoladi, chunki markaz eshitish nervi yo'lida joylashgan"],
     topic: "Odam anatomiyasi",
     answer: 0,
-    explanation: "Batta yarim sharlar po'stlog'i oliy nerv faoliyatining markazi bo'lib, barcha shartli reflekslar, xotira va ongli harakatlarni boshqaradi."
+    explanation: "Vernike markazi chakka bo'lagida joylashib, eshitilgan nutqni tushunishni ta'minlaydi. Shikastlanganda bemor ravon so'zlaydi, lekin gaplari ma'nosiz bo'ladi va boshqa odam nutqini tushunmaydi. So'zlash qobiliyatining yo'qolishi esa peshona bo'lagidagi Broka markazi shikastlanishiga xos.",
+    difficulty: "qiyin"
   },
   {
-    question: "Odamda organizmning immun tizimida asosiy rol o'ynovchi T-limfotsitlar qaysi organda yetiladi va o'z vazifasini bajarishga tayyorlanadi?",
-    options: ["Taloq", "Jigar", "Timus (ayrisimon bez)", "Oshqozon osti bezi"],
+    question: "Qaysi javob ikkilamchi immun javobning birlamchisidan farqini to'g'ri ko'rsatadi?",
+    options: ["Sekinroq rivojlanadi va antitanalar miqdori birlamchi javobdan kamroq bo'ladi", "Faqat T-limfotsitlar ishtirok etadi, B-limfotsitlar bu javobda qatnashmaydi", "Xotira hujayralari tufayli tezroq, kuchliroq, antitanalar ham ko'proq bo'ladi", "Faqat birinchi uchrashuvda antigenni tanigan neytrofillar javob berishda qatnashadi"],
     topic: "Odam anatomiyasi",
     answer: 2,
-    explanation: "T-limfotsitlar suyak ko'migida hosil bo'lsa-da, timus (ayrisimon bez) orqali o'tib maxsus immun vazifasiga ega bo'lib yetiladi."
+    explanation: "Birinchi uchrashuvda hosil bo'lgan xotira B- va T-limfotsitlar antigenni qayta uchratganda tezda ko'payadi. Shu sababli ikkilamchi javob tezroq, kuchliroq va antitanalar ko'proq bo'ladi. Emlash shu mexanizmga asoslangan.",
+    difficulty: "qiyin"
   },
   {
     question: "Tizza refleksi yoyida nechta neyron ishtirok etadi?",
@@ -1145,11 +1162,12 @@ const questions = [
     explanation: "Remora akuladan foyda ko'radi (transport, oziq qoldig'i), akulaga esa na foyda, na zarar. Boshqa misollar: mutualizm va parazitizm."
   },
   {
-    question: "Quyidagi o'zaro munosabatlardan qaysi biri kommensalizmga misol bo'ladi?",
-    options: ["Remora baliqlarining akulaga yopishib, uning ovidan qolgan ozuqa bilan oziqlanishi", "Tugunak bakteriyalar va dukkakli o'simliklar hayoti", "Zamburug' va yuksak o'simlik ildizi (mikoriza)", "Bezgak plazmodiysi va odam"],
+    question: "Likenlarda zamburug' va suvo'ti o'rtasidagi munosabat qaysi turga kiradi va nima uchun?",
+    options: ["Mutualizm: zamburug' suv va minerallar beradi, suvo'ti fotosintez mahsulotini beradi", "Parazitizm: zamburug' suvo'tining hujayralarini o'ldirib oziqlanadi, suvo'ti nobud bo'ladi", "Kommensalizm: zamburug' foyda ko'radi, suvo'tiga hech qanday ta'sir bo'lmaydi", "Amensalizm: zamburug' suvo'ti o'sishini to'sadi, o'zi foyda ko'rmaydi"],
     topic: "Ekologiya",
     answer: 0,
-    explanation: "Kommensalizmda bir tur foyda ko'radi, ikkinchisiga zarar ham, foyda ham yo'q. Tugunak bakteriyalar va mikoriza mutualizmga, plazmodiy parazitizmga misol."
+    explanation: "Liken — zamburug' va suvo'ti (yoki siyanobakteriya) birgalikda yashashi. Zamburug' suv, mineral tuzlar va himoya beradi, suvo'ti fotosintez natijasida organik moddalar bilan ta'minlaydi. Ikkalasi ham foyda ko'rgani uchun bu mutualizm.",
+    difficulty: "o'rta"
   },
   {
     question: "Hujayraning energetik almashinuvida kislorodsiz bosqichda 1 molekula glyukozadan qancha miqdorda ATF hosil bo'ladi?",
@@ -1173,11 +1191,12 @@ const questions = [
     explanation: "Nitrifikatsiyani nitrosomonas va nitrobakter bakteriyalari bajaradi: NH3 -> NO2 -> NO3. Nitrat molekulyar azotga aylanishi denitrifikatsiya, N2 ning ammiakka aylanishi azot fiksatsiyasi, oqsildan ammiak hosil bo'lishi ammonifikatsiya deyiladi."
   },
   {
-    question: "Qaysi organoid hujayrada lipidlar sintezi va zaharli moddalarni zararsizlantirishda asosiy rol o'ynaydi?",
-    options: ["Donador endoplazmatik to'r", "Silliq (donasiz) endoplazmatik to'r", "Lizosoma", "Ribosoma"],
+    question: "Mushak hujayrasida qisqarish boshlanishi uchun zarur Ca²⁺ ionlari qaysi organoidda saqlanadi?",
+    options: ["Golji kompleksida, pufakchalar ichida", "Silliq EPT (sarkoplazmatik to'r) ichida", "Lizosomalarda, fermentlar bilan birga", "Mitoxondriya matriksida, ATF yonida"],
     topic: "Sitologiya",
     answer: 1,
-    explanation: "Silliq EPT lipidlar va steroidlar sintezida, jigar hujayralarida esa zaharsizlantirishda ishtirok etadi; donador EPT esa oqsil sintezi bilan bog'liq."
+    explanation: "Mushak hujayralarida silliq EPT sarkoplazmatik to'r deb ataladi va Ca²⁺ ionlarini to'playdi. Nerv impulsi kelganda Ca²⁺ sitoplazmaga chiqib, miofibrillarning qisqarishini boshlaydi, so'ng yana to'rga nasos orqali qaytariladi.",
+    difficulty: "o'rta"
   },
   {
     question: "Fotosintezning yorug'lik fazasida hosil bo'lib, qorong'ulik fazasida sarflanadigan moddalar qaysilar?",
@@ -1276,11 +1295,12 @@ const questions = [
     explanation: "Energiya har bir trofik darajada kamayib boradi (issiqlik tarzida sochiladi), shuning uchun energiya piramidasi doimo asosi keng, cho'qqisi tor bo'ladi."
   },
   {
-    question: "Evolyutsiya dalillaridan biri bo'lib, turli geologik qatlamlarda saqlanib qolgan qadimgi organizm qoldiqlari qanday ataladi?",
-    options: ["Paleontologik qoldiqlar (fossilchalar)", "Rudimentlar", "Atavizmlar", "Homolog organlar"],
+    question: "Arxeopteriks qaysi ikki sinf o'rtasidagi o'tish shakli va qaysi belgilar buni ko'rsatadi?",
+    options: ["Sudralib yuruvchilar va qushlar: tuklari va qanotlari, shuningdek tishlari va uzun dumi bor", "Baliqlar va suvda-quruqda yashovchilar: suzgichlari va oyoqlari, shuningdek jabralari bor", "Suvda-quruqda yashovchilar va sudralib yuruvchilar: nam teri, shuningdek tuxum po'sti bor", "Sudralib yuruvchilar va sutemizuvchilar: jun qoplami, shuningdek tuxum qo'yish xususiyati bor"],
     topic: "Evolyutsiya",
     answer: 0,
-    explanation: "Paleontologik topilmalar (fossilchalar) o'tmishda yashab ketgan organizmlarning tuzilishi va evolyutsion ketma-ketligini o'rganishda asosiy dalil hisoblanadi."
+    explanation: "Arxeopteriks (Yura davri) qushlarga xos belgilar (patlar, qanotlar) bilan birga sudralib yuruvchilarga xos belgilarga (tishlar, uzun dum umurtqalari, qanotlarda tirnoqlar) ega. U qushlarning sudralib yuruvchilardan kelib chiqqanini isbotlovchi paleontologik dalil.",
+    difficulty: "qiyin"
   },
   {
     question: "Hujayraning energiyaga bo'lgan ehtiyojini qondiruvchi va asosiy 'energetik stansiyasi' hisoblangan organoid qaysi?",
@@ -1496,11 +1516,12 @@ const questions = [
     explanation: "Yo'g'on ichakda ovqat hazm bo'lmay qolgan qoldiqlaridagi suv va minerallar intensiv ravishda qonga so'rilib, ahlat massasi quyuqlashadi."
   },
   {
-    question: "Molekulyar biologiyada mRNK dagi genetik kodning uchlik (triplet) xususiyati nimani anglatadi?",
-    options: ["DNK ning 3 ta zanjirli bo'lishini", "Oqsillarning faqat 3 xil bo'lishini", "Ribosomaning 3 qismdan iboratligini", "Har bir aminokislota ketma-ket kelgan 3 ta nukleotid tomonidan kodlanishini"],
+    question: "mRNK 90 nukleotiddan iborat va uning hammasi aminokislotalarni kodlaydi (stop-kodon hisobga olinmaydi). Sintezlanadigan polipeptid necha aminokislotadan iborat bo'ladi?",
+    options: ["90 ta, chunki har bir nukleotid bitta aminokislotani kodlaydi", "45 ta, chunki har bir aminokislotani ikkita nukleotid kodlaydi", "15 ta, chunki har bir aminokislotani oltita nukleotid kodlaydi", "30 ta, chunki har bir aminokislotani uchta nukleotid (triplet) kodlaydi"],
     topic: "Genetika",
     answer: 3,
-    explanation: "Genetik kod uchlik (triplet) tuzilishga ega bo'lib, 3 ta nukleotid birgalikda bitta aminokislotani belgilaydi."
+    explanation: "Genetik kod tripletdan iborat: bitta aminokislotani mRNKdagi 3 nukleotid (kodon) kodlaydi. 90 ÷ 3 = 30 ta aminokislota.",
+    difficulty: "qiyin"
   },
   {
     question: "Quyidagi biomalardan qaysi birida tuproq eng unumdor va gumusga eng boy bo'ladi?",
@@ -1553,11 +1574,12 @@ const questions = [
     explanation: "Ekologik piramida qoidasiga ko'ra, har bir yuqori pog'onaga o'tganda energiya va biomassa 95-90% atrofida kamayib boradi."
   },
   {
-    question: "O'simliklarda suv bug'lanishini (transpiratsiyani) va gazlar almashinuvini ta'minlovchi og'izchalar qanday ochilib yopiladi?",
-    options: ["Faqat shamol ta'sirida", "Kambiyning bo'linishi bilan", "Mexanik to'qimaning tortilishi bilan", "Og'izcha hujayralarining turgor bosimining o'zgarishi hisobiga"],
+    question: "Yorug'likda og'izchalar nima uchun ochiladi?",
+    options: ["Yopuvchi hujayralardan K⁺ chiqib, ular suv yo'qotib bo'shashadi va tirqish kengayadi", "Yopuvchi hujayralarda CO₂ ko'payib, ularning devorlari yupqalashadi va yorilib ketadi", "Barg ichidagi bosim kamayib, og'izcha tirqishi o'z-o'zidan teshilib, kengayib ketadi", "Yopuvchi hujayralarga K⁺ kirib, suv ham kiradi va turgor bosimi ortadi"],
     topic: "Botanika",
     answer: 3,
-    explanation: "Og'izcha hujayralariga suv kirib turgori oshganda teshik ochiladi, suv chiqib ketib turgor pasayganda esa yopiladi."
+    explanation: "Yorug'likda yopuvchi hujayralarga K⁺ ionlari faol kiradi, osmotik bosim ortib suv kiradi va turgor oshadi. Devorlari notekis qalinlashgan hujayralar egilib, og'izcha tirqishi ochiladi. Qorong'ida yoki suv tanqisligida (ABA ta'sirida) K⁺ chiqib, og'izchalar yopiladi.",
+    difficulty: "qiyin"
   },
   {
     question: "Allopatrik tur hosil bo'lishi qanday omil bilan boshlanadi?",
@@ -1674,11 +1696,12 @@ const questions = [
     difficulty: "qiyin"
   },
   {
-    question: "Hujayraning energetik almashinuvida kislorodli (aerob) bosqich natijasida 1 molekula glyukozadan nechta ATF hosil bo'ladi?",
-    options: ["2 ta ATF", "4 ta ATF", "36 yoki 38 ta ATF", "0 ta ATF"],
+    question: "Mitoxondriya ichki membranasida ATF sintezi qaysi ion gradientiga va qaysi fermentga asoslanadi?",
+    options: ["Na⁺/K⁺ gradienti, natriy-kaliy nasosi yordamida", "Ca²⁺ gradienti, kalmodulin oqsili yordamida", "H⁺ (proton) gradienti, ATF-sintaza fermenti yordamida", "Cl⁻ gradienti, xlor kanallari yordamida"],
     topic: "Sitologiya",
     answer: 2,
-    explanation: "Mitoxondriyadagi to'liq kislorodli parchalanish natijasida jami 36-38 molekula ATF energiyasi ajralib chiqadi."
+    explanation: "Elektronlar tashish zanjirida protonlar (H⁺) matriksdan membranalararo bo'shliqqa chiqariladi va proton gradienti hosil bo'ladi. Protonlar ATF-sintaza orqali matriksga qaytganda ATF sintezlanadi (xemiosmos). Xloroplastlarda tilakoid membranasida ham xuddi shu mexanizm ishlaydi.",
+    difficulty: "qiyin"
   },
   {
     question: "Ko'lda 100 ta baliq belgilanib qo'yib yuborildi. Keyinchalik 200 ta baliq tutildi va ulardan 10 tasi belgilangan bo'lib chiqdi. Baliqlarning taxminiy umumiy soni qancha?",
@@ -1858,11 +1881,12 @@ const questions = [
     explanation: "Ikki marta urug'lanishdan so'ng tuguncha devoridan meva, urug'kurtakdan esa urug' hosil bo'ladi."
   },
   {
-    question: "Odam organizmida qon ivishining buzilishi va irsiylanuvchi kasallik — daltonizm (rang ajratolmaslik) qanday irsiynadi?",
-    options: ["Y-xromosomaga dominant tarzda", "Autosomada kodominant tarzda", "Mitoxondrial yo'l bilan", "X-xromosomaga birikkan retsessiv belgisi sifatida"],
+    question: "Daltonizm bilan kasal ona va sog'lom otadan tug'iladigan bolalar haqida qaysi javob to'g'ri?",
+    options: ["Barcha o'g'il va qizlar sog'lom, chunki kasallik retsessiv", "Qizlarning yarmi kasal, o'g'illar esa barchasi sog'lom bo'ladi", "O'g'illarning yarmi kasal, qizlar barchasi sog'lom bo'ladi", "Barcha o'g'illar kasal, barcha qizlar tashuvchi (sog'lom) bo'ladi"],
     topic: "Genetika",
     answer: 3,
-    explanation: "Daltonizm ham gemofiliya kabi X-xromosomaga birikkan retsessiv kasallik bo'lib, erkaklarda tezroq namoyon bo'ladi."
+    explanation: "Daltonizm X-xromosomaga birikkan retsessiv belgi. Kasal ona X^dX^d, sog'lom ota X^DY. O'g'illar onadan X^d, otadan Y oladi va hammasi kasal (X^dY). Qizlar onadan X^d, otadan X^D oladi, hammasi tashuvchi (X^DX^d), fenotipda sog'lom.",
+    difficulty: "qiyin"
   },
   {
     question: "Odamda eshitish va muvozanat retseptorlari bosh miyaning qaysi sezgi organida va qismida joylashgan?",
@@ -1886,18 +1910,20 @@ const questions = [
     explanation: "Ko'payish vazifasini bajaruvchi gul, meva va urug'lar o'simliklarning generativ organlari hisoblanadi."
   },
   {
-    question: "Okeanda fitoplanktonning ayni paytdagi biomassasi zooplanktonnikidan kam bo'lishi (biomassa piramidasining teskari bo'lishi) mumkin. Buning asosiy sababi nima?",
-    options: ["Fitoplanktonning bo'linish va yangilanish tezligi juda yuqori, kam biomassa ham ko'p mahsulot beradi", "Zooplankton fotosintez qiladi", "Fitoplankton energiyani o'zlashtirmaydi", "Okeanda producentlar umuman bo'lmaydi"],
+    question: "Ekologik piramidalarning qaysi turi hech qachon teskari ko'rinishda bo'lmaydi va nima uchun?",
+    options: ["Energiya piramidasi, chunki har bir pog'onada energiyaning katta qismi sarflanadi", "Sonlar piramidasi, chunki produtsentlar har doim eng ko'p sonli bo'ladi", "Biomassa piramidasi, chunki produtsent biomassasi har doim eng katta bo'ladi", "Barcha piramidalar bir xil, ularning hech biri teskari bo'lmaydi"],
     topic: "Ekologiya",
     answer: 0,
-    explanation: "Fitoplankton bir necha kunda yangilanadi, shuning uchun kichik biomassa bilan ham zooplanktonni oziqlantiradi; energiya piramidasi esa hech qachon teskari bo'lmaydi."
+    explanation: "Energiya piramidasi hech qachon teskari bo'lmaydi: trofik pog'onadan pog'onaga o'tishda energiyaning taxminan 90% issiqlik va nafas olishga sarflanadi. Sonlar piramidasi (daraxt va hasharotlar) hamda biomassa piramidasi (okean) teskari bo'lishi mumkin.",
+    difficulty: "o'rta"
   },
   {
-    question: "O'simliklarda suvning ildizdan barglarga ko'tarilishida asosiy so'ruvchi kuchni hosil qiluvchi jarayon nima?",
-    options: ["Faqat ildiz bosimi", "Kambiyning bo'linishi", "Fotosintez", "Transpiratsiya (barglar orqali suv bug'lanishi)"],
+    question: "Ksilemada suv ustunining uzilmay ko'tarilishida suv molekulalarining o'zaro birikishi (kogeziya) va naychalar devoriga yopishishi (adgeziya) qanday rol o'ynaydi?",
+    options: ["Suvni tuproqqa qaytarib, ildiz bosimini sezilarli darajada kamaytirib turadi", "Suv molekulalarini tezda bug'ga aylantirib, barg yuzasidan tashqariga chiqaradi", "Floemadagi shakar eritmasini ksilema naylariga o'tkazib, uni quyuqlashtiradi", "Suv ustunining uzluksizligini ta'minlab, uni yuqoriga tortishga imkon beradi"],
     topic: "Botanika",
     answer: 3,
-    explanation: "Barglardan suvning bug'lanishi (transpiratsiya) yuqoridan so'ruvchi kuchni hosil qilib, suvni ksilema bo'ylab tortib chiqaradi."
+    explanation: "Kogeziya (suv molekulalari orasidagi vodorod bog'lari) va adgeziya (naycha devoriga yopishish) suv ustunining uzilmasligini ta'minlaydi. Barglardan suv bug'langanda (transpiratsiya) hosil bo'lgan so'rish kuchi butun ustunni yuqoriga tortadi.",
+    difficulty: "qiyin"
   },
   {
     question: "Ornitorinx sudralib yuruvchilarga qaysi belgisi bilan o'xshash?",
@@ -2006,11 +2032,12 @@ const questions = [
     explanation: "Epidermis suvning tashqi muhit bilan bog'lanishini tartibga solsa, ksilema esa uni yuqoriga o'tkazib beradi."
   },
   {
-    question: "O'simliklarda ildiz orqali so'rilgan suv va mineral tuzlar poya bo'ylab qaysi yo'nalishda harakatlanadi?",
-    options: ["Faqat yuqoridan pastga", "Ikkala tomonga bir xil", "Faqat pastdan yuqoriga (ksilema bo'ylab)", "Faqat bargdan ildizga"],
+    question: "Ksilema va floema xususiyatlarini qaysi javob to'g'ri taqqoslaydi?",
+    options: ["Ikkalasi ham tirik hujayralardan iborat va moddalarni ikki yo'nalishda tashiydi", "Ksilema tirik elak naychalaridan, floema esa o'lik naylardan iborat bo'lib, suvni tashiydi", "Ksilema — o'lik naylar, suv yuqoriga; floema — tirik elak naychalari, ikki yo'nalishda", "Ksilema organik moddalarni pastga tashiydi, floema esa suv va tuzlarni yuqoriga tashiydi"],
     topic: "Botanika",
     answer: 2,
-    explanation: "Suv va mineral tuzlar ildizdan olinib, ksilema orqali faqat pastdan yuqoriga — barglar va novdalarga qarab oqadi."
+    explanation: "Ksilemaning o'tkazuvchi elementlari (naylar, traxeidlar) o'lik hujayralar bo'lib, suv va minerallarni faqat pastdan yuqoriga tashiydi. Floema elak naychalari tirik bo'lib, yo'ldosh hujayralar yordamida organik moddalarni manbadan iste'molchiga, ya'ni ikki yo'nalishda tashiydi.",
+    difficulty: "qiyin"
   },
   {
     question: "Odamda qon guruhlarini aniqlashda ABO tizimi bo'yicha eritrotsitlarda aglyutinogenlar va zardobda aglyutininlar qanday xususiyatga ega?",
@@ -2689,11 +2716,12 @@ const questions = [
     difficulty: "qiyin"
   },
   {
-    question: "Bitta pishgan olma yonida saqlangan yashil mevalar tezroq pishadi. Buning sababi nima?",
-    options: ["Olma kislorod ajratadi","Olma suv bug'ini yutib, mevalarni quritadi","Pishgan meva gaz holidagi etilen ajratadi va u qo'shni mevalarning pishishini tezlashtiradi","Olma yorug'lik energiyasini chiqaradi"],
+    question: "Qaysi gormon urug'ning tinim holatini tugatib, unishni boshlaydi?",
+    options: ["Absiz kislota (ABA), u urug'ni uyg'otadi va unishni tezlashtiradi", "Etilen, u urug' qobig'ini yumshatib, uni darhol uchirib yuboradi", "Gibberellin, u tinim holatini tugatib, o'sishni va unishni boshlaydi", "Sitokinin, u faqat ildiz hosil qilib, poya o'sishini to'xtatib turadi"],
     topic: "Botanika",
     answer: 2,
-    explanation: "Etilen — gaz holidagi gormon, meva pishishini, barg to'kilishini tezlashtiradi."
+    explanation: "Gibberellin urug'dagi zahira moddalarni parchalovchi fermentlarni faollashtirib, tinim holatini tugatadi va unishni boshlaydi. Absiz kislota (ABA) esa aksincha tinim holatini saqlaydi.",
+    difficulty: "o'rta"
   },
   {
     question: "Fototropizmda (poyaning yorug'lik tomonga egilishi) auksin qanday ta'sir ko'rsatadi?",
@@ -2796,11 +2824,12 @@ const questions = [
     explanation: "Yorug'lik to'yinganda cheklovchi omil CO₂ bo'lib qoladi (Blekman qonuni). Yuqori harorat fermentlarni buzadi."
   },
   {
-    question: "Fotosintezning kompensatsiya nuqtasi nima?",
-    options: ["Fotosintez tezligi eng yuqori bo'lgan yorug'lik darajasi","Nafas olish to'xtagan yorug'lik darajasi","Barg og'izchalari to'liq yopilgan payt","Fotosintez bilan nafas olish tezliklari tenglashgan yorug'lik darajasi"],
+    question: "Yorug'lik intensivligi kompensatsiya nuqtasidan past bo'lganda o'simlikda nima sodir bo'ladi?",
+    options: ["Fotosintez nafas olishdan tez kechadi, organik moddalar to'planib boradi", "Fotosintez ham, nafas olish ham to'liq to'xtab, o'simlik tinim holatiga o'tadi", "Fotosintez tezligi o'zgarmaydi, nafas olish butunlay to'xtaydi va o'sish davom etadi", "Nafas olish fotosintezdan tezroq, organik moddalar sarflanadi va o'simlik zaiflashadi"],
     topic: "Botanika",
     answer: 3,
-    explanation: "Kompensatsiya nuqtasida CO₂ ning fotosintezda yutilishi nafas olishda ajralishiga teng bo'ladi, shuning uchun sof gaz almashinuvi nolga teng."
+    explanation: "Kompensatsiya nuqtasida fotosintez va nafas olish tezliklari teng. Undan past yorug'likda fotosintez sust, nafas olish esa davom etadi, shuning uchun to'plangan organik moddalar sarflanadi va o'simlik uzoq vaqt shunday qolsa zaiflashib nobud bo'ladi.",
+    difficulty: "o'rta"
   },
   {
     question: "Qaysi hodisa faqat ildiz bosimi bilan izohlanadi va transpiratsiya sust bo'lganda ham kuzatiladi?",
