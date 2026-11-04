@@ -7,6 +7,15 @@
 <meta name="theme-color" content="#100b20">
 <title>MILLIY BIO TEST | Biologiya test platformasi</title>
 
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQQY0FGCC8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WQQY0FGCC8');
+</script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -1451,9 +1460,18 @@ function saveScore(name,region,score,correct,total,seconds,timeStr) {
     lastSavePromise = (async () => {
       try {
         await authReady;
-        const data = {...entry,createdAt:firebase.firestore.FieldValue.serverTimestamp()};
         const u = auth && auth.currentUser;
-        if(u) data.uid = u.uid;
+        if(!u) {
+          const authError = new Error("Anonim Firebase kirishi amalga oshmadi.");
+          authError.code = "auth/unauthenticated";
+          throw authError;
+        }
+        const data = {
+          ...entry,
+          uid: u.uid,
+          authType: u.isAnonymous ? "anonymous" : "account",
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
         await db.collection("results").add(data);
         return {ok:true};
       } catch(err) {
